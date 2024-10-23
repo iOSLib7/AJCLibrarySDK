@@ -1,0 +1,1533 @@
+{
+    "content": [
+      {
+        "code": 244,
+        "zht": "安哥拉",
+        "en": "Angola",
+        "locale": "AO",
+        "continent": "CAF",
+        "zhs": "安哥拉"
+      },
+      {
+        "code": 93,
+        "zht": "阿富汗",
+        "en": "Afghanistan",
+        "locale": "AF",
+        "continent": "CAS",
+        "zhs": "阿富汗"
+      },
+      {
+        "code": 355,
+        "zht": "阿爾巴尼亞",
+        "en": "Albania",
+        "locale": "AL",
+        "continent": "CEU",
+        "zhs": "阿尔巴尼亚"
+      },
+      {
+        "code": 213,
+        "zht": "阿爾及利亞",
+        "en": "Algeria",
+        "locale": "DZ",
+        "continent": "CAF",
+        "zhs": "阿尔及利亚"
+      },
+      {
+        "code": 376,
+        "zht": "安道爾共和國",
+        "en": "Andorra",
+        "locale": "AD",
+        "continent": "CEU",
+        "zhs": "安道尔共和国"
+      },
+      {
+        "code": 1264,
+        "zht": "安圭拉島",
+        "en": "Anguilla",
+        "locale": "AI",
+        "continent": "CNA",
+        "zhs": "安圭拉岛"
+      },
+      {
+        "code": 1268,
+        "zht": "安提瓜和巴布達",
+        "en": "Antigua and Barbuda",
+        "locale": "AG",
+        "continent": "CNA",
+        "zhs": "安提瓜和巴布达"
+      },
+      {
+        "code": 54,
+        "zht": "阿根廷",
+        "en": "Argentina",
+        "locale": "AR",
+        "continent": "CSA",
+        "zhs": "阿根廷"
+      },
+      {
+        "code": 374,
+        "zht": "亞美尼亞",
+        "en": "Armenia",
+        "locale": "AM",
+        "continent": "CAS",
+        "zhs": "亚美尼亚"
+      },
+      {
+        "code": 247,
+        "zht": "阿森松",
+        "en": "Ascension",
+        "locale": "SH",
+        "continent": "CAS",
+        "zhs": "阿森松"
+      },
+      {
+        "code": 61,
+        "zht": "澳大利亞",
+        "en": "Australia",
+        "locale": "AU",
+        "continent": "COC",
+        "zhs": "澳大利亚"
+      },
+      {
+        "code": 43,
+        "zht": "奧地利",
+        "en": "Austria",
+        "locale": "AT",
+        "continent": "CEU",
+        "zhs": "奥地利"
+      },
+      {
+        "code": 994,
+        "zht": "阿塞拜疆",
+        "en": "Azerbaijan",
+        "locale": "AZ",
+        "continent": "CAS",
+        "zhs": "阿塞拜疆"
+      },
+      {
+        "code": 1242,
+        "zht": "巴哈馬",
+        "en": "Bahamas",
+        "locale": "BS",
+        "continent": "CNA",
+        "zhs": "巴哈马"
+      },
+      {
+        "code": 973,
+        "zht": "巴林",
+        "en": "Bahrain",
+        "locale": "BH",
+        "continent": "CAS",
+        "zhs": "巴林"
+      },
+      {
+        "code": 880,
+        "zht": "孟加拉國",
+        "en": "Bangladesh",
+        "locale": "BD",
+        "continent": "CAS",
+        "zhs": "孟加拉国"
+      },
+      {
+        "code": 1246,
+        "zht": "巴巴多斯",
+        "en": "Barbados",
+        "locale": "BB",
+        "continent": "CNA",
+        "zhs": "巴巴多斯"
+      },
+      {
+        "code": 375,
+        "zht": "白俄羅斯",
+        "en": "Belarus",
+        "locale": "BY",
+        "continent": "CEU",
+        "zhs": "白俄罗斯"
+      },
+      {
+        "code": 32,
+        "zht": "比利時",
+        "en": "Belgium",
+        "locale": "BE",
+        "continent": "CEU",
+        "zhs": "比利时"
+      },
+      {
+        "code": 501,
+        "zht": "伯利茲",
+        "en": "Belize",
+        "locale": "BZ",
+        "continent": "CNA",
+        "zhs": "伯利兹"
+      },
+      {
+        "code": 229,
+        "zht": "貝寧",
+        "en": "Benin",
+        "locale": "BJ",
+        "continent": "CAF",
+        "zhs": "贝宁"
+      },
+      {
+        "code": 1441,
+        "zht": "百慕達群島",
+        "en": "Bermuda Is.",
+        "locale": "BM",
+        "continent": "CNA",
+        "zhs": "百慕大群岛"
+      },
+      {
+        "code": 591,
+        "zht": "玻利維亞",
+        "en": "Bolivia",
+        "locale": "BO",
+        "continent": "CSA",
+        "zhs": "玻利维亚"
+      },
+      {
+        "code": 267,
+        "zht": "博茨瓦納",
+        "en": "Botswana",
+        "locale": "BW",
+        "continent": "CAF",
+        "zhs": "博茨瓦纳"
+      },
+      {
+        "code": 55,
+        "zht": "巴西",
+        "en": "Brazil",
+        "locale": "BR",
+        "continent": "CSA",
+        "zhs": "巴西"
+      },
+      {
+        "code": 673,
+        "zht": "文萊",
+        "en": "Brunei",
+        "locale": "BN",
+        "continent": "CAS",
+        "zhs": "文莱"
+      },
+      {
+        "code": 359,
+        "zht": "保加利亞",
+        "en": "Bulgaria",
+        "locale": "BG",
+        "continent": "CEU",
+        "zhs": "保加利亚"
+      },
+      {
+        "code": 226,
+        "zht": "布基納法索",
+        "en": "Burkina-faso",
+        "locale": "BF",
+        "continent": "CAF",
+        "zhs": "布基纳法索"
+      },
+      {
+        "code": 95,
+        "zht": "緬甸",
+        "en": "Burma",
+        "locale": "MM",
+        "continent": "CAS",
+        "zhs": "缅甸"
+      },
+      {
+        "code": 257,
+        "zht": "布隆迪",
+        "en": "Burundi",
+        "locale": "BI",
+        "continent": "CAF",
+        "zhs": "布隆迪"
+      },
+      {
+        "code": 1,
+        "zht": "加拿大",
+        "en": "Canada",
+        "locale": "CA",
+        "continent": "CNA",
+        "zhs": "加拿大"
+      },
+      {
+        "code": 1345,
+        "zht": "開曼群島",
+        "en": "Cayman Is.",
+        "locale": "KY",
+        "continent": "CNA",
+        "zhs": "开曼群岛"
+      },
+      {
+        "code": 236,
+        "zht": "中非共和國",
+        "en": "Central African Republic",
+        "locale": "CF",
+        "continent": "CAF",
+        "zhs": "中非共和国"
+      },
+      {
+        "code": 235,
+        "zht": "乍得",
+        "en": "Chad",
+        "locale": "TD",
+        "continent": "CAF",
+        "zhs": "乍得"
+      },
+      {
+        "code": 56,
+        "zht": "智利",
+        "en": "Chile",
+        "locale": "CL",
+        "continent": "CSA",
+        "zhs": "智利"
+      },
+      {
+        "code": 237,
+        "zht": "喀麥隆",
+        "en": "Cameroon",
+        "locale": "CM",
+        "continent": "CAF",
+        "zhs": "喀麦隆"
+      },
+      {
+        "code": 86,
+        "zht": "中國",
+        "en": "China",
+        "locale": "CN",
+        "continent": "CAS",
+        "zhs": "中国"
+      },
+      {
+        "code": 57,
+        "zht": "哥倫比亞",
+        "en": "Colombia",
+        "locale": "CO",
+        "continent": "CSA",
+        "zhs": "哥伦比亚"
+      },
+      {
+        "code": 242,
+        "zht": "剛果",
+        "en": "Congo",
+        "locale": "CG",
+        "continent": "CAF",
+        "zhs": "刚果"
+      },
+      {
+        "code": 682,
+        "zht": "庫克群島",
+        "en": "Cook Is.",
+        "locale": "CK",
+        "continent": "COC",
+        "zhs": "库克群岛"
+      },
+      {
+        "code": 506,
+        "zht": "哥斯達黎加",
+        "en": "Costa Rica",
+        "locale": "CR",
+        "continent": "CNA",
+        "zhs": "哥斯达黎加"
+      },
+      {
+        "code": 53,
+        "zht": "古巴",
+        "en": "Cuba",
+        "locale": "CU",
+        "continent": "CNA",
+        "zhs": "古巴"
+      },
+      {
+        "code": 357,
+        "zht": "塞浦路斯",
+        "en": "Cyprus",
+        "locale": "CY",
+        "continent": "CAS",
+        "zhs": "塞浦路斯"
+      },
+      {
+        "code": 420,
+        "zht": "捷克",
+        "en": "Czech Republic",
+        "locale": "CZ",
+        "zhs": "捷克",
+        "continent": "CEU",
+        "cs": "Česká republika"
+      },
+      {
+        "code": 45,
+        "zht": "丹麥",
+        "en": "Denmark",
+        "locale": "DK",
+        "continent": "CEU",
+        "zhs": "丹麦"
+      },
+      {
+        "code": 253,
+        "zht": "吉布堤",
+        "en": "Djibouti",
+        "locale": "DJ",
+        "continent": "CAF",
+        "zhs": "吉布提"
+      },
+      {
+        "code": 1890,
+        "zht": "多明尼加共和國共和國",
+        "en": "Dominica Rep.",
+        "locale": "DO",
+        "continent": "CNA",
+        "zhs": "多米尼加共和国"
+      },
+      {
+        "code": 593,
+        "zht": "厄瓜多爾",
+        "en": "Ecuador",
+        "locale": "EC",
+        "continent": "CSA",
+        "zhs": "厄瓜多尔"
+      },
+      {
+        "code": 20,
+        "zht": "埃及",
+        "en": "Egypt",
+        "locale": "EG",
+        "continent": "CAF",
+        "zhs": "埃及"
+      },
+      {
+        "code": 503,
+        "zht": "薩爾瓦多",
+        "en": "EI Salvador",
+        "locale": "SV",
+        "continent": "CNA",
+        "zhs": "萨尔瓦多"
+      },
+      {
+        "code": 372,
+        "zht": "愛沙尼亞",
+        "en": "Estonia",
+        "locale": "EE",
+        "continent": "CEU",
+        "zhs": "爱沙尼亚"
+      },
+      {
+        "code": 251,
+        "zht": "埃塞俄比亞",
+        "en": "Ethiopia",
+        "locale": "ET",
+        "continent": "CAF",
+        "zhs": "埃塞俄比亚"
+      },
+      {
+        "code": 679,
+        "zht": "斐濟",
+        "en": "Fiji",
+        "locale": "FJ",
+        "continent": "COC",
+        "zhs": "斐济"
+      },
+      {
+        "code": 358,
+        "zht": "芬蘭",
+        "en": "Finland",
+        "locale": "FI",
+        "continent": "CEU",
+        "zhs": "芬兰"
+      },
+      {
+        "code": 33,
+        "zht": "法國",
+        "en": "France",
+        "locale": "FR",
+        "continent": "CEU",
+        "zhs": "法国",
+        "fr":"République française"
+      },
+      {
+        "code": 594,
+        "zht": "法屬圭亞那",
+        "en": "French Guiana",
+        "locale": "GF",
+        "continent": "CSA",
+        "zhs": "法属圭亚那"
+      },
+      {
+        "code": 241,
+        "zht": "加蓬",
+        "en": "Gabon",
+        "locale": "GA",
+        "continent": "CAF",
+        "zhs": "加蓬"
+      },
+      {
+        "code": 220,
+        "zht": "岡比亞",
+        "en": "Gambia",
+        "locale": "GM",
+        "continent": "CAF",
+        "zhs": "冈比亚"
+      },
+      {
+        "code": 995,
+        "zht": "格魯吉亞",
+        "en": "Georgia",
+        "locale": "GE",
+        "continent": "CAS",
+        "zhs": "格鲁吉亚"
+      },
+      {
+        "code": 49,
+        "zht": "德國",
+        "en": "Germany",
+        "locale": "DE",
+        "continent": "CEU",
+        "zhs": "德国",
+        "de":"Deutschland"
+      },
+      {
+        "code": 233,
+        "zht": "加納",
+        "en": "Ghana",
+        "locale": "GH",
+        "continent": "CAF",
+        "zhs": "加纳"
+      },
+      {
+        "code": 350,
+        "zht": "直布羅陀",
+        "en": "Gibraltar",
+        "locale": "GI",
+        "continent": "CEU",
+        "zhs": "直布罗陀"
+      },
+      {
+        "code": 30,
+        "zht": "希臘",
+        "en": "Greece",
+        "locale": "GR",
+        "continent": "CEU",
+        "zhs": "希腊"
+      },
+      {
+        "code": 1809,
+        "zht": "格林納達",
+        "en": "Grenada",
+        "locale": "GD",
+        "continent": "CNA",
+        "zhs": "格林纳达"
+      },
+      {
+        "code": 1671,
+        "zht": "關島",
+        "en": "Guam",
+        "locale": "GU",
+        "continent": "COC",
+        "zhs": "关岛"
+      },
+      {
+        "code": 502,
+        "zht": "危地馬拉",
+        "en": "Guatemala",
+        "locale": "GT",
+        "continent": "CNA",
+        "zhs": "危地马拉"
+      },
+      {
+        "code": 224,
+        "zht": "幾內亞",
+        "en": "Guinea",
+        "locale": "GN",
+        "continent": "COC",
+        "zhs": "几内亚"
+      },
+      {
+        "code": 592,
+        "zht": "圭亞那",
+        "en": "Guyana",
+        "locale": "GY",
+        "continent": "CSA",
+        "zhs": "圭亚那"
+      },
+      {
+        "code": 509,
+        "zht": "海地",
+        "en": "Haiti",
+        "locale": "HT",
+        "continent": "CNA",
+        "zhs": "海地"
+      },
+      {
+        "code": 504,
+        "zht": "洪都拉斯",
+        "en": "Honduras",
+        "locale": "HN",
+        "continent": "CNA",
+        "zhs": "洪都拉斯"
+      },
+      {
+        "code": 852,
+        "zht": "中國香港",
+        "en": "Hongkong China",
+        "locale": "HK",
+        "continent": "CAS",
+        "zhs": "中国香港"
+      },
+      {
+        "code": 36,
+        "zht": "匈牙利",
+        "en": "Hungary",
+        "locale": "HU",
+        "continent": "CEU",
+        "zhs": "匈牙利"
+      },
+      {
+        "code": 354,
+        "zht": "冰島",
+        "en": "Iceland",
+        "locale": "IS",
+        "continent": "CEU",
+        "zhs": "冰岛"
+      },
+      {
+        "code": 91,
+        "zht": "印度",
+        "en": "India",
+        "locale": "IN",
+        "continent": "CAS",
+        "zhs": "印度"
+      },
+      {
+        "code": 62,
+        "zht": "印度尼西亞",
+        "en": "Indonesia",
+        "locale": "ID",
+        "continent": "CAS",
+        "zhs": "印度尼西亚"
+      },
+      {
+        "code": 98,
+        "zht": "伊朗",
+        "en": "Iran",
+        "locale": "IR",
+        "continent": "CAS",
+        "zhs": "伊朗"
+      },
+      {
+        "code": 964,
+        "zht": "伊拉克",
+        "en": "Iraq",
+        "locale": "IQ",
+        "continent": "CAS",
+        "zhs": "伊拉克"
+      },
+      {
+        "code": 353,
+        "zht": "愛爾蘭",
+        "en": "Ireland",
+        "locale": "IE",
+        "continent": "CEU",
+        "zhs": "爱尔兰"
+      },
+      {
+        "code": 972,
+        "zht": "以色列",
+        "en": "Israel",
+        "locale": "IL",
+        "continent": "CAS",
+        "zhs": "以色列"
+      },
+      {
+        "code": 39,
+        "zht": "意大利",
+        "en": "Italy",
+        "locale": "IT",
+        "continent": "CEU",
+        "zhs": "意大利",
+        "it":"Italia"
+      },
+      {
+        "code": 225,
+        "zht": "科特迪瓦",
+        "en": "Ivory COCst",
+        "locale": "CI",
+        "continent": "CAF",
+        "zhs": "科特迪瓦"
+      },
+      {
+        "code": 1876,
+        "zht": "牙買加",
+        "en": "Jamaica",
+        "locale": "JM",
+        "continent": "CNA",
+        "zhs": "牙买加"
+      },
+      {
+        "code": 81,
+        "zht": "日本",
+        "en": "Japan",
+        "locale": "JP",
+        "continent": "CAS",
+        "zhs": "日本",
+        "ja":"にほん"
+      },
+      {
+        "code": 962,
+        "zht": "約旦",
+        "en": "Jordan",
+        "locale": "JO",
+        "continent": "CAS",
+        "zhs": "约旦"
+      },
+      {
+        "code": 855,
+        "zht": "柬埔寨",
+        "en": "Kampuchea (Cambodia )",
+        "locale": "KH",
+        "continent": "CAS",
+        "zhs": "柬埔寨"
+      },
+      {
+        "code": 327,
+        "zht": "哈薩克",
+        "en": "Kazakstan",
+        "locale": "KZ",
+        "continent": "CAS",
+        "zhs": "哈萨克斯坦"
+      },
+      {
+        "code": 254,
+        "zht": "肯雅",
+        "en": "Kenya",
+        "locale": "KE",
+        "continent": "CAF",
+        "zhs": "肯尼亚"
+      },
+      {
+        "code": 82,
+        "zht": "韓國",
+        "en": "Korea",
+        "locale": "KR",
+        "continent": "CAS",
+        "zhs": "韩国"
+      },
+      {
+        "code": 965,
+        "zht": "科威特",
+        "en": "Kuwait",
+        "locale": "KW",
+        "continent": "CAS",
+        "zhs": "科威特"
+      },
+      {
+        "code": 331,
+        "zht": "吉爾吉斯坦",
+        "en": "Kyrgyzstan",
+        "locale": "KG",
+        "continent": "CAS",
+        "zhs": "吉尔吉斯坦"
+      },
+      {
+        "code": 856,
+        "zht": "寮國",
+        "en": "Laos",
+        "locale": "LA",
+        "continent": "CAS",
+        "zhs": "老挝"
+      },
+      {
+        "code": 371,
+        "zht": "拉脫維亞",
+        "en": "Latvia",
+        "locale": "LV",
+        "continent": "CEU",
+        "zhs": "拉脱维亚"
+      },
+      {
+        "code": 961,
+        "zht": "黎巴嫩",
+        "en": "Lebanon",
+        "locale": "LB",
+        "continent": "CAS",
+        "zhs": "黎巴嫩"
+      },
+      {
+        "code": 266,
+        "zht": "萊索托",
+        "en": "Lesotho",
+        "locale": "LS",
+        "continent": "CAF",
+        "zhs": "莱索托"
+      },
+      {
+        "code": 231,
+        "zht": "利比里亞",
+        "en": "Liberia",
+        "locale": "LR",
+        "continent": "CAF",
+        "zhs": "利比里亚"
+      },
+      {
+        "code": 218,
+        "zht": "利比亞",
+        "en": "Libya",
+        "locale": "LY",
+        "continent": "CAF",
+        "zhs": "利比亚"
+      },
+      {
+        "code": 423,
+        "zht": "列支敦士登",
+        "en": "Liechtenstein",
+        "locale": "LI",
+        "continent": "CEU",
+        "zhs": "列支敦士登"
+      },
+      {
+        "code": 370,
+        "zht": "立陶宛",
+        "en": "Lithuania",
+        "locale": "LT",
+        "continent": "CEU",
+        "zhs": "立陶宛"
+      },
+      {
+        "code": 352,
+        "zht": "盧森堡",
+        "en": "Luxembourg",
+        "locale": "LU",
+        "continent": "CEU",
+        "zhs": "卢森堡"
+      },
+      {
+        "code": 853,
+        "zht": "中國澳門",
+        "en": "Macao China",
+        "locale": "MO",
+        "continent": "CAS",
+        "zhs": "中国澳门"
+      },
+      {
+        "code": 261,
+        "zht": "馬達加斯加",
+        "en": "Madagascar",
+        "locale": "MG",
+        "continent": "CAF",
+        "zhs": "马达加斯加"
+      },
+      {
+        "code": 265,
+        "zht": "馬拉維",
+        "en": "Malawi",
+        "locale": "MW",
+        "continent": "CAF",
+        "zhs": "马拉维"
+      },
+      {
+        "code": 60,
+        "zht": "馬來西亞",
+        "en": "Malaysia",
+        "locale": "MY",
+        "continent": "CAS",
+        "zhs": "马来西亚"
+      },
+      {
+        "code": 960,
+        "zht": "馬爾代夫",
+        "en": "Maldives",
+        "locale": "MV",
+        "continent": "CAS",
+        "zhs": "马尔代夫"
+      },
+      {
+        "code": 223,
+        "zht": "馬里",
+        "en": "Mali",
+        "locale": "ML",
+        "continent": "CAF",
+        "zhs": "马里"
+      },
+      {
+        "code": 356,
+        "zht": "馬爾他",
+        "en": "Malta",
+        "locale": "MT",
+        "continent": "CEU",
+        "zhs": "马耳他"
+      },
+      {
+        "code": 1670,
+        "zht": "馬里亞那群島",
+        "en": "Mariana Is",
+        "locale": "CQ",
+        "continent": "COC",
+        "zhs": "马里亚那群岛"
+      },
+      {
+        "code": 596,
+        "zht": "馬提尼克島",
+        "en": "Martinique",
+        "locale": "MQ",
+        "continent": "CNA",
+        "zhs": "马提尼克"
+      },
+      {
+        "code": 230,
+        "zht": "毛里裘斯",
+        "en": "Mauritius",
+        "locale": "MU",
+        "continent": "CAF",
+        "zhs": "毛里求斯"
+      },
+      {
+        "code": 52,
+        "zht": "墨西哥",
+        "en": "Mexico",
+        "locale": "MX",
+        "continent": "CNA",
+        "zhs": "墨西哥"
+      },
+      {
+        "code": 373,
+        "zht": "摩爾多瓦",
+        "en": "Moldova, Republic of",
+        "locale": "MD",
+        "continent": "CEU",
+        "zhs": "摩尔多瓦"
+      },
+      {
+        "code": 377,
+        "zht": "摩納哥",
+        "en": "Monaco",
+        "locale": "MC",
+        "continent": "CEU",
+        "zhs": "摩纳哥"
+      },
+      {
+        "code": 976,
+        "zht": "蒙古",
+        "en": "Mongolia",
+        "locale": "MN",
+        "continent": "CAS",
+        "zhs": "蒙古"
+      },
+      {
+        "code": 1664,
+        "zht": "蒙特塞拉特島",
+        "en": "Montserrat Is",
+        "locale": "MS",
+        "continent": "CNA",
+        "zhs": "蒙特塞拉特岛"
+      },
+      {
+        "code": 212,
+        "zht": "摩洛哥",
+        "en": "Morocco",
+        "locale": "MA",
+        "continent": "CAF",
+        "zhs": "摩洛哥"
+      },
+      {
+        "code": 258,
+        "zht": "莫桑比克",
+        "en": "Mozambique",
+        "locale": "MZ",
+        "continent": "CAF",
+        "zhs": "莫桑比克"
+      },
+      {
+        "code": 264,
+        "zht": "納米比亞",
+        "en": "Namibia",
+        "locale": "NA",
+        "continent": "CAF",
+        "zhs": "纳米比亚"
+      },
+      {
+        "code": 674,
+        "zht": "瑙魯",
+        "en": "Nauru",
+        "locale": "NR",
+        "continent": "COC",
+        "zhs": "瑙鲁"
+      },
+      {
+        "code": 977,
+        "zht": "尼泊爾",
+        "en": "Nepal",
+        "locale": "NP",
+        "continent": "CAS",
+        "zhs": "尼泊尔"
+      },
+      {
+        "code": 599,
+        "zht": "荷屬安地列斯",
+        "en": "Netheriands Antilles",
+        "locale": "AN",
+        "continent": "CNA",
+        "zhs": "荷属安的列斯"
+      },
+      {
+        "code": 31,
+        "zht": "荷蘭",
+        "en": "Netherlands",
+        "locale": "NL",
+        "continent": "CEU",
+        "zhs": "荷兰"
+      },
+      {
+        "code": 64,
+        "zht": "新西蘭",
+        "en": "New Zealand",
+        "locale": "NZ",
+        "continent": "COC",
+        "zhs": "新西兰"
+      },
+      {
+        "code": 505,
+        "zht": "尼加拉瓜",
+        "en": "Nicaragua",
+        "locale": "NI",
+        "continent": "CNA",
+        "zhs": "尼加拉瓜"
+      },
+      {
+        "code": 227,
+        "zht": "尼日爾",
+        "en": "Niger",
+        "locale": "NE",
+        "continent": "CAF",
+        "zhs": "尼日尔"
+      },
+      {
+        "code": 234,
+        "zht": "尼日利亞",
+        "en": "Nigeria",
+        "locale": "NG",
+        "continent": "CAF",
+        "zhs": "尼日利亚"
+      },
+      {
+        "code": 850,
+        "zht": "朝鮮",
+        "en": "North Korea",
+        "locale": "KP",
+        "continent": "CAS",
+        "zhs": "朝鲜"
+      },
+      {
+        "code": 47,
+        "zht": "挪威",
+        "en": "Norway",
+        "locale": "NO",
+        "continent": "CEU",
+        "zhs": "挪威"
+      },
+      {
+        "code": 968,
+        "zht": "阿曼",
+        "en": "Oman",
+        "locale": "OM",
+        "continent": "CAS",
+        "zhs": "阿曼"
+      },
+      {
+        "code": 92,
+        "zht": "巴基斯坦",
+        "en": "Pakistan",
+        "locale": "PK",
+        "continent": "CAS",
+        "zhs": "巴基斯坦"
+      },
+      {
+        "code": 507,
+        "zht": "巴拿馬",
+        "en": "Panama",
+        "locale": "PA",
+        "continent": "CSA",
+        "zhs": "巴拿马"
+      },
+      {
+        "code": 675,
+        "zht": "巴布亞新畿內亞",
+        "en": "Papua New Cuinea",
+        "locale": "PG",
+        "continent": "COC",
+        "zhs": "巴布亚新几内亚"
+      },
+      {
+        "code": 595,
+        "zht": "巴拉圭",
+        "en": "Paraguay",
+        "locale": "PY",
+        "continent": "CSA",
+        "zhs": "巴拉圭"
+      },
+      {
+        "code": 51,
+        "zht": "秘魯",
+        "en": "Peru",
+        "locale": "PE",
+        "continent": "CSA",
+        "zhs": "秘鲁"
+      },
+      {
+        "code": 63,
+        "zht": "菲律賓",
+        "en": "Philippines",
+        "locale": "PH",
+        "continent": "CAS",
+        "zhs": "菲律宾"
+      },
+      {
+        "code": 48,
+        "zht": "波蘭",
+        "en": "Poland",
+        "locale": "PL",
+        "continent": "CEU",
+        "zhs": "波兰"
+      },
+      {
+        "code": 689,
+        "zht": "法屬玻利尼西亞",
+        "en": "French Polynesia",
+        "locale": "PF",
+        "continent": "COC",
+        "zhs": "法属玻利尼西亚"
+      },
+      {
+        "code": 351,
+        "zht": "葡萄牙",
+        "en": "Portugal",
+        "locale": "PT",
+        "continent": "CEU",
+        "zhs": "葡萄牙",
+        "pt": "República Portuguesa"
+      },
+      {
+        "code": 1787,
+        "zht": "波多黎各",
+        "en": "Puerto Rico",
+        "locale": "PR",
+        "continent": "CNA",
+        "zhs": "波多黎各"
+      },
+      {
+        "code": 974,
+        "zht": "卡塔爾",
+        "en": "Qatar",
+        "locale": "QA",
+        "continent": "CAS",
+        "zhs": "卡塔尔"
+      },
+      {
+        "code": 262,
+        "zht": "留尼汪",
+        "en": "Reunion",
+        "locale": "RE",
+        "continent": "CAF",
+        "zhs": "留尼汪"
+      },
+      {
+        "code": 40,
+        "zht": "羅馬尼亞",
+        "en": "Romania",
+        "locale": "RO",
+        "continent": "CEU",
+        "zhs": "罗马尼亚"
+      },
+      {
+        "code": 7,
+        "zht": "俄羅斯",
+        "en": "Russia",
+        "locale": "RU",
+        "continent": "CEU",
+        "zhs": "俄罗斯"
+      },
+      {
+        "code": 684,
+        "zht": "東薩摩亞(美)",
+        "en": "Samoa Eastern",
+        "locale": "AS",
+        "continent": "COC",
+        "zhs": "东萨摩亚(美)"
+      },
+      {
+        "code": 685,
+        "zht": "西薩摩亞",
+        "en": "Samoa Western",
+        "locale": "WS",
+        "continent": "COC",
+        "zhs": "西萨摩亚"
+      },
+      {
+        "code": 378,
+        "zht": "聖馬力諾",
+        "en": "San Marino",
+        "locale": "SM",
+        "continent": "CEU",
+        "zhs": "圣马力诺"
+      },
+      {
+        "code": 239,
+        "zht": "聖多美和普林西比",
+        "en": "Sao Tome and Principe",
+        "locale": "ST",
+        "continent": "CAF",
+        "zhs": "圣多美和普林西比"
+      },
+      {
+        "code": 966,
+        "zht": "沙地阿拉伯",
+        "en": "Saudi Arabia",
+        "locale": "SA",
+        "continent": "CAS",
+        "zhs": "沙特阿拉伯"
+      },
+      {
+        "code": 221,
+        "zht": "塞內加爾",
+        "en": "Senegal",
+        "locale": "SN",
+        "continent": "CAF",
+        "zhs": "塞内加尔"
+      },
+      {
+        "code": 248,
+        "zht": "塞舌爾",
+        "en": "Seychelles",
+        "locale": "SC",
+        "continent": "CAF",
+        "zhs": "塞舌尔"
+      },
+      {
+        "code": 232,
+        "zht": "塞拉利昂",
+        "en": "Sierra Leone",
+        "locale": "SL",
+        "continent": "CAF",
+        "zhs": "塞拉利昂"
+      },
+      {
+        "code": 65,
+        "zht": "新加坡",
+        "en": "Singapore",
+        "locale": "SG",
+        "continent": "CAS",
+        "zhs": "新加坡"
+      },
+      {
+        "code": 421,
+        "zht": "斯洛伐克",
+        "en": "Slovakia",
+        "locale": "SK",
+        "continent": "CEU",
+        "zhs": "斯洛伐克"
+      },
+      {
+        "code": 386,
+        "zht": "斯洛文尼亞",
+        "en": "Slovenia",
+        "locale": "SI",
+        "continent": "CEU",
+        "zhs": "斯洛文尼亚"
+      },
+      {
+        "code": 677,
+        "zht": "所羅門群島",
+        "en": "Solomon Is",
+        "locale": "SB",
+        "continent": "COC",
+        "zhs": "所罗门群岛"
+      },
+      {
+        "code": 252,
+        "zht": "索馬里",
+        "en": "Somali",
+        "locale": "SO",
+        "continent": "CAF",
+        "zhs": "索马里"
+      },
+      {
+        "code": 27,
+        "zht": "南非",
+        "en": "South Africa",
+        "locale": "ZA",
+        "continent": "CAF",
+        "zhs": "南非"
+      },
+      {
+        "code": 34,
+        "zht": "西班牙",
+        "en": "Spain",
+        "locale": "ES",
+        "continent": "CEU",
+        "zhs": "西班牙",
+        "es": "España"
+      },
+      {
+        "code": 94,
+        "zht": "斯裡蘭卡",
+        "en": "Sri Lanka",
+        "locale": "LK",
+        "continent": "CAS",
+        "zhs": "斯里兰卡"
+      },
+      {
+        "code": 1758,
+        "zht": "聖盧西亞",
+        "en": "St.Lucia",
+        "locale": "LC",
+        "continent": "CNA",
+        "zhs": "圣卢西亚"
+      },
+      {
+        "code": 1784,
+        "zht": "聖文森特",
+        "en": "St.Vincent",
+        "locale": "VC",
+        "continent": "CNA",
+        "zhs": "圣文森特"
+      },
+      {
+        "code": 249,
+        "zht": "蘇丹",
+        "en": "Sudan",
+        "locale": "SD",
+        "continent": "CAF",
+        "zhs": "苏丹"
+      },
+      {
+        "code": 597,
+        "zht": "蘇里南",
+        "en": "Suriname",
+        "locale": "SR",
+        "continent": "CNA",
+        "zhs": "苏里南"
+      },
+      {
+        "code": 268,
+        "zht": "斯威士蘭",
+        "en": "Swaziland",
+        "locale": "SZ",
+        "continent": "CAF",
+        "zhs": "斯威士兰"
+      },
+      {
+        "code": 46,
+        "zht": "瑞典",
+        "en": "Sweden",
+        "locale": "SE",
+        "continent": "CEU",
+        "zhs": "瑞典"
+      },
+      {
+        "code": 41,
+        "zht": "瑞士",
+        "en": "Switzerland",
+        "locale": "CH",
+        "continent": "CEU",
+        "zhs": "瑞士"
+      },
+      {
+        "code": 963,
+        "zht": "敘利亞",
+        "en": "Syria",
+        "locale": "SY",
+        "continent": "CAS",
+        "zhs": "叙利亚"
+      },
+      {
+        "code": 992,
+        "zht": "塔吉克",
+        "en": "Tajikstan",
+        "locale": "TJ",
+        "continent": "CAS",
+        "zhs": "塔吉克斯坦"
+      },
+      {
+        "code": 255,
+        "zht": "坦桑尼亞",
+        "en": "Tanzania",
+        "locale": "TZ",
+        "continent": "CAF",
+        "zhs": "坦桑尼亚"
+      },
+      {
+        "code": 66,
+        "zht": "泰國",
+        "en": "Thailand",
+        "locale": "TH",
+        "continent": "CAS",
+        "zhs": "泰国"
+      },
+      {
+        "code": 228,
+        "zht": "多哥",
+        "en": "Togo",
+        "locale": "TG",
+        "continent": "CAF",
+        "zhs": "多哥"
+      },
+      {
+        "code": 676,
+        "zht": "湯加",
+        "en": "Tonga",
+        "locale": "TO",
+        "continent": "COC",
+        "zhs": "汤加"
+      },
+      {
+        "code": 1809,
+        "zht": "特立尼達和多巴哥",
+        "en": "Trinidad and Tobago",
+        "locale": "TT",
+        "continent": "CNA",
+        "zhs": "特立尼达和多巴哥"
+      },
+      {
+        "code": 216,
+        "zht": "突尼斯",
+        "en": "Tunisia",
+        "locale": "TN",
+        "continent": "CEU",
+        "zhs": "突尼斯"
+      },
+      {
+        "code": 90,
+        "zht": "土耳其",
+        "en": "Turkey",
+        "locale": "TR",
+        "continent": "CAS",
+        "zhs": "土耳其",
+        "tr":"Türkiye Cumhuriyeti"
+      },
+      {
+        "code": 993,
+        "zht": "土庫曼",
+        "en": "Turkmenistan",
+        "locale": "TM",
+        "continent": "CAS",
+        "zhs": "土库曼斯坦"
+      },
+      {
+        "code": 886,
+        "zht": "中國台灣",
+        "en": "Taiwan China",
+        "locale": "TW",
+        "continent": "CAS",
+        "zhs": "中国台湾"
+      },
+      {
+        "code": 256,
+        "zht": "烏幹達",
+        "en": "Uganda",
+        "locale": "UG",
+        "continent": "CAF",
+        "zhs": "乌干达"
+      },
+      {
+        "code": 380,
+        "zht": "烏克蘭",
+        "en": "Ukraine",
+        "locale": "UA",
+        "continent": "CEU",
+        "zhs": "乌克兰"
+      },
+      {
+        "code": 971,
+        "zht": "阿拉伯聯合酋長國",
+        "en": "United Arab Emirates",
+        "locale": "AE",
+        "continent": "CAS",
+        "zhs": "阿拉伯联合酋长国"
+      },
+      {
+        "code": 44,
+        "zht": "英國",
+        "en": "United Kingdom",
+        "locale": "GB",
+        "continent": "CEU",
+        "zhs": "英国"
+      },
+      {
+        "code": 1,
+        "zht": "美國",
+        "en": "United States",
+        "locale": "US",
+        "continent": "CNA",
+        "zhs": "美国"
+      },
+      {
+        "code": 598,
+        "zht": "烏拉圭",
+        "en": "Uruguay",
+        "locale": "UY",
+        "continent": "CSA",
+        "zhs": "乌拉圭"
+      },
+      {
+        "code": 233,
+        "zht": "烏茲別克",
+        "en": "Uzbekistan",
+        "locale": "UZ",
+        "continent": "CAS",
+        "zhs": "乌兹别克斯坦"
+      },
+      {
+        "code": 58,
+        "zht": "委內瑞拉",
+        "en": "Venezuela",
+        "locale": "VE",
+        "continent": "CSA",
+        "zhs": "委内瑞拉"
+      },
+      {
+        "code": 84,
+        "zht": "越南",
+        "en": "Vietnam",
+        "locale": "VN",
+        "continent": "CAS",
+        "zhs": "越南",
+        "vi":"Việt Nam"
+      },
+      {
+        "code": 967,
+        "zht": "也門",
+        "en": "Yemen",
+        "locale": "YE",
+        "continent": "CAS",
+        "zhs": "也门"
+      },
+      {
+        "code": 381,
+        "zht": "南斯拉夫",
+        "en": "Yugoslavia",
+        "locale": "YU",
+        "continent": "CEU",
+        "zhs": "南斯拉夫"
+      },
+      {
+        "code": 263,
+        "zht": "津巴布韋",
+        "en": "Zimbabwe",
+        "locale": "ZW",
+        "continent": "CAF",
+        "zhs": "津巴布韦"
+      },
+      {
+        "code": 243,
+        "zht": "扎伊爾",
+        "en": "Zaire",
+        "locale": "ZR",
+        "continent": "CAF",
+        "zhs": "扎伊尔"
+      },
+      {
+        "code": 260,
+        "zht": "贊比亞",
+        "en": "Zambia",
+        "locale": "ZM",
+        "continent": "CAF",
+        "zhs": "赞比亚"
+      }
+    ]
+}

@@ -1,0 +1,75 @@
+1
+00:00:04,333 --> 00:00:09,541
+Trước khi sử dụng thiết bị, hãy lưu ý ổ cắm điện, nút reset và đèn LED.
+
+2
+00:00:13,708 --> 00:00:17,541
+Một số thiết bị có ổ cắm điện, nút bấm và đèn LED trên dây bên ngoài.
+
+3
+00:00:18,166 --> 00:00:21,083
+Các thiết bị khác có các khu vực này được bảo hiểm.
+
+4
+00:00:23,125 --> 00:00:26,458
+Cắm nguồn điện được cung cấp để cung cấp năng lượng cho thiết bị trước khi sử dụng.
+
+5
+00:00:27,875 --> 00:00:32,000
+Nếu thiết bị chưa bao giờ được ghép nối, đèn LED sẽ luân phiên nhấp nháy và chờ được ghép nối.
+
+6
+00:00:35,291 --> 00:00:36,125
+Làm thế nào để ghép nối thiết bị vào tài khoản của tôi?
+
+7
+00:00:37,125 --> 00:00:45,875
+Mở ứng dụng, đăng nhập, bấm nút Thêm Thiết bị và chọn loại thiết bị bạn muốn thêm.
+
+8
+00:00:46,458 --> 00:00:48,250
+Mã QR là cách phổ biến nhất và dễ nhất để thiết lập
+
+9
+00:00:49,416 --> 00:00:54,208
+Nếu đèn LED của thiết bị không nhấp nháy luân phiên, bạn có thể nhấn và giữ nút reset để đặt lại trước.
+
+10
+00:00:54,000 --> 00:01:00,916
+Nhập mật khẩu của bạn khi cài đặt Wi-Fi và tên người dùng sẽ tự động sử dụng mật khẩu mà điện thoại của bạn hiện đang được kết nối.
+
+11
+00:01:01,375 --> 00:01:05,000
+Nếu bạn muốn thay đổi kết nối Wi-Fi hoặc đó là 5G, hãy nhấp vào nút thay đổi.
+
+12
+00:01:06,333 --> 00:01:09,916
+Bước tiếp theo, mã QR sẽ xuất hiện trên Ứng dụng của bạn.
+
+13
+00:01:09,250 --> 00:01:14,666
+Đặt mã QR này 3-8 inch trước ống kính của thiết bị của bạn và để máy ảnh quét nó.
+
+14
+00:01:15,916 --> 00:01:19,000
+Nếu quét không thành công, bạn có thể di chuyển điện thoại hơi lên xuống, qua lại.
+
+15
+00:01:19,625 --> 00:01:22,958
+Khi quá trình quét hoàn tất, bạn sẽ nghe thấy một lời nhắc và nhấp vào "Tiếp theo".
+
+16
+00:01:22,125 --> 00:01:27,625
+Nếu gặp sự cố khi quét mã QR, hãy nhấp đúp vào mã QR để phóng to và điều này có thể giúp việc quét dễ dàng hơn.
+
+17
+00:01:29,750 --> 00:01:31,291
+Vui lòng chờ thiết bị tự động ghép nối.
+
+18
+00:01:32,833 --> 00:01:35,875
+Khi hoàn tất, bạn có thể đổi tên thiết bị theo sở thích của mình.
+
+19
+00:01:37,000 --> 00:01:46,208
+Sau khi ghép nối xong, nhập danh sách nhà thiết bị và bạn có thể xem các thiết bị được thêm vào, phát trực tiếp, phát lại bản ghi và điều chỉnh cài đặt và các chức năng khác.

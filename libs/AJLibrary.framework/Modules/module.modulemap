@@ -1,0 +1,11 @@
+framework module AJLibrary {
+  umbrella header "AJLibrary.h"
+  export *
+
+  module * { export * }
+}
+
+module AJLibrary.Swift {
+  header "AJLibrary-Swift.h"
+  requires objc
+}

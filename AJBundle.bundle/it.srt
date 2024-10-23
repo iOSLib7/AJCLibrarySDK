@@ -1,0 +1,75 @@
+1
+00:00:04,333 --> 00:00:09,541
+Prima di utilizzare un dispositivo, prendi nota della presa di corrente, del tasto di reset e delle luci LED.
+
+2
+00:00:13,708 --> 00:00:17,541
+Alcuni dispositivi hanno la presa di corrente, il tasto e le luci a LED su un cavo esterno.
+
+3
+00:00:18,166 --> 00:00:21,083
+Alcuni dispositivi hanno queste aree coperte.
+
+4
+00:00:23,125 --> 00:00:26,458
+Collega l'alimentatore in dotazione per accendere il dispositivo prima di utilizzarlo.
+
+5
+00:00:27,875 --> 00:00:32,000
+Se il dispositivo non è mai stato accoppiato, i LED lampeggeranno alternativamente in attesa di essere accoppiato.
+
+6
+00:00:35,291 --> 00:00:36,125
+Come associare il dispositivo al mio account？
+
+7
+00:00:37,125 --> 00:00:45,875
+Apri l'app, accedi, fai clic sul pulsante Aggiungi dispositivo e seleziona il tipo di dispositivo che desideri aggiungere.
+
+8
+00:00:46,458 --> 00:00:48,250
+Il codice QR è il modo più comune e più semplice per impostare.
+
+9
+00:00:49,416 --> 00:00:54,208
+Se il LED del dispositivo non lampeggia alternativamente, puoi tenere premuto il tasto di reset per resettarlo. 
+
+10
+00:00:54,000 --> 00:01:00,916
+Durante l'impostazione di wifi, inserisci la password, si usa in autonomia il nome della rete connessa al tuo cellulare come nome utente. 
+
+11
+00:01:01,375 --> 00:01:05,000
+Se desideri cambiare connessione wifi o se la rete è 5G, fai un click sul pulsante di cambiamento.
+
+12
+00:01:06,333 --> 00:01:09,916
+Il passaggio successivo, un codice QR comparerà sull sua app.
+
+13
+00:01:09,250 --> 00:01:14,666
+Metti il codice QR davanti all'obiettivo del tuo dispositivo a una distanza di 3-8 pollici e lascia che la telecmera lo scansioni.
+
+14
+00:01:15,916 --> 00:01:19,000
+Se la scansione non è riuscita, puoi spostare leggermente il cellulare su e giù, avanti e indietro.
+
+15
+00:01:19,625 --> 00:01:22,958
+Al termine della scansione, sentirai un messaggio e fai un click su "Avanti".
+
+16
+00:01:22,125 --> 00:01:27,625
+Se riscontri problemi con la scansione del codice QR, fai doppio click sul codice per ingrandirlo e questo potrebbe rendere più facile la scansione.
+
+17
+00:01:29,750 --> 00:01:31,291
+Attendi che il dispositivo si accoppi automaticamente.
+
+18
+00:01:32,833 --> 00:01:35,875
+Al termine, puoi rinominare il dispositivo secondo le tue preferenze.
+
+19
+00:01:37,000 --> 00:01:46,208
+Al termine dell'assocciazione, accedi alla lista principale di dispositivo e puoi vedere i dispositivi aggiunti, riprodurre video dal vivo, rivedere registrazioni, regolare impostazioni e altre funzioni. 

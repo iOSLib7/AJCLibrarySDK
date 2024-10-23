@@ -1,0 +1,75 @@
+1
+00:00:04,333 --> 00:00:09,541
+Antes de usar un dispositivo, tome nota de la toma de corriente, el botón de reinicio y las luces LED.
+
+2
+00:00:13,708 --> 00:00:17,541
+Algunos dispositivos tienen la toma de corriente, el botón y las luces LED en un cable externo.
+
+3
+00:00:18,166 --> 00:00:21,083
+Otros dispositivos tienen estas áreas cubiertas.
+
+4
+00:00:23,125 --> 00:00:26,458
+Enchufe la fuente de alimentación suministrada para encender el dispositivo antes de usarlo.
+
+5
+00:00:27,875 --> 00:00:32,000
+Si el dispositivo nunca se ha emparejado, los LED parpadearán alternativamente y esperarán a que se emparejen.
+
+6
+00:00:35,291 --> 00:00:36,125
+Cómo emparejar el dispositivo con mi cuenta？
+
+7
+00:00:37,125 --> 00:00:45,875
+Abra la aplicación, inicie sesión, haga clic en el botón Agregar dispositivo y seleccione el tipo de dispositivo que desea agregar.
+
+8
+00:00:46,458 --> 00:00:48,250
+El código QR es la forma más común y fácil de configurar.
+
+9
+00:00:49,416 --> 00:00:54,208
+Si el LED del dispositivo no parpadea alternativamente, puede presionar y mantener presionado el botón de reinicio para reiniciarlo primero.
+
+10
+00:00:54,000 --> 00:01:00,916
+Teclee su contraseña cuando configure Wi-Fi y el nombre de usuario usará automáticamente el que su teléfono está conectado actualmente.
+
+11
+00:01:01,375 --> 00:01:05,000
+Si desea cambiar su conexión Wi-Fi o es 5G, haga clic en el botón Cambiar.
+
+12
+00:01:06,333 --> 00:01:09,916
+En el siguiente paso, aparecerá un código QR en su aplicación.
+
+13
+00:01:09,250 --> 00:01:14,666
+Coloque este código QR de 3 a 8 pulgadas frente a la lente de su dispositivo y deje que la cámara lo escanee.
+
+14
+00:01:15,916 --> 00:01:19,000
+Si el escaneo no es exitoso, puede mover su teléfono ligeramente hacia arriba y hacia abajo, hacia adelante y hacia atrás.
+
+15
+00:01:19,625 --> 00:01:22,958
+Cuando se complete el escaneo, escuchará un mensaje y hará clic en "Siguiente".
+
+16
+00:01:22,125 --> 00:01:27,625
+Si tiene problemas para escanear el código QR, haga doble clic en el código QR para acercar y esto puede facilitar el escaneo.
+
+17
+00:01:29,750 --> 00:01:31,291
+Espere a que el dispositivo se empareje automáticamente.
+
+18
+00:01:32,833 --> 00:01:35,875
+Cuando haya terminado, puede cambiar el nombre del dispositivo a su preferencia.
+
+19
+00:01:37,000 --> 00:01:46,208
+Una vez completado el emparejamiento, ingrese a la lista de inicio del dispositivo y podrá ver los dispositivos agregados, reproducir en vivo, reproducir grabaciones y ajustar la configuración y otras funciones.

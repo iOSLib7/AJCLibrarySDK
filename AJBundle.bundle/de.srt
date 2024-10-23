@@ -1,0 +1,75 @@
+1
+00:00:04,333 --> 00:00:09,541
+Achten Sie auf die Position des Netzsteckers, des Reset-Knopfs und der LED-Leuchten bitte, bevor Sie das Gerät verwenden.
+
+2
+00:00:13,708 --> 00:00:17,541
+Einige Geräte haben den Netzstecker, den Knopf und die LED-Leuchten an einem externen Kabel.
+
+3
+00:00:18,166 --> 00:00:21,083
+Einige Geräte können diese Bereiche abgedeckt.
+
+4
+00:00:23,125 --> 00:00:26,458
+Bitte schließen Sie das mitgelieferte Netzteil an, um das Gerät einzuschalten, bevor Sie es verwenden.
+
+5
+00:00:27,875 --> 00:00:32,000
+Wenn das Gerät noch nie gepairt wurde, blinken die LEDs abwechselnd und wartet es auf das Pairing.
+
+6
+00:00:35,291 --> 00:00:36,125
+Wie kann ich das Gerät mit meinem Konto koppeln?
+
+7
+00:00:37,125 --> 00:00:45,875
+Öffnen Sie die App, melden Sie sich an, klicken Sie auf die Schaltfläche Gerät hinzufügen und wählen Sie den Gerätetyp aus, den Sie hinzufügen sollen.
+
+8
+00:00:46,458 --> 00:00:48,250
+Der QR-Code ist die gebräuchlichste und einfachste Methode zur Einrichtung.
+
+9
+00:00:49,416 --> 00:00:54,208
+Wenn die LED-Leuchte des Geräts nicht abwechselnd blinkt, können Sie den Reset-Knopf gedrückt halten, um sie zuerst zurückzusetzen.
+
+10
+00:00:54,000 --> 00:01:00,916
+Geben Sie Ihr Passwort ein, wenn Sie WLAN einrichten, und der Benutzername wird automatisch denjenigen verwenden, mit dem Ihr Handy derzeit verbunden ist.
+
+11
+00:01:01,375 --> 00:01:05,000
+Wenn Sie Ihre WLAN-Verbindung ändern möchten oder sie 5G ist, klicken Sie auf die Schaltfläche Ändern.
+
+12
+00:01:06,333 --> 00:01:09,916
+Als nächstes erscheint ein QR-Code in Ihrer App.
+
+13
+00:01:09,250 --> 00:01:14,666
+Legen Sie diesen QR-Code 8-20cm vor die Linse Ihres Geräts und lassen Sie ihn von der Kamera scannen.
+
+14
+00:01:15,916 --> 00:01:19,000
+Wenn der Scan nicht erfolgreich ist, können Sie Ihr Telefon leicht nach oben und unten, vor und zurück bewegen.
+
+15
+00:01:19,625 --> 00:01:22,958
+Wenn der Scan abgeschlossen ist, können Sie eine Aufforderung hören und klicken Sie auf "Weiter".
+
+16
+00:01:22,125 --> 00:01:27,625
+Wenn Sie Schwierigkeiten beim Scannen des QR-Codes haben, können Sie auf den QR-Code doppelklicken, um ihn zu vergrößern, was das Scannen erleichtert.
+
+17
+00:01:29,750 --> 00:01:31,291
+Bitte warten Sie, bis das Gerät automatisch gekoppelt ist.
+
+18
+00:01:32,833 --> 00:01:35,875
+Wenn es fertig ist, können Sie das Gerät nach Ihren Wünschen umbenennen.
+
+19
+00:01:37,000 --> 00:01:46,208
+Rufen Sie die Home-Liste des Geräts auf, nachdem die Kopplung abgeschlossen ist, Sie können die hinzugefügten Geräte sehen, das Live-Bild abspielen, die Aufnahmen wiederholen und Einstellungen und andere Funktionen anpassen.

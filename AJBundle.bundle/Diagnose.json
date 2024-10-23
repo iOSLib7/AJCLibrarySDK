@@ -1,0 +1,122 @@
+{
+    "diagnoseServices": [
+        {
+            "serviceName": "diagnose_sdc",
+            "countries": "",
+            "connectType": "http+ping",
+            "services": [
+                {
+                    "serviceUrl": "https://sdc.ajcloud.net/api/v1/health",
+                    "requestAcc": true
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_uac",
+            "countries": "",
+            "connectType": "http+ping",
+            "services": [
+                {
+                    "serviceUrl": "https://uac.ajcloud.net/api/v1/health",
+                    "requestAcc": true
+                }
+            ]
+        },
+        {
+            "serviceName": "diagnose_cam",
+            "countries": "ZA, TR, IT, FR, DE, GB,  NL, CH, SE,PL, ES, PT, IE, BE",
+            "connectType": "http+ping",
+            "services": [
+                {
+                    "serviceUrl": "https://cam-gw-eu.ajcloud.net/api/v1/health",
+                    "requestAcc": true
+                },
+                {
+                    "serviceUrl": "https://cam-gw-eu02.ajcloud.net/api/v1/health",
+                    "requestAcc": true
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_cam",
+            "countries": "CN",
+            "connectType": "http+ping",
+            "services": [
+                {
+                    "serviceUrl": "https://cam-gw-cn.ajcloud.net/api/v1/health",
+                    "requestAcc": false
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_cam",
+            "countries": "HK, JA , KO, MO, AU, NZ, SG",
+            "connectType": "http+ping",
+            "services": [
+                {
+                    "serviceUrl": "https://cam-gw-ap01.ajcloud.net/api/v1/health",
+                    "requestAcc": true
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_cam",
+            "countries": "O1",
+            "connectType": "http+ping",
+            "services": [
+                {
+                    "serviceUrl": "https://cam-gw-us.ajcloud.net/api/v1/health",
+                    "requestAcc": true
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_wss",
+            "countries": "O1",
+            "connectType": "wss+ping",
+            "services": [
+                {
+                    "serviceUrl": "wss://cam-tunnel-isc-us.ajcloud.net:443/tunnel",
+                    "requestAcc": false
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_wss",
+            "countries": "ZA, TR, IT, FR, DE, GB,  NL, CH, SE,PL, ES, PT, IE, BE",
+            "connectType": "wss+ping",
+            "services": [
+                {
+                    "serviceUrl": "wss://cam-tunnel-isc-eu.ajcloud.net:443/tunnel",
+                    "requestAcc": false
+                },
+                {
+                    "serviceUrl": "wss://cam-tunnel-isc-eu02.ajcloud.net:443/tunnel",
+                    "requestAcc": false
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_wss",
+            "countries": "HK, JA , KO, MO, AU, NZ, SG",
+            "connectType": "wss+ping",
+            "services": [
+                {
+                    "serviceUrl": "wss://cam-tunnel-isc-ap01.ajcloud.net:443/tunnel",
+                    "requestAcc": false
+                }
+            ],
+        },
+        {
+            "serviceName": "diagnose_wss",
+            "countries": "CN",
+            "connectType": "wss+ping",
+            "services": [
+                {
+                    "serviceUrl": "wss://cam-tunnel-isc-cn.ajcloud.net:443/tunnel",
+                    "requestAcc": false
+                }
+            ],
+        }
+    ]
+}

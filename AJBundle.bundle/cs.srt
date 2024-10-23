@@ -1,0 +1,75 @@
+1
+00:00:04,333 --> 00:00:09,541
+Před použitím zařízení si všimněte napájecí zásuvky, resetovacího tlačítka a kontrolek LED.
+
+2
+00:00:13,708 --> 00:00:17,541
+Některá zařízení mají zásuvku, tlačítko a kontrolky LED na externím kabelu.
+
+3
+00:00:18,166 --> 00:00:21,083
+Ostatní zařízení mají tyto oblasti pokryty.
+
+4
+00:00:23,125 --> 00:00:26,458
+Před použitím zapojte dodaný napájecí zdroj pro zapnutí zařízení.
+
+5
+00:00:27,875 --> 00:00:32,000
+Pokud zařízení nebylo nikdy spárováno, LED diody budou střídavě blikat a čekat na spárování.
+
+6
+00:00:35,291 --> 00:00:36,125
+Jak spárovat zařízení s mým účtem？
+
+7
+00:00:37,125 --> 00:00:45,875
+Otevřete aplikaci, přihlaste se, klikněte na tlačítko Přidat zařízení a vyberte typ zařízení, které chcete přidat.
+
+8
+00:00:46,458 --> 00:00:48,250
+QR kód je nejběžnější a nejjednodušší způsob nastavení.
+
+9
+00:00:49,416 --> 00:00:54,208
+Pokud LED dioda na zařízení nebliká střídavě, můžete nejprve stisknout a podržet resetovací tlačítko.
+
+10
+00:00:54,000 --> 00:01:00,916
+Při nastavování Wi-Fi zadejte své heslo, a uživatelské jméno bude automaticky použito to, ke kterému je váš telefon aktuálně připojen.
+
+11
+00:01:01,375 --> 00:01:05,000
+Pokud chcete změnit připojení Wi-Fi nebo je to síť 5GHz, klikněte na tlačítko změnit.
+
+12
+00:01:06,333 --> 00:01:09,916
+V dalším kroku se ve vaší aplikaci objeví QR kód.
+
+13
+00:01:09,250 --> 00:01:14,666
+Umístěte tento QR kód cca 15 cm před objektiv vašeho zařízení a nechte jej naskenovat kamerou.
+
+14
+00:01:15,916 --> 00:01:19,000
+Pokud skenování není úspěšné, můžete telefonem mírně pohybovat nahoru a dolů, tam a zpět.
+
+15
+00:01:19,625 --> 00:01:22,958
+Po dokončení skenování uslyšíte výzvu a klikněte na „Další“.
+
+16
+00:01:22,125 --> 00:01:27,625
+Pokud máte problémy se skenováním QR kódu, dvakrát klikněte na QR kód pro přiblížení, což může usnadnit skenování.
+
+17
+00:01:29,750 --> 00:01:31,291
+Počkejte, až se zařízení automaticky spáruje.
+
+18
+00:01:32,833 --> 00:01:35,875
+Po dokončení můžete zařízení přejmenovat podle svých preferencí.
+
+19
+00:01:37,000 --> 00:01:46,208
+Po dokončení párování vstupte do domovského seznamu zařízení a uvidíte přidaná zařízení, můžete přehrávat živě, přehrávat nahrávky a upravovat nastavení a další funkce.

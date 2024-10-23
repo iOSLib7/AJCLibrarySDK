@@ -1,0 +1,75 @@
+1
+00:00:04,333 --> 00:00:09,541
+Before using a device, take note of the power socket, reset button, and LED lights.
+
+2
+00:00:13,708 --> 00:00:17,541
+Some devices have the power socket, button and LED lights on an external wire.
+
+3
+00:00:18,166 --> 00:00:21,083
+Other devices have these areas covered.
+
+4
+00:00:23,125 --> 00:00:26,458
+Plug in the supplied power supply to power up the device before using it.
+
+5
+00:00:27,875 --> 00:00:32,000
+If the device has never been paired, the LEDs will alternately flash and wait to be paired.
+
+6
+00:00:35,291 --> 00:00:36,125
+How to pair the device to my account？
+
+7
+00:00:37,125 --> 00:00:45,875
+Open the app, log in, click the Add Device button, and select the type of device you want to add.
+
+8
+00:00:46,458 --> 00:00:48,250
+QR code is the most common and easiest way to set.
+
+9
+00:00:49,416 --> 00:00:54,208
+If the LED of the device is not flashing alternately, you can press and hold the reset button to reset it first.
+
+10
+00:00:54,000 --> 00:01:00,916
+Enter your password when setting Wi-Fi  and the username will automatically use the one your phone is currently connected to.
+
+11
+00:01:01,375 --> 00:01:05,000
+If you wish to change your Wi-Fi connection or it is 5G，click the change button.
+
+12
+00:01:06,333 --> 00:01:09,916
+Next step, a QR code will appear on your App.
+
+13
+00:01:09,250 --> 00:01:14,666
+Place this QR code 3-8 inches in front of the lens of your device and let the camera scan it.
+
+14
+00:01:15,916 --> 00:01:19,000
+If the scan is not successful, you can move your phone slightly up and down, back and forth.
+
+15
+00:01:19,625 --> 00:01:22,958
+When the scan is complete, you will hear a prompt and click "Next".
+
+16
+00:01:22,125 --> 00:01:27,625
+If having trouble scanning the QR code, double click on the QR code to zoom in and this may make scanning easier.
+
+17
+00:01:29,750 --> 00:01:31,291
+Please wait for the device to pair automatically.
+
+18
+00:01:32,833 --> 00:01:35,875
+When it is done, you can rename the device to your preference.
+
+19
+00:01:37,000 --> 00:01:46,208
+After pairing is complete,  enter the device home list and you can see the added devices,  play live, replay recordings, and adjust settings and other functions.

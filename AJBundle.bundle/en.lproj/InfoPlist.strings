@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  Wansview
+
+  Created by tmz on 2019/11/19.
+  Copyright © 2019 T3IOT. All rights reserved.
+*/
+
+"CFBundleDisplayName"="T3IOT";
+
+"NSCameraUsageDescription" = "App would like to access the camera.";
+"NSLocationWhenInUseUsageDescription" = "Allowing it will automatically fill in the Wi-Fi name, otherwise you MUST to manually enter it.";
+"NSMicrophoneUsageDescription" = "The talking function needs to collect sound through the microphone.";
+"NSLocalNetworkUsageDescription"= "Connect the camera’s hotspot to help it connect to Wi-Fi.";
