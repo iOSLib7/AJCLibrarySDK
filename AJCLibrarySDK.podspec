@@ -38,10 +38,10 @@ s.platform     = :ios, '11.0'
 
   ss.dependency 'HandyJSON', "~> 5.0.4-beta"
   ss.dependency 'Alamofire', '4.9.1'
-  ss.dependency 'Firebase/Crashlytics'
-  ss.dependency 'Firebase/Core'
+  #ss.dependency 'Firebase/Crashlytics'
+  #ss.dependency 'Firebase/Core'
   ss.dependency 'Firebase/Messaging'
-  ss.dependency 'Firebase/Analytics'
+  #ss.dependency 'Firebase/Analytics'
   ss.dependency 'MBProgressHUD'
   ss.dependency 'SnapKit'
   ss.dependency 'CocoaAsyncSocket', '7.6.5'
