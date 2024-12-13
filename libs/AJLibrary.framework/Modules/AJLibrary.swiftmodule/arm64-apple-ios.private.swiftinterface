@@ -142,7 +142,6 @@ public enum LoginType : Swift.String {
   case email
   case apple
   case wechat
-  case sdk
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1203,9 +1202,7 @@ extension Swift.Array {
 public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
 @objc @_inheritsConvenienceInitializers public class AJLibManager : AJLibrary.BaseNetManager {
   @objc public static let shared: AJLibrary.AJLibManager
-  @objc public static func sdkInit(_ appKey: Swift.String, appSecret: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
-  @objc public static func fastSignIn(_ allyName: Swift.String, allyToken: Swift.String, account: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
-  @objc public static func logout()
+  @objc public func sdkInit(_ vendorCode: Swift.String)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1534,19 +1531,19 @@ public enum FileFolder : Swift.String {
   public func refreshToken() -> Swift.String
   public func secretAccessKey() -> Swift.String
   public func refreshAccessToken(complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func fastSignin(allyName: Swift.String, allyToken: Swift.String, crCode: Swift.String?, ctCode: Swift.String?, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func emailCheck(_ email: Swift.String, complete: @escaping (AJLibrary.EmailCheckModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func emailBindRequest(_ curUsername: Swift.String, bindEmail: Swift.String, identType: Swift.String, allyCode: Swift.String, needVerify: Swift.String, needPwd: Swift.String, password: Swift.String?, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func emailBindVerify(_ email: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func regist(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func login(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func accountActive(_ username: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func changePassword(_ username: Swift.String, oldPsw: Swift.String, newPsw: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func resetPassword(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func logout(complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fastSignin(allyName: Swift.String, allyToken: Swift.String, crCode: Swift.String?, ctCode: Swift.String?, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func emailCheck(_ email: Swift.String, complete: @escaping (AJLibrary.EmailCheckModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func emailBindRequest(_ curUsername: Swift.String, bindEmail: Swift.String, identType: Swift.String, allyCode: Swift.String, needVerify: Swift.String, needPwd: Swift.String, password: Swift.String?, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func emailBindVerify(_ email: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func regist(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func login(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func accountActive(_ username: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func changePassword(_ username: Swift.String, oldPsw: Swift.String, newPsw: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func resetPassword(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func logout(complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func fastLogout(_ username: Swift.String, allyName: Swift.String, allyToken: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func verifyCode(_ username: Swift.String, action: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func smsSignup(_ username: Swift.String, password: Swift.String, verifyCode: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func smsSignup(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func smsResetPassword(_ username: Swift.String, password: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func signupCheck(_ username: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func getCameraBindToken(deviceId: Swift.String?, prodName: Swift.String? = nil, complete: @escaping (AJLibrary.DeviceTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1555,7 +1552,7 @@ public enum FileFolder : Swift.String {
   public func changeNickname(deviceId: Swift.String, nickname: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func fetchDeviceList(_ complete: @escaping (AJLibrary.DevicesModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func unbindCamera(_ deviceId: Swift.String, deviceType: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func deleteAccount(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func deleteAccount(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func shareCamera(_ deviceId: Swift.String, complete: @escaping (AJLibrary.ShareCameraModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func addQuadGroup(_ name: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func deleQuadGroup(_ groupid: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1580,7 +1577,7 @@ public enum FileFolder : Swift.String {
   public func getShareSendInfo(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getShareReceiveInfo(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func baseNode(crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func accountNode(_ account: Swift.String, crCode: Swift.String, ctCode: Swift.String, accoutType: Swift.String, ext: [Swift.String : Swift.String]?, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func accountNode(_ account: Swift.String, crCode: Swift.String, ctCode: Swift.String, action: Swift.String, accoutType: Swift.String, ext: [Swift.String : Swift.String]?, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class FwUpgradeView : UIKit.UIView {
@@ -1954,6 +1951,7 @@ public func GetImage(named: Swift.String) -> UIKit.UIImage?
   public static func pushToCloudSet()
   @objc public static func appName() -> Swift.String
   @objc public static func loadDiagnoseUrls() -> [AJLibrary.DiagnoseTaskModel]
+  public static func localeDefaultCountryCode(_ loginRegin: Swift.String? = nil) -> AJLibrary.CountryModel?
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2120,6 +2118,13 @@ public enum RequestResult {
   @objc public var isReachableOnWWAN: Swift.Bool {
     @objc get
   }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AccountManager : ObjectiveC.NSObject {
+  @objc public static let shared: AJLibrary.AccountManager
+  @objc public func regist(_ username: Swift.String, password: Swift.String, accoutType: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func signIn(_ username: Swift.String, password: Swift.String, accoutType: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2319,7 +2324,8 @@ public let ResetPassword: Swift.String
 public let SmsResetPassword: Swift.String
 public let AccountActiveApi: Swift.String
 public let FastSignInApi: Swift.String
-public let SDKInitApi: Swift.String
+public let FastSignInAccountNodeApi: Swift.String
+public let AccountNodeApi: Swift.String
 public let SDKVersion: Swift.String
 @objc @_inheritsConvenienceInitializers public class BaseNetManager : ObjectiveC.NSObject {
   public func modelName() -> Swift.String
@@ -2798,17 +2804,52 @@ extension UIKit.UILabel {
   @_Concurrency.MainActor @preconcurrency public func setAttribute(_ text: Swift.String, boldFontTexts: [Swift.String], boldColor: UIKit.UIColor)
   @_Concurrency.MainActor @preconcurrency public func setAttribute(_ text: Swift.String, boldFontTexts: [Swift.String], lineTexts: [Swift.String], boldColor: UIKit.UIColor)
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(AllyModel) public class AllyModel : AJLibrary.ResultModel, Foundation.NSCoding {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @objc(AllyModel) public class AllyModel : AJLibrary.ResultModel, Foundation.NSCoding {
+  @objc public var allyName: Swift.String?
+  @objc public var alias: Swift.String?
+  @objc public var allyCode: Swift.String?
+  @objc public var phone: Swift.String?
+  @objc public var email: Swift.String?
+  @objc public var createTs: Swift.String?
+  @objc public var isPrivateEmail: Swift.Bool
+  @objc public var isVerifiedEmail: Swift.String?
+  @objc public var username: Swift.String?
   @objc public func encode(with aCoder: Foundation.NSCoder)
   @objc required public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OauthModel) public class OauthModel : AJLibrary.ResultModel, Foundation.NSCoding {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @objc(IdentModel) public class IdentModel : AJLibrary.ResultModel, Foundation.NSCoding {
+  @objc public var allies: [AJLibrary.AllyModel]?
+  @objc public var email: Swift.String?
+  @objc public var phone: Swift.String?
+  @objc public var status: Swift.String?
+  @objc public var region: Swift.String?
+  @objc public var uacNodeUrl: Swift.String?
+  @objc public var nodeName: Swift.String?
+  @objc public var continent: Swift.String?
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @objc(OauthModel) public class OauthModel : AJLibrary.ResultModel, Foundation.NSCoding {
+  @objc public var accessExpiresIn: Swift.Int
+  @objc public var accessToken: Swift.String?
+  @objc public var refreshExpiresIn: Swift.Int
+  @objc public var refreshToken: Swift.String?
+  @objc public var scope: Swift.String?
+  @objc public var tokenType: Swift.String?
+  @objc public var signToken: Swift.String?
+  @objc public var alias: Swift.String?
+  @objc public var ident: AJLibrary.IdentModel?
+  @objc public var uid: Swift.String?
+  @objc public var regTime: Swift.Int
+  public var refreshExpiresTmp: Swift.Int?
+  public var accessExpiresTmp: Swift.Int?
   @objc public var bizFlag: Swift.String?
-  public func accountRegion() -> Swift.String?
-  public func isChinaAccount() -> Swift.Bool
+  @objc public func accountRegion() -> Swift.String?
+  @objc public func isChinaAccount() -> Swift.Bool
   public func getAlly(_ loginType: AJLibrary.LoginType = Login.getAccountLoginType()) -> AJLibrary.AllyModel?
-  public func setExpiresTime()
+  @objc public func setExpiresTime()
   @objc public func encode(with aCoder: Foundation.NSCoder)
   @objc required public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
@@ -3114,7 +3155,15 @@ extension Foundation.URL {
   @_Concurrency.MainActor @preconcurrency @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class EmailCheckModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class EmailStatusModel : AJLibrary.ResultModel {
+  @objc public var isAccount: Swift.Bool
+  @objc public var hasDevice: Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class EmailCheckModel : AJLibrary.ResultModel {
+  @objc public var curAccount: AJLibrary.EmailStatusModel?
+  @objc public var emailAccount: AJLibrary.EmailStatusModel?
   @objc required dynamic public init()
   @objc deinit
 }

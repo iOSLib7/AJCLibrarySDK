@@ -391,9 +391,7 @@ SWIFT_CLASS("_TtC9AJLibrary12AJLibManager")
 @interface AJLibManager : BaseNetManager
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJLibManager * _Nonnull shared;)
 + (AJLibManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-+ (void)sdkInit:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
-+ (void)fastSignIn:(NSString * _Nonnull)allyName allyToken:(NSString * _Nonnull)allyToken account:(NSString * _Nonnull)account success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
-+ (void)logout;
+- (void)sdkInit:(NSString * _Nonnull)vendorCode;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -487,6 +485,16 @@ SWIFT_CLASS_NAMED("AccessNodeModel")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9AJLibrary14AccountManager")
+@interface AccountManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AccountManager * _Nonnull shared;)
++ (AccountManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (void)regist:(NSString * _Nonnull)username password:(NSString * _Nonnull)password accoutType:(NSString * _Nonnull)accoutType crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+- (void)signIn:(NSString * _Nonnull)username password:(NSString * _Nonnull)password accoutType:(NSString * _Nonnull)accoutType crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class Policy;
@@ -638,6 +646,15 @@ SWIFT_CLASS("_TtC9AJLibrary11AlarmsModel")
 
 SWIFT_CLASS_NAMED("AllyModel")
 @interface AllyModel : ResultModel <NSCoding>
+@property (nonatomic, copy) NSString * _Nullable allyName;
+@property (nonatomic, copy) NSString * _Nullable alias;
+@property (nonatomic, copy) NSString * _Nullable allyCode;
+@property (nonatomic, copy) NSString * _Nullable phone;
+@property (nonatomic, copy) NSString * _Nullable email;
+@property (nonatomic, copy) NSString * _Nullable createTs;
+@property (nonatomic) BOOL isPrivateEmail;
+@property (nonatomic, copy) NSString * _Nullable isVerifiedEmail;
+@property (nonatomic, copy) NSString * _Nullable username;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
@@ -1670,9 +1687,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EMCNetManage
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class EmailStatusModel;
 
 SWIFT_CLASS("_TtC9AJLibrary15EmailCheckModel")
 @interface EmailCheckModel : ResultModel
+@property (nonatomic, strong) EmailStatusModel * _Nullable curAccount;
+@property (nonatomic, strong) EmailStatusModel * _Nullable emailAccount;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9AJLibrary16EmailStatusModel")
+@interface EmailStatusModel : ResultModel
+@property (nonatomic) BOOL isAccount;
+@property (nonatomic) BOOL hasDevice;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1815,6 +1843,23 @@ SWIFT_CLASS("_TtC9AJLibrary34IPCPurchaseCloudStorViewController")
 
 @interface IPCPurchaseCloudStorViewController (SWIFT_EXTENSION(AJLibrary)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
+@end
+
+
+SWIFT_CLASS_NAMED("IdentModel")
+@interface IdentModel : ResultModel <NSCoding>
+@property (nonatomic, copy) NSArray<AllyModel *> * _Nullable allies;
+@property (nonatomic, copy) NSString * _Nullable email;
+@property (nonatomic, copy) NSString * _Nullable phone;
+@property (nonatomic, copy) NSString * _Nullable status;
+@property (nonatomic, copy) NSString * _Nullable region;
+@property (nonatomic, copy) NSString * _Nullable uacNodeUrl;
+@property (nonatomic, copy) NSString * _Nullable nodeName;
+@property (nonatomic, copy) NSString * _Nullable continent;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -2111,10 +2156,24 @@ SWIFT_CLASS("_TtC9AJLibrary17NightVisionConfig")
 
 SWIFT_CLASS_NAMED("OauthModel")
 @interface OauthModel : ResultModel <NSCoding>
+@property (nonatomic) NSInteger accessExpiresIn;
+@property (nonatomic, copy) NSString * _Nullable accessToken;
+@property (nonatomic) NSInteger refreshExpiresIn;
+@property (nonatomic, copy) NSString * _Nullable refreshToken;
+@property (nonatomic, copy) NSString * _Nullable scope;
+@property (nonatomic, copy) NSString * _Nullable tokenType;
+@property (nonatomic, copy) NSString * _Nullable signToken;
+@property (nonatomic, copy) NSString * _Nullable alias;
+@property (nonatomic, strong) IdentModel * _Nullable ident;
+@property (nonatomic, copy) NSString * _Nullable uid;
+@property (nonatomic) NSInteger regTime;
 @property (nonatomic, copy) NSString * _Nullable bizFlag;
 /// 是否存在私有云的数据
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (NSString * _Nullable)accountRegion SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isChinaAccount SWIFT_WARN_UNUSED_RESULT;
+- (void)setExpiresTime;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2715,7 +2774,95 @@ SWIFT_CLASS("_TtC9AJLibrary13UACNetManager")
 @interface UACNetManager : BaseNetManager
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UACNetManager * _Nonnull sharedInstance;)
 + (UACNetManager * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+/// 快速登录
+/// \param allyName 当前支持”google”,“appleid”两个
+///
+/// \param allyToken 第三方身份验证之后，获取的ID token
+///
+/// \param complete complete
+///
+- (void)fastSigninWithAllyName:(NSString * _Nonnull)allyName allyToken:(NSString * _Nonnull)allyToken crCode:(NSString * _Nullable)crCode ctCode:(NSString * _Nullable)ctCode complete:(void (^ _Nonnull)(OauthModel * _Nullable, ErrorModel * _Nullable))complete;
+/// email账号是否存在
+/// \param email email
+///
+/// \param complete complete
+///
+- (void)emailCheck:(NSString * _Nonnull)email complete:(void (^ _Nonnull)(EmailCheckModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 账号添加email信息（请求）
+/// \param email email
+///
+/// \param identType 当前账号的登录类型，‘email’，‘phone’，‘allies’
+///
+/// \param allyCode 当identType为’allies’时，allyCode生效。
+///
+/// \param needVerify 是否需要发送验证码。0-不需要，1-需要
+///
+/// \param needPwd 是否需要存储密码。0-不需要，1-需要
+///
+/// \param password 携带的密码信息，json数据结构{ password, nonce }；只有当needCombind为0时，
+///
+/// \param complete complete
+///
+- (void)emailBindRequest:(NSString * _Nonnull)curUsername bindEmail:(NSString * _Nonnull)bindEmail identType:(NSString * _Nonnull)identType allyCode:(NSString * _Nonnull)allyCode needVerify:(NSString * _Nonnull)needVerify needPwd:(NSString * _Nonnull)needPwd password:(NSString * _Nullable)password complete:(void (^ _Nonnull)(OauthModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 账号添加email信息（验证码确认)
+/// \param email email
+///
+/// \param verifyCode verifyCode
+///
+/// \param complete complete
+///
+- (void)emailBindVerify:(NSString * _Nonnull)email verifyCode:(NSString * _Nonnull)verifyCode complete:(void (^ _Nonnull)(OauthModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 注册
+/// \param username 用户名
+///
+/// \param password 密码
+///
+/// \param complete complete
+///
+- (void)regist:(NSString * _Nonnull)username password:(NSString * _Nonnull)password crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 登录
+/// \param username 用户名
+///
+/// \param password 密码
+///
+/// \param complete complete
+///
+- (void)login:(NSString * _Nonnull)username password:(NSString * _Nonnull)password complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 邮箱校验验证码
+/// \param username username
+///
+/// \param verifyCode verifyCode
+///
+/// \param complete complete
+///
+- (void)accountActive:(NSString * _Nonnull)username verifyCode:(NSString * _Nonnull)verifyCode complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 密码修改
+/// \param username 用户名
+///
+/// \param oldPsw 旧密码
+///
+/// \param newPsw 新密码
+///
+/// \param complete complete
+///
+- (void)changePassword:(NSString * _Nonnull)username oldPsw:(NSString * _Nonnull)oldPsw newPsw:(NSString * _Nonnull)newPsw complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 密码重置
+/// \param username username
+///
+/// \param password password
+///
+/// \param complete complete
+///
+- (void)resetPassword:(NSString * _Nonnull)username password:(NSString * _Nonnull)password complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 退出登录
+/// \param complete complete
+///
+- (void)logoutWithComplete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
 - (void)fetchDeviceList:(void (^ _Nonnull)(DevicesModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 注销
+/// \param complete complete
+///
+- (void)deleteAccount:(NSString * _Nonnull)username password:(NSString * _Nonnull)password complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
 /// 分享者请求摄像头分享
 /// \param deviceId deviceId
 ///
@@ -2873,14 +3020,14 @@ SWIFT_CLASS("_TtC9AJLibrary14UIExplainLabel")
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
++ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
@@ -2895,11 +3042,11 @@ SWIFT_CLASS("_TtC9AJLibrary12UIIconButton")
 
 
 
+
 @interface UIImage (SWIFT_EXTENSION(AJLibrary))
 + (UIImage * _Nullable)mixed_imageNamed:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)static_sdkimage:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 /// 图片在上文字在下
