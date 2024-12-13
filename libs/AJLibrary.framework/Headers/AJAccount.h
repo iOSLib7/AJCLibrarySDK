@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, AJLoginStatus) {
 
 /// 注册账号（接收验证码）
 /// - Parameters:
-///   - username: 用户名（邮箱 / 手机 - 国家码+手机，例：8613712345678）
+///   - username: 用户名（邮箱 / 手机 - 国家码+手机，例：008613712345678）
 ///   - password: 密码
 ///   - crCode: 国家码（例："CN"）
 ///   - ctCode: 洲（例："CAS"）
