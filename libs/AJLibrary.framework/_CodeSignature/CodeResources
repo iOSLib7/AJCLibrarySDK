@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/AJAccount.h</key>
 		<data>
-		0Q40MPYUE2QMKFUvbxjOTm00m5g=
+		TkOVIYmEBaDEsbakplQs++8xWhQ=
 		</data>
 		<key>Headers/AJAccountModel.h</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Headers/AJLib.h</key>
 		<data>
-		DlAlZVCGqCTn9ujt+PIztxHG0Ww=
+		IdGCxsJwFU1b1Uucdu5exWqg7Ws=
 		</data>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<data>
@@ -298,7 +298,7 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		3NBttjLRds7lexduo1uI/96iXtY=
+		5M1t1e8/lFeXx4JqeUBzc4GMPTc=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -342,11 +342,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0Q40MPYUE2QMKFUvbxjOTm00m5g=
+			TkOVIYmEBaDEsbakplQs++8xWhQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			7oD8uaU5VpNkFHMrcZLIhLvZ0iOkL9ZeUiBGesVhXbI=
+			/XS3d29i7VY8c8wOamZmY6QJVxP98roXDAR0pdH+GoU=
 			</data>
 		</dict>
 		<key>Headers/AJAccountModel.h</key>
@@ -551,11 +551,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DlAlZVCGqCTn9ujt+PIztxHG0Ww=
+			IdGCxsJwFU1b1Uucdu5exWqg7Ws=
 			</data>
 			<key>hash2</key>
 			<data>
-			7S0Ics2BRU9GLfn/uNN0HVicL0qf0WBUmEG4oGVqVnM=
+			1e1k2OUEnsWGxDKlcHTYZZ0AC7dboiGTICWyeiQZTbM=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary-Swift.h</key>
@@ -1123,11 +1123,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3NBttjLRds7lexduo1uI/96iXtY=
+			5M1t1e8/lFeXx4JqeUBzc4GMPTc=
 			</data>
 			<key>hash2</key>
 			<data>
-			d3vyiSWeurza9mk/Np8BELVdz6CznU/5uWkgQywaiFY=
+			BEkJezWDsMPBYMvUvvEWP9U3JwLswIeuLEMZ7WZ/SVo=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>

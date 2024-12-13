@@ -62,23 +62,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, AJLoginStatus) {
-    AJLoginExpire          = 1008,    ///登录超期（需要app退到登录页面）
-    AJLoginKickout         = 1011,    ///单点登录（被踢）
-};
-
 @interface AJLib : NSObject
 
 /**
 *    单例
 */
 + (instancetype)shared;
-
-///用户是否已登录
-@property(nonatomic,readonly) BOOL isLogin;
-
-///当前用户的账号信息，登录时的account
-@property(nonatomic,strong,readonly)NSString *userAccount;
 
 
 /**
@@ -87,14 +76,6 @@ typedef NS_ENUM(NSInteger, AJLoginStatus) {
  *    @param     vendorCode          供应商授权码
  */
 + (void)asyncInit:(NSString *)vendorCode;
-
-
-
-/**
- *   登录状态改变（需要返回登录页面）
- *
- */
-- (void)setLoginStatusChangeBlock:(nullable void (^)(AJLoginStatus status))block;
 
 @end
 
