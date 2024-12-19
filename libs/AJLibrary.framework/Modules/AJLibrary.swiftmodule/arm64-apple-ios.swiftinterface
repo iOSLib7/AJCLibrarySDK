@@ -1030,6 +1030,16 @@ public enum AutoLightMode : Swift.String {
   @objc required dynamic public init()
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers public class GCDTimerUtils : ObjectiveC.NSObject {
+  @objc public class func cancelTimer(_ timer: (any Dispatch.DispatchSourceTimer)?)
+  @discardableResult
+  @objc public class func dispatchTimer(timeInterval: Swift.Double, repeatCount: Swift.Int, handler: @escaping ((any Dispatch.DispatchSourceTimer)?, Swift.Int) -> ()) -> (any Dispatch.DispatchSourceTimer)?
+  @discardableResult
+  @objc public class func dispatchTimer(timeInterval: Swift.Double, handler: @escaping ((any Dispatch.DispatchSourceTimer)?) -> ()) -> (any Dispatch.DispatchSourceTimer)?
+  @objc public class func dispatchAfter(after: Swift.Double, handler: @escaping () -> ())
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers public class CameraGlobals {
   public static let shared: AJLibrary.CameraGlobals
   public var stringsTable: Swift.String
@@ -1591,6 +1601,7 @@ public enum FileFolder : Swift.String {
 @objc @_inheritsConvenienceInitializers public class WVColor : UIKit.UIColor {
   @objc public class func WVMainColor(alpha: CoreFoundation.CGFloat = 1.0) -> UIKit.UIColor
   @objc public class func WVSelectBackColor(alpha: CoreFoundation.CGFloat = 0.24) -> UIKit.UIColor
+  @objc public class func tipsBackColor(alpha: CoreFoundation.CGFloat = 0.2, adaptiveDarkMode: Swift.Bool = true) -> UIKit.UIColor
   @objc public class func WVTimeLineColor(alpha: CoreFoundation.CGFloat = 1.0) -> UIKit.UIColor
   @objc public class func WVViewBackColor(alpha: CoreFoundation.CGFloat = 1.0) -> UIKit.UIColor
   @objc public class func WVLigntGrayViewBackColor(alpha: CoreFoundation.CGFloat = 1.0) -> UIKit.UIColor
@@ -1619,6 +1630,17 @@ public enum FileFolder : Swift.String {
   @available(iOS 13.0, *)
   @objc override dynamic public init(dynamicProvider: @escaping (UIKit.UITraitCollection) -> UIKit.UIColor)
   @objc deinit
+}
+public enum BleSendStatus : ObjectiveC.NSInteger {
+  case sending
+  case waiting
+  case success
+  case failed
+  public init?(rawValue: ObjectiveC.NSInteger)
+  public typealias RawValue = ObjectiveC.NSInteger
+  public var rawValue: ObjectiveC.NSInteger {
+    get
+  }
 }
 @objc @_inheritsConvenienceInitializers public class SuccessResultModel : AJLibrary.ResultModel {
   @objc public var value: Swift.Bool
@@ -1737,6 +1759,7 @@ public enum NetEntrance {
   case Eth
   case OnlineSetWiFi
   case FastBind
+  case Bluetooth
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -2845,7 +2868,6 @@ extension UIKit.UILabel {
   @objc public var regTime: Swift.Int
   public var refreshExpiresTmp: Swift.Int?
   public var accessExpiresTmp: Swift.Int?
-  @objc public var bizFlag: Swift.String?
   @objc public func accountRegion() -> Swift.String?
   @objc public func isChinaAccount() -> Swift.Bool
   public func getAlly(_ loginType: AJLibrary.LoginType = Login.getAccountLoginType()) -> AJLibrary.AllyModel?
@@ -2977,6 +2999,24 @@ extension AJLibrary.CloudManager {
 }
 public let CameraAddTableViewCellIdentifier: Swift.String
 public let CameraAddCellHeight: CoreFoundation.CGFloat
+@objc @_inheritsConvenienceInitializers public class AJBleBinderManager : ObjectiveC.NSObject, AJLibrary.BluetoothManageDelegate {
+  @objc public static let shared: AJLibrary.AJBleBinderManager
+  @objc public var disconnectPeripheralBlock: (() -> ())?
+  @objc public func sendData(_ ssid: Swift.String, password: Swift.String, checkTimeout: Swift.Int, bindSuccess: (() -> ())?, bindFailed: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc public func disconnect(_ peripheral: AJLibrary.PeripheralInfoModel)
+  @objc public func disconnectAllPeripheral()
+  @objc public func startBluetoothScan(_ timeout: Swift.Int, success: ((AJLibrary.PeripheralInfoModel?) -> ())?, failure: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc public func stopBluetoothScan()
+  @objc public func connectTo(_ peripheralInfo: AJLibrary.PeripheralInfoModel, success: (() -> ())?, failure: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc public func systemBluetoothState(_ state: CoreBluetooth.CBManagerState)
+  @objc public func connectSuccess()
+  @objc public func connectFailed()
+  @objc public func getScanResultPeripheral(_ peripheral: AJLibrary.PeripheralInfoModel)
+  @objc public func disconnectPeripheral(_ peripheral: CoreBluetooth.CBPeripheral)
+  @objc public func read(_ valueData: Foundation.Data)
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class AJCWebView : WebKit.WKWebView {
   @objc deinit
 }
@@ -3480,7 +3520,8 @@ extension AVKit.AVPlayerViewController {
 }
 @objc @_inheritsConvenienceInitializers public class UIAnimation : ObjectiveC.NSObject {
   @objc public static func showHud()
-  public static func showMessageHud(_ message: Swift.String?, _ view: UIKit.UIView?)
+  @objc public static func showMessageHud(_ message: Swift.String?)
+  @objc public static func showMessageHud(_ message: Swift.String?, _ view: UIKit.UIView?)
   @objc public static func showSmallHud(_ view: UIKit.UIView?, top: ObjectiveC.NSInteger = -1)
   @objc public static func showSmallHud(_ name: Swift.String, view: UIKit.UIView?, top: ObjectiveC.NSInteger = -1)
   @objc public static func hideHud()
@@ -3740,6 +3781,9 @@ extension AJLibrary.ShareDeviceStatus : Swift.RawRepresentable {}
 extension AJLibrary.FileFolder : Swift.Equatable {}
 extension AJLibrary.FileFolder : Swift.Hashable {}
 extension AJLibrary.FileFolder : Swift.RawRepresentable {}
+extension AJLibrary.BleSendStatus : Swift.Equatable {}
+extension AJLibrary.BleSendStatus : Swift.Hashable {}
+extension AJLibrary.BleSendStatus : Swift.RawRepresentable {}
 extension AJLibrary.DownloadStatus : Swift.Equatable {}
 extension AJLibrary.DownloadStatus : Swift.Hashable {}
 extension AJLibrary.DownloadStatus : Swift.RawRepresentable {}

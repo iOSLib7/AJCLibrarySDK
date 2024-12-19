@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/AJBinder.h</key>
 		<data>
-		FdRpYqNJNcUPjS30eWCRPeUvbCQ=
+		fZYyVT4ui3DxspPjCw/hbqnU7E4=
 		</data>
 		<key>Headers/AJCloud.h</key>
 		<data>
@@ -86,11 +86,11 @@
 		</data>
 		<key>Headers/AJLib.h</key>
 		<data>
-		IdGCxsJwFU1b1Uucdu5exWqg7Ws=
+		a/CLPSGUeLyZiATZjSxT+HnrPjs=
 		</data>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<data>
-		HbJIgaLxPJ5bnbKXMg9cxb7PdeI=
+		7gKkermh86wJqkF5lRVrgmX+osQ=
 		</data>
 		<key>Headers/AJLibrary.h</key>
 		<data>
@@ -131,6 +131,26 @@
 		<key>Headers/AlbumManager.h</key>
 		<data>
 		zYb4+DsQIB09MnoiWM+Ao5KrKXE=
+		</data>
+		<key>Headers/BleCmdInfoModel.h</key>
+		<data>
+		aXftwCUGiqd9vULCEaCYXnCh6hg=
+		</data>
+		<key>Headers/BleResponseModel.h</key>
+		<data>
+		BKaQnc+nvcBMykBs2EO6eYQbwDQ=
+		</data>
+		<key>Headers/BleSendInfoModel.h</key>
+		<data>
+		HETh8H1M4+lA9N4fSVgOWTTHLVI=
+		</data>
+		<key>Headers/BleTaskSender.h</key>
+		<data>
+		rj2v88hdhUAJJu5qPbC1b++m9f4=
+		</data>
+		<key>Headers/BluetoothManager.h</key>
+		<data>
+		7dLv5zBxACEWswK3AnTJ22D3a6s=
 		</data>
 		<key>Headers/CalenderUtil.h</key>
 		<data>
@@ -216,6 +236,10 @@
 		<data>
 		0al6UlknxlwVejRmKcq48E51564=
 		</data>
+		<key>Headers/PeripheralInfoModel.h</key>
+		<data>
+		8rGjOb1HnBTqdpaITySfI24cUFs=
+		</data>
 		<key>Headers/PlayViewController.h</key>
 		<data>
 		kU7mZbBzX07ALqtKGfu3lv9mBDA=
@@ -298,27 +322,27 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		5M1t1e8/lFeXx4JqeUBzc4GMPTc=
+		uQcBwR/CfW7FgHMm++kUjWN2O6c=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		JTcn18QtQ/1l9utEFbdwONq/Qds=
+		RYg4k2QF6UaJ15/mNcckEieE1WQ=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		9r+sOhO8MoZnF8aErsCwLustSls=
+		g3hfeVmggZqroIOOQvQ6bu4I4YI=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		KsbhyEBc5OVo/DBL2HzjL7Isb2A=
+		Ms2Tx/1mehH6B5/3iX5LHqzynxI=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		9r+sOhO8MoZnF8aErsCwLustSls=
+		g3hfeVmggZqroIOOQvQ6bu4I4YI=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		tdFj0CVtvTAHow344b7NpetIXAE=
+		assazEuqWqXuHkIB4muZ4UEyK0o=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -408,11 +432,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FdRpYqNJNcUPjS30eWCRPeUvbCQ=
+			fZYyVT4ui3DxspPjCw/hbqnU7E4=
 			</data>
 			<key>hash2</key>
 			<data>
-			5jIPg46gnWK1SWpM5PSvCHmK5jd6PAZfIteE6RmnhKs=
+			rQZO77T6/qCemv3sk/EZueo1AWSHXUE5JnZXGzxD/48=
 			</data>
 		</dict>
 		<key>Headers/AJCloud.h</key>
@@ -551,22 +575,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IdGCxsJwFU1b1Uucdu5exWqg7Ws=
+			a/CLPSGUeLyZiATZjSxT+HnrPjs=
 			</data>
 			<key>hash2</key>
 			<data>
-			1e1k2OUEnsWGxDKlcHTYZZ0AC7dboiGTICWyeiQZTbM=
+			qCPk3ecbS/62eF98b9f3rKhblE6EkF4gCI3iqfBQsEo=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HbJIgaLxPJ5bnbKXMg9cxb7PdeI=
+			7gKkermh86wJqkF5lRVrgmX+osQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Cako92o2jZkOZkkuPqb6oEYznJ4ayfkufBpOaT2ZiVc=
+			shO8LKaB2dkfj48Eik3MfKadN22WNCesDvagEivzNdw=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary.h</key>
@@ -677,6 +701,61 @@
 			<key>hash2</key>
 			<data>
 			IAPUsqY3Q7Pt8TLUhNkS8Gex/GWJNQYy5i8hTfrAudE=
+			</data>
+		</dict>
+		<key>Headers/BleCmdInfoModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			aXftwCUGiqd9vULCEaCYXnCh6hg=
+			</data>
+			<key>hash2</key>
+			<data>
+			57KbtA6os+tkbSe/xRv8VCDEWwjA+OpHknAhabTcmi4=
+			</data>
+		</dict>
+		<key>Headers/BleResponseModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BKaQnc+nvcBMykBs2EO6eYQbwDQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			yAPRfWOYYlBO3JOpRA/ilrAgn6TRy/dynhQgDgAESj4=
+			</data>
+		</dict>
+		<key>Headers/BleSendInfoModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HETh8H1M4+lA9N4fSVgOWTTHLVI=
+			</data>
+			<key>hash2</key>
+			<data>
+			/sfygdY1orjJeAK0YuBMs1fW4hwwXWMYERP9cs+i8qE=
+			</data>
+		</dict>
+		<key>Headers/BleTaskSender.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rj2v88hdhUAJJu5qPbC1b++m9f4=
+			</data>
+			<key>hash2</key>
+			<data>
+			bu9gyrs1EDWHS4k5YWh9wW3F2/IKd4Dkybn4LCJNx/Y=
+			</data>
+		</dict>
+		<key>Headers/BluetoothManager.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7dLv5zBxACEWswK3AnTJ22D3a6s=
+			</data>
+			<key>hash2</key>
+			<data>
+			SwpHh9/iA86Tylc+R17jb5iaclgVPMIjS5A1l82Y1O8=
 			</data>
 		</dict>
 		<key>Headers/CalenderUtil.h</key>
@@ -910,6 +989,17 @@
 			SIc80ynFObWMFQolSWAOmvCrYTeKQ+imxVxruIGqBpU=
 			</data>
 		</dict>
+		<key>Headers/PeripheralInfoModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			8rGjOb1HnBTqdpaITySfI24cUFs=
+			</data>
+			<key>hash2</key>
+			<data>
+			i2GBPrIU8FcMwlVc/k67271iqpadm0k8d/t4HTO+X6A=
+			</data>
+		</dict>
 		<key>Headers/PlayViewController.h</key>
 		<dict>
 			<key>hash</key>
@@ -1123,66 +1213,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5M1t1e8/lFeXx4JqeUBzc4GMPTc=
+			uQcBwR/CfW7FgHMm++kUjWN2O6c=
 			</data>
 			<key>hash2</key>
 			<data>
-			BEkJezWDsMPBYMvUvvEWP9U3JwLswIeuLEMZ7WZ/SVo=
+			Bv2LCauBtlxA0A/gy60U0rvp+vNkOx/ldeUEQsXLbjc=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JTcn18QtQ/1l9utEFbdwONq/Qds=
+			RYg4k2QF6UaJ15/mNcckEieE1WQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			/lsUTYsHfgD9hK4QZKnvEV21iGpZ1SYe64QJMmlR8UM=
+			WkPR2fzBwB0aIsWJs32WK3J/vqwlgVON8ThhxdnvrJI=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9r+sOhO8MoZnF8aErsCwLustSls=
+			g3hfeVmggZqroIOOQvQ6bu4I4YI=
 			</data>
 			<key>hash2</key>
 			<data>
-			7r1oLnf7ME2Q9liMac99Vt0HMO29Bdf5ZVhMjoAmbXo=
+			HDMSKD1H8wez0Qyq8BbdSAAKIFEwkFuPudpYnmfg1AA=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KsbhyEBc5OVo/DBL2HzjL7Isb2A=
+			Ms2Tx/1mehH6B5/3iX5LHqzynxI=
 			</data>
 			<key>hash2</key>
 			<data>
-			A1YF5B75wMG08Yx0luq5mbIeX5dQuFQFslqykzAmrV0=
+			f+wGL9pbzRQWihTVkno+LWe6z9Q1hC7cbSSpRO+/QAY=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9r+sOhO8MoZnF8aErsCwLustSls=
+			g3hfeVmggZqroIOOQvQ6bu4I4YI=
 			</data>
 			<key>hash2</key>
 			<data>
-			7r1oLnf7ME2Q9liMac99Vt0HMO29Bdf5ZVhMjoAmbXo=
+			HDMSKD1H8wez0Qyq8BbdSAAKIFEwkFuPudpYnmfg1AA=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tdFj0CVtvTAHow344b7NpetIXAE=
+			assazEuqWqXuHkIB4muZ4UEyK0o=
 			</data>
 			<key>hash2</key>
 			<data>
-			0sosVPw7/lkJYvPkKDFG6jyiNV6qx1hqyG1Wh9FfUZ0=
+			4oM4alJAbLb6gZO8zU6A94mm6QKQjBiVrPligyXYbH4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -10,6 +10,7 @@
 #import "AJWifiListModel.h"
 #import "AJDiscoverDeviceModel.h"
 #import "AJDeviceInfoModel.h"
+#import "PeripheralInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,7 +22,12 @@ typedef enum : NSUInteger {
 } AJBinderMode;
 
 
+typedef void(^ DisconnectPeripheral)(void);
+
 @interface AJBinder : NSObject
+
+// 蓝牙断开回调
+@property(copy, nonatomic)DisconnectPeripheral disconnectBlock;
 
 /**
 *    单例
@@ -49,6 +55,7 @@ typedef enum : NSUInteger {
          failure:(nullable void (^)(AJError *))failure;
 
 
+#pragma mark - 二维码配网
 /// Create QR code string
 /// @param ssid Name of route
 /// @param password Password of route
@@ -74,7 +81,7 @@ typedef enum : NSUInteger {
 
 
 
-
+#pragma mark - SoftAP配网
 /// SoftAP 配网，获取 WIFI 列表
 /// @param ssid 连接的设备 SSID 名称
 /// @param success 回调 WIFI 列表
@@ -99,7 +106,7 @@ typedef enum : NSUInteger {
               failure:(nullable void (^)(AJError *))failure;
 
 
-
+#pragma mark - 有线配网
 /// 网线配网，局域网发现设备列表
 /// @param success success
 /// @param failure failure
@@ -121,6 +128,49 @@ typedef enum : NSUInteger {
               success:(nullable void (^)(void))success
               failure:(nullable void (^)(AJError *))failure;
  
+
+#pragma mark - 蓝牙配网
+/// 蓝牙扫描（单个返回）
+/// @param timeout 超时时间
+/// @param success success
+/// @param failure failure
+- (void)bluetoothScanDevices:(NSInteger)timeout
+                     success:(nullable void (^)(PeripheralInfoModel *))success
+                     failure:(nullable void (^)(AJError *))failure;
+
+
+
+/// 蓝牙停止扫描
+- (void)bluetoothStopScan;
+
+
+/// 蓝牙设备连接
+/// @param peripheral 蓝牙设备信息
+/// @param success success
+/// @param failure failure
+- (void)bluetoothDeviceConnectTo:(PeripheralInfoModel *)peripheral
+                         success:(nullable void (^)(void))success
+                         failure:(nullable void (^)(AJError *))failure;
+
+
+
+/// 蓝牙配网
+/// @param ssid ssid名称
+/// @param password ssid密码
+/// @param timeout 配网检查超时时间
+/// @param success success
+/// @param failure failure
+- (void)bluetoothSendData:(NSString *)ssid
+                 password:(NSString *)password
+                  timeout:(NSInteger)timeout
+                  success:(nullable void (^)(void))success
+                  failure:(nullable void (^)(AJError *))failure;
+
+// 断开所有蓝牙连接
+- (void)disconnectAllPeripherals;
+
+// 断开当前连接
+- (void)disconnectPeripheral:(PeripheralInfoModel *)peripheral;
 
 @end
 

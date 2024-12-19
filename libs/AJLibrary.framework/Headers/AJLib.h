@@ -59,6 +59,10 @@
 #import <AJLibrary/AJAccount.h>
 #import <AJLibrary/AJAccountModel.h>
 #import <AJLibrary/AJEmailCheckModel.h>
+#import <AJLibrary/BleResponseModel.h>
+#import <AJLibrary/BleCmdInfoModel.h>
+#import <AJLibrary/BleTaskSender.h>
+#import <AJLibrary/BluetoothManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

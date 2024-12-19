@@ -280,6 +280,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreBluetooth;
 @import CoreFoundation;
 @import CoreGraphics;
 @import Foundation;
@@ -288,6 +289,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import UIKit;
 @import WebKit;
 #endif
+
+#import <AJLibrary/AJLibrary.h>
 
 #endif
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -349,6 +352,31 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJBinderResp
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class ErrorModel;
+@class PeripheralInfoModel;
+@class CBPeripheral;
+@class NSData;
+
+SWIFT_CLASS("_TtC9AJLibrary18AJBleBinderManager")
+@interface AJBleBinderManager : NSObject <BluetoothManageDelegate>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJBleBinderManager * _Nonnull shared;)
++ (AJBleBinderManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) void (^ _Nullable disconnectPeripheralBlock)(void);
+- (void)sendData:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password checkTimeout:(NSInteger)checkTimeout bindSuccess:(void (^ _Nullable)(void))bindSuccess bindFailed:(void (^ _Nullable)(ErrorModel * _Nullable))bindFailed;
+- (void)disconnect:(PeripheralInfoModel * _Nonnull)peripheral;
+- (void)disconnectAllPeripheral;
+- (void)startBluetoothScan:(NSInteger)timeout success:(void (^ _Nullable)(PeripheralInfoModel * _Nullable))success failure:(void (^ _Nullable)(ErrorModel * _Nullable))failure;
+- (void)stopBluetoothScan;
+- (void)connectTo:(PeripheralInfoModel * _Nonnull)peripheralInfo success:(void (^ _Nullable)(void))success failure:(void (^ _Nullable)(ErrorModel * _Nullable))failure;
+- (void)systemBluetoothState:(CBManagerState)state;
+- (void)connectSuccess;
+- (void)connectFailed;
+- (void)getScanResultPeripheral:(PeripheralInfoModel * _Nonnull)peripheral;
+- (void)disconnectPeripheral:(CBPeripheral * _Nonnull)peripheral;
+- (void)readData:(NSData * _Nonnull)valueData;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class WKWebViewConfiguration;
 
 SWIFT_CLASS("_TtC9AJLibrary10AJCWebView")
@@ -368,7 +396,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJDeviceUtil
 @end
 
 @class DiscoverDeviceItem;
-@class ErrorModel;
 
 SWIFT_CLASS("_TtC9AJLibrary18AJEthBinderManager")
 @interface AJEthBinderManager : NSObject
@@ -1790,6 +1817,34 @@ SWIFT_CLASS("_TtC9AJLibrary21FwVersionUpgradeModel")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@protocol OS_dispatch_source_timer;
+
+SWIFT_CLASS("_TtC9AJLibrary13GCDTimerUtils")
+@interface GCDTimerUtils : NSObject
++ (void)cancelTimer:(id <OS_dispatch_source_timer> _Nullable)timer;
+/// GCD定时器倒计时⏳
+/// \param timeInterval 循环间隔时间
+///
+/// \param repeatCount 重复次数
+///
+/// \param handler 循环事件, 闭包参数： 1. timer， 2. 剩余执行次数
+///
++ (id <OS_dispatch_source_timer> _Nullable)dispatchTimerWithTimeInterval:(double)timeInterval repeatCount:(NSInteger)repeatCount handler:(void (^ _Nonnull)(id <OS_dispatch_source_timer> _Nullable, NSInteger))handler;
+/// GCD定时器循环操作
+/// \param timeInterval 循环间隔时间
+///
+/// \param handler 循环事件
+///
++ (id <OS_dispatch_source_timer> _Nullable)dispatchTimerWithTimeInterval:(double)timeInterval handler:(void (^ _Nonnull)(id <OS_dispatch_source_timer> _Nullable))handler;
+/// GCD延时操作
+/// \param after 延迟的时间
+///
+/// \param handler 事件
+///
++ (void)dispatchAfterAfter:(double)after handler:(void (^ _Nonnull)(void))handler;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC9AJLibrary24GeneralSetViewController")
 @interface GeneralSetViewController : UIBaseTableViewController
@@ -2116,6 +2171,7 @@ typedef SWIFT_ENUM(NSInteger, NetConfigurationType, open) {
   NetConfigurationTypeEth = 3,
   NetConfigurationTypeOnlineSetWiFi = 4,
   NetConfigurationTypeFastBind = 5,
+  NetConfigurationTypeBluetooth = 6,
 };
 
 
@@ -2167,8 +2223,6 @@ SWIFT_CLASS_NAMED("OauthModel")
 @property (nonatomic, strong) IdentModel * _Nullable ident;
 @property (nonatomic, copy) NSString * _Nullable uid;
 @property (nonatomic) NSInteger regTime;
-@property (nonatomic, copy) NSString * _Nullable bizFlag;
-/// 是否存在私有云的数据
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)accountRegion SWIFT_WARN_UNUSED_RESULT;
@@ -2913,6 +2967,8 @@ SWIFT_CLASS("_TtC9AJLibrary11UIAnimation")
 @interface UIAnimation : NSObject
 /// 加载数据动画
 + (void)showHud;
++ (void)showMessageHud:(NSString * _Nullable)message;
++ (void)showMessageHud:(NSString * _Nullable)message :(UIView * _Nullable)view;
 + (void)showSmallHud:(UIView * _Nullable)view top:(NSInteger)top;
 + (void)showSmallHud:(NSString * _Nonnull)name view:(UIView * _Nullable)view top:(NSInteger)top;
 + (void)hideHud;
@@ -3020,14 +3076,14 @@ SWIFT_CLASS("_TtC9AJLibrary14UIExplainLabel")
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
++ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -3042,11 +3098,11 @@ SWIFT_CLASS("_TtC9AJLibrary12UIIconButton")
 
 
 
-
 @interface UIImage (SWIFT_EXTENSION(AJLibrary))
 + (UIImage * _Nullable)mixed_imageNamed:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)static_sdkimage:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 /// 图片在上文字在下
@@ -3237,6 +3293,8 @@ SWIFT_CLASS("_TtC9AJLibrary7WVColor")
 + (UIColor * _Nonnull)WVMainColorWithAlpha:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
 /// 反选背景色、浅蓝
 + (UIColor * _Nonnull)WVSelectBackColorWithAlpha:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
+/// 弹框背景底，带透明
++ (UIColor * _Nonnull)tipsBackColorWithAlpha:(CGFloat)alpha adaptiveDarkMode:(BOOL)adaptiveDarkMode SWIFT_WARN_UNUSED_RESULT;
 /// 时间轴相关颜色
 + (UIColor * _Nonnull)WVTimeLineColorWithAlpha:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
 /// 页面背景色、纯白
