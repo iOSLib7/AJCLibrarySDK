@@ -12,3 +12,5 @@
 "NSLocationWhenInUseUsageDescription" = "Allowing it will automatically fill in the Wi-Fi name, otherwise you MUST to manually enter it.";
 "NSMicrophoneUsageDescription" = "The talking function needs to collect sound through the microphone.";
 "NSLocalNetworkUsageDescription"= "Connect the camera’s hotspot to help it connect to Wi-Fi.";
+"NSBluetoothAlwaysUsageDescription" = "App would like to access the bluetooth to bind the device.";
+"NSBluetoothPeripheralUsageDescription" = "Whether to allow this app to use Bluetooth?";
