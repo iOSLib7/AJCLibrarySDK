@@ -13,6 +13,8 @@
 #import "AJAlarmListModel.h"
 #import "AJCloudStorageDeleteModel.h"
 #import "AJQualityModel.h"
+#import "AJFeedLogsModel.h"
+#import "AJUploadNotifyModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -314,7 +316,6 @@ typedef enum : NSUInteger {
 
 /**
  *    添加视角
- *     @param     angleIndex           需要添加的视角的索引
  *     @param     image                预览图
  *    @param     success                成功 回调
  *    @param     failure                失败回调
@@ -322,7 +323,6 @@ typedef enum : NSUInteger {
  */
 
 - (void)viewAngleAdd:(NSString *)deviceId
-          angleIndex:(NSString *)angleIndex
         previewImage:(UIImage *)image
              success:(void (^)(void))success
              failure:(void (^)(AJError * _Nonnull))failure;
@@ -362,6 +362,36 @@ typedef enum : NSUInteger {
                ctss:(NSArray *)ctss
             success:(void (^)(void))success
             failure:(void (^)(AJError * _Nonnull))failure;
+
+
+
+/// 喂食器-喂食记录查询
+/// @param deviceId 设备ID
+/// @param ctime 20211120000000  (2021.11.20 00:00:00)
+/// @param limit 每页数量
+/// @param success success
+/// @param failure failure
+- (void)fetchFeedLogs:(NSString *)deviceId
+                ctime:(NSString *)ctime
+                limit:(NSInteger)limit
+              success:(void (^)(AJFeedLogsModel * _Nonnull))success
+              failure:(void (^)(AJError * _Nonnull))failure;
+
+
+
+
+/// 上传文件至云端
+/// @param deviceId 设备ID
+/// @param resourceType 资源类型 - （自定义安抚音、自定义喂食语音、自定义警铃音、视角图片）
+/// @param filePath 文件路径
+/// @param success success
+/// @param failure failure
+- (void)uploadFile:(NSString *)deviceId
+      resourceType:(AJUploadResourceType)resourceType
+          filePath:(NSString *)filePath
+           success:(void (^)(AJUploadNotifyModel * _Nonnull))success
+           failure:(void (^)(AJError * _Nonnull))failure;
+
 
 @end
 

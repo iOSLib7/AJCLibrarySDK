@@ -9,6 +9,8 @@
 #import "AJError.h"
 #import "AJDiagnoseModel.h"
 #import "AJTimezoneModel.h"
+#import "AJFeedTonesConfigModel.h"
+#import "AJFeedTimingConfigModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -305,7 +307,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-/// 移动检测灵敏度等级和检测区域配置langge
+/// 移动检测灵敏度等级和检测区域配置
 /// @param deviceId 设备 ID
 /// @param susceptiveness 灵敏度等级  0 ~ 5
 /// @param fullViewport 是否全屏 0 - 是，1 - 否
@@ -592,6 +594,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 加载诊断服务器地址
 - (NSArray<AJDiagnoseModel *>*)loadDiagnoseServiceUrls;
+
+
+
+
+
+/// 喂食声音配置
+/// @param deviceId 设备ID
+/// @param curToneName 当前tone name
+/// @param curToneGroup 当前tone group
+/// @param customs 自定义组
+/// @param success success
+/// @param failure failure
+- (void)feedTonesConfig:(NSString *)deviceId
+            curToneName:(NSString *)curToneName
+           curToneGroup:(NSString *)curToneGroup
+                customs:(NSArray <AJCustomSoundDesModel *>*)customs
+                success:(nullable void (^)(void))success
+                failure:(nullable void (^)(AJError *))failure;
+
+
+
+/// 喂食器-喂食计划设置
+/// @param deviceId 设备ID
+/// @param timings 时间策略(0或N个)
+/// @param success success
+/// @param failure failure
+- (void)feedTimingConfig:(NSString *)deviceId
+                 customs:(NSArray <AJFeedTimingModel *>*)timings
+                 success:(nullable void (^)(void))success
+                 failure:(nullable void (^)(AJError *))failure;
+
+
+
+/// 喂食器-手动喂食
+/// @param deviceId 设备ID
+/// @param feedQuantity 喂食数量
+/// @param success success
+/// @param failure failure
+- (void)feedManuallyCtrl:(NSString *)deviceId
+            feedQuantity:(NSString *)feedQuantity
+                 success:(nullable void (^)(void))success
+                 failure:(nullable void (^)(AJError *))failure;
 
 @end
 

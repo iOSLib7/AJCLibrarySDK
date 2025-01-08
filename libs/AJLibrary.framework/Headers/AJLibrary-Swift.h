@@ -438,6 +438,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJQRBinderMa
 @class AutoPolicy;
 @class TimePolicy;
 @class ShareSendReceiverModel;
+@class timingsModel;
 
 SWIFT_CLASS("_TtC9AJLibrary17AJSettingsManager")
 @interface AJSettingsManager : NSObject
@@ -484,6 +485,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSettingsMa
 - (void)rejectReceiveNewShare:(NSString * _Nonnull)deviceId complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)reviceSharedCamera:(NSString * _Nonnull)deviceId senderUid:(NSString * _Nonnull)senderUid complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)getShareReceiveInfo:(void (^ _Nullable)(NSArray<ShareSendReceiverModel *> * _Nullable, ErrorModel * _Nullable))complete;
+- (void)feedTimingConfig:(NSString * _Nonnull)deviceId timings:(NSArray<timingsModel *> * _Nonnull)timings complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
+- (void)feedTonesConfig:(NSString * _Nonnull)deviceId params:(NSDictionary<NSString *, id> * _Nonnull)params complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -969,6 +972,7 @@ SWIFT_CLASS("_TtC9AJLibrary16CameraInfomation")
 @class FloodlightConfig;
 @class SirenConfig;
 @class ProtectionPlan;
+@class FeedTonesConfig;
 @class feedTimingConfig;
 @class feedConfig;
 @class PrivateRegionConfig;
@@ -1010,6 +1014,7 @@ SWIFT_CLASS("_TtC9AJLibrary11CameraModel")
 @property (nonatomic, strong) FloodlightConfig * _Nullable floodlightConfig;
 @property (nonatomic, strong) SirenConfig * _Nullable sirenConfig;
 @property (nonatomic, strong) ProtectionPlan * _Nullable protectionPlan;
+@property (nonatomic, strong) FeedTonesConfig * _Nullable feedTonesConfig;
 @property (nonatomic, strong) feedTimingConfig * _Nullable feedTimingConfig;
 @property (nonatomic, strong) feedConfig * _Nullable feedConfig;
 @property (nonatomic, strong) PrivateRegionConfig * _Nullable privateRegionConfig;
@@ -1018,9 +1023,16 @@ SWIFT_CLASS("_TtC9AJLibrary11CameraModel")
 @property (nonatomic, strong) TrackConfig * _Nullable trackConfig;
 @property (nonatomic, strong) AlarmRekConfig * _Nullable alarmRekConfig;
 - (BOOL)isCloudEnable SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)homeBatteryChargingAnimationName SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)settingBatteryChargingAnimationName SWIFT_WARN_UNUSED_RESULT;
+- (UIImage * _Nullable)settingWifiSignalImage SWIFT_WARN_UNUSED_RESULT;
+- (UIImage * _Nullable)settingHeaderNetworkImage SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)settingHeaderNetworkString SWIFT_WARN_UNUSED_RESULT;
 - (UIImage * _Nullable)floatingSignalImage_4G SWIFT_WARN_UNUSED_RESULT;
+- (UIImage * _Nullable)homeNetworkImage SWIFT_WARN_UNUSED_RESULT;
 - (UIImage * _Nullable)playerNetworkImage SWIFT_WARN_UNUSED_RESULT;
 - (UIImage * _Nullable)homeWifiSignalImage SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)wifiSignalStrengthString SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1572,6 +1584,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) DeviceNetMan
 - (void)hibernateConfigWithDeviceId:(NSString * _Nonnull)deviceId enable:(NSString * _Nonnull)enable complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
 - (void)BatterySingleWakeUp:(NSString * _Nonnull)deviceId complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
 - (void)alarmRekConfig:(NSString * _Nonnull)deviceId humanoid:(NSString * _Nonnull)humanoid package:(NSString * _Nonnull)package pet:(NSString * _Nonnull)pet vehicle:(NSString * _Nonnull)vehicle pnmO1:(NSString * _Nonnull)pnmO1 complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 喂食器投粮语音
+/// \param deviceId deviceId
+///
+/// \param params params
+///
+/// \param complete complete
+///
+- (void)feedTonesConfig:(NSString * _Nonnull)deviceId params:(NSDictionary<NSString *, id> * _Nonnull)params complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1784,6 +1804,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)replay_down_num SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull replay_delete_num;)
 + (NSString * _Nonnull)replay_delete_num SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9AJLibrary15FeedTonesConfig")
+@interface FeedTonesConfig : ResultModel <NSCopying>
+- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2320,7 +2347,6 @@ SWIFT_CLASS("_TtC9AJLibrary9PirConfig")
 @class QualityModel;
 @class feedLogsModel;
 @class ViewAngle;
-@class timingsModel;
 
 SWIFT_CLASS("_TtC9AJLibrary19PlayViewDataManager")
 @interface PlayViewDataManager : NSObject
@@ -2579,6 +2605,13 @@ SWIFT_CLASS("_TtC9AJLibrary11SirenConfig")
 @interface SirenConfig : ResultModel
 @property (nonatomic, copy) NSString * _Nonnull toggle;
 @property (nonatomic, strong) AutoPolicy * _Nullable autoPolicy;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9AJLibrary18SirenSoundDesModel")
+@interface SirenSoundDesModel : ResultModel <NSCopying>
+- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -3085,14 +3118,14 @@ SWIFT_RESILIENT_CLASS("_TtC9AJLibrary12UIFlatButton")
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
++ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -3107,11 +3140,11 @@ SWIFT_CLASS("_TtC9AJLibrary12UIIconButton")
 
 
 
+
 @interface UIImage (SWIFT_EXTENSION(AJLibrary))
 + (UIImage * _Nullable)mixed_imageNamed:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)static_sdkimage:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 /// 图片在上文字在下
@@ -3184,12 +3217,28 @@ SWIFT_CLASS("_TtC9AJLibrary12UITimePicker")
 
 
 
+enum UploadResourceType : NSInteger;
+@class UploadNotifyModel;
 
 SWIFT_CLASS("_TtC9AJLibrary13UploadManager")
 @interface UploadManager : NSObject
-+ (void)uploadFile:(NSString * _Nonnull)deviceId ageleNum:(NSString * _Nonnull)ageleNum resourceType:(NSString * _Nonnull)resourceType filePath:(NSString * _Nonnull)filePath complete:(void (^ _Nonnull)(NSString * _Nullable))complete;
++ (void)uploadFile:(NSString * _Nonnull)deviceId resourceType:(enum UploadResourceType)resourceType filePath:(NSString * _Nonnull)filePath complete:(void (^ _Nonnull)(UploadNotifyModel * _Nullable, ErrorModel * _Nullable))complete;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+SWIFT_CLASS("_TtC9AJLibrary17UploadNotifyModel")
+@interface UploadNotifyModel : ResultModel
+@property (nonatomic, copy) NSString * _Nullable resourceUrl;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+typedef SWIFT_ENUM(NSInteger, UploadResourceType, open) {
+  UploadResourceTypeCamViewAngle = 1,
+  UploadResourceTypeSirenSound = 2,
+  UploadResourceTypeFeedTone = 3,
+  UploadResourceTypeSoothingTone = 4,
+};
 
 
 SWIFT_CLASS("_TtC9AJLibrary15UserInviteModel")
@@ -3257,6 +3306,8 @@ SWIFT_CLASS("_TtC9AJLibrary11WCapability")
 @property (nonatomic, copy) NSString * _Nullable dualLensZoomVerge;
 @property (nonatomic, copy) NSString * _Nullable streams;
 @property (nonatomic, copy) NSString * _Nullable voiceDetect;
+@property (nonatomic, copy) NSString * _Nullable feedingTimingLimit;
+@property (nonatomic, copy) NSString * _Nullable feedTone;
 @property (nonatomic, copy) NSString * _Nullable privLiveStream;
 @property (nonatomic) BOOL onvif;
 @property (nonatomic) BOOL mic;
@@ -3274,6 +3325,7 @@ SWIFT_CLASS("_TtC9AJLibrary11WCapability")
 @property (nonatomic) BOOL floodlightBrightCtrl;
 @property (nonatomic) BOOL floodlightTimeCtrl;
 @property (nonatomic) BOOL siren;
+@property (nonatomic) BOOL feeding;
 @property (nonatomic) BOOL genAlarmThumb;
 @property (nonatomic) BOOL localStorFullDay;
 @property (nonatomic) BOOL cloudStorFullDay;
@@ -3295,8 +3347,18 @@ SWIFT_CLASS("_TtC9AJLibrary11WCapability")
 @property (nonatomic) BOOL soundDetect;
 @property (nonatomic) BOOL lpRetriggerIntervalType;
 @property (nonatomic, copy) NSString * _Nullable lvs1Qualities;
+- (BOOL)haveInsideCognitiveHumanoid SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<QualityModel *> * _Nonnull)lvsQualitiesArr SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)haveInsideCognitiveVehicle SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)haveInsideCognitivePet SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)haveInsideCognitivePackage SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)supportOSD SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)supportSims SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)alarmMediaTypesSupportVideoAndImageConfig SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<QualityModel *> * _Nonnull)qualitiesArr SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<QualityModel *> * _Nonnull)creatQualitiesArrWithQualitiesStr:(NSString * _Nonnull)qualitiesStr SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isEthernetCamera SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)supportTf SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isOldLightDevice SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

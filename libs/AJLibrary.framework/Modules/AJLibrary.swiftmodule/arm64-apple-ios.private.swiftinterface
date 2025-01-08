@@ -136,6 +136,11 @@ public protocol NetRequest {
   var domainHost: Swift.String? { get }
   associatedtype Response : AJLibrary.NetDecodable
 }
+@objc @_inheritsConvenienceInitializers @objcMembers public class UploadNotifyModel : AJLibrary.ResultModel {
+  @objc public var resourceUrl: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
 public let kLoginAuthData: Swift.String
 public enum LoginType : Swift.String {
   case moblie
@@ -363,7 +368,7 @@ public let FetchInfosApi: Swift.String
   public func cloudStorageSetting(_ deviceId: Swift.String, enable: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], expireAt: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func setCameraSnapshot(_ deviceId: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func getUploadToken(_ deviceId: Swift.String, resourceType: Swift.String, complete: @escaping (AJLibrary.RscUploadTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func uploadNotify(_ deviceId: Swift.String, resourceType: Swift.String, resourceId: Swift.String, fileName: Swift.String, viewAngle: Swift.String, context: Swift.String, storageMode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func uploadNotify(_ deviceId: Swift.String, resourceType: Swift.String, resourceId: Swift.String, fileName: Swift.String, viewAngle: Swift.String, context: Swift.String, storageMode: Swift.String, complete: @escaping (AJLibrary.UploadNotifyModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getSecToken(_ deviceId: Swift.String, reqType: Swift.String, quality: Swift.String, complete: @escaping (AJLibrary.LiveSecToken?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func ptzControl(_ deviceId: Swift.String, action: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func viewAngleConfig(_ deviceId: Swift.String, viewAngle: Swift.String, name: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -408,6 +413,7 @@ public let FetchInfosApi: Swift.String
   @objc public func BatterySingleWakeUp(_ deviceId: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func alarmRekConfig(_ deviceId: Swift.String, humanoid: Swift.String, package: Swift.String, pet: Swift.String, vehicle: Swift.String, pnmO1: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func fastBind(_ deviceId: Swift.String, bindToken: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func feedTonesConfig(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class AddDeviceModel : ObjectiveC.NSObject {
@@ -759,7 +765,7 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CameraModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CameraModel : AJLibrary.ResultModel {
   @objc public var autoHibernateConfig: AJLibrary.AutoHibernateConfig?
   @objc public var base: AJLibrary.BaseSetting?
   @objc public var capability: AJLibrary.WCapability?
@@ -792,6 +798,7 @@ public let FetchInfosApi: Swift.String
   @objc public var floodlightConfig: AJLibrary.FloodlightConfig?
   @objc public var sirenConfig: AJLibrary.SirenConfig?
   @objc public var protectionPlan: AJLibrary.ProtectionPlan?
+  @objc public var feedTonesConfig: AJLibrary.FeedTonesConfig?
   @objc public var feedTimingConfig: AJLibrary.feedTimingConfig?
   @objc public var feedConfig: AJLibrary.feedConfig?
   @objc public var privateRegionConfig: AJLibrary.PrivateRegionConfig?
@@ -801,16 +808,16 @@ public let FetchInfosApi: Swift.String
   @objc public var alarmRekConfig: AJLibrary.AlarmRekConfig?
   @objc public func isCloudEnable() -> Swift.Bool
   public func batteryCapacity() -> Swift.Int?
-  public func homeBatteryChargingAnimationName() -> Swift.String
-  public func settingBatteryChargingAnimationName() -> Swift.String
-  public func settingWifiSignalImage() -> UIKit.UIImage?
-  public func settingHeaderNetworkImage() -> UIKit.UIImage?
-  public func settingHeaderNetworkString() -> Swift.String?
+  @objc public func homeBatteryChargingAnimationName() -> Swift.String
+  @objc public func settingBatteryChargingAnimationName() -> Swift.String
+  @objc public func settingWifiSignalImage() -> UIKit.UIImage?
+  @objc public func settingHeaderNetworkImage() -> UIKit.UIImage?
+  @objc public func settingHeaderNetworkString() -> Swift.String?
   @objc public func floatingSignalImage_4G() -> UIKit.UIImage?
-  public func homeNetworkImage() -> UIKit.UIImage?
+  @objc public func homeNetworkImage() -> UIKit.UIImage?
   @objc public func playerNetworkImage() -> UIKit.UIImage?
   @objc public func homeWifiSignalImage() -> UIKit.UIImage?
-  public func wifiSignalStrengthString() -> Swift.String?
+  @objc public func wifiSignalStrengthString() -> Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -834,6 +841,16 @@ public let FetchInfosApi: Swift.String
 @objc @_inheritsConvenienceInitializers public class feedConfig : AJLibrary.ResultModel {
   @objc public var feedRemain: Swift.String?
   @objc public var lastUpdate: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class FeedTonesConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SirenSoundDesModel : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1307,6 +1324,8 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   @objc public func rejectReceiveNewShare(_ deviceId: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func reviceSharedCamera(_ deviceId: Swift.String, senderUid: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func getShareReceiveInfo(_ complete: (([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func feedTimingConfig(_ deviceId: Swift.String, timings: [AJLibrary.timingsModel], complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func feedTonesConfig(_ deviceId: Swift.String, params: [Swift.String : Any], complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1689,8 +1708,20 @@ extension AJLibrary.Help where Base == Swift.Int64 {
   @objc deinit
 }
 public typealias EditBlock = (_ isEditing: Swift.Bool) -> ()
+@objc public enum UploadResourceType : Swift.Int {
+  case CamViewAngle = 1
+  case SirenSound = 2
+  case FeedTone = 3
+  case SoothingTone = 4
+  public func stringValue() -> Swift.String
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @objc @_inheritsConvenienceInitializers public class UploadManager : ObjectiveC.NSObject {
-  @objc public static func uploadFile(_ deviceId: Swift.String, ageleNum: Swift.String, resourceType: Swift.String = "cam-viewangle", filePath: Swift.String, complete: @escaping (Swift.String?) -> ())
+  @objc public static func uploadFile(_ deviceId: Swift.String, resourceType: AJLibrary.UploadResourceType, filePath: Swift.String, complete: @escaping (AJLibrary.UploadNotifyModel?, AJLibrary.ErrorModel?) -> ())
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2697,7 +2728,7 @@ public let TextFieldTableViewCellId: Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class WCapability : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class WCapability : AJLibrary.ResultModel {
   @objc public var audioSample: Swift.String?
   @objc public var autoTrack: Swift.Bool
   @objc public var battery: Swift.String?
@@ -2719,6 +2750,8 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var dualLensZoomVerge: Swift.String?
   @objc public var streams: Swift.String?
   @objc public var voiceDetect: Swift.String?
+  @objc public var feedingTimingLimit: Swift.String?
+  @objc public var feedTone: Swift.String?
   @objc public var privLiveStream: Swift.String?
   @objc public var onvif: Swift.Bool
   @objc public var mic: Swift.Bool
@@ -2736,6 +2769,7 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var floodlightBrightCtrl: Swift.Bool
   @objc public var floodlightTimeCtrl: Swift.Bool
   @objc public var siren: Swift.Bool
+  @objc public var feeding: Swift.Bool
   @objc public var genAlarmThumb: Swift.Bool
   @objc public var localStorFullDay: Swift.Bool
   @objc public var cloudStorFullDay: Swift.Bool
@@ -2757,18 +2791,18 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var soundDetect: Swift.Bool
   @objc public var lpRetriggerIntervalType: Swift.Bool
   @objc public var lvs1Qualities: Swift.String?
-  public func haveInsideCognitiveHumanoid() -> Swift.Bool
-  public func lvsQualitiesArr() -> [AJLibrary.QualityModel]
-  public func haveInsideCognitiveVehicle() -> Swift.Bool
-  public func haveInsideCognitivePet() -> Swift.Bool
-  public func haveInsideCognitivePackage() -> Swift.Bool
-  public func supportOSD() -> Swift.Bool
+  @objc public func haveInsideCognitiveHumanoid() -> Swift.Bool
+  @objc public func lvsQualitiesArr() -> [AJLibrary.QualityModel]
+  @objc public func haveInsideCognitiveVehicle() -> Swift.Bool
+  @objc public func haveInsideCognitivePet() -> Swift.Bool
+  @objc public func haveInsideCognitivePackage() -> Swift.Bool
+  @objc public func supportOSD() -> Swift.Bool
   @objc public func supportSims() -> Swift.Bool
-  public func alarmMediaTypesSupportVideoAndImageConfig() -> Swift.Bool
-  public func qualitiesArr() -> [AJLibrary.QualityModel]
+  @objc public func alarmMediaTypesSupportVideoAndImageConfig() -> Swift.Bool
+  @objc public func qualitiesArr() -> [AJLibrary.QualityModel]
   @objc public func creatQualitiesArr(qualitiesStr: Swift.String) -> [AJLibrary.QualityModel]
-  public func isEthernetCamera() -> Swift.Bool
-  public func supportTf() -> Swift.Bool
+  @objc public func isEthernetCamera() -> Swift.Bool
+  @objc public func supportTf() -> Swift.Bool
   @objc public func isOldLightDevice() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
@@ -2897,6 +2931,17 @@ extension AJLibrary.TSDownloader {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class SliderItem : AJLibrary.CommonTableItem {
+  public var sliderValueChangedExecute: ((Swift.Int) -> Swift.Void)?
+  public var sliderTouchUpInsideExecute: ((Swift.Int) -> Swift.Void)?
+  public var index: Swift.Int
+  public var minimumValueImage: UIKit.UIImage?
+  public var minimumImageExecute: (() -> Swift.Void)?
+  public var maximumValueImage: UIKit.UIImage?
+  public var maximumImageExecute: (() -> Swift.Void)?
+  public var gradeImages: [UIKit.UIImage?]
+  public var sliderEnable: Swift.Bool
+  public var showGearsView: Swift.Bool
+  public var maxCount: Swift.UInt
   @objc override dynamic public init()
   @objc deinit
 }
@@ -3787,6 +3832,9 @@ extension AJLibrary.BleSendStatus : Swift.RawRepresentable {}
 extension AJLibrary.DownloadStatus : Swift.Equatable {}
 extension AJLibrary.DownloadStatus : Swift.Hashable {}
 extension AJLibrary.DownloadStatus : Swift.RawRepresentable {}
+extension AJLibrary.UploadResourceType : Swift.Equatable {}
+extension AJLibrary.UploadResourceType : Swift.Hashable {}
+extension AJLibrary.UploadResourceType : Swift.RawRepresentable {}
 extension AJLibrary.NetEntrance : Swift.Equatable {}
 extension AJLibrary.NetEntrance : Swift.Hashable {}
 extension AJLibrary.NetConfigurationType : Swift.Equatable {}

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *ssid;
 @property (nonatomic, assign) BOOL open;
-@property (nonatomic, assign) NSInteger signal;
+@property (nonatomic, assign) NSInteger signal; // 信号强度
 
 @end
 

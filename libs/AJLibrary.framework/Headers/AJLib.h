@@ -63,6 +63,8 @@
 #import <AJLibrary/BleCmdInfoModel.h>
 #import <AJLibrary/BleTaskSender.h>
 #import <AJLibrary/BluetoothManager.h>
+#import <AJLibrary/AJFeedTonesConfigModel.h>
+#import <AJLibrary/AJUploadNotifyModel.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
