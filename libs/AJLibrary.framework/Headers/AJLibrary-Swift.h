@@ -1498,6 +1498,19 @@ SWIFT_CLASS_NAMED("CountryModel")
 @end
 
 
+SWIFT_CLASS("_TtC9AJLibrary19CustomSoundDesModel")
+@interface CustomSoundDesModel : ResultModel <NSCopying>
+@property (nonatomic, copy) NSString * _Nullable name;
+@property (nonatomic, copy) NSString * _Nullable autype;
+@property (nonatomic, copy) NSString * _Nullable url;
+@property (nonatomic, copy) NSString * _Nullable memo;
+@property (nonatomic, copy) NSString * _Nullable rects;
+@property (nonatomic, copy) NSString * _Nullable lang;
+- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC9AJLibrary5Czech")
 @interface Czech : SupportLanguage
@@ -1810,6 +1823,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 SWIFT_CLASS("_TtC9AJLibrary15FeedTonesConfig")
 @interface FeedTonesConfig : ResultModel <NSCopying>
+@property (nonatomic, copy) NSString * _Nullable curToneGroup;
+@property (nonatomic, copy) NSString * _Nullable curToneName;
+@property (nonatomic, copy) NSArray<CustomSoundDesModel *> * _Nullable customs;
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2605,13 +2621,6 @@ SWIFT_CLASS("_TtC9AJLibrary11SirenConfig")
 @interface SirenConfig : ResultModel
 @property (nonatomic, copy) NSString * _Nonnull toggle;
 @property (nonatomic, strong) AutoPolicy * _Nullable autoPolicy;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC9AJLibrary18SirenSoundDesModel")
-@interface SirenSoundDesModel : ResultModel <NSCopying>
-- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

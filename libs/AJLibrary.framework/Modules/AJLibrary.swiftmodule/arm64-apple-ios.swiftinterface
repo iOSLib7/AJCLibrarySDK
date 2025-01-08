@@ -833,28 +833,37 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class feedTimingConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class feedTimingConfig : AJLibrary.ResultModel {
   @objc public var timings: [AJLibrary.timingsModel]?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class feedConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class feedConfig : AJLibrary.ResultModel {
   @objc public var feedRemain: Swift.String?
   @objc public var lastUpdate: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class FeedTonesConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class FeedTonesConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var curToneGroup: Swift.String?
+  @objc public var curToneName: Swift.String?
+  @objc public var customs: [AJLibrary.CustomSoundDesModel]?
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class SirenSoundDesModel : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CustomSoundDesModel : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var name: Swift.String?
+  @objc public var autype: Swift.String?
+  @objc public var url: Swift.String?
+  @objc public var memo: Swift.String?
+  @objc public var rects: Swift.String?
+  @objc public var lang: Swift.String?
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class timingsModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class timingsModel : AJLibrary.ResultModel {
   @objc public var no: Swift.String?
   @objc public var enable: Swift.String?
   @objc public var type: Swift.String?
@@ -866,7 +875,7 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class feedLogsModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class feedLogsModel : AJLibrary.ResultModel {
   @objc public var feedLogs: [AJLibrary.feedLogModel]?
   @objc public var ctime: Swift.String?
   @objc required dynamic public init()
@@ -902,7 +911,10 @@ public enum AutoLightMode : Swift.String {
 }
 @objc @_inheritsConvenienceInitializers public class FloodlightConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var toggle: Swift.String
+  public var `switch`: Swift.String
   @objc public var brightness: Swift.String
+  public var autoPolicy: AJLibrary.AutoPolicy?
+  public var timePolicies: [AJLibrary.TimePolicy]?
   @objc public func timePolice1() -> AJLibrary.TimePolicy?
   @objc public func timePolice2() -> AJLibrary.TimePolicy?
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
