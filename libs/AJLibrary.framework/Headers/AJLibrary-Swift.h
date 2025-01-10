@@ -645,6 +645,7 @@ SWIFT_CLASS("_TtC9AJLibrary14AlarmRekConfig")
 @property (nonatomic) BOOL rekPet;
 @property (nonatomic) BOOL rekVehicle;
 @property (nonatomic) BOOL __persistent;
+/// 云端标志位，绑定后是否设置过AI 套餐的 alarm
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -986,45 +987,80 @@ SWIFT_CLASS("_TtC9AJLibrary16CameraInfomation")
 SWIFT_CLASS("_TtC9AJLibrary11CameraModel")
 @interface CameraModel : ResultModel
 @property (nonatomic, strong) AutoHibernateConfig * _Nullable autoHibernateConfig;
+/// 定时休眠
 @property (nonatomic, strong) BaseSetting * _Nullable base;
+/// 设备基本信息
 @property (nonatomic, strong) WCapability * _Nullable capability;
+/// 设备能力集
 @property (nonatomic, strong) StreamConfig * _Nullable streamConfig;
 @property (nonatomic, strong) LivePolicy * _Nullable livePolicy;
 @property (nonatomic, strong) LocalAccountConfig * _Nullable localAccountConfig;
+/// 本地账号设置
 @property (nonatomic, strong) NetworkConfig * _Nullable networkConfig;
+/// 网络配置
 @property (nonatomic, strong) ViewAnglesConfig * _Nullable viewAnglesConfig;
+/// 视角
 @property (nonatomic, strong) LocalStorConfig * _Nullable localStorConfig;
+/// 本地存储
 @property (nonatomic, strong) MonitorConfig * _Nullable moveMonitorConfig;
+/// 移动告警
 @property (nonatomic, strong) MotionDetectConfig * _Nullable motionDetectConfig;
+/// 移动检测
 @property (nonatomic, strong) MonitorConfig * _Nullable soundMonitorConfig;
+/// 声音告警监测
 @property (nonatomic, strong) CloudStorConfig * _Nullable cloudStorConfig;
+/// 云存储配置
 @property (nonatomic, strong) CloudStorPlan * _Nullable cloudStorPlan;
+/// 云存套餐
 @property (nonatomic, strong) AudioConfig * _Nullable audioConfig;
+/// 麦克风扬声器配置
 @property (nonatomic, strong) PictureConfig * _Nullable pictureConfig;
 @property (nonatomic, strong) TimeConfig * _Nullable timeConfig;
+/// 时区配置
 @property (nonatomic, strong) TfCardConfig * _Nullable tfcardConfig;
+/// TF卡配置
 @property (nonatomic, strong) IndicatorLightConfig * _Nullable indicatorLightConfig;
+/// 指示灯配置
 @property (nonatomic, strong) OnvifConfig * _Nullable onvifConfig;
+/// Onvif 配置
 @property (nonatomic, strong) NewFwversionModel * _Nullable newFwversion;
+/// 固件更新
 @property (nonatomic, strong) ActionDetectConfig * _Nullable actionDetectConfig;
+/// 动作探测配置
 @property (nonatomic, strong) LightingFreqConfig * _Nullable lightingFreqConfig;
+/// 照明频率
 @property (nonatomic, strong) HibernateConfig * _Nullable hibernateConfig;
+/// 摄像机开关 ON/OFF
 @property (nonatomic, strong) PelcoConfig * _Nullable pelcoConfig;
+/// PELCO配置
 @property (nonatomic, strong) DetectionsConfig * _Nullable detectionsConfig;
+/// 移动检测灵敏度等级和检测区域配置
 @property (nonatomic, strong) RtspConfig * _Nullable rtspConfig;
+/// RTSP 配置
 @property (nonatomic, strong) BatteryConfig * _Nullable batteryConfig;
 @property (nonatomic, strong) PirConfig * _Nullable pirConfig;
+/// PIR配置
 @property (nonatomic, strong) FloodlightConfig * _Nullable floodlightConfig;
+/// 灯光与夜视配置
 @property (nonatomic, strong) SirenConfig * _Nullable sirenConfig;
 @property (nonatomic, strong) ProtectionPlan * _Nullable protectionPlan;
+/// 保护计划
 @property (nonatomic, strong) FeedTonesConfig * _Nullable feedTonesConfig;
+/// 喂食声音配置
 @property (nonatomic, strong) feedTimingConfig * _Nullable feedTimingConfig;
+/// 喂食计划设置
 @property (nonatomic, strong) feedConfig * _Nullable feedConfig;
+/// 喂食配置
 @property (nonatomic, strong) PrivateRegionConfig * _Nullable privateRegionConfig;
+/// 隐私区域配置
 @property (nonatomic, strong) NightVisionConfig * _Nullable nightVisionConfig;
+/// 夜视配置（旧设备，暂时不用）
 @property (nonatomic, strong) NightVisionConfig * _Nullable nightVision2Config;
+/// 夜视配置
 @property (nonatomic, strong) TrackConfig * _Nullable trackConfig;
+/// 自动跟踪
 @property (nonatomic, strong) AlarmRekConfig * _Nullable alarmRekConfig;
+/// 人形侦测
 - (BOOL)isCloudEnable SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)homeBatteryChargingAnimationName SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)settingBatteryChargingAnimationName SWIFT_WARN_UNUSED_RESULT;
@@ -2178,8 +2214,11 @@ SWIFT_CLASS("_TtC9AJLibrary13MonitorConfig")
 SWIFT_CLASS("_TtC9AJLibrary18MotionDetectConfig")
 @interface MotionDetectConfig : ResultModel <NSCopying>
 @property (nonatomic) NSInteger pirDetectRange;
+/// 探测距离等级
 @property (nonatomic) NSInteger pirLingerDuration;
+/// 逗留时长
 @property (nonatomic) NSInteger retriggerInterval;
+/// 重新触发间隔时间
 @property (nonatomic) NSInteger susceptiveness;
 - (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -2270,8 +2309,6 @@ SWIFT_CLASS_NAMED("OauthModel")
 @property (nonatomic, strong) IdentModel * _Nullable ident;
 @property (nonatomic, copy) NSString * _Nullable uid;
 @property (nonatomic) NSInteger regTime;
-@property (nonatomic, copy) NSString * _Nullable bizFlag;
-/// 是否存在私有云的数据
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)accountRegion SWIFT_WARN_UNUSED_RESULT;

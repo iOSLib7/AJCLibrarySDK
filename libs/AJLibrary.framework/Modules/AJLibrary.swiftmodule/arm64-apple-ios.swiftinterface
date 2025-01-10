@@ -2919,7 +2919,6 @@ extension UIKit.UILabel {
   @objc public var regTime: Swift.Int
   public var refreshExpiresTmp: Swift.Int?
   public var accessExpiresTmp: Swift.Int?
-  @objc public var bizFlag: Swift.String?
   @objc public func accountRegion() -> Swift.String?
   @objc public func isChinaAccount() -> Swift.Bool
   public func getAlly(_ loginType: AJLibrary.LoginType = Login.getAccountLoginType()) -> AJLibrary.AllyModel?
