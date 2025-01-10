@@ -419,6 +419,9 @@ SWIFT_CLASS("_TtC9AJLibrary12AJLibManager")
 @interface AJLibManager : BaseNetManager
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJLibManager * _Nonnull shared;)
 + (AJLibManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
++ (void)sdkInit:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
++ (void)fastSignIn:(NSString * _Nonnull)allyName allyToken:(NSString * _Nonnull)allyToken account:(NSString * _Nonnull)account success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
++ (void)logout;
 - (void)sdkInit:(NSString * _Nonnull)vendorCode;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2267,6 +2270,8 @@ SWIFT_CLASS_NAMED("OauthModel")
 @property (nonatomic, strong) IdentModel * _Nullable ident;
 @property (nonatomic, copy) NSString * _Nullable uid;
 @property (nonatomic) NSInteger regTime;
+@property (nonatomic, copy) NSString * _Nullable bizFlag;
+/// 是否存在私有云的数据
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)accountRegion SWIFT_WARN_UNUSED_RESULT;
@@ -2303,6 +2308,27 @@ SWIFT_CLASS("_TtC9AJLibrary10OrderModel")
 @property (nonatomic, copy) NSString * _Nullable validTsStart;
 @property (nonatomic, copy) NSString * _Nullable validTsEnd;
 @property (nonatomic, copy) NSString * _Nullable name;
+- (BOOL)isFullTimeOrder SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isFromAjcard SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isIpcType SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isTrialPlan SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isPrepay SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isSubscription SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isValid SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isReallyCancelled SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isInUseCanceled SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isExpired SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isAiPlan SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)orderPrice SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)orderUnit SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)subscriptionUnit SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)startTimeWithFormatter:(NSString * _Nonnull)formatter SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)validTsEndTime SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)validityPeriod SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)leftMaturityDays SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)imageString SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)backSmallBasicImageString SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)planName SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

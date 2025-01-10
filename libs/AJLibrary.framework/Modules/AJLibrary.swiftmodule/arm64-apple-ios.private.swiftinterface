@@ -147,6 +147,7 @@ public enum LoginType : Swift.String {
   case email
   case apple
   case wechat
+  case sdk
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1241,6 +1242,9 @@ extension Swift.Array {
 public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
 @objc @_inheritsConvenienceInitializers public class AJLibManager : AJLibrary.BaseNetManager {
   @objc public static let shared: AJLibrary.AJLibManager
+  @objc public static func sdkInit(_ appKey: Swift.String, appSecret: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
+  @objc public static func fastSignIn(_ allyName: Swift.String, allyToken: Swift.String, account: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
+  @objc public static func logout()
   @objc public func sdkInit(_ vendorCode: Swift.String)
   @objc override dynamic public init()
   @objc deinit
@@ -2392,6 +2396,7 @@ public let AccountActiveApi: Swift.String
 public let FastSignInApi: Swift.String
 public let FastSignInAccountNodeApi: Swift.String
 public let AccountNodeApi: Swift.String
+public let SDKInitApi: Swift.String
 public let SDKVersion: Swift.String
 @objc @_inheritsConvenienceInitializers public class BaseNetManager : ObjectiveC.NSObject {
   public func modelName() -> Swift.String
@@ -2914,6 +2919,7 @@ extension UIKit.UILabel {
   @objc public var regTime: Swift.Int
   public var refreshExpiresTmp: Swift.Int?
   public var accessExpiresTmp: Swift.Int?
+  @objc public var bizFlag: Swift.String?
   @objc public func accountRegion() -> Swift.String?
   @objc public func isChinaAccount() -> Swift.Bool
   public func getAlly(_ loginType: AJLibrary.LoginType = Login.getAccountLoginType()) -> AJLibrary.AllyModel?
@@ -3337,7 +3343,7 @@ public enum OrderStatusEnum : Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class OrderModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class OrderModel : AJLibrary.ResultModel {
   @objc public var product: AJLibrary.ProductModel?
   @objc public var status: Swift.String?
   @objc public var payMode: Swift.String?
@@ -3346,28 +3352,28 @@ public enum OrderStatusEnum : Swift.String {
   @objc public var validTsStart: Swift.String?
   @objc public var validTsEnd: Swift.String?
   @objc public var name: Swift.String?
-  public func isFullTimeOrder() -> Swift.Bool
-  public func isFromAjcard() -> Swift.Bool
-  public func isIpcType() -> Swift.Bool
-  public func isTrialPlan() -> Swift.Bool
-  public func isPrepay() -> Swift.Bool
-  public func isSubscription() -> Swift.Bool
-  public func isValid() -> Swift.Bool
-  public func isReallyCancelled() -> Swift.Bool
-  public func isInUseCanceled() -> Swift.Bool
-  public func isExpired() -> Swift.Bool
-  public func isAiPlan() -> Swift.Bool
+  @objc public func isFullTimeOrder() -> Swift.Bool
+  @objc public func isFromAjcard() -> Swift.Bool
+  @objc public func isIpcType() -> Swift.Bool
+  @objc public func isTrialPlan() -> Swift.Bool
+  @objc public func isPrepay() -> Swift.Bool
+  @objc public func isSubscription() -> Swift.Bool
+  @objc public func isValid() -> Swift.Bool
+  @objc public func isReallyCancelled() -> Swift.Bool
+  @objc public func isInUseCanceled() -> Swift.Bool
+  @objc public func isExpired() -> Swift.Bool
+  @objc public func isAiPlan() -> Swift.Bool
   public func orderStatus() -> AJLibrary.OrderStatusEnum
-  public func orderPrice() -> Swift.String
-  public func orderUnit() -> Swift.String
-  public func subscriptionUnit() -> Swift.String
-  public func startTime(formatter: Swift.String) -> Swift.String
-  public func validTsEndTime() -> Swift.String?
-  public func validityPeriod() -> Swift.String
-  public func leftMaturityDays() -> Swift.String
-  public func imageString() -> Swift.String
-  public func backSmallBasicImageString() -> Swift.String
-  public func planName() -> Swift.String
+  @objc public func orderPrice() -> Swift.String
+  @objc public func orderUnit() -> Swift.String
+  @objc public func subscriptionUnit() -> Swift.String
+  @objc public func startTime(formatter: Swift.String) -> Swift.String
+  @objc public func validTsEndTime() -> Swift.String?
+  @objc public func validityPeriod() -> Swift.String
+  @objc public func leftMaturityDays() -> Swift.String
+  @objc public func imageString() -> Swift.String
+  @objc public func backSmallBasicImageString() -> Swift.String
+  @objc public func planName() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }

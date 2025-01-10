@@ -68,6 +68,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface AJLib : NSObject
 
 /**
@@ -75,6 +76,54 @@ NS_ASSUME_NONNULL_BEGIN
 */
 + (instancetype)shared;
 
+///用户是否已登录
+@property(nonatomic,readonly) BOOL isLogin;
+
+///当前用户的账号信息，登录时的account
+@property(nonatomic,strong,readonly)NSString *userAccount;
+
+
+/**
+ *    核心库必须调用的方法，通过SDK发布方提供的鉴权数据正常完成初始化
+ *
+ *    @param     securityID          SDK库鉴权ID
+ *    @param     securityKey       SDK库鉴权码
+ *    @param     success                成功 回调
+ *    @param     failure                失败回调
+ */
++ (void)asyncInit:(NSString *)securityID
+      securityKey:(NSString *)securityKey
+          success:(nullable void (^)(void))success
+          failure:(nullable void (^)(AJError *))failure;
+
+
+/**
+ *    核心库必须调用的方法，用户必须用与SDK发布方协商生成的合法allyToken进行注册鉴权，才能正常使用库的其他功能。
+ *
+ *    @param     allyName       用户名
+ *    @param     allyToken     用户鉴权令牌
+ *    @param     sub        trueID登录返回的sub
+ *    @param     success          成功 回调
+ *    @param     failure          失败回调
+ */
++ (void)signIn:(NSString *)allyName
+     allyToken:(NSString *)allyToken
+       account:(NSString *)sub
+       success:(nullable void (^)(void))success
+       failure:(nullable void (^)(AJError *))failure;
+
+
+/**
+ *    退出
+ *
+ */
++ (void)logout;
+
+/**
+ *   登录状态改变（需要返回登录页面）
+ *
+ */
+- (void)setLoginStatusChangeBlock:(nullable void (^)(AJLoginStatus status))block;
 
 /**
  *    核心库必须调用的方法，通过SDK发布方提供的供应商码正常完成初始化
