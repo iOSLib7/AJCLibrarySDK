@@ -17,7 +17,6 @@ import CoreLocation
 import CoreMedia
 import CoreTelephony
 import FCUUID
-import FirebaseMessaging
 import Foundation
 import HandyJSON
 import LocalAuthentication
