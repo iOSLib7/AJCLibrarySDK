@@ -17,7 +17,6 @@ import CoreLocation
 import CoreMedia
 import CoreTelephony
 import FCUUID
-import FirebaseCore
 import FirebaseMessaging
 import Foundation
 import HandyJSON
@@ -1210,6 +1209,15 @@ extension UIKit.UIView {
   @_Concurrency.MainActor @preconcurrency open func setComment()
   @objc deinit
 }
+public enum PushType : Swift.String {
+  case AMS
+  case FCM
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class GeneralSetViewController : AJLibrary.UIBaseTableViewController {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
@@ -1221,17 +1229,19 @@ extension UIKit.UIView {
 @objc @_inheritsConvenienceInitializers public class ApnsManager : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.ApnsManager
   public var notiTimeStamp: Swift.String?
+  @objc public var pushToken: Swift.String?
+  public var pushType: AJLibrary.PushType
   @objc public func handleApnsNotiReponse(_ notiResponse: UserNotifications.UNNotificationResponse)
+  @objc public func setPushType(_ type: Swift.String)
   public func showApnsDetail(_ apnsModel: AJLibrary.ApnsModel)
   public func handleInactiveNotificationInfo(_ userInfo: [Swift.AnyHashable : Any])
   public func showNotificationAlert(apnsModel: AJLibrary.ApnsModel)
   public func showLogoutAlert(_ title: Swift.String?, message: Swift.String?)
   public func kickout()
   @objc public func dismissPrevious(completion: (() -> ())? = nil)
-  @objc public func initPush(_ callback: ((Swift.String) -> ())? = nil)
-  @objc public func setFirebaseToken(_ deviceToken: Swift.String)
   public func registAPNS()
   public func reloadPushSetting()
+  @objc public func clearPushSetting()
   public func aliSendNotificationAck(_ data: [Swift.AnyHashable : Any]?)
   @objc override dynamic public init()
   @objc deinit
@@ -1589,7 +1599,7 @@ public enum FileFolder : Swift.String {
   public func fastLogout(_ username: Swift.String, allyName: Swift.String, allyToken: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func verifyCode(_ username: Swift.String, action: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func smsSignup(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func smsResetPassword(_ username: Swift.String, password: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func smsResetPassword(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func signupCheck(_ username: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func getCameraBindToken(deviceId: Swift.String?, prodName: Swift.String? = nil, complete: @escaping (AJLibrary.DeviceTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getCameraBindStatus(deviceId: Swift.String, complete: @escaping (AJLibrary.DeviceBindStatus?, AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1622,7 +1632,13 @@ public enum FileFolder : Swift.String {
   public func getShareSendInfo(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getShareReceiveInfo(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func baseNode(crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func accountNode(_ account: Swift.String, crCode: Swift.String, ctCode: Swift.String, action: Swift.String, accoutType: Swift.String, ext: [Swift.String : Swift.String]?, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func accountNode(_ account: Swift.String, crCode: Swift.String, ctCode: Swift.String, action: Swift.String, accoutType: Swift.String, ext: [Swift.String : Swift.String]?, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AJSubscribe : ObjectiveC.NSObject {
+  @objc public static let shared: AJLibrary.AJSubscribe
+  @objc public func subscribeVc() -> UIKit.UIViewController?
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class FwUpgradeView : UIKit.UIView {
@@ -2194,6 +2210,8 @@ public enum RequestResult {
 @objc @_inheritsConvenienceInitializers public class AccountManager : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.AccountManager
   @objc public func regist(_ username: Swift.String, password: Swift.String, accoutType: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func resetPassword(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, accoutType: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func smsResetPassword(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, accoutType: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func signIn(_ username: Swift.String, password: Swift.String, accoutType: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
@@ -2335,8 +2353,8 @@ public func takePhoto(_ stillImageOutput: AVFoundation.AVCaptureStillImageOutput
   @objc public var ipcCloudExpireUrl: Swift.String {
     @objc get
   }
-  public var ipcCloudPlanUrl: Swift.String {
-    get
+  @objc public var ipcCloudPlanUrl: Swift.String {
+    @objc get
   }
   @objc public var ipcCloudTrailLittleUrl: Swift.String {
     @objc get
@@ -3825,6 +3843,9 @@ extension AJLibrary.AutoLightMode : Swift.RawRepresentable {}
 extension AJLibrary.ShakeDirection : Swift.Equatable {}
 extension AJLibrary.ShakeDirection : Swift.Hashable {}
 extension AJLibrary.ShakeDirection : Swift.RawRepresentable {}
+extension AJLibrary.PushType : Swift.Equatable {}
+extension AJLibrary.PushType : Swift.Hashable {}
+extension AJLibrary.PushType : Swift.RawRepresentable {}
 extension AJLibrary.ImageType : Swift.Equatable {}
 extension AJLibrary.ImageType : Swift.Hashable {}
 extension AJLibrary.ImageType : Swift.RawRepresentable {}

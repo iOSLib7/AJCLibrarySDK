@@ -26,20 +26,27 @@ typedef enum : NSUInteger {
 */
 + (instancetype)shared;
 
-/**
- *    初始化推送参数
- */
-- (void)initPush;
 
 /**
- *    初始化推送参数，回调获取到的firebase的deivcetoken
+ *    配置阿里推送
+ *    @param     appKey               阿里推送申请的Appkey
+ *    @param     deviceId          CloudPushSDK.asyncInit初始化成功后，CloudPushSDK.getDeviceId()拿到的本机的deviceId (deviceId为推送系统的设备标识)
  */
-- (void)initPush:(nullable void (^)(NSString *))deviceToken;
+- (void)setAliPush:(NSString *)appKey deviceId:(NSString *)deviceId;
+
 
 /**
- *    设置firebase的pushtoken
+ *    配置Firebase推送
+ *    @param     fcmToken         didReceiveRegistrationToken 获取到的 fcmToken
  */
-- (void)setFirebasePushToken:(NSString *)deviceToken;
+- (void)setFirebasePush:(NSString *)fcmToken;
+
+
+/**
+ *    清除推送Token，不再推送
+ */
+- (void)removePushToken;
+
 
 /**
  *    处理推送消息

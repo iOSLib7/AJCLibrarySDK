@@ -506,6 +506,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSoftAPBind
 @end
 
 
+SWIFT_CLASS("_TtC9AJLibrary11AJSubscribe")
+@interface AJSubscribe : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSubscribe * _Nonnull shared;)
++ (AJSubscribe * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// 获取云存储订购页
+- (UIViewController * _Nullable)subscribeVc SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC9AJLibrary11ResultModel")
 @interface ResultModel : NSObject
@@ -527,6 +537,8 @@ SWIFT_CLASS("_TtC9AJLibrary14AccountManager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AccountManager * _Nonnull shared;)
 + (AccountManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (void)regist:(NSString * _Nonnull)username password:(NSString * _Nonnull)password accoutType:(NSString * _Nonnull)accoutType crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+- (void)resetPassword:(NSString * _Nonnull)username password:(NSString * _Nonnull)password crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode accoutType:(NSString * _Nonnull)accoutType complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+- (void)smsResetPassword:(NSString * _Nonnull)username password:(NSString * _Nonnull)password crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode accoutType:(NSString * _Nonnull)accoutType complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
 - (void)signIn:(NSString * _Nonnull)username password:(NSString * _Nonnull)password accoutType:(NSString * _Nonnull)accoutType crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -702,10 +714,11 @@ SWIFT_CLASS("_TtC9AJLibrary11ApnsManager")
 @interface ApnsManager : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ApnsManager * _Nonnull shared;)
 + (ApnsManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nullable pushToken;
 - (void)handleApnsNotiReponse:(UNNotificationResponse * _Nonnull)notiResponse;
+- (void)setPushType:(NSString * _Nonnull)type;
 - (void)dismissPreviousWithCompletion:(void (^ _Nullable)(void))completion;
-- (void)initPush:(void (^ _Nullable)(NSString * _Nonnull))callback SWIFT_METHOD_FAMILY(none);
-- (void)setFirebaseToken:(NSString * _Nonnull)deviceToken;
+- (void)clearPushSetting;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2239,6 +2252,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) NetAPI * _No
 @property (nonatomic, copy) NSString * _Nonnull devSdcName;
 @property (nonatomic, readonly, copy) NSString * _Nonnull ipcCloudTrailUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull ipcCloudExpireUrl;
+@property (nonatomic, readonly, copy) NSString * _Nonnull ipcCloudPlanUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull ipcCloudTrailLittleUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull ipcCloudExpireLittleUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull b2OriginalAPI;
@@ -3018,6 +3032,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UACNetManage
 /// \param complete complete
 ///
 - (void)logoutWithComplete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 国内重置密码
+/// \param username username
+///
+/// \param password password
+///
+/// \param complete complete
+///
+- (void)smsResetPassword:(NSString * _Nonnull)username password:(NSString * _Nonnull)password complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
 - (void)fetchDeviceList:(void (^ _Nonnull)(DevicesModel * _Nullable, ErrorModel * _Nullable))complete;
 /// 注销
 /// \param complete complete
@@ -3055,6 +3077,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UACNetManage
 /// \param complete complete
 ///
 - (void)getShareInvitesInfo:(NSString * _Nonnull)deviceId complete:(void (^ _Nonnull)(ShareUserInviteModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 基于账号获取节点信息
+/// \param complete complete
+///
+- (void)accountNode:(NSString * _Nonnull)account crCode:(NSString * _Nonnull)crCode ctCode:(NSString * _Nonnull)ctCode action:(NSString * _Nonnull)action accoutType:(NSString * _Nonnull)accoutType ext:(NSDictionary<NSString *, NSString *> * _Nullable)ext complete:(void (^ _Nonnull)(AccessNodeModel * _Nullable, ErrorModel * _Nullable))complete;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

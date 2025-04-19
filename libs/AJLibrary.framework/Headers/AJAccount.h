@@ -112,18 +112,36 @@ typedef NS_ENUM(NSInteger, AJLoginStatus) {
 
 
 
-/// 忘记密码
+/// 邮箱账号忘记密码
 /// - Parameters:
-///   - username: 用户名（邮箱 / 手机 - 国家码(4位)+ 手机号，例：008613712345678）
+///   - username: 用户名（邮箱）
 ///   - password: 密码
+///   - crCode: 国家码（例："CN"）
+///   - ctCode: 洲（例："CAS"）
 ///   - success: success
 ///   - failure: failure
-- (void)resetPassword:(NSString *)username
-             password:(NSString *)password
-              success:(nullable void (^)(void))success
-              failure:(nullable void (^)(AJError *))failure;
+- (void)emailResetPassword:(NSString *)username
+                  password:(NSString *)password
+                    crCode:(NSString *)crCode
+                    ctCode:(NSString *)ctCode
+                   success:(nullable void (^)(void))success
+                   failure:(nullable void (^)(AJError *))failure;
 
 
+/// 手机账号忘记密码（获取重置验证码）
+/// - Parameters:
+///   - username: 用户名（手机 - 国家码(4位)+ 手机号，例：008613712345678）
+///   - password: 密码
+///   - crCode: 国家码（例："CN"）
+///   - ctCode: 洲（例："CAS"）
+///   - success: success
+///   - failure: failure
+- (void)phoneResetPassword:(NSString *)username
+                  password:(NSString * _Nonnull)password
+                    crCode:(NSString *)crCode
+                    ctCode:(NSString *)ctCode
+                   success:(nullable void (^)(void))success
+                   failure:(nullable void (^)(AJError *))failure;
 
 
 /// 修改密码
