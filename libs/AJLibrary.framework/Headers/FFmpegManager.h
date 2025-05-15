@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ffmpegkit/FFmpegKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,12 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param completionBlock 执行结果 error 为nil时成功
  */
 -(void)executeCommand:(NSString *)command completionBlock:(void (^)(NSError *_Nullable error))completionBlock;
-    
+- (void)executeCommand:(NSString *)command
+           inputPath:(NSString *)inputPath
+         progressBlock:(void (^)(float progress))progressBlock
+       completionBlock:(void (^)(NSError * _Nullable error))completionBlock;
 -(void)stopRuning;
 
-//-(MediaInformation *)videoFileIsH265Hevc:(NSString *)videoPath;
-
-- (NSArray *)getStreams:(NSString *)videoPath;
+-(MediaInformation *)videoFileIsH265Hevc:(NSString *)videoPath;
 @end
 
 NS_ASSUME_NONNULL_END

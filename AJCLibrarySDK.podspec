@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJCLibrarySDK"
-  s.version      = "1.1.4"
+  s.version      = "1.1.6"
   s.summary      = "A short description of AJLibrary."
 
   s.description      = <<-DESC
@@ -61,7 +61,6 @@ s.platform     = :ios, '13.0'
   ss.dependency 'CHIPageControl'
   ss.dependency 'ZKCycleScrollView'
   ss.dependency 'MobileVLCKit', "~> 3.6.0"
-  ss.dependency 'mobile-ffmpeg-full', '~> 4.4'
   ss.dependency 'BabyBluetooth'
   
  end
