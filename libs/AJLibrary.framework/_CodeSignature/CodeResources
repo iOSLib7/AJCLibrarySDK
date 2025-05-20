@@ -26,7 +26,7 @@
 		</data>
 		<key>Frameworks/ffmpegkit.framework/ffmpegkit</key>
 		<data>
-		5tGbb0oHVq/2uj8jsr1GaN6Ak4M=
+		Kyt2VU/04HB5ss3vb30T/JU7CAY=
 		</data>
 		<key>Frameworks/ffmpegkit.framework/strip-frameworks.sh</key>
 		<data>
@@ -194,7 +194,7 @@
 		</data>
 		<key>Frameworks/libavcodec.framework/libavcodec</key>
 		<data>
-		5pXUQvsLQRmeOouQ9YiubL9RRuY=
+		qY53moNU8abEi1JqCr5rmATyrHE=
 		</data>
 		<key>Frameworks/libavdevice.framework/Info.plist</key>
 		<data>
@@ -210,7 +210,7 @@
 		</data>
 		<key>Frameworks/libavdevice.framework/libavdevice</key>
 		<data>
-		QYRdDHZXqiOpmkFxSIlUFCV5hR4=
+		UP2z7z4WYJ4OC8PbL2HP02q1K/c=
 		</data>
 		<key>Frameworks/libavfilter.framework/Info.plist</key>
 		<data>
@@ -226,7 +226,7 @@
 		</data>
 		<key>Frameworks/libavfilter.framework/libavfilter</key>
 		<data>
-		FXG9o+4VRe96kswY3QALoR4BrR4=
+		88+ZrV0259perXF6rZAT30Irkrk=
 		</data>
 		<key>Frameworks/libavformat.framework/Info.plist</key>
 		<data>
@@ -242,7 +242,7 @@
 		</data>
 		<key>Frameworks/libavformat.framework/libavformat</key>
 		<data>
-		rmnsnOWzDDijn4AdGR08HtaoaLs=
+		hjrcB7rJhHyAlSjaRNS+oBiV0Kg=
 		</data>
 		<key>Frameworks/libavutil.framework/Info.plist</key>
 		<data>
@@ -258,7 +258,7 @@
 		</data>
 		<key>Frameworks/libavutil.framework/libavutil</key>
 		<data>
-		v/hvnR7yEwcsOCE5nXnoMjNgcLE=
+		JRjYwACsRYMk5VaIk3fqC8AIb0g=
 		</data>
 		<key>Frameworks/libswresample.framework/Info.plist</key>
 		<data>
@@ -274,7 +274,7 @@
 		</data>
 		<key>Frameworks/libswresample.framework/libswresample</key>
 		<data>
-		JP1hYazZCwukWJGPe7RW8YUn5Wk=
+		1TwVg8lGi7wqZ0TZQ7GSQSAVBbM=
 		</data>
 		<key>Frameworks/libswscale.framework/Info.plist</key>
 		<data>
@@ -290,7 +290,7 @@
 		</data>
 		<key>Frameworks/libswscale.framework/libswscale</key>
 		<data>
-		SN7lO5u64TxVmD+mZ+eK9j6Javw=
+		9fT4MSMmRauYRSZrgPAz80SHnvM=
 		</data>
 		<key>Headers/AJAccount.h</key>
 		<data>
@@ -710,11 +710,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5tGbb0oHVq/2uj8jsr1GaN6Ak4M=
+			Kyt2VU/04HB5ss3vb30T/JU7CAY=
 			</data>
 			<key>hash2</key>
 			<data>
-			9Jh/u0EKJSs8UaL2YRAhdzHM86yGuLd/oTbaRKeSN5U=
+			d/7p0HzmoiXJ/Zf1p27hhf94T83lGHYXviD5WMTtJjk=
 			</data>
 		</dict>
 		<key>Frameworks/ffmpegkit.framework/strip-frameworks.sh</key>
@@ -1172,11 +1172,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5pXUQvsLQRmeOouQ9YiubL9RRuY=
+			qY53moNU8abEi1JqCr5rmATyrHE=
 			</data>
 			<key>hash2</key>
 			<data>
-			hIqon1g4Hu8DiIJZKytoaF/zL0AtyB9z7K9bcPfbBBA=
+			uNghLHHWgY5cF6vjGLOmR9Mg3NvIIM5fyCgJjhh0Rmo=
 			</data>
 		</dict>
 		<key>Frameworks/libavdevice.framework/Info.plist</key>
@@ -1216,11 +1216,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QYRdDHZXqiOpmkFxSIlUFCV5hR4=
+			UP2z7z4WYJ4OC8PbL2HP02q1K/c=
 			</data>
 			<key>hash2</key>
 			<data>
-			bU5cAyInbDMEUseYNZ9P5hmgUul5LSjWAuIwRttoM5c=
+			Z2Hr81//6DoMFcM5cZokDngRyX9Tntd4WzHKHsaUhqc=
 			</data>
 		</dict>
 		<key>Frameworks/libavfilter.framework/Info.plist</key>
@@ -1260,11 +1260,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FXG9o+4VRe96kswY3QALoR4BrR4=
+			88+ZrV0259perXF6rZAT30Irkrk=
 			</data>
 			<key>hash2</key>
 			<data>
-			IdYNltz7orKF3/u3OeMnGKt9UNH2Q2urR4VnoTpirpc=
+			Spj9ANZeK/d6n+pKl8hQhUFmpBBhVkY1SOdoLnOE7yw=
 			</data>
 		</dict>
 		<key>Frameworks/libavformat.framework/Info.plist</key>
@@ -1304,11 +1304,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rmnsnOWzDDijn4AdGR08HtaoaLs=
+			hjrcB7rJhHyAlSjaRNS+oBiV0Kg=
 			</data>
 			<key>hash2</key>
 			<data>
-			7joTE7ge7xVWfSVrokzAuBcq80niglokl5OvwAocNX0=
+			840QLq2anMcJKY68bdwBtV2+UaIgodcLEW8cG6eBxd0=
 			</data>
 		</dict>
 		<key>Frameworks/libavutil.framework/Info.plist</key>
@@ -1348,11 +1348,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v/hvnR7yEwcsOCE5nXnoMjNgcLE=
+			JRjYwACsRYMk5VaIk3fqC8AIb0g=
 			</data>
 			<key>hash2</key>
 			<data>
-			ADgSXusnDqg0JCDwEKTaWjuq4Tlv/U8t0Kga/RpyQ/c=
+			wTL59Dhpuk7p3IKAiVBK+5lHuELJ1FRJ0Z5Oxr7COSQ=
 			</data>
 		</dict>
 		<key>Frameworks/libswresample.framework/Info.plist</key>
@@ -1392,11 +1392,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JP1hYazZCwukWJGPe7RW8YUn5Wk=
+			1TwVg8lGi7wqZ0TZQ7GSQSAVBbM=
 			</data>
 			<key>hash2</key>
 			<data>
-			9xNHSNgovfs9tLwFnL2/l8zyjPU14ZOZLOTqv5K6Wao=
+			efSAzjjUMCiY0te8fVNRc+o4hdEGnoEPFK2sAuVqvro=
 			</data>
 		</dict>
 		<key>Frameworks/libswscale.framework/Info.plist</key>
@@ -1436,11 +1436,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SN7lO5u64TxVmD+mZ+eK9j6Javw=
+			9fT4MSMmRauYRSZrgPAz80SHnvM=
 			</data>
 			<key>hash2</key>
 			<data>
-			DmNeFYNDZvKOjmNII93GobA4MxKPEJ9gchms1cW3+9c=
+			ZkJBlP1H7YJKS8XOkZy2gCW1PsmTVjvhkAOLipqL0EU=
 			</data>
 		</dict>
 		<key>Headers/AJAccount.h</key>
