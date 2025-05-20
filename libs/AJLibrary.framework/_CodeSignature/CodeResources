@@ -26,7 +26,7 @@
 		</data>
 		<key>Frameworks/ffmpegkit.framework/ffmpegkit</key>
 		<data>
-		Kyt2VU/04HB5ss3vb30T/JU7CAY=
+		tPpTHWtmYhkn3dmtiiaaexXfRt4=
 		</data>
 		<key>Frameworks/ffmpegkit.framework/strip-frameworks.sh</key>
 		<data>
@@ -194,7 +194,7 @@
 		</data>
 		<key>Frameworks/libavcodec.framework/libavcodec</key>
 		<data>
-		qY53moNU8abEi1JqCr5rmATyrHE=
+		hvoPdl7JtJId6ZmutYmhbGF3WoY=
 		</data>
 		<key>Frameworks/libavdevice.framework/Info.plist</key>
 		<data>
@@ -210,7 +210,7 @@
 		</data>
 		<key>Frameworks/libavdevice.framework/libavdevice</key>
 		<data>
-		UP2z7z4WYJ4OC8PbL2HP02q1K/c=
+		oOi7haMTR/EHdUDc08zV81O9eLE=
 		</data>
 		<key>Frameworks/libavfilter.framework/Info.plist</key>
 		<data>
@@ -226,7 +226,7 @@
 		</data>
 		<key>Frameworks/libavfilter.framework/libavfilter</key>
 		<data>
-		88+ZrV0259perXF6rZAT30Irkrk=
+		iqRgW5Iwt/8nHy5BRclv0qdCsm0=
 		</data>
 		<key>Frameworks/libavformat.framework/Info.plist</key>
 		<data>
@@ -242,7 +242,7 @@
 		</data>
 		<key>Frameworks/libavformat.framework/libavformat</key>
 		<data>
-		hjrcB7rJhHyAlSjaRNS+oBiV0Kg=
+		xEwRKkSgNokYlbl+6W35LFtv0PQ=
 		</data>
 		<key>Frameworks/libavutil.framework/Info.plist</key>
 		<data>
@@ -258,7 +258,7 @@
 		</data>
 		<key>Frameworks/libavutil.framework/libavutil</key>
 		<data>
-		JRjYwACsRYMk5VaIk3fqC8AIb0g=
+		W4lkWcNlw150M0eSYkAUWudsJJU=
 		</data>
 		<key>Frameworks/libswresample.framework/Info.plist</key>
 		<data>
@@ -274,7 +274,7 @@
 		</data>
 		<key>Frameworks/libswresample.framework/libswresample</key>
 		<data>
-		1TwVg8lGi7wqZ0TZQ7GSQSAVBbM=
+		z4xIu3MYaSN36oRC19yRMJJ+jf4=
 		</data>
 		<key>Frameworks/libswscale.framework/Info.plist</key>
 		<data>
@@ -290,7 +290,7 @@
 		</data>
 		<key>Frameworks/libswscale.framework/libswscale</key>
 		<data>
-		9fT4MSMmRauYRSZrgPAz80SHnvM=
+		1BqMzJIDYDRfUMqy8OeFuSl2m7A=
 		</data>
 		<key>Headers/AJAccount.h</key>
 		<data>
@@ -482,7 +482,7 @@
 		</data>
 		<key>Headers/FFmpegManager.h</key>
 		<data>
-		rSK++wKnHNEFNYQ6CIiDmSIy+kU=
+		CKx1sQcOy+z7NzKpeX9Jhds+ROA=
 		</data>
 		<key>Headers/FeedRecordVC.h</key>
 		<data>
@@ -622,7 +622,7 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		u9+DCKQ8frbpFtShPVQjYTEX1v0=
+		ODw1fcJFl+W/7yvEv4mxeBJ+sKo=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -710,11 +710,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Kyt2VU/04HB5ss3vb30T/JU7CAY=
+			tPpTHWtmYhkn3dmtiiaaexXfRt4=
 			</data>
 			<key>hash2</key>
 			<data>
-			d/7p0HzmoiXJ/Zf1p27hhf94T83lGHYXviD5WMTtJjk=
+			KIt6/tcjH32sDMqWWDjiSIIpX93+Yfm0fvZp+lzRRa8=
 			</data>
 		</dict>
 		<key>Frameworks/ffmpegkit.framework/strip-frameworks.sh</key>
@@ -1172,11 +1172,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qY53moNU8abEi1JqCr5rmATyrHE=
+			hvoPdl7JtJId6ZmutYmhbGF3WoY=
 			</data>
 			<key>hash2</key>
 			<data>
-			uNghLHHWgY5cF6vjGLOmR9Mg3NvIIM5fyCgJjhh0Rmo=
+			3t4DhTyzoJs9Z3juQMDSie7pOctHnnE3tjdZysuorxw=
 			</data>
 		</dict>
 		<key>Frameworks/libavdevice.framework/Info.plist</key>
@@ -1216,11 +1216,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UP2z7z4WYJ4OC8PbL2HP02q1K/c=
+			oOi7haMTR/EHdUDc08zV81O9eLE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z2Hr81//6DoMFcM5cZokDngRyX9Tntd4WzHKHsaUhqc=
+			yH8JYc3dyemp5lXyhfcqBv5kjcUm+X6NUoyNHGbOEsg=
 			</data>
 		</dict>
 		<key>Frameworks/libavfilter.framework/Info.plist</key>
@@ -1260,11 +1260,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			88+ZrV0259perXF6rZAT30Irkrk=
+			iqRgW5Iwt/8nHy5BRclv0qdCsm0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Spj9ANZeK/d6n+pKl8hQhUFmpBBhVkY1SOdoLnOE7yw=
+			2EZoOz7pvJqQfC3Xe6n/LFhemDvWAkBFzMBrD50cXCw=
 			</data>
 		</dict>
 		<key>Frameworks/libavformat.framework/Info.plist</key>
@@ -1304,11 +1304,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hjrcB7rJhHyAlSjaRNS+oBiV0Kg=
+			xEwRKkSgNokYlbl+6W35LFtv0PQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			840QLq2anMcJKY68bdwBtV2+UaIgodcLEW8cG6eBxd0=
+			xWzxLDeMQzD+Hhf2tHzC1VoUNvcnt38KfAkZ7KSnj5g=
 			</data>
 		</dict>
 		<key>Frameworks/libavutil.framework/Info.plist</key>
@@ -1348,11 +1348,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JRjYwACsRYMk5VaIk3fqC8AIb0g=
+			W4lkWcNlw150M0eSYkAUWudsJJU=
 			</data>
 			<key>hash2</key>
 			<data>
-			wTL59Dhpuk7p3IKAiVBK+5lHuELJ1FRJ0Z5Oxr7COSQ=
+			T9k2y24qQ3HA4g+pr9pxpKbzXnnWYZSYsLAs/oYXBWM=
 			</data>
 		</dict>
 		<key>Frameworks/libswresample.framework/Info.plist</key>
@@ -1392,11 +1392,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1TwVg8lGi7wqZ0TZQ7GSQSAVBbM=
+			z4xIu3MYaSN36oRC19yRMJJ+jf4=
 			</data>
 			<key>hash2</key>
 			<data>
-			efSAzjjUMCiY0te8fVNRc+o4hdEGnoEPFK2sAuVqvro=
+			/GOcdPo2utzoQANAQua4LfKwvMr2x9OKYNLSmUwKcpM=
 			</data>
 		</dict>
 		<key>Frameworks/libswscale.framework/Info.plist</key>
@@ -1436,11 +1436,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9fT4MSMmRauYRSZrgPAz80SHnvM=
+			1BqMzJIDYDRfUMqy8OeFuSl2m7A=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZkJBlP1H7YJKS8XOkZy2gCW1PsmTVjvhkAOLipqL0EU=
+			ZQhEiMpjj5J69Wi4rse9d5ZeDVj+xITXu8AzzC3yqeM=
 			</data>
 		</dict>
 		<key>Headers/AJAccount.h</key>
@@ -1964,11 +1964,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rSK++wKnHNEFNYQ6CIiDmSIy+kU=
+			CKx1sQcOy+z7NzKpeX9Jhds+ROA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ij5RPkis+siEctAY6+KX4GbGEq+IwxiN1LwKCic//cQ=
+			juniYhmMi7i/32WyqJIuPe6CPdk/XPE15Ov7EKreTw0=
 			</data>
 		</dict>
 		<key>Headers/FeedRecordVC.h</key>
@@ -2338,11 +2338,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			u9+DCKQ8frbpFtShPVQjYTEX1v0=
+			ODw1fcJFl+W/7yvEv4mxeBJ+sKo=
 			</data>
 			<key>hash2</key>
 			<data>
-			shmAGpLePTFhZJFeO91uhIb1wYo7DyfS1R3J7Izsy6s=
+			6IM9XJxfE2pTJtP/mPQNUaSPoYseREhNZ2eRTHHwLm0=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>

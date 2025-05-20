@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ffmpegkit/FFmpegKit.h>
+//#import <ffmpegkit/FFmpegKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,7 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
        completionBlock:(void (^)(NSError * _Nullable error))completionBlock;
 -(void)stopRuning;
 
--(MediaInformation *)videoFileIsH265Hevc:(NSString *)videoPath;
+- (NSString *)getCodecName:(NSString *)videoPath;
+
+//-(MediaInformation *)videoFileIsH265Hevc:(NSString *)videoPath;
 @end
 
 NS_ASSUME_NONNULL_END
