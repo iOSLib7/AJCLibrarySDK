@@ -62,9 +62,9 @@ s.platform     = :ios, '13.0'
   ss.dependency 'ZKCycleScrollView'
   ss.dependency 'MobileVLCKit', "~> 3.6.0"
   ss.dependency 'BabyBluetooth'
+  ss.dependency 'ffmpeg-kit-ios-full-gpl', :git => 'https://github.com/iOSLib7/ffmpeg-kit-ios-full-gpl.git'
   
  end
-
 
 end
 
