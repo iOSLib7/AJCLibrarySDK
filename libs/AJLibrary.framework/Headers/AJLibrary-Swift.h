@@ -2245,6 +2245,11 @@ SWIFT_CLASS("_TtC9AJLibrary13MultiSdcModel")
 @end
 
 
+
+
+
+
+
 SWIFT_CLASS("_TtC9AJLibrary6NetAPI")
 @interface NetAPI : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) NetAPI * _Nonnull shared;)
@@ -3238,11 +3243,11 @@ SWIFT_CLASS("_TtC9AJLibrary12UIIconButton")
 
 
 
-
 @interface UIImage (SWIFT_EXTENSION(AJLibrary))
 + (UIImage * _Nullable)mixed_imageNamed:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)static_sdkimage:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 /// 图片在上文字在下

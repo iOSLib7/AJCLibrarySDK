@@ -36,7 +36,6 @@ s.platform     = :ios, '13.0'
   
   ss.libraries = "c++.1", "iconv", "z", "bz2.1.0"
 
-  ss.dependency 'HandyJSON', "~> 5.0.4-beta"
   ss.dependency 'Alamofire', '4.9.1'
   #ss.dependency 'Firebase/Crashlytics'
   #ss.dependency 'Firebase/Core'

@@ -18,7 +18,6 @@ import CoreMedia
 import CoreTelephony
 import FCUUID
 import Foundation
-import HandyJSON
 import LocalAuthentication
 import Lottie
 import MBProgressHUD
@@ -117,7 +116,7 @@ public enum NetHTTPMethod : Swift.String {
     get
   }
 }
-public protocol NetDecodable : HandyJSON.HandyJSON {
+public protocol NetDecodable : AJLibrary.HandyJSON {
   static func parse(json: Any) -> ((any AJLibrary.NetDecodable)?, AJLibrary.ErrorModel?)
 }
 extension AJLibrary.NetDecodable {
@@ -1376,7 +1375,7 @@ public enum InviteStatus : Swift.String {
     get
   }
 }
-@objc public enum DeviceModeType : Swift.Int, HandyJSON.HandyJSONEnum {
+@objc public enum DeviceModeType : Swift.Int, AJLibrary.HandyJSONEnum {
   case Camera = 1
   case Lock = 2
   case BatteryCamera = 3
@@ -2041,7 +2040,7 @@ public func GetImage(named: Swift.String) -> UIKit.UIImage?
 }
 @objc @_inheritsConvenienceInitializers open class ResultModel : ObjectiveC.NSObject, AJLibrary.NetDecodable {
   @objc override required dynamic public init()
-  open func mapping(mapper: HandyJSON.HelpingMapper)
+  open func mapping(mapper: AJLibrary.HelpingMapper)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class ViewCloudView : UIKit.UIView {
@@ -3231,6 +3230,204 @@ public struct WVRegex {
   public init(pattern: Swift.String)
   public func match(_ input: Swift.String) -> Swift.Bool
 }
+open class NSDecimalNumberTransform : AJLibrary.TransformType {
+  public typealias Object = Foundation.NSDecimalNumber
+  public typealias JSON = Swift.String
+  public init()
+  open func transformFromJSON(_ value: Any?) -> Foundation.NSDecimalNumber?
+  open func transformToJSON(_ value: Foundation.NSDecimalNumber?) -> Swift.String?
+  @objc deinit
+}
+open class EnumTransform<T> : AJLibrary.TransformType where T : Swift.RawRepresentable {
+  public typealias Object = T
+  public typealias JSON = T.RawValue
+  public init()
+  open func transformFromJSON(_ value: Any?) -> T?
+  open func transformToJSON(_ value: T?) -> T.RawValue?
+  @objc deinit
+}
+open class TransformOf<ObjectType, JSONType> : AJLibrary.TransformType {
+  public typealias Object = ObjectType
+  public typealias JSON = JSONType
+  public init(fromJSON: @escaping (JSONType?) -> ObjectType?, toJSON: @escaping (ObjectType?) -> JSONType?)
+  open func transformFromJSON(_ value: Any?) -> ObjectType?
+  open func transformToJSON(_ value: ObjectType?) -> JSONType?
+  @objc deinit
+}
+extension AJLibrary.HandyJSON {
+  public func toJSON() -> [Swift.String : Any]?
+  public func toJSONString(prettyPrint: Swift.Bool = false) -> Swift.String?
+}
+extension Swift.Collection where Self.Element : AJLibrary.HandyJSON {
+  public func toJSON() -> [[Swift.String : Any]?]
+  public func toJSONString(prettyPrint: Swift.Bool = false) -> Swift.String?
+}
+public protocol _Transformable : AJLibrary._Measurable {
+}
+extension AJLibrary.HandyJSON {
+  public static func deserialize(from dict: Foundation.NSDictionary?, designatedPath: Swift.String? = nil) -> Self?
+  public static func deserialize(from dict: [Swift.String : Any]?, designatedPath: Swift.String? = nil) -> Self?
+  public static func deserialize(from json: Swift.String?, designatedPath: Swift.String? = nil) -> Self?
+}
+extension Swift.Array where Element : AJLibrary.HandyJSON {
+  public static func deserialize(from json: Swift.String?, designatedPath: Swift.String? = nil) -> [Element?]?
+  public static func deserialize(from array: Foundation.NSArray?) -> [Element?]?
+  public static func deserialize(from array: [Any]?) -> [Element?]?
+}
+@_hasMissingDesignatedInitializers public class JSONDeserializer<T> where T : AJLibrary.HandyJSON {
+  public static func deserializeFrom(dict: Foundation.NSDictionary?, designatedPath: Swift.String? = nil) -> T?
+  public static func deserializeFrom(dict: [Swift.String : Any]?, designatedPath: Swift.String? = nil) -> T?
+  public static func deserializeFrom(json: Swift.String?, designatedPath: Swift.String? = nil) -> T?
+  public static func update(object: inout T, from dict: [Swift.String : Any]?, designatedPath: Swift.String? = nil)
+  public static func update(object: inout T, from json: Swift.String?, designatedPath: Swift.String? = nil)
+  public static func deserializeModelArrayFrom(json: Swift.String?, designatedPath: Swift.String? = nil) -> [T?]?
+  public static func deserializeModelArrayFrom(array: Foundation.NSArray?) -> [T?]?
+  public static func deserializeModelArrayFrom(array: [Any]?) -> [T?]?
+  @objc deinit
+}
+public protocol _Measurable {
+}
+open class HexColorTransform : AJLibrary.TransformType {
+  public typealias Object = UIKit.UIColor
+  public typealias JSON = Swift.String
+  public init(prefixToJSON: Swift.Bool = false, alphaToJSON: Swift.Bool = false)
+  open func transformFromJSON(_ value: Any?) -> AJLibrary.HexColorTransform.Object?
+  open func transformToJSON(_ value: AJLibrary.HexColorTransform.Object?) -> AJLibrary.HexColorTransform.JSON?
+  @objc deinit
+}
+public protocol _ExtendCustomModelType : AJLibrary._Transformable {
+  init()
+  mutating func willStartMapping()
+  mutating func mapping(mapper: AJLibrary.HelpingMapper)
+  mutating func didFinishMapping()
+}
+extension AJLibrary._ExtendCustomModelType {
+  public mutating func willStartMapping()
+  public mutating func mapping(mapper: AJLibrary.HelpingMapper)
+  public mutating func didFinishMapping()
+}
+public struct DeserializeOptions : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public static let caseInsensitive: AJLibrary.DeserializeOptions
+  public static let defaultOptions: AJLibrary.DeserializeOptions
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = AJLibrary.DeserializeOptions
+  public typealias Element = AJLibrary.DeserializeOptions
+  public typealias RawValue = Swift.Int
+}
+public enum DebugMode : Swift.Int {
+  case verbose
+  case debug
+  case error
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct HandyJSONConfiguration {
+  public static var debugMode: AJLibrary.DebugMode {
+    get
+    set
+  }
+  public static var deserializeOptions: AJLibrary.DeserializeOptions
+}
+open class CustomDateFormatTransform : AJLibrary.DateFormatterTransform {
+  public init(formatString: Swift.String)
+  @objc deinit
+}
+open class DataTransform : AJLibrary.TransformType {
+  public typealias Object = Foundation.Data
+  public typealias JSON = Swift.String
+  public init()
+  open func transformFromJSON(_ value: Any?) -> Foundation.Data?
+  open func transformToJSON(_ value: Foundation.Data?) -> Swift.String?
+  @objc deinit
+}
+public protocol HandyJSONCustomTransformable : AJLibrary._ExtendCustomBasicType {
+}
+public protocol HandyJSON : AJLibrary._ExtendCustomModelType {
+}
+public protocol HandyJSONEnum : AJLibrary._RawEnumProtocol {
+}
+open class DateTransform : AJLibrary.TransformType {
+  public typealias Object = Foundation.Date
+  public typealias JSON = Swift.Double
+  public init()
+  open func transformFromJSON(_ value: Any?) -> Foundation.Date?
+  open func transformToJSON(_ value: Foundation.Date?) -> Swift.Double?
+  @objc deinit
+}
+public protocol _RawEnumProtocol : AJLibrary._Transformable {
+  static func _transform(from object: Any) -> Self?
+  func _plainValue() -> Any?
+}
+extension Swift.RawRepresentable where Self : AJLibrary._RawEnumProtocol {
+  public static func _transform(from object: Any) -> Self?
+  public func _plainValue() -> Any?
+}
+public protocol _ExtendCustomBasicType : AJLibrary._Transformable {
+  static func _transform(from object: Any) -> Self?
+  func _plainValue() -> Any?
+}
+open class DateFormatterTransform : AJLibrary.TransformType {
+  public typealias Object = Foundation.Date
+  public typealias JSON = Swift.String
+  final public let dateFormatter: Foundation.DateFormatter
+  public init(dateFormatter: Foundation.DateFormatter)
+  open func transformFromJSON(_ value: Any?) -> Foundation.Date?
+  open func transformToJSON(_ value: Foundation.Date?) -> Swift.String?
+  @objc deinit
+}
+open class ISO8601DateTransform : AJLibrary.DateFormatterTransform {
+  public init()
+  @objc deinit
+}
+public typealias CustomMappingKeyValueTuple = (Swift.Int, AJLibrary.MappingPropertyHandler)
+public class MappingPropertyHandler {
+  public init(rawPaths: [Swift.String]?, assignmentClosure: ((Any?) -> (Any?))?, takeValueClosure: ((Any?) -> (Any?))?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class HelpingMapper {
+  public func specify<T>(property: inout T, name: Swift.String)
+  public func specify<T>(property: inout T, converter: @escaping (Swift.String) -> T)
+  public func specify<T>(property: inout T, name: Swift.String?, converter: ((Swift.String) -> T)?)
+  public func exclude<T>(property: inout T)
+  @objc deinit
+}
+infix operator <-- : LogicalConjunctionPrecedence
+public func <-- <T>(property: inout T, name: Swift.String) -> AJLibrary.CustomMappingKeyValueTuple
+public func <-- <T>(property: inout T, names: [Swift.String]) -> AJLibrary.CustomMappingKeyValueTuple
+public func <-- <Transform>(property: inout Transform.Object, transformer: Transform) -> AJLibrary.CustomMappingKeyValueTuple where Transform : AJLibrary.TransformType
+public func <-- <Transform>(property: inout Transform.Object, transformer: (Swift.String?, Transform?)) -> AJLibrary.CustomMappingKeyValueTuple where Transform : AJLibrary.TransformType
+public func <-- <Transform>(property: inout Transform.Object, transformer: ([Swift.String], Transform?)) -> AJLibrary.CustomMappingKeyValueTuple where Transform : AJLibrary.TransformType
+public func <-- <Transform>(property: inout Transform.Object?, transformer: Transform) -> AJLibrary.CustomMappingKeyValueTuple where Transform : AJLibrary.TransformType
+public func <-- <Transform>(property: inout Transform.Object?, transformer: (Swift.String?, Transform?)) -> AJLibrary.CustomMappingKeyValueTuple where Transform : AJLibrary.TransformType
+public func <-- <Transform>(property: inout Transform.Object?, transformer: ([Swift.String], Transform?)) -> AJLibrary.CustomMappingKeyValueTuple where Transform : AJLibrary.TransformType
+infix operator <<< : AssignmentPrecedence
+public func <<< (mapper: AJLibrary.HelpingMapper, mapping: AJLibrary.CustomMappingKeyValueTuple)
+public func <<< (mapper: AJLibrary.HelpingMapper, mappings: [AJLibrary.CustomMappingKeyValueTuple])
+infix operator >>> : AssignmentPrecedence
+public func >>> <T>(mapper: AJLibrary.HelpingMapper, property: inout T)
+open class URLTransform : AJLibrary.TransformType {
+  public typealias Object = Foundation.URL
+  public typealias JSON = Swift.String
+  public init(shouldEncodeURLString: Swift.Bool = true)
+  open func transformFromJSON(_ value: Any?) -> Foundation.URL?
+  open func transformToJSON(_ value: Foundation.URL?) -> Swift.String?
+  @objc deinit
+}
+@_silgen_name("swift_getTypeByMangledNameInContext")
+public func _getTypeByMangledNameInContext(_ name: Swift.UnsafePointer<Swift.UInt8>, _ nameLength: Swift.Int, genericContext: Swift.UnsafeRawPointer?, genericArguments: Swift.UnsafeRawPointer?) -> (any Any.Type)?
+@_silgen_name("swift_getTypeContextDescriptor")
+public func _swift_getTypeContextDescriptor(_ metadata: Swift.UnsafeRawPointer?) -> Swift.UnsafeRawPointer?
+public protocol TransformType {
+  associatedtype Object
+  associatedtype JSON
+  func transformFromJSON(_ value: Any?) -> Self.Object?
+  func transformToJSON(_ value: Self.Object?) -> Self.JSON?
+}
 public func DLog<T>(_ message: T, filename: Swift.String = #file, methodName: Swift.String = #function, lineNumber: Swift.Int = #line)
 extension UIKit.UITableView {
   @_Concurrency.MainActor @preconcurrency public var dataHasChanged: Swift.Bool {
@@ -3823,6 +4020,8 @@ public enum OnlineSetResult : Swift.Int {
   @objc required public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
+extension Swift.Int : AJLibrary._Transformable {}
+extension Swift.UInt : AJLibrary._Transformable {}
 extension AJLibrary.NetHTTPMethod : Swift.Equatable {}
 extension AJLibrary.NetHTTPMethod : Swift.Hashable {}
 extension AJLibrary.NetHTTPMethod : Swift.RawRepresentable {}
@@ -3838,12 +4037,14 @@ extension AJLibrary.CameraStatus : Swift.RawRepresentable {}
 extension AJLibrary.AutoLightMode : Swift.Equatable {}
 extension AJLibrary.AutoLightMode : Swift.Hashable {}
 extension AJLibrary.AutoLightMode : Swift.RawRepresentable {}
+extension Swift.String : AJLibrary._Transformable {}
 extension AJLibrary.ShakeDirection : Swift.Equatable {}
 extension AJLibrary.ShakeDirection : Swift.Hashable {}
 extension AJLibrary.ShakeDirection : Swift.RawRepresentable {}
 extension AJLibrary.PushType : Swift.Equatable {}
 extension AJLibrary.PushType : Swift.Hashable {}
 extension AJLibrary.PushType : Swift.RawRepresentable {}
+extension Swift.Array : AJLibrary._Transformable {}
 extension AJLibrary.ImageType : Swift.Equatable {}
 extension AJLibrary.ImageType : Swift.Hashable {}
 extension AJLibrary.ImageType : Swift.RawRepresentable {}
@@ -3868,6 +4069,7 @@ extension AJLibrary.BleSendStatus : Swift.RawRepresentable {}
 extension AJLibrary.DownloadStatus : Swift.Equatable {}
 extension AJLibrary.DownloadStatus : Swift.Hashable {}
 extension AJLibrary.DownloadStatus : Swift.RawRepresentable {}
+extension Swift.Int64 : AJLibrary._Transformable {}
 extension AJLibrary.UploadResourceType : Swift.Equatable {}
 extension AJLibrary.UploadResourceType : Swift.Hashable {}
 extension AJLibrary.UploadResourceType : Swift.RawRepresentable {}
@@ -3891,9 +4093,28 @@ extension AJLibrary.ProductNameType : Swift.RawRepresentable {}
 extension AJLibrary.EMCAction : Swift.Equatable {}
 extension AJLibrary.EMCAction : Swift.Hashable {}
 extension AJLibrary.EMCAction : Swift.RawRepresentable {}
+extension Swift.Double : AJLibrary._Transformable {}
 extension AJLibrary.BindStatus : Swift.Equatable {}
 extension AJLibrary.BindStatus : Swift.Hashable {}
 extension AJLibrary.BindStatus : Swift.RawRepresentable {}
+extension Swift.Dictionary : AJLibrary._Transformable {}
+extension Foundation.NSString : AJLibrary._Transformable {}
+extension Foundation.NSNumber : AJLibrary._Transformable {}
+extension Foundation.NSArray : AJLibrary._Transformable {}
+extension Foundation.NSDictionary : AJLibrary._Transformable {}
+extension AJLibrary.DebugMode : Swift.Equatable {}
+extension AJLibrary.DebugMode : Swift.Hashable {}
+extension AJLibrary.DebugMode : Swift.RawRepresentable {}
+extension Swift.Int8 : AJLibrary._Transformable {}
+extension Swift.Int16 : AJLibrary._Transformable {}
+extension Swift.Int32 : AJLibrary._Transformable {}
+extension Swift.UInt8 : AJLibrary._Transformable {}
+extension Swift.UInt16 : AJLibrary._Transformable {}
+extension Swift.UInt32 : AJLibrary._Transformable {}
+extension Swift.UInt64 : AJLibrary._Transformable {}
+extension Swift.Bool : AJLibrary._Transformable {}
+extension Swift.Float : AJLibrary._Transformable {}
+extension Swift.Set : AJLibrary._Transformable {}
 extension AJLibrary.OrderStatusEnum : Swift.Equatable {}
 extension AJLibrary.OrderStatusEnum : Swift.Hashable {}
 extension AJLibrary.OrderStatusEnum : Swift.RawRepresentable {}
