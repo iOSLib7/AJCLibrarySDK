@@ -423,6 +423,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJLibManager
 + (void)fastSignIn:(NSString * _Nonnull)allyName allyToken:(NSString * _Nonnull)allyToken account:(NSString * _Nonnull)account success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
 + (void)logout;
 - (void)sdkInit:(NSString * _Nonnull)vendorCode;
+- (void)setAppInfoWithLanguage:(NSString * _Nonnull)language appName:(NSString * _Nonnull)appName;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

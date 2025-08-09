@@ -1253,6 +1253,7 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   @objc public static func fastSignIn(_ allyName: Swift.String, allyToken: Swift.String, account: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
   @objc public static func logout()
   @objc public func sdkInit(_ vendorCode: Swift.String)
+  @objc public func setAppInfo(language: Swift.String, appName: Swift.String)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1761,7 +1762,7 @@ public let kAppkey: Swift.String
 public let kAppSecret: Swift.String
 public let IPCSupportDevType: Swift.Int
 public let BatterySupportDevType: Swift.Int
-public let AppName: Swift.String
+public var AppName: Swift.String
 public let CloudSaleRegion: Swift.Int
 public let DefaultLanDiscoVendorCodes: Swift.String
 public let FetchDeviceList: Swift.String
@@ -2001,6 +2002,7 @@ public func GetImage(named: Swift.String) -> UIKit.UIImage?
   public static func setCelularAlertEnable(_ enable: Swift.Bool)
   public static func pushSettingEnable(localKey: Swift.String) -> Swift.Bool
   public static func setPushSettingEnable(_ localKey: Swift.String, enable: Swift.Bool)
+  public static func appCurLanguage() -> Swift.String
   public static func guidePagesImage() -> (UIKit.UIImage?, UIKit.UIImage?, UIKit.UIImage?)
   public static func authIdError(_ laError: LocalAuthentication.LAError) -> Swift.String
   public static func jointTime(timestamp: Swift.String?, cameraId: Swift.String) -> Swift.String
@@ -2391,6 +2393,7 @@ public func takePhoto(_ stillImageOutput: AVFoundation.AVCaptureStillImageOutput
   @objc deinit
 }
 public var AppVendorCode: Swift.String
+public var AppLanguage: Swift.String
 extension UIKit.UIFont {
   public static func getFont(_ size: Swift.Double) -> UIKit.UIFont
   public static func getFont(_ name: Swift.String, _ size: Swift.Double) -> UIKit.UIFont

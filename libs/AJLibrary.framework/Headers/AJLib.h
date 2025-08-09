@@ -132,6 +132,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)asyncInit:(NSString *)vendorCode;
 
+/**
+ *    App信息配置
+ *
+ *    @param     language          当前语言，若切换语言需重置该方法
+ *    @param     appName          app名称
+ */
++ (void)setAppInfo:(NSString *)language
+           appName:(NSString *)appName;
+
 @end
 
 NS_ASSUME_NONNULL_END
