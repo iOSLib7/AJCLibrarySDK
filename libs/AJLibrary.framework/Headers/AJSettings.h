@@ -82,15 +82,18 @@ NS_ASSUME_NONNULL_BEGIN
                    success:(nullable void (^)(void))success
                    failure:(nullable void (^)(AJError *))failure;
 
+
 /// 音频设置
 /// @param deviceId 设备 ID
 /// @param micEnable 麦克风开关 0 - 关，1 - 开
-/// @param speakerVolume 麦克风音量 (0 - 100)
+/// @param speakerVolume 扬声器音量 (0 - 100)
+/// @param micVolume 麦克风音量 (0 - 100)
 /// @param success success
 /// @param failure failure
 - (void)microphoneSetting:(NSString *)deviceId
                 micEnable:(NSString *)micEnable
             speakerVolume:(NSString *)speakerVolume
+                micVolume:(NSString *)micVolume
                   success:(nullable void (^)(void))success
                   failure:(nullable void (^)(AJError *))failure;
 

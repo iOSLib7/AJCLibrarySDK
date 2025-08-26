@@ -283,7 +283,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import CoreBluetooth;
 @import CoreFoundation;
 @import CoreGraphics;
+@import CoreLocation;
 @import Foundation;
+@import MJRefresh;
 @import Material;
 @import MessageUI;
 @import ObjectiveC;
@@ -363,7 +365,7 @@ SWIFT_CLASS("_TtC9AJLibrary18AJBleBinderManager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJBleBinderManager * _Nonnull shared;)
 + (AJBleBinderManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, copy) void (^ _Nullable disconnectPeripheralBlock)(void);
-- (void)sendData:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password checkTimeout:(NSInteger)checkTimeout bindSuccess:(void (^ _Nullable)(void))bindSuccess bindFailed:(void (^ _Nullable)(ErrorModel * _Nullable))bindFailed;
+- (void)sendData:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password checkTimeout:(NSInteger)checkTimeout bindSuccess:(void (^ _Nullable)(NSString * _Nonnull))bindSuccess bindFailed:(void (^ _Nullable)(ErrorModel * _Nullable))bindFailed;
 - (void)disconnect:(PeripheralInfoModel * _Nonnull)peripheral;
 - (void)disconnectAllPeripheral;
 - (void)startBluetoothScan:(NSInteger)timeout success:(void (^ _Nullable)(PeripheralInfoModel * _Nullable))success failure:(void (^ _Nullable)(ErrorModel * _Nullable))failure;
@@ -433,8 +435,8 @@ SWIFT_CLASS("_TtC9AJLibrary17AJQRBinderManager")
 @interface AJQRBinderManager : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJQRBinderManager * _Nonnull shared;)
 + (AJQRBinderManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull bindToken;
 @property (nonatomic) NSTimeInterval timeout;
-- (void)getToken:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
 - (void)checkBindStatus:(NSString * _Nonnull)token success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -454,7 +456,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSettingsMa
 - (void)removeDevice:(NSString * _Nonnull)deviceId complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)orientationSetting:(NSString * _Nonnull)deviceId orientationValue:(NSString * _Nonnull)orientationValue complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)lightingFreqConfig:(NSString * _Nonnull)deviceId freqValue:(NSInteger)freqValue complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
-- (void)microphoneSetting:(NSString * _Nonnull)deviceId micEnable:(NSString * _Nonnull)micEnable speakerVolume:(NSString * _Nonnull)speakerVolume complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
+- (void)microphoneSetting:(NSString * _Nonnull)deviceId micEnable:(NSString * _Nonnull)micEnable speakerVolume:(NSString * _Nonnull)speakerVolume micVolume:(NSString * _Nonnull)micVolume complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)indicatorLightConfig:(NSString * _Nonnull)deviceId enable:(NSString * _Nonnull)enable complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)unmountTfCard:(NSString * _Nonnull)deviceId label:(NSString * _Nonnull)label complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)autoTrackConfig:(NSString * _Nonnull)deviceId toggle:(NSString * _Nonnull)toggle complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
@@ -501,8 +503,11 @@ SWIFT_CLASS("_TtC9AJLibrary21AJSoftAPBinderManager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSoftAPBinderManager * _Nonnull shared;)
 + (AJSoftAPBinderManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic) NSTimeInterval timeout;
-- (void)softAPConnect:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
-- (void)connect:(NSString * _Nonnull)curSsid success:(void (^ _Nullable)(NSArray<WiFiListModel *> * _Nullable))success failure:(void (^ _Nullable)(ErrorModel * _Nullable))failure;
+@property (nonatomic, copy) NSString * _Nullable bindToken;
+- (void)destroyConnect;
+- (void)autoConnect:(NSString * _Nonnull)curSsid success:(void (^ _Nullable)(void))success failure:(void (^ _Nullable)(ErrorModel * _Nullable))failure;
+- (void)fetchWifiListWithSuccess:(void (^ _Nonnull)(NSArray<WiFiListModel *> * _Nullable))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
+- (void)softAPNetConfig:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -744,6 +749,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)AJCWebViewBridgeInterface SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull appVendorCode;)
 + (NSString * _Nonnull)appVendorCode SWIFT_WARN_UNUSED_RESULT;
+/// 设备ID前三位字母，和 AppVendorCode 一致
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull devicePrefixCode;)
 + (NSString * _Nonnull)devicePrefixCode SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)celularAlertEnable SWIFT_WARN_UNUSED_RESULT;
@@ -796,6 +802,7 @@ SWIFT_CLASS("_TtC9AJLibrary11AudioConfig")
 @interface AudioConfig : ResultModel
 @property (nonatomic, copy) NSString * _Nullable micEnable;
 @property (nonatomic, copy) NSString * _Nullable speakerVolume;
+@property (nonatomic, copy) NSString * _Nullable micVolume;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -927,6 +934,23 @@ typedef SWIFT_ENUM(NSInteger, BindStatus, open) {
   BindStatusBoundByOther = 7,
 };
 
+@class UIContainedButton;
+@class UIExplainLabel;
+@class UIImage;
+
+SWIFT_CLASS("_TtC9AJLibrary17BlePermissionView")
+@interface BlePermissionView : UIView
+@property (nonatomic, copy) void (^ _Nullable okBlock)(void);
+@property (nonatomic, copy) void (^ _Nullable closeBlock)(void);
+@property (nonatomic, readonly, strong) UIContainedButton * _Nonnull okBtn;
+@property (nonatomic, strong) UIExplainLabel * _Nonnull titleLabel;
+- (nonnull instancetype)init:(NSString * _Nullable)title image:(UIImage * _Nullable)image detailTitle:(NSString * _Nullable)detailTitle OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)show;
+- (void)dismiss;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
 
 @interface NSBundle (SWIFT_EXTENSION(AJLibrary))
 + (NSBundle * _Nonnull)mixed_sourceBundle SWIFT_WARN_UNUSED_RESULT;
@@ -996,7 +1020,6 @@ SWIFT_CLASS("_TtC9AJLibrary16CameraInfomation")
 @class PrivateRegionConfig;
 @class NightVisionConfig;
 @class TrackConfig;
-@class UIImage;
 
 SWIFT_CLASS("_TtC9AJLibrary11CameraModel")
 @interface CameraModel : ResultModel
@@ -1150,6 +1173,7 @@ SWIFT_CLASS("_TtC9AJLibrary18CameraSummaryModel")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIAlertAction;
 enum DeviceModeType : NSInteger;
 
 SWIFT_CLASS("_TtC9AJLibrary11CameraUtils")
@@ -1169,6 +1193,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL isReachableOnEt
 + (BOOL)isValidProdName:(NSString * _Nullable)productName SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)createQRImageWithQrString:(NSString * _Nullable)qrString size:(CGSize)size SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)isEmptyStr:(NSString * _Nullable)str SWIFT_WARN_UNUSED_RESULT;
++ (void)showAlertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message sureTitle:(NSString * _Nullable)sureTitle sureAction:(void (^ _Nullable)(UIAlertAction * _Nonnull))sureAction;
 + (NSString * _Nonnull)currentLanguage SWIFT_WARN_UNUSED_RESULT;
 + (NSInteger)getSupportDevType:(NSString * _Nonnull)deviceId SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)isBatteryType:(NSString * _Nonnull)deviceId SWIFT_WARN_UNUSED_RESULT;
@@ -1665,6 +1690,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) DeviceNetMan
 
 SWIFT_CLASS("_TtC9AJLibrary16DeviceTokenModel")
 @interface DeviceTokenModel : ResultModel
+@property (nonatomic, copy) NSString * _Nullable token;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2153,6 +2179,17 @@ SWIFT_CLASS("_TtC9AJLibrary15LocalStorConfig")
 @property (nonatomic) NSInteger ecoRecordDurationLimit;
 @property (nonatomic, copy) NSString * _Nullable remoteTFUrl;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9AJLibrary15LocationManager")
+@interface LocationManager : NSObject <CLLocationManagerDelegate>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) LocationManager * _Nonnull shared;)
++ (LocationManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)getUserSSID SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)locationServiceEnabled SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class OauthModel;
@@ -2806,6 +2843,15 @@ SWIFT_CLASS("_TtC9AJLibrary12TSDownloader")
 
 
 
+SWIFT_CLASS_NAMED("TZDistrictModel")
+@interface TZDistrictModel : ResultModel <NSCoding>
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS_NAMED("TaskModel")
 @interface TaskModel : NSObject <NSCoding>
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -2873,6 +2919,19 @@ SWIFT_CLASS("_TtC9AJLibrary10TimePolicy")
 SWIFT_CLASS("_TtC9AJLibrary17TimeZoneDataModel")
 @interface TimeZoneDataModel : ResultModel
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class TimezoneModel;
+
+SWIFT_CLASS_NAMED("TimezoneListModel")
+@interface TimezoneListModel : ResultModel <NSCoding>
+@property (nonatomic, copy) NSString * _Nullable version;
+@property (nonatomic, copy) NSArray<TimezoneModel *> * _Nullable timeZones;
+@property (nonatomic, copy) NSArray<TZDistrictModel *> * _Nullable tzDistricts;
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -3046,6 +3105,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UACNetManage
 /// \param complete complete
 ///
 - (void)smsResetPassword:(NSString * _Nonnull)username password:(NSString * _Nonnull)password complete:(void (^ _Nonnull)(ErrorModel * _Nullable))complete;
+/// 获取摄像头authcode
+/// \param deviceId 设备id
+///
+/// \param complete complete
+///
+- (void)getCameraBindTokenWithDeviceId:(NSString * _Nullable)deviceId prodName:(NSString * _Nullable)prodName complete:(void (^ _Nonnull)(DeviceTokenModel * _Nullable, ErrorModel * _Nullable))complete;
 - (void)fetchDeviceList:(void (^ _Nonnull)(DevicesModel * _Nullable, ErrorModel * _Nullable))complete;
 /// 注销
 /// \param complete complete
@@ -3098,6 +3163,14 @@ SWIFT_CLASS("_TtC9AJLibrary17UIActionSheetView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title detail:(NSString * _Nonnull)detail cancelButtonTitle:(NSString * _Nonnull)cancelButtonTitle destructiveButtonTitle:(NSString * _Nonnull)destructiveButtonTitle cancleAction:(void (^ _Nonnull)(void))cancleAction sureAction:(void (^ _Nonnull)(void))sureAction OBJC_DESIGNATED_INITIALIZER;
 - (void)show;
+@end
+
+
+SWIFT_RESILIENT_CLASS("_TtC9AJLibrary13UIAlphaButton")
+@interface UIAlphaButton : FlatButton
+- (nonnull instancetype)init:(NSString * _Nullable)title target:(id _Nullable)target action:(SEL _Nullable)action OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
 
 
@@ -3195,6 +3268,13 @@ SWIFT_CLASS("_TtC9AJLibrary17UICustomAlertView")
 @end
 
 
+SWIFT_CLASS("_TtC9AJLibrary14UIDisableLabel")
+@interface UIDisableLabel : UILabel
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
 SWIFT_CLASS("_TtC9AJLibrary17UIEdgeInsetsLabel")
 @interface UIEdgeInsetsLabel : UILabel
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -3222,14 +3302,14 @@ SWIFT_RESILIENT_CLASS("_TtC9AJLibrary12UIFlatButton")
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
++ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
@@ -3244,11 +3324,11 @@ SWIFT_CLASS("_TtC9AJLibrary12UIIconButton")
 
 
 
+
 @interface UIImage (SWIFT_EXTENSION(AJLibrary))
 + (UIImage * _Nullable)mixed_imageNamed:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)static_sdkimage:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 /// 图片在上文字在下
@@ -3287,6 +3367,13 @@ SWIFT_CLASS("_TtC9AJLibrary13UIProblemView")
 @end
 
 
+SWIFT_CLASS("_TtC9AJLibrary15UIRefreshHeader")
+@interface UIRefreshHeader : MJRefreshNormalHeader
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
 SWIFT_CLASS("_TtC9AJLibrary13UIRefreshView")
 @interface UIRefreshView : UIView
 @property (nonatomic, readonly, strong) UIImageView * _Nonnull errorImageView;
@@ -3320,6 +3407,13 @@ SWIFT_CLASS("_TtC9AJLibrary12UITimePicker")
 
 
 
+
+
+SWIFT_CLASS("_TtC9AJLibrary19UIWhiteBolderButton")
+@interface UIWhiteBolderButton : UIButton
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
 
 enum UploadResourceType : NSInteger;
 @class UploadNotifyModel;

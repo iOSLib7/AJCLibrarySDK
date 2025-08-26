@@ -58,7 +58,12 @@ import _SwiftConcurrencyShims
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIAlphaButton : Material.FlatButton {
+  @objc @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, target: Any?, action: ObjectiveC.Selector?)
+  @objc deinit
+}
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIFlatButton : Material.FlatButton {
+  @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, target: Any?, action: ObjectiveC.Selector?)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIContainedButton : UIKit.UIButton {
@@ -70,6 +75,10 @@ import _SwiftConcurrencyShims
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIBlueBorderButton : UIKit.UIButton {
+  @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, target: Any?, action: ObjectiveC.Selector?)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIWhiteBolderButton : UIKit.UIButton {
   @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, target: Any?, action: ObjectiveC.Selector?)
   @objc deinit
 }
@@ -359,7 +368,7 @@ public let FetchInfosApi: Swift.String
   public func setLabelConfigName(deviceId: Swift.String, aliasName: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func setMoveMonitorSetting(_ deviceId: Swift.String, enable: Swift.String, susceptiveness: Swift.String, genAlarmThumb: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func nightVisionSetting(_ deviceId: Swift.String, nightMode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func microphoneSetting(_ deviceId: Swift.String, micEnable: Swift.String, speakerVolume: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func microphoneSetting(_ deviceId: Swift.String, micEnable: Swift.String, speakerVolume: Swift.String, micVolume: Swift.String? = nil, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func orientationSetting(_ deviceId: Swift.String, orientationValue: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func localStorageSetting(_ deviceId: Swift.String, enable: Swift.String, nasPath: Swift.String, playUrlRoot: Swift.String, quality: Swift.String, storageType: Swift.String, triggerMode: Swift.String, writeMode: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], wholeFormat: Swift.String, enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], format1: Swift.String, enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], format2: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func cloudStorageSetting(_ deviceId: Swift.String, enable: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], expireAt: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -626,6 +635,7 @@ public let FetchInfosApi: Swift.String
 @objc @_inheritsConvenienceInitializers public class AudioConfig : AJLibrary.ResultModel {
   @objc public var micEnable: Swift.String?
   @objc public var speakerVolume: Swift.String?
+  @objc public var micVolume: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1243,6 +1253,12 @@ public enum PushType : Swift.String {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class LocationManager : ObjectiveC.NSObject, CoreLocation.CLLocationManagerDelegate {
+  @objc public static let shared: AJLibrary.LocationManager
+  @objc public func getUserSSID() -> Swift.String?
+  @objc public func locationServiceEnabled() -> Swift.Bool
+  @objc deinit
+}
 extension Swift.Array {
   public func element(at index: Swift.Int) -> Element?
 }
@@ -1313,7 +1329,7 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   @objc public func removeDevice(_ deviceId: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func orientationSetting(_ deviceId: Swift.String, orientationValue: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func lightingFreqConfig(_ deviceId: Swift.String, freqValue: Swift.Int, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
-  @objc public func microphoneSetting(_ deviceId: Swift.String, micEnable: Swift.String, speakerVolume: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func microphoneSetting(_ deviceId: Swift.String, micEnable: Swift.String, speakerVolume: Swift.String, micVolume: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func indicatorLightConfig(_ deviceId: Swift.String, enable: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func unmountTfCard(_ deviceId: Swift.String, label: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func autoTrackConfig(_ deviceId: Swift.String, toggle: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
@@ -1599,7 +1615,7 @@ public enum FileFolder : Swift.String {
   public func smsSignup(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func smsResetPassword(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func signupCheck(_ username: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func getCameraBindToken(deviceId: Swift.String?, prodName: Swift.String? = nil, complete: @escaping (AJLibrary.DeviceTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func getCameraBindToken(deviceId: Swift.String?, prodName: Swift.String? = nil, complete: @escaping (AJLibrary.DeviceTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getCameraBindStatus(deviceId: Swift.String, complete: @escaping (AJLibrary.DeviceBindStatus?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func checkBindStatus(bindToken: Swift.String, complete: @escaping (AJLibrary.DeviceBindStatus?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func changeNickname(deviceId: Swift.String, nickname: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1969,6 +1985,19 @@ public enum SupportLanguageOption : Swift.String {
   @objc override dynamic public init()
   @objc deinit
 }
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(TimezoneListModel) @objcMembers public class TimezoneListModel : AJLibrary.ResultModel, Foundation.NSCoding {
+  @objc public var version: Swift.String?
+  @objc public var timeZones: [AJLibrary.TimezoneModel]?
+  @objc public var tzDistricts: [AJLibrary.TZDistrictModel]?
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(TZDistrictModel) @objcMembers public class TZDistrictModel : AJLibrary.ResultModel, Foundation.NSCoding {
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(TimezoneModel) public class TimezoneModel : AJLibrary.ResultModel, Foundation.NSCoding {
   @objc public var tzGmt: Swift.String?
   @objc public var tzName: Swift.String?
@@ -2223,7 +2252,12 @@ public enum RequestResult {
   @objc @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String? = nil)
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIDisableLabel : UIKit.UILabel {
+  @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String? = nil)
+  @objc deinit
+}
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIBoldLabel : UIKit.UILabel {
+  @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String? = nil)
   @objc deinit
 }
 @objc @_Concurrency.MainActor @preconcurrency open class WebViewController : UIKit.UIViewController {
@@ -2301,6 +2335,10 @@ public enum RequestResult {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didReceiveMemoryWarning()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIRefreshHeader : MJRefresh.MJRefreshNormalHeader {
+  @_Concurrency.MainActor @preconcurrency public init(refreshingTarget: Swift.AnyObject, refreshingAction: ObjectiveC.Selector)
   @objc deinit
 }
 public typealias CameraShotCompletion = (UIKit.UIImage?) -> Swift.Void
@@ -2982,8 +3020,8 @@ extension AJLibrary.TSDownloader {
 }
 @objc @_inheritsConvenienceInitializers public class AJQRBinderManager : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.AJQRBinderManager
+  @objc public var bindToken: Swift.String
   @objc public var timeout: Swift.Double
-  @objc public func getToken(_ success: @escaping ((Swift.String) -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
   @objc public func checkBindStatus(_ token: Swift.String, success: @escaping ((Swift.String) -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
   @objc override dynamic public init()
   @objc deinit
@@ -2998,7 +3036,9 @@ extension AJLibrary.TSDownloader {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class DeviceTokenModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class DeviceTokenModel : AJLibrary.ResultModel {
+  @objc public var token: Swift.String?
+  public var expireSec: Swift.Int?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -3082,7 +3122,7 @@ public let CameraAddCellHeight: CoreFoundation.CGFloat
 @objc @_inheritsConvenienceInitializers public class AJBleBinderManager : ObjectiveC.NSObject, AJLibrary.BluetoothManageDelegate {
   @objc public static let shared: AJLibrary.AJBleBinderManager
   @objc public var disconnectPeripheralBlock: (() -> ())?
-  @objc public func sendData(_ ssid: Swift.String, password: Swift.String, checkTimeout: Swift.Int, bindSuccess: (() -> ())?, bindFailed: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc public func sendData(_ ssid: Swift.String, password: Swift.String, checkTimeout: Swift.Int, bindSuccess: ((Swift.String) -> ())?, bindFailed: ((AJLibrary.ErrorModel?) -> ())?)
   @objc public func disconnect(_ peripheral: AJLibrary.PeripheralInfoModel)
   @objc public func disconnectAllPeripheral()
   @objc public func startBluetoothScan(_ timeout: Swift.Int, success: ((AJLibrary.PeripheralInfoModel?) -> ())?, failure: ((AJLibrary.ErrorModel?) -> ())?)
@@ -3510,14 +3550,14 @@ extension Foundation.URL {
   @objc deinit
 }
 public let CommonTableCellId: Swift.String
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class CommonTableCell : AJLibrary.WVThinTableCell {
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CommonTableCell : AJLibrary.WVThinTableCell {
   @_Concurrency.MainActor @preconcurrency public var materailSwitch: Material.Switch
   @_Concurrency.MainActor @preconcurrency final public let dotView: UIKit.UIView
   @_Concurrency.MainActor @preconcurrency override public var leftIconGap: CoreFoundation.CGFloat {
     get
     set
   }
-  @_Concurrency.MainActor @preconcurrency override public func loadUIs()
+  @_Concurrency.MainActor @preconcurrency override open func loadUIs()
   @_Concurrency.MainActor @preconcurrency @objc override public func valueChanged()
   @_Concurrency.MainActor @preconcurrency override public func setupSwitch()
   @_Concurrency.MainActor @preconcurrency public func setTopLine()
@@ -3643,8 +3683,11 @@ public let DevConfigApi: Swift.String
 @objc @_inheritsConvenienceInitializers public class AJSoftAPBinderManager : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.AJSoftAPBinderManager
   @objc public var timeout: Swift.Double
-  @objc public func softAPConnect(_ ssid: Swift.String, password: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
-  @objc public func connect(_ curSsid: Swift.String, success: (([AJLibrary.WiFiListModel]?) -> ())?, failure: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc public var bindToken: Swift.String?
+  @objc public func destroyConnect()
+  @objc public func autoConnect(_ curSsid: Swift.String, success: (() -> ())?, failure: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc public func fetchWifiList(success: @escaping (([AJLibrary.WiFiListModel]?) -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
+  @objc public func softAPNetConfig(_ ssid: Swift.String, password: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
   @objc override dynamic public init()
   @objc deinit
 }
@@ -3733,6 +3776,7 @@ public let IphoneXBottom: CoreFoundation.CGFloat
   public class func systemVolumn() -> UIKit.UISlider?
   public class func conver(value: Swift.String) -> Swift.String
   @objc public static func isEmptyStr(_ str: Swift.String?) -> Swift.Bool
+  @objc public static func showAlert(title: Swift.String?, message: Swift.String?, sureTitle: Swift.String?, sureAction: ((UIKit.UIAlertAction) -> ())? = nil)
   @objc public static func currentLanguage() -> Swift.String
   @objc public static func getSupportDevType(_ deviceId: Swift.String) -> ObjectiveC.NSInteger
   @objc public static func isBatteryType(_ deviceId: Swift.String) -> Swift.Bool
@@ -3820,6 +3864,18 @@ extension AVKit.AVPlayerViewController {
   @objc required dynamic public init()
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class BlePermissionView : UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency public var okBlock: (() -> ())?
+  @objc @_Concurrency.MainActor @preconcurrency public var closeBlock: (() -> ())?
+  @objc @_Concurrency.MainActor @preconcurrency final public let okBtn: AJLibrary.UIContainedButton
+  @objc @_Concurrency.MainActor @preconcurrency public var titleLabel: AJLibrary.UIExplainLabel
+  @_Concurrency.MainActor @preconcurrency public var detailLabel: AJLibrary.UIExplainLabel
+  @_Concurrency.MainActor @preconcurrency final public let errorImgView: UIKit.UIImageView
+  @objc @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, image: UIKit.UIImage?, detailTitle: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency public func show()
+  @objc @_Concurrency.MainActor @preconcurrency public func dismiss()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class BaseViewController : UIKit.UIViewController, UIKit.UIGestureRecognizerDelegate {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
@@ -3837,7 +3893,7 @@ extension AVKit.AVPlayerViewController {
   @objc @_Concurrency.MainActor @preconcurrency public class func TopViewController() -> UIKit.UIViewController?
   @_Concurrency.MainActor @preconcurrency public func popGestureClose()
   @_Concurrency.MainActor @preconcurrency public func popGestureOpen()
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didReceiveMemoryWarning()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didReceiveMemoryWarning()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit

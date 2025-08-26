@@ -60,7 +60,7 @@ typedef void(^ DisconnectPeripheral)(void);
 /// @param ssid Name of route
 /// @param password Password of route
 /// @param token Bind Token
-/// @param success success
+/// @param success 二维码字符串
 /// @param failure failure
 - (void)createQRString:(NSString *)ssid
               password:(NSString *)password
@@ -82,13 +82,22 @@ typedef void(^ DisconnectPeripheral)(void);
 
 
 #pragma mark - SoftAP配网
-/// SoftAP 配网，获取 WIFI 列表
+
+
+/// SoftAP 配网，自动连接设备AP
 /// @param ssid 连接的设备 SSID 名称
-/// @param success 回调 WIFI 列表
+/// @param success success
 /// @param failure failure
-- (void)startSoftAPConfig:(NSString *)ssid
-                  success:(nullable void (^)(NSArray<AJWifiListModel *> *))success
-                  failure:(nullable void (^)(AJError *))failure;
+- (void)softAPAutoConnectSsid:(NSString *)ssid
+                      success:(nullable void (^)(void))success
+                      failure:(nullable void (^)(AJError *))failure;
+
+
+/// SoftAP 配网，连接小AP后，获取 WiFi 列表
+/// @param success WiFi 列表
+/// @param failure failure
+- (void)softAPFetchWifiList:(nullable void (^)(NSArray<AJWifiListModel *> *))success
+                    failure:(nullable void (^)(AJError *))failure;
 
 
 
@@ -99,16 +108,19 @@ typedef void(^ DisconnectPeripheral)(void);
 /// @param timeout 绑定超时时间
 /// @param success success
 /// @param failure failure
-- (void)softAPConnect:(NSString *)ssid
-             password:(NSString *)password
-              timeout:(NSTimeInterval)timeout
-              success:(nullable void (^)(void))success
-              failure:(nullable void (^)(AJError *))failure;
+- (void)softAPNetConfig:(NSString *)ssid
+               password:(NSString *)password
+                timeout:(NSTimeInterval)timeout
+                success:(nullable void (^)(void))success
+                failure:(nullable void (^)(AJError *))failure;
+
+/// SoftAP 配网，断开 TCP 连接
+- (void)softAPDestroyTCPConnect;
 
 
 #pragma mark - 有线配网
 /// 网线配网，局域网发现设备列表
-/// @param success success
+/// @param success 设备列表
 /// @param failure failure
 - (void)startEthConfig:(nullable void (^)(NSArray<AJDiscoverDeviceModel *> *))success
                failure:(nullable void (^)(AJError *))failure;
@@ -158,12 +170,12 @@ typedef void(^ DisconnectPeripheral)(void);
 /// @param ssid ssid名称
 /// @param password ssid密码
 /// @param timeout 配网检查超时时间
-/// @param success success
+/// @param success 回调当前绑定的设备 ID
 /// @param failure failure
 - (void)bluetoothSendData:(NSString *)ssid
                  password:(NSString *)password
                   timeout:(NSInteger)timeout
-                  success:(nullable void (^)(void))success
+                  success:(nullable void (^)(NSString *))success
                   failure:(nullable void (^)(AJError *))failure;
 
 // 断开所有蓝牙连接

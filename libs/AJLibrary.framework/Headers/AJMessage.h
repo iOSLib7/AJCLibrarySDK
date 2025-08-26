@@ -15,8 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    PushSettingTypeUpsert,
-    PushSettingTypeRemove
+    PushSettingTypeUpsert = 1,
+    PushSettingTypeRemove = 2
 } PushSettingType;
 
 @interface AJMessage : NSObject
