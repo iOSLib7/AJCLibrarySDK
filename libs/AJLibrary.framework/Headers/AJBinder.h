@@ -111,7 +111,7 @@ typedef void(^ DisconnectPeripheral)(void);
 - (void)softAPNetConfig:(NSString *)ssid
                password:(NSString *)password
                 timeout:(NSTimeInterval)timeout
-                success:(nullable void (^)(void))success
+                success:(nullable void (^)(NSString *))success
                 failure:(nullable void (^)(AJError *))failure;
 
 /// SoftAP 配网，断开 TCP 连接

@@ -3687,7 +3687,7 @@ public let DevConfigApi: Swift.String
   @objc public func destroyConnect()
   @objc public func autoConnect(_ curSsid: Swift.String, success: (() -> ())?, failure: ((AJLibrary.ErrorModel?) -> ())?)
   @objc public func fetchWifiList(success: @escaping (([AJLibrary.WiFiListModel]?) -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
-  @objc public func softAPNetConfig(_ ssid: Swift.String, password: Swift.String, success: @escaping (() -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
+  @objc public func softAPNetConfig(_ ssid: Swift.String, password: Swift.String, success: @escaping ((Swift.String?) -> ()), failure: @escaping ((AJLibrary.ErrorModel?) -> ()))
   @objc override dynamic public init()
   @objc deinit
 }

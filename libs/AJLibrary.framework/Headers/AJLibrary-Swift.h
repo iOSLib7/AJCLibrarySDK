@@ -507,7 +507,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSoftAPBind
 - (void)destroyConnect;
 - (void)autoConnect:(NSString * _Nonnull)curSsid success:(void (^ _Nullable)(void))success failure:(void (^ _Nullable)(ErrorModel * _Nullable))failure;
 - (void)fetchWifiListWithSuccess:(void (^ _Nonnull)(NSArray<WiFiListModel *> * _Nullable))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
-- (void)softAPNetConfig:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
+- (void)softAPNetConfig:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password success:(void (^ _Nonnull)(NSString * _Nullable))success failure:(void (^ _Nonnull)(ErrorModel * _Nullable))failure;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
