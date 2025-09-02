@@ -184,6 +184,29 @@ typedef void(^ DisconnectPeripheral)(void);
 // 断开当前连接
 - (void)disconnectPeripheral:(PeripheralInfoModel *)peripheral;
 
+
+#pragma mark - 在线切换WiFi
+
+
+/// 设备当前是否支持切换WiFi
+/// - Parameters:
+///   - deviceId: 设备ID
+///   - complete: 回调是否支持
+- (void)isSupportSwitchWifi:(NSString *)deviceId
+                   complete:(void (^ _Nullable)(BOOL))complete;
+
+
+/// 在线切换WiFi
+/// - Parameters:
+///   - deviceId: 设备ID
+///   - ssid: ssid名称
+///   - password: ssid密码
+- (void)onlineSwitchWifi:(NSString *)deviceId
+                    ssid:(NSString *)ssid
+                password:(NSString *)password
+                 success:(nullable void (^)(void))success
+                 failure:(nullable void (^)(AJError *))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

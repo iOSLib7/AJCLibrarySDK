@@ -522,6 +522,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSubscribe 
 @end
 
 
+SWIFT_CLASS("_TtC9AJLibrary25AJWifiSwitchBinderManager")
+@interface AJWifiSwitchBinderManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJWifiSwitchBinderManager * _Nonnull shared;)
++ (AJWifiSwitchBinderManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (void)isSupportSwitchWifi:(NSString * _Nonnull)deviceId complete:(void (^ _Nullable)(BOOL))complete;
+- (void)switchWifi:(NSString * _Nonnull)deviceId ssid:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password successResponse:(void (^ _Nullable)(void))successResponse failureResponse:(void (^ _Nullable)(ErrorModel * _Nullable))failureResponse;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC9AJLibrary11ResultModel")
 @interface ResultModel : NSObject
@@ -1193,6 +1203,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL isReachableOnEt
 + (BOOL)isValidProdName:(NSString * _Nullable)productName SWIFT_WARN_UNUSED_RESULT;
 + (UIImage * _Nullable)createQRImageWithQrString:(NSString * _Nullable)qrString size:(CGSize)size SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)isEmptyStr:(NSString * _Nullable)str SWIFT_WARN_UNUSED_RESULT;
++ (void)showAlertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message sureTitle:(NSString * _Nullable)sureTitle sureAction:(void (^ _Nullable)(UIAlertAction * _Nonnull))sureAction cancelaction:(void (^ _Nullable)(UIAlertAction * _Nonnull))cancelaction;
 + (void)showAlertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message sureTitle:(NSString * _Nullable)sureTitle sureAction:(void (^ _Nullable)(UIAlertAction * _Nonnull))sureAction;
 + (NSString * _Nonnull)currentLanguage SWIFT_WARN_UNUSED_RESULT;
 + (NSInteger)getSupportDevType:(NSString * _Nonnull)deviceId SWIFT_WARN_UNUSED_RESULT;
@@ -2315,6 +2326,7 @@ typedef SWIFT_ENUM(NSInteger, NetConfigurationType, open) {
   NetConfigurationTypeOnlineSetWiFi = 4,
   NetConfigurationTypeFastBind = 5,
   NetConfigurationTypeBluetooth = 6,
+  NetConfigurationTypeSwitchWiFi = 7,
 };
 
 
@@ -3302,14 +3314,14 @@ SWIFT_RESILIENT_CLASS("_TtC9AJLibrary12UIFlatButton")
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
-+ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
 @end
 
 
 @interface UIFont (SWIFT_EXTENSION(AJLibrary))
-+ (BOOL)mixed_registerFont:(NSBundle * _Nullable)bundle filename:(NSString * _Nonnull)fileName type:(NSString * _Nullable)type error:(NSError * _Nullable * _Nullable)error;
++ (UIFont * _Nullable)mixed_58SmileFontBold:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Regular:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
++ (UIFont * _Nullable)mixed_don58Medium:(CGFloat)fontSize SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -3513,6 +3525,7 @@ SWIFT_CLASS("_TtC9AJLibrary11WCapability")
 @property (nonatomic) BOOL indicatorLightCtl;
 @property (nonatomic) BOOL hibernate;
 @property (nonatomic) BOOL wlanOnlineSet;
+@property (nonatomic) BOOL wlanOnlineSwitch;
 @property (nonatomic) BOOL pelco;
 @property (nonatomic) BOOL newtz;
 @property (nonatomic, copy) NSString * _Nullable pirDetectionRanges;

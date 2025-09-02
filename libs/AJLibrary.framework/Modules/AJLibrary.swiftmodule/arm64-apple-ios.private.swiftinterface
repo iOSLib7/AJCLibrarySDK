@@ -1837,6 +1837,7 @@ public enum NetEntrance {
   case OnlineSetWiFi
   case FastBind
   case Bluetooth
+  case SwitchWiFi
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -2832,6 +2833,7 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var indicatorLightCtl: Swift.Bool
   @objc public var hibernate: Swift.Bool
   @objc public var wlanOnlineSet: Swift.Bool
+  @objc public var wlanOnlineSwitch: Swift.Bool
   @objc public var pelco: Swift.Bool
   @objc public var newtz: Swift.Bool
   @objc public var pirDetectionRanges: Swift.String?
@@ -3776,6 +3778,7 @@ public let IphoneXBottom: CoreFoundation.CGFloat
   public class func systemVolumn() -> UIKit.UISlider?
   public class func conver(value: Swift.String) -> Swift.String
   @objc public static func isEmptyStr(_ str: Swift.String?) -> Swift.Bool
+  @objc public static func showAlert(title: Swift.String?, message: Swift.String?, sureTitle: Swift.String?, sureAction: ((UIKit.UIAlertAction) -> ())? = nil, cancelaction: ((UIKit.UIAlertAction) -> ())? = nil)
   @objc public static func showAlert(title: Swift.String?, message: Swift.String?, sureTitle: Swift.String?, sureAction: ((UIKit.UIAlertAction) -> ())? = nil)
   @objc public static func currentLanguage() -> Swift.String
   @objc public static func getSupportDevType(_ deviceId: Swift.String) -> ObjectiveC.NSInteger
@@ -3874,6 +3877,13 @@ extension AVKit.AVPlayerViewController {
   @objc @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, image: UIKit.UIImage?, detailTitle: Swift.String?)
   @objc @_Concurrency.MainActor @preconcurrency public func show()
   @objc @_Concurrency.MainActor @preconcurrency public func dismiss()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AJWifiSwitchBinderManager : ObjectiveC.NSObject {
+  @objc public static let shared: AJLibrary.AJWifiSwitchBinderManager
+  @objc public func isSupportSwitchWifi(_ deviceId: Swift.String, complete: ((Swift.Bool) -> ())?)
+  @objc public func switchWifi(_ deviceId: Swift.String, ssid: Swift.String, password: Swift.String, successResponse: (() -> ())?, failureResponse: ((AJLibrary.ErrorModel?) -> ())?)
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class BaseViewController : UIKit.UIViewController, UIKit.UIGestureRecognizerDelegate {
