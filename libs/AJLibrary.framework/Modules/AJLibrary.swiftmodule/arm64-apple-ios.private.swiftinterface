@@ -27,9 +27,12 @@ import Material
 import MediaPlayer
 import MessageUI
 import NetworkExtension
+import OBS
 import ObjectiveC
 import OpenAL
 import Photos
+import QCloudCOSXML
+import Qiniu
 import SDVersion
 import SDWebImage
 import SnapKit
@@ -211,17 +214,19 @@ public enum ReceiveStatus : Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class ShareCameraModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ShareCameraModel : AJLibrary.ResultModel {
+  @objc public var shareurl: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class ShareSendReceiverExtModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ShareSendReceiverExtModel : AJLibrary.ResultModel {
   @objc public var deviceType: Swift.String?
   @objc public var prodName: Swift.String?
+  @objc public var vendorCode: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ShareSendReceiverModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class ShareSendReceiverModel : AJLibrary.ResultModel {
   @objc public var createTs: Swift.String?
   @objc public var member: Swift.String?
   @objc public var deviceId: Swift.String?
@@ -238,12 +243,21 @@ public enum ReceiveStatus : Swift.String {
   @objc public var optStatus: Swift.String?
   @objc public var validTs: Swift.String?
   @objc public var ext: AJLibrary.ShareSendReceiverExtModel?
-  public func inviteTime() -> Swift.String?
+  @objc public var shareCap: AJLibrary.ShareCapModel?
+  @objc public func showShareRealVideoPermission() -> Swift.Bool
+  @objc public func showShareAlertPushPermission() -> Swift.Bool
+  @objc public func showShareCloudStorageRecordPermission(_ deviceId: Swift.String?) -> Swift.Bool
+  @objc public func showShareLocalStorageRecordPermission(_ deviceId: Swift.String?) -> Swift.Bool
+  @objc public func showShareConsoleControlPermission() -> Swift.Bool
+  @objc public func showShareVoiceDialoguePermission() -> Swift.Bool
+  @objc public func showShareLightControlPermission() -> Swift.Bool
+  @objc public func showShareAlarmWhistlePermission() -> Swift.Bool
+  @objc public func inviteTime() -> Swift.String?
   public func receiveStatus() -> AJLibrary.ReceiveStatus
   public func senderStatus() -> AJLibrary.InviteStatus
-  public func isShareActivate() -> Swift.Bool
+  @objc public func isShareActivate() -> Swift.Bool
   public func receiverUserAccountType() -> AJLibrary.LoginType
-  public func inviteTitle() -> Swift.String
+  @objc public func inviteTitle() -> Swift.String
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class LanguageManager : ObjectiveC.NSObject {
@@ -366,14 +380,16 @@ public let FetchInfosApi: Swift.String
   public func fetchDevicesInfos(deviceIds: [Swift.String], params: [Swift.String : Any], complete: @escaping (AJLibrary.CamerasModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func setAliasName(deviceId: Swift.String, aliasName: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func setLabelConfigName(deviceId: Swift.String, aliasName: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func setMoveMonitorSetting(_ deviceId: Swift.String, enable: Swift.String, susceptiveness: Swift.String, genAlarmThumb: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func setMoveMonitorSetting(_ deviceId: Swift.String, enable: Swift.String, susceptiveness: Swift.String, genAlarmThumb: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], respondMediaType: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func nightVisionSetting(_ deviceId: Swift.String, nightMode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func microphoneSetting(_ deviceId: Swift.String, micEnable: Swift.String, speakerVolume: Swift.String, micVolume: Swift.String? = nil, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func osdConfig(_ deviceId: Swift.String, logoShow: Swift.String, datetimeShow: Swift.String? = nil, datetimeStyle: Swift.String? = nil, logoUrl: Swift.String? = nil, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func orientationSetting(_ deviceId: Swift.String, orientationValue: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func localStorageSetting(_ deviceId: Swift.String, enable: Swift.String, nasPath: Swift.String, playUrlRoot: Swift.String, quality: Swift.String, storageType: Swift.String, triggerMode: Swift.String, writeMode: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], wholeFormat: Swift.String, enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], format1: Swift.String, enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], format2: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func appSetting(_ deviceId: Swift.String, liveLayoutStyle: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func cloudStorageSetting(_ deviceId: Swift.String, enable: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], expireAt: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func setCameraSnapshot(_ deviceId: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func getUploadToken(_ deviceId: Swift.String, resourceType: Swift.String, complete: @escaping (AJLibrary.RscUploadTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func getUploadToken(_ deviceId: Swift.String, resourceType: Swift.String, supportStorageModes: [Swift.String], complete: @escaping (AJLibrary.RscUploadTokenModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func uploadNotify(_ deviceId: Swift.String, resourceType: Swift.String, resourceId: Swift.String, fileName: Swift.String, viewAngle: Swift.String, context: Swift.String, storageMode: Swift.String, complete: @escaping (AJLibrary.UploadNotifyModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getSecToken(_ deviceId: Swift.String, reqType: Swift.String, quality: Swift.String, complete: @escaping (AJLibrary.LiveSecToken?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func ptzControl(_ deviceId: Swift.String, action: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -404,22 +420,33 @@ public let FetchInfosApi: Swift.String
   public func sirenAutoControl(deviceId: Swift.String, isOn: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func FeedTimingConfig(deviceId: Swift.String, timings: [AJLibrary.timingsModel], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func FeedManuallyCtrl(deviceId: Swift.String, feedQuantity: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func floodlightControl(deviceId: Swift.String, toggle: Swift.String, brightness: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func floodlightControl(deviceId: Swift.String, isOn: Swift.Bool, brightness: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func rtspConfig(deviceId: Swift.String, enable: Swift.String, port: Swift.String, verify: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func pirConfig(_ deviceId: Swift.String, level: Swift.String, lingerDuration: Swift.Int, detectionRange: Swift.Int, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func motionDetectConfig(_ deviceId: Swift.String, pirDetectRange: Swift.Int, pirLingerDuration: Swift.Int, retriggerInterval: Swift.Int, susceptiveness: Swift.Int, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func detectionsConfig(_ deviceId: Swift.String, susceptiveness: Swift.Int, fullViewport: Swift.String, areas: [Swift.String]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func motionDetectConfig(_ deviceId: Swift.String, level: Swift.String, pirDetectRange: Swift.Int, pirLingerDuration: Swift.Int, retriggerInterval: Swift.Int, susceptiveness: Swift.Int, aovWorkInterval: Swift.Int, aovWorkMinBattery: Swift.Int, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func detectionsConfig(_ deviceId: Swift.String, deviceType: Swift.Int, susceptiveness: Swift.Int, fullViewport: Swift.String, areaShowStyle: Swift.String, areas: [Swift.String]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func floodlightConfig(_ deviceId: Swift.String, toggle: Swift.String, brightness: Swift.String, autoPolicy: AJLibrary.AutoPolicy? = nil, timePolices: [AJLibrary.TimePolicy]? = nil, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func privateRegionConfig(_ deviceId: Swift.String, enable: Swift.String, areas: [Swift.String]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func autoHibernateConfig(deviceId: Swift.String, enable: Swift.String, timePolices: [AJLibrary.Policy]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func soundMonitorConfig(_ deviceId: Swift.String, enable: Swift.String, susceptiveness: Swift.String, policies: [AJLibrary.Policy]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func videoConfig(_ deviceId: Swift.String, adaptiveFps: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func nightVisionConfig(_ deviceId: Swift.String, nightMode: Swift.String, colorWhenOff: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func nightVision2Config(_ deviceId: Swift.String, nightMode: Swift.String, ledMode: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func autoTrackConfig(_ deviceId: Swift.String, toggle: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func autoTrackConfig(_ deviceId: Swift.String, toggle: Swift.String, stopPosType: Swift.String, targets: [Swift.String], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func BatterySingleWakeUp(_ deviceId: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  @objc public func alarmRekConfig(_ deviceId: Swift.String, humanoid: Swift.String, package: Swift.String, pet: Swift.String, vehicle: Swift.String, pnmO1: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func alarmRekConfig(_ deviceId: Swift.String, pnmHumanoid: Swift.String, pnmPackage: Swift.String, pnmPet: Swift.String, pnmVehicle: Swift.String, pnmFall: Swift.String, pnmBird: Swift.String, pnmPetact: Swift.String, rekHumanoid: Swift.String, rekPackage: Swift.String, rekPet: Swift.String, rekVehicle: Swift.String, rekFall: Swift.String, rekBird: Swift.String, rekPetact: Swift.String, pnmO1: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func soundRekConfig(_ deviceId: Swift.String, pnmBabyCrying: Swift.String, rekBabyCrying: Swift.String, pnmNoise: Swift.String, rekNoise: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func staticIPConfig(_ deviceId: Swift.String, ipConfigMode: Swift.String, localIp: Swift.String, gatewayIp: Swift.String, localIpMask: Swift.String, dnsServers: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func simsControl(_ deviceId: Swift.String, iccid1: Swift.String, enable1: Swift.String, iccid2: Swift.String, enable2: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func fastBind(_ deviceId: Swift.String, bindToken: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func tamperGuardConfig(_ deviceId: Swift.String, enable: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
+  public func sirenSoundsConfig(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func soothingToneConfig(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func feedTonesConfig(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func updateSoundPlay(_ deviceId: Swift.String, names: [AJLibrary.soundPlayNameInfo], playmode: Swift.String, state: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func screenConfig(_ deviceId: Swift.String, offInterval: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func proactiveCallConfig(_ deviceId: Swift.String, enable: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func powerUsageConfig(_ deviceId: Swift.String, mode: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class AddDeviceModel : ObjectiveC.NSObject {
@@ -441,9 +468,111 @@ public let FetchInfosApi: Swift.String
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudPlansModel : AJLibrary.ResultModel {
-  public func havePolicy() -> Swift.Bool
-  public func combineWithTrial() -> Swift.Bool
+public enum ContinuousType : Swift.String {
+  case Continuous
+  case Optional
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class RefsModel : AJLibrary.ResultModel {
+  @objc public var id: Swift.String?
+  @objc public var type: Swift.String?
+  @objc public var group: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class Plan : AJLibrary.ResultModel {
+  @objc public var _description: Swift.String?
+  @objc public var name: Swift.String?
+  @objc public var refs: [AJLibrary.RefsModel]?
+  @objc public var id: Swift.String?
+  @objc public var group: Swift.String?
+  @objc public func getRef(isTrail: Swift.Bool, isContinuous: Swift.Bool) -> AJLibrary.RefsModel?
+  @objc required dynamic public init()
+  override public func mapping(mapper: AJLibrary.HelpingMapper)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class Price : AJLibrary.ResultModel {
+  @objc public var currency: Swift.String?
+  @objc public var oriAmount: Swift.String?
+  @objc public var curAmount: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BucketModel : AJLibrary.ResultModel {
+  @objc public var plan: AJLibrary.Plan?
+  @objc public var buyModes: [Swift.String]?
+  public var serviceMonths: Swift.Float?
+  @objc public var price: AJLibrary.Price?
+  @objc public var unit: Swift.String?
+  @objc public var imageString: Swift.String?
+  @objc public func yearPrice() -> Swift.Float
+  public func curValidFloatAmount() -> Swift.Float?
+  public func comparedLaterPrice(monthNum: Swift.Int?) -> Swift.Float?
+  public func continousType() -> AJLibrary.ContinuousType
+  @objc public func oriAmount() -> Swift.String
+  @objc public func curAmount() -> Swift.String
+  @objc public func currency() -> Swift.String
+  @objc public func bucketUnit() -> Swift.String
+  @objc public func unitPricePerMonth() -> Swift.String
+  @objc public func oriPricePerMonth() -> Swift.String
+  @objc public func newBucketUnit() -> Swift.String
+  @objc public func serviceLength() -> Swift.String
+  @objc public func monthsLength() -> Swift.String
+  @objc public func validityPeriod() -> Swift.String
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudPlanModel : AJLibrary.ResultModel {
+  @objc public var _id: Swift.String?
+  @objc public var alarmVideo: Swift.String?
+  @objc public var cycleDays: Swift.String?
+  public var level: Swift.Int?
+  @objc public var name: Swift.String?
+  @objc public var limitDevices: Swift.String?
+  @objc public var limitFullDayDevices: Swift.String?
+  @objc public var sku: Swift.String?
+  @objc public var status: Swift.String?
+  @objc public var trialDays: Swift.String?
+  @objc public var payModes: [Swift.String]?
+  @objc public var monthly: AJLibrary.BucketModel?
+  @objc public var yearly: AJLibrary.BucketModel?
+  @objc public var quarterly: AJLibrary.BucketModel?
+  @objc public func bucketPlans() -> [AJLibrary.BucketModel]
+  @objc public func lowestBucket() -> AJLibrary.BucketModel?
+  @objc public func imageString() -> Swift.String
+  @objc public func ipcBackBigBasicImageString() -> Swift.String
+  @objc public func batteryBackBigBasicImageString() -> Swift.String
+  @objc public func planName() -> Swift.String
+  @objc public func planSegmentName() -> Swift.String
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class TrialModel : AJLibrary.ResultModel {
+  @objc public var days: Swift.String?
+  @objc public var tsEnd: Swift.String?
+  @objc public var tsStart: Swift.String?
+  @objc public var uid: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PricePolicy : AJLibrary.ResultModel {
+  @objc public var discountPercentage: Swift.String?
+  @objc public var policyCode: Swift.String?
+  @objc public var status: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudPlansModel : AJLibrary.ResultModel {
+  @objc public var trial: AJLibrary.TrialModel?
+  @objc public var plans: [AJLibrary.CloudPlanModel]?
+  public var totalTrials: Swift.Int?
+  public var usedTrials: Swift.Int?
+  @objc public func havePolicy() -> Swift.Bool
+  @objc public func combineWithTrial() -> Swift.Bool
   @objc public func haveTrial() -> Swift.Bool
   @objc public func isShowExperienceTips() -> Swift.Bool
   @objc required dynamic public init()
@@ -471,7 +600,7 @@ public let FetchInfosApi: Swift.String
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class BaseSetting : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class BaseSetting : AJLibrary.ResultModel {
   @objc public var whiteBalance: Swift.String?
   @objc public var freqValue: Swift.String?
   @objc public var nightMode: Swift.String?
@@ -480,6 +609,7 @@ public let FetchInfosApi: Swift.String
   @objc public var aliasName: Swift.String?
   @objc public var deviceId: Swift.String?
   @objc public var deviceMode: Swift.String?
+  @objc public var endpoint: Swift.String?
   @objc public var fwVersion: Swift.String?
   @objc public var newFwVersion: Swift.String?
   @objc public var onlineModified: Swift.String?
@@ -490,38 +620,46 @@ public let FetchInfosApi: Swift.String
   @objc public var snapshotTs: Swift.String?
   @objc public var snapshotUrl: Swift.String?
   @objc public var accessKey: Swift.String?
-  @objc public var batteryCapacity: Swift.Int
-  @objc public var wifiSignal: Swift.Int
+  public var batteryCapacity: Swift.Int?
+  public var wifiSignal: Swift.Int?
   @objc public var batteryCapacityTs: Swift.String?
   @objc public var channelId: Swift.String?
+  public var chargeStatus: Swift.Int?
   @objc public var chargeStatusTs: Swift.String?
   @objc public var wifiSignalTs: Swift.String?
   @objc public var lastPingTime: Swift.String?
   @objc public var masterUid: Swift.String?
+  @objc public var vocalExpel: Swift.String?
   @objc public var continent: Swift.String?
+  @objc public var connReadyTime: Swift.String?
   @objc public var country: Swift.String?
-  @objc public var deviceType: Swift.Int
+  public var deviceType: Swift.Int?
   @objc public var bizRestricted: Swift.String?
   @objc public var aclid: Swift.String?
   @objc public var prodName: Swift.String?
   @objc public var status: AJLibrary.CameraStatus {
     @objc get
   }
-  public func setAlarmNeedRestartDevice() -> Swift.Bool
-  @objc public func isCharging() -> Swift.Bool
+  @objc public func getNewSnapshot() -> Swift.Bool
   @objc public func isUnauthorizedSim() -> Swift.Bool
-  @objc public func fwHaveNewVersion() -> Swift.Bool
+  @objc public func isOnlyRegionalLockout() -> Swift.Bool
+  @objc public func isOnlyUnauthorizedIccid() -> Swift.Bool
+  @objc public func isOnlyRegionalLockoutUnauthorizedIccid() -> Swift.Bool
+  @objc public func setAlarmNeedRestartDevice() -> Swift.Bool
+  @objc public func isCharging() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers public class QualityModel : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class QualityModel : ObjectiveC.NSObject {
   @objc public var quality: Swift.String
   @objc public var number: Swift.String
-  public func channelString() -> Swift.String
-  public func chNum() -> Swift.String
+  @objc public var showName: Swift.String
+  @objc public var interpolation: Swift.String
+  @objc public func channelString() -> Swift.String
+  @objc public func chNum() -> Swift.String
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class Stream : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class Stream : AJLibrary.ResultModel {
   @objc public var bitRate: Swift.String?
   @objc public var frameRate: Swift.String?
   @objc public var localUrl: Swift.String?
@@ -530,16 +668,16 @@ public let FetchInfosApi: Swift.String
   @objc public var resHeight: Swift.String?
   @objc public var resWidth: Swift.String?
   @objc public var wanUrl: Swift.String?
-  public func channelString() -> Swift.String
+  @objc public func channelString() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class StreamConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class StreamConfig : AJLibrary.ResultModel {
   @objc public var streams: [AJLibrary.Stream]?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class LivePolicy : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class LivePolicy : AJLibrary.ResultModel {
   @objc public var p2p: Swift.String?
   @objc public var relay: Swift.String?
   @objc public var rtmp: Swift.String?
@@ -547,7 +685,9 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class NetworkConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class NetworkConfig : AJLibrary.ResultModel {
+  public var cellularRssi: Swift.Int?
+  public var cellularSignal: Swift.Int?
   @objc public var ethMac: Swift.String?
   @objc public var localDirectProbeUrl: Swift.String?
   @objc public var localIp: Swift.String?
@@ -556,24 +696,35 @@ public let FetchInfosApi: Swift.String
   @objc public var wlanMac: Swift.String?
   @objc public var ssid: Swift.String?
   @objc public var netLinkType: Swift.String?
-  @objc public var wifiSignal: Swift.Int
-  @objc public var wifiRssi: Swift.Int
+  public var wifiSignal: Swift.Int?
+  public var wifiRssi: Swift.Int?
+  @objc public var ipConfigMode: Swift.String?
+  @objc public var gatewayIp: Swift.String?
+  @objc public var dnsServers: Swift.String?
+  @objc public func networkItemComment() -> Swift.String
+  @objc public func isIPAuto() -> Swift.Bool
+  @objc public func isIPManual() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class ViewAngle : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ViewAngle : AJLibrary.ResultModel {
   @objc public var viewAngle: Swift.String?
   @objc public var url: Swift.String?
   @objc public var name: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class ViewAnglesConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ViewAnglesConfig : AJLibrary.ResultModel {
   @objc public var viewAngles: [AJLibrary.ViewAngle]?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class Policy : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class VideoConfig : AJLibrary.ResultModel {
+  @objc public var adaptiveFps: Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class Policy : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var no: Swift.String?
   @objc public var enable: Swift.Bool
   @objc public var format: Swift.String?
@@ -582,14 +733,14 @@ public let FetchInfosApi: Swift.String
   @objc public var endTime: Swift.String?
   @objc public var weekDays: [Swift.String]?
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  public func formatStartTime() -> Swift.String?
-  public func formatEndTime() -> Swift.String?
+  @objc public func formatStartTime() -> Swift.String?
+  @objc public func formatEndTime() -> Swift.String?
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class LocalStorConfig : AJLibrary.ResultModel {
-  @objc public var enable: Swift.Bool
+@objc @_inheritsConvenienceInitializers @objcMembers public class LocalStorConfig : AJLibrary.ResultModel {
+  public var enable: Swift.Bool?
   @objc public var storageType: Swift.String?
   @objc public var writeMode: Swift.String?
   @objc public var triggerMode: Swift.String?
@@ -597,49 +748,73 @@ public let FetchInfosApi: Swift.String
   @objc public var playUrlRoot: Swift.String?
   @objc public var policies: [AJLibrary.Policy]?
   @objc public var quality: Swift.String?
-  @objc public var ecoRecordDurationLimit: Swift.Int
+  public var ecoRecordDurationLimit: Swift.Int?
   @objc public var remoteTFUrl: Swift.String?
-  public func cardWriteMode(writeMode: Swift.String?) -> Swift.String
+  @objc public func cardWriteMode(writeMode: Swift.String?) -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class MotionDetectConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class MotionDetectConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var pirDetectRange: Swift.Int
   @objc public var pirLingerDuration: Swift.Int
   @objc public var retriggerInterval: Swift.Int
   @objc public var susceptiveness: Swift.Int
+  @objc public var level: Swift.String?
+  @objc public var aovWorkInterval: Swift.Int
+  @objc public var aovWorkMinBattery: Swift.Int
+  public var levelEnum: AJLibrary.LevelEnum {
+    get
+  }
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  public func defaultPirConfig() -> AJLibrary.MotionDetectConfig
-  public func detectionRangeComment(_ pirDetectionRanges: Swift.String) -> Swift.String
-  public func levelComment() -> Swift.String
-  public func lengthComment() -> Swift.String
+  @objc public func newCustomLevel(_ deviceId: Swift.String) -> AJLibrary.MotionDetectLevel
+  @objc public func defaultPirConfig() -> AJLibrary.MotionDetectConfig
+  @objc public func newDetectiveDistanceComment() -> Swift.String
+  @objc public func detectionRangeComment(_ pirDetectionRanges: Swift.String) -> Swift.String
+  @objc public func lengthComment() -> Swift.String
+  @objc public func motionSensitivityLevels() -> [Swift.String]
+  @objc public func motionSensitivityComment(_ level: AJLibrary.MotionDetectLevel) -> Swift.String
+  @objc public func aovWakeIntervalComment() -> Swift.String
+  @objc public func miniPowerForAovOperationComment() -> Swift.String
+  @objc public func retriggerDurationComment() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class MonitorConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class SoothingToneConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var autoplay: Swift.String?
+  @objc public var curToneGroup: Swift.String?
+  @objc public var curToneName: Swift.String?
+  @objc public var customs: [AJLibrary.SirenSoundDesModel]?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class MonitorConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.Bool
-  @objc public var susceptiveness: Swift.Int
+  public var susceptiveness: Swift.Int?
   @objc public var genAlarmThumb: Swift.Bool
+  @objc public var respondMediaType: Swift.String?
   @objc public var policies: [AJLibrary.Policy]?
+  @objc public func alarmMediaTypeString() -> Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudStorConfig : AJLibrary.ResultModel {
-  @objc public var enable: Swift.Bool
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudStorConfig : AJLibrary.ResultModel {
+  public var enable: Swift.Bool?
   @objc public var quality: Swift.String?
-  @objc public var ecoRecordDurationLimit: Swift.Int
+  public var ecoRecordDurationLimit: Swift.Int?
   @objc public var policies: [AJLibrary.Policy]?
+  public var expireAt: Swift.Int?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class AudioConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class AudioConfig : AJLibrary.ResultModel {
   @objc public var micEnable: Swift.String?
   @objc public var speakerVolume: Swift.String?
   @objc public var micVolume: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class PictureConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class PictureConfig : AJLibrary.ResultModel {
   @objc public var brightness: Swift.String?
   @objc public var contrast: Swift.String?
   @objc public var saturation: Swift.String?
@@ -647,7 +822,17 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class TimeConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class PowerUsageConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var mode: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public func isLowPower() -> Swift.Bool
+  @objc public func isAdptive() -> Swift.Bool
+  @objc public func setAdptive()
+  @objc public func setLowPower()
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class TimeConfig : AJLibrary.ResultModel {
   @objc public var tzName: Swift.String?
   @objc public var tzValue: Swift.String?
   @objc public var dst: Swift.String?
@@ -657,23 +842,43 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudStorPlan : AJLibrary.ResultModel {
-  @objc public var sku: Swift.String?
-  @objc public var level: Swift.String?
-  @objc public var validTsStart: Swift.String?
-  @objc public var validTsEnd: Swift.String?
-  @objc public var keepDays: Swift.String?
-  @objc public var alarmVideo: Swift.Bool
-  @objc public var fullDay: Swift.Bool
-  @objc public var lastStoreTs: Swift.String?
-  @objc public var expireViewAt: Swift.String?
-  @objc public var uid: Swift.String?
-  @objc public var orderId: Swift.String?
-  public func serviceIsVaild() -> Swift.Bool
+@objc @_inheritsConvenienceInitializers @objcMembers public class TamperGuardConfig : AJLibrary.ResultModel {
+  @objc public var enable: Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class TfCardConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class soundPlayInfo : AJLibrary.ResultModel {
+  @objc public var group: Swift.String?
+  @objc public var state: Swift.String?
+  @objc public var names: [AJLibrary.soundPlayNameInfo]?
+  @objc public var playMode: Swift.String?
+  @objc public var loopLimitType: Swift.String?
+  @objc public var loopLimit: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class soundPlayNameInfo : AJLibrary.ResultModel {
+  @objc public var type: Swift.String?
+  @objc public var name: Swift.String?
+  @objc public var current: Swift.String?
+  @objc public func isCurrent() -> Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+public enum TFStatus : Swift.String {
+  case NoCard
+  case Normal
+  case Error
+  case Deleting
+  case Formatting
+  case NotSupportFileSystem
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class TfCardConfig : AJLibrary.ResultModel {
   @objc public var status: Swift.String?
   @objc public var label: Swift.String?
   @objc public var serialNo: Swift.String?
@@ -684,22 +889,33 @@ public let FetchInfosApi: Swift.String
   @objc public var fwReversion: Swift.String?
   @objc public var capacityBytes: Swift.String?
   @objc public var freespaceBytes: Swift.String?
+  public func tfCardStatus() -> AJLibrary.TFStatus
+  @objc public func haveTfCard() -> Swift.Bool
+  @objc public func updateCardInfo(status: Swift.String, capacityBytes: Swift.String, freespaceBytes: Swift.String)
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class IndicatorLightConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class IndicatorLightConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class OnvifConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class OnvifConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.Bool
   @objc public var port: Swift.String?
   @objc public var verify: Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class NewFwversionModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class OsdConfig : AJLibrary.ResultModel {
+  @objc public var logoShow: Swift.String?
+  @objc public var logoUrl: Swift.String?
+  @objc public var datetimeStyle: Swift.String?
+  @objc public var datetimeShow: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class NewFwversionModel : AJLibrary.ResultModel {
   @objc public var version: Swift.String?
   @objc public var priority: Swift.String?
   @objc public var downloadUrl: Swift.String?
@@ -707,66 +923,104 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class LocalAccountConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class LocalAccountConfig : AJLibrary.ResultModel {
   @objc public var username: Swift.String?
   @objc public var password: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
+public enum AIPlanType : Swift.String {
+  case Normal
+  case Birds
+  case Pets
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc @_inheritsConvenienceInitializers public class ProtectionPlan : AJLibrary.ResultModel {
-  @objc public var alarmVideo: Swift.Bool
-  @objc public var buyerId: Swift.String?
-  @objc public var cloudStorFullDay: Swift.String?
-  @objc public var expireViewAt: Swift.String?
-  @objc public var fullDay: Swift.Bool
-  @objc public var genAlarmThumb: Swift.Bool
-  @objc public var keepDays: Swift.String?
-  @objc public var lastStoreTs: Swift.String?
-  @objc public var level: Swift.String?
-  @objc public var limitDevices: Swift.String?
-  @objc public var localStorFullDay: Swift.Bool
-  @objc public var orderId: Swift.String?
-  @objc public var sku: Swift.String?
-  @objc public var validTsEnd: Swift.String?
-  @objc public var validTsStart: Swift.String?
-  @objc public var alarmRek: Swift.Bool
-  public func serviceIsVaild() -> Swift.Bool
+  public func isValidBirdOrder() -> Swift.Bool
+  public func isValidPetsOrder() -> Swift.Bool
+  public func haveBirdOrder() -> Swift.Bool
+  @objc public func birdOrderShorestExpiredDays() -> Swift.Int
+  @objc public func serviceIsVaild() -> Swift.Bool
+  public func aiPlanType() -> AJLibrary.AIPlanType
   public func isAiPlan() -> Swift.Bool
+  public func isBirdsAiPlan() -> Swift.Bool
+  public func isNormalAiPlan() -> Swift.Bool
+  public func isPetsAiPlan() -> Swift.Bool
+  public func validityPeriod() -> Swift.String
+  public func planName() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class PrivateRegionConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class PrivateRegionConfig : AJLibrary.ResultModel {
   @objc public var coverMode: Swift.String?
   @objc public var enable: Swift.Bool
   @objc public var name: Swift.String?
   @objc public var areas: [Swift.String]
-  public func selectAreas() -> [Swift.String]
+  @objc public func selectAreas() -> [Swift.String]
   public func coordinateArea() -> (Swift.Int?, Swift.Int?, Swift.Int?, Swift.Int?)
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class NightVisionConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class NightVisionConfig : AJLibrary.ResultModel {
   @objc public var nightMode: Swift.String?
   @objc public var colorWhenOff: Swift.String?
   @objc public var ledMode: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class TrackConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class TrackConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var toggle: Swift.String?
+  @objc public var stopPosType: Swift.String?
+  @objc public var targets: [Swift.String]
+  @objc public func isActive() -> Swift.Bool
+  @objc public func isStopAtOriPos() -> Swift.Bool
+  @objc public func isStopAtCurPos() -> Swift.Bool
+  @objc public func setStopPosTypeValue(_ type: Swift.String)
+  @objc public func setTrackEvents(_ events: [Swift.String])
+  @objc public func removeTrackEvents(_ event: Swift.String)
+  @objc public func isTrackAllEvents() -> Swift.Bool
+  @objc public func haveAutoTrackHumanoid() -> Swift.Bool
+  @objc public func haveAutoTrackVehicle() -> Swift.Bool
+  @objc public func haveAutoTrackPet() -> Swift.Bool
+  @objc public func haveAutoTrackPackage() -> Swift.Bool
+  @objc public func haveAutoTrackFall() -> Swift.Bool
+  @objc public func haveAutoTrackBird() -> Swift.Bool
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class AlarmRekConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class AppSettingModel : AJLibrary.ResultModel {
+  @objc public var liveLayoutStyle: Swift.String
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class UserSetting : AJLibrary.ResultModel {
+  @objc public var customMotionDetectConfig: AJLibrary.MotionDetectConfig
+  @objc public var customAppSetting: AJLibrary.AppSettingModel
+  override public func mapping(mapper: AJLibrary.HelpingMapper)
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class AlarmRekConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var pnmHumanoid: Swift.Bool
   @objc public var pnmO1: Swift.Bool
   @objc public var pnmPackage: Swift.Bool
   @objc public var pnmPet: Swift.Bool
   @objc public var pnmVehicle: Swift.Bool
+  @objc public var pnmFall: Swift.Bool
+  @objc public var pnmBird: Swift.Bool
+  @objc public var pnmPetact: Swift.Bool
   @objc public var rekHumanoid: Swift.Bool
   @objc public var rekPackage: Swift.Bool
   @objc public var rekPet: Swift.Bool
   @objc public var rekVehicle: Swift.Bool
+  @objc public var rekFall: Swift.Bool
+  @objc public var rekBird: Swift.Bool
+  @objc public var rekPetact: Swift.Bool
   @objc public var __persistent: Swift.Bool
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
@@ -781,62 +1035,134 @@ public let FetchInfosApi: Swift.String
   @objc public var localAccountConfig: AJLibrary.LocalAccountConfig?
   @objc public var networkConfig: AJLibrary.NetworkConfig?
   @objc public var viewAnglesConfig: AJLibrary.ViewAnglesConfig?
+  @objc public var videoConfig: AJLibrary.VideoConfig?
   @objc public var localStorConfig: AJLibrary.LocalStorConfig?
   @objc public var moveMonitorConfig: AJLibrary.MonitorConfig?
   @objc public var motionDetectConfig: AJLibrary.MotionDetectConfig?
   @objc public var soundMonitorConfig: AJLibrary.MonitorConfig?
+  @objc public var soothingToneConfig: AJLibrary.SoothingToneConfig?
   @objc public var cloudStorConfig: AJLibrary.CloudStorConfig?
-  @objc public var cloudStorPlan: AJLibrary.CloudStorPlan?
   @objc public var audioConfig: AJLibrary.AudioConfig?
   @objc public var pictureConfig: AJLibrary.PictureConfig?
+  @objc public var powerUsageConfig: AJLibrary.PowerUsageConfig?
   @objc public var timeConfig: AJLibrary.TimeConfig?
   @objc public var tfcardConfig: AJLibrary.TfCardConfig?
   @objc public var indicatorLightConfig: AJLibrary.IndicatorLightConfig?
   @objc public var onvifConfig: AJLibrary.OnvifConfig?
+  @objc public var osdConfig: AJLibrary.OsdConfig?
   @objc public var newFwversion: AJLibrary.NewFwversionModel?
   @objc public var actionDetectConfig: AJLibrary.ActionDetectConfig?
   @objc public var lightingFreqConfig: AJLibrary.LightingFreqConfig?
   @objc public var hibernateConfig: AJLibrary.HibernateConfig?
   @objc public var pelcoConfig: AJLibrary.PelcoConfig?
   @objc public var detectionsConfig: AJLibrary.DetectionsConfig?
+  @objc public var cryingDetectConfig: AJLibrary.CryingDetectConfig?
+  @objc public var humidityConfig: AJLibrary.HumidityConfig?
+  @objc public var babyFeedConfig: AJLibrary.BabyFeedConfig?
+  @objc public var nightlightConfig: AJLibrary.NightlightConfig?
+  @objc public var temperatureConfig: AJLibrary.TemperatureConfig?
   @objc public var rtspConfig: AJLibrary.RtspConfig?
+  @objc public var screenConfig: AJLibrary.ScreenConfig?
+  @objc public var simsConfig: AJLibrary.SimsConfig?
   @objc public var batteryConfig: AJLibrary.BatteryConfig?
   @objc public var pirConfig: AJLibrary.PirConfig?
   @objc public var floodlightConfig: AJLibrary.FloodlightConfig?
   @objc public var sirenConfig: AJLibrary.SirenConfig?
+  @objc public var sirenSoundsConfig: AJLibrary.SirenSoundsConfig?
   @objc public var protectionPlan: AJLibrary.ProtectionPlan?
   @objc public var feedTonesConfig: AJLibrary.FeedTonesConfig?
   @objc public var feedTimingConfig: AJLibrary.feedTimingConfig?
   @objc public var feedConfig: AJLibrary.feedConfig?
+  @objc public var soundPlay: AJLibrary.soundPlayInfo?
   @objc public var privateRegionConfig: AJLibrary.PrivateRegionConfig?
   @objc public var nightVisionConfig: AJLibrary.NightVisionConfig?
   @objc public var nightVision2Config: AJLibrary.NightVisionConfig?
   @objc public var trackConfig: AJLibrary.TrackConfig?
   @objc public var alarmRekConfig: AJLibrary.AlarmRekConfig?
+  @objc public var userSetting: [Swift.String : Swift.String]
+  @objc public var tamperGuardConfig: AJLibrary.TamperGuardConfig?
+  @objc public var lullabyConfig: AJLibrary.LullabyConfig?
+  @objc public var soundRekConfig: AJLibrary.SoundRekConfig?
+  @objc public var proactiveCallConfig: AJLibrary.ProactiveCallConfig?
+  @objc public var peripheralHwiConfig: AJLibrary.PeripheralHWIConfig?
+  @objc public func productName() -> Swift.String?
+  @objc public func vendorCode() -> Swift.String?
+  @objc public func haveNoValidPlan() -> Swift.Bool
+  @objc public func showContinueSubscribe() -> Swift.Bool
+  @objc public func liveLayoutStyleIsNomal() -> Swift.Bool
+  @objc public func appSetting() -> AJLibrary.AppSettingModel
+  @objc public func updateLiveLayoutStyle(_ liveLayoutStyle: Swift.String)
+  @objc public func userCustomMotionDetectConfig() -> AJLibrary.MotionDetectConfig
+  @objc public func updateCustomMotionDetectUserSetting(_ customMotionDetect: AJLibrary.MotionDetectConfig)
+  @objc public func fwHaveNewVersionForceNotification() -> Swift.Bool
+  @objc public func fwHaveNewVersion() -> Swift.Bool
   @objc public func isCloudEnable() -> Swift.Bool
   public func batteryCapacity() -> Swift.Int?
+  @objc public func batteryLowPowerTips() -> Swift.String?
+  @objc public func batteryIsLowPowerAndNotWork() -> Swift.Bool
+  @objc public func batteryIsLowPower() -> Swift.Bool
+  @objc public func batteryVersionUpdateIsLowPower() -> Swift.Bool
+  @objc public func bindWifiSignalImage() -> UIKit.UIImage?
   @objc public func homeBatteryChargingAnimationName() -> Swift.String
   @objc public func settingBatteryChargingAnimationName() -> Swift.String
-  @objc public func settingWifiSignalImage() -> UIKit.UIImage?
-  @objc public func settingHeaderNetworkImage() -> UIKit.UIImage?
   @objc public func settingHeaderNetworkString() -> Swift.String?
-  @objc public func floatingSignalImage_4G() -> UIKit.UIImage?
-  @objc public func homeNetworkImage() -> UIKit.UIImage?
-  @objc public func playerNetworkImage() -> UIKit.UIImage?
-  @objc public func homeWifiSignalImage() -> UIKit.UIImage?
+  @objc public func wifiSignalStrength() -> Swift.Int
+  @objc public func cellularSignalStrengthString() -> Swift.String?
   @objc public func wifiSignalStrengthString() -> Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class AutoHibernateConfig : AJLibrary.ResultModel {
-  @objc public var enable: Swift.Bool
+@objc @_inheritsConvenienceInitializers @objcMembers public class AutoHibernateConfig : AJLibrary.ResultModel {
+  public var enable: Swift.Bool?
   @objc public var timePolicies: [AJLibrary.Policy]?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class SirenConfig : AJLibrary.ResultModel {
+public enum LevelEnum : Swift.String {
+  case Low
+  case Normal
+  case High
+  case Custom
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public enum MotionDetectLevel : Swift.Int {
+  case Low = 0
+  case Normal = 1
+  case High = 2
+  case Custom = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SirenConfig : AJLibrary.ResultModel {
   @objc public var toggle: Swift.String
   @objc public var autoPolicy: AJLibrary.AutoPolicy?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SirenSoundDesModel : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var name: Swift.String?
+  @objc public var autype: Swift.String?
+  @objc public var url: Swift.String?
+  @objc public var memo: Swift.String?
+  @objc public var rects: Swift.String?
+  @objc public var lang: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SirenSoundsConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var curSndGroup: Swift.String?
+  @objc public var curSndName: Swift.String?
+  @objc public var builtins: [AJLibrary.SirenSoundDesModel]?
+  @objc public var customs: [AJLibrary.SirenSoundDesModel]?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
@@ -845,28 +1171,17 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @objcMembers public class feedConfig : AJLibrary.ResultModel {
-  @objc public var feedRemain: Swift.String?
-  @objc public var lastUpdate: Swift.String?
-  @objc required dynamic public init()
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers @objcMembers public class FeedTonesConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var curToneGroup: Swift.String?
   @objc public var curToneName: Swift.String?
-  @objc public var customs: [AJLibrary.CustomSoundDesModel]?
+  @objc public var customs: [AJLibrary.SirenSoundDesModel]?
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @objcMembers public class CustomSoundDesModel : AJLibrary.ResultModel, Foundation.NSCopying {
-  @objc public var name: Swift.String?
-  @objc public var autype: Swift.String?
-  @objc public var url: Swift.String?
-  @objc public var memo: Swift.String?
-  @objc public var rects: Swift.String?
-  @objc public var lang: Swift.String?
-  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+@objc @_inheritsConvenienceInitializers @objcMembers public class feedConfig : AJLibrary.ResultModel {
+  @objc public var feedRemain: Swift.String?
+  @objc public var lastUpdate: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -888,7 +1203,7 @@ public let FetchInfosApi: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class feedLogModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class feedLogModel : AJLibrary.ResultModel {
   @objc public var did: Swift.String?
   @objc public var cdate: Swift.String?
   @objc public var ctime: Swift.String?
@@ -897,6 +1212,8 @@ public let FetchInfosApi: Swift.String
   @objc public var ats: Swift.String?
   @objc public var feedQuantity: Swift.String?
   @objc public var trigger: Swift.String?
+  @objc public var feedRemain: Swift.String?
+  @objc public var feedType: Swift.String?
   @objc public var feedUnit: Swift.String?
   @objc public var performTs: Swift.String?
   @objc public var performTz: Swift.String?
@@ -910,25 +1227,28 @@ public enum AutoLightMode : Swift.String {
   case AutoLightModeActionDetect
   case AutoLightModeNightMode
   case AutoLightModeTiming
+  case AutoLightModeInfrared
+  case AutoLightModeLightOff
+  case AutoLightModeAutoSwitchNightVision
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class FloodlightConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class FloodlightConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var toggle: Swift.String
-  public var `switch`: Swift.String
+  @objc public var `switch`: Swift.String
   @objc public var brightness: Swift.String
-  public var autoPolicy: AJLibrary.AutoPolicy?
-  public var timePolicies: [AJLibrary.TimePolicy]?
+  @objc public var autoPolicy: AJLibrary.AutoPolicy?
+  @objc public var timePolicies: [AJLibrary.TimePolicy]?
   @objc public func timePolice1() -> AJLibrary.TimePolicy?
   @objc public func timePolice2() -> AJLibrary.TimePolicy?
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class AutoPolicy : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class AutoPolicy : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var enable: Swift.String
   @objc public var lightingDur: Swift.String
   @objc public var triggersOn: [Swift.String]
@@ -937,97 +1257,230 @@ public enum AutoLightMode : Swift.String {
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class TimePolicy : AJLibrary.ResultModel, Foundation.NSCopying {
+@objc @_inheritsConvenienceInitializers @objcMembers public class TimePolicy : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var no: Swift.String
   @objc public var enable: Swift.String
   @objc public var startTime: Swift.String
   @objc public var endTime: Swift.String
   @objc public var toggle: Swift.String
   @objc public var weekDays: [Swift.String]
-  public class func createDefault(no: Swift.String) -> AJLibrary.TimePolicy
+  @objc public class func createDefault(no: Swift.String) -> AJLibrary.TimePolicy
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  public func formatStartTime() -> Swift.String?
-  public func formatEndTime() -> Swift.String?
+  @objc public func formatStartTime() -> Swift.String?
+  @objc public func formatEndTime() -> Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class PirConfig : AJLibrary.ResultModel, Foundation.NSCopying {
-  @objc public var lingerDuration: Swift.Int
-  @objc public var detectionRange: Swift.Int
+@objc @_inheritsConvenienceInitializers @objcMembers public class PirConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  public var lingerDuration: Swift.Int?
+  public var detectionRange: Swift.Int?
   @objc public var level: Swift.String?
+  public var levelEnum: AJLibrary.LevelEnum {
+    get
+  }
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
-  public func defaultPirConfig() -> AJLibrary.PirConfig
-  public func detectionRangeComment(_ pirDetectionRanges: Swift.String) -> Swift.String
-  public func levelComment() -> Swift.String
-  public func lengthComment() -> Swift.String
+  @objc public func defaultPirConfig() -> AJLibrary.PirConfig
+  @objc public func detectionRangeComment(_ pirDetectionRanges: Swift.String) -> Swift.String
+  @objc public func lengthComment() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class BatteryConfig : AJLibrary.ResultModel {
-  @objc public var capacity: Swift.Int
-  @objc public var charge: Swift.Int
-  @objc public var quantity: Swift.Int
+@objc @_inheritsConvenienceInitializers @objcMembers public class BatteryConfig : AJLibrary.ResultModel {
+  public var capacity: Swift.Int?
+  public var charge: Swift.Int?
+  public var quantity: Swift.Int?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class RtspConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class RtspConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.String?
-  @objc public var port: Swift.Int
+  public var port: Swift.Int?
   @objc public var verify: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class DetectionsConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ScreenConfig : AJLibrary.ResultModel {
+  @objc public var offInterval: Swift.Int
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SimsConfig : AJLibrary.ResultModel {
+  @objc public var carrier1: Swift.String?
+  @objc public var carrier2: Swift.String?
+  @objc public var enable1: Swift.Bool
+  @objc public var enable2: Swift.Bool
+  @objc public var iccid1: Swift.String?
+  @objc public var iccid2: Swift.String?
+  @objc public var networkMode1: Swift.String?
+  @objc public var networkMode2: Swift.String?
+  @objc public var status1: Swift.String?
+  @objc public var status2: Swift.String?
+  @objc public var supplier1: Swift.String?
+  @objc public var supplier2: Swift.String?
+  @objc public var tag1: Swift.String?
+  @objc public var tag2: Swift.String?
+  @objc public var webMgtUrl1: Swift.String?
+  @objc public var webMgtUrl2: Swift.String?
+  @objc public var src1: Swift.String?
+  @objc public var src2: Swift.String?
+  @objc public func enableSimIccid() -> Swift.String?
+  @objc public func showNativeNav() -> Swift.Bool
+  @objc public func isUnauthorizationSim(isSim1: Swift.Bool) -> Swift.Bool
+  @objc public func isAuthorizationSim(isSim1: Swift.Bool) -> Swift.Bool
+  @objc public func haveNoSimCard(isSim1: Swift.Bool) -> Swift.Bool
+  @objc public func haveSimsCount() -> Swift.Int
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class DetectionsConfig : AJLibrary.ResultModel {
   @objc public var share: AJLibrary.DetectionShare?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class DetectionShare : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CryingDetectConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var alarmMode: Swift.String?
+  @objc public var enable: Swift.Bool
+  @objc public var playSound: Swift.String?
+  @objc public var playTimes: Swift.String?
+  @objc public var susceptiveness: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class TimingConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  public var no: Swift.Int?
+  public var enable: Swift.Int?
+  @objc public var type: Swift.String?
+  @objc public var startTime: Swift.String?
+  @objc public var repeatWeeks: Swift.String?
+  @objc public var onceTimestamp: Swift.String?
+  @objc public var note: Swift.String?
+  @objc public var state: Swift.String?
+  @objc public var alarmSwitch: Swift.String?
+  @objc public func repeatWeeksArr() -> [Swift.String]?
+  @objc public func nightLampSwitchComment() -> Swift.String
+  @objc public func setIsRepeatType(weekDays: [Swift.String])
+  @objc public func setRepeatWeeksValue(_ weeks: [Swift.String])
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public class func defultModel(_ no: Swift.Int) -> AJLibrary.TimingConfig
+  @objc public func remarkNote() -> Swift.String
+  @objc public func timingLightLampState() -> Swift.String?
+  @objc public func hhmmFormatTime() -> Swift.String?
+  @objc public func formatStartTime() -> Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class NightlightConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var state: Swift.String?
+  @objc public var timings: [AJLibrary.TimingConfig]?
+  @objc public var workMode: Swift.String?
+  @objc public var alarmSwitch: Swift.String?
+  @objc public var brightness: Swift.String
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  public func getTiming(_ no: Swift.Int?) -> AJLibrary.TimingConfig?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BabyFeedConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var timings: [AJLibrary.TimingConfig]?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  public func getTiming(_ no: Swift.Int?) -> AJLibrary.TimingConfig?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class HumidityConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var alarmSwitch: Swift.Bool
+  @objc public var current: Swift.String?
+  public var highThreshold: Swift.Int?
+  public var lowThreshold: Swift.Int?
+  @objc public var unit: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class TemperatureConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var alarmSwitch: Swift.Bool
+  @objc public var current: Swift.String?
+  public var highThreshold: Swift.Int?
+  public var lowThreshold: Swift.Int?
+  @objc public var unit: Swift.String?
+  @objc public func unitText() -> Swift.String?
+  @objc public func setUnitValue(_ unit: Swift.String)
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class DetectionShare : AJLibrary.ResultModel {
   @objc public var name: Swift.String?
-  @objc public var susceptiveness: Swift.Int
+  public var susceptiveness: Swift.Int?
   @objc public var fullViewport: Swift.Bool
   @objc public var areas: [Swift.String]?
+  @objc public var areaShowStyle: Swift.String?
   public func coordinateArea() -> (Swift.Int?, Swift.Int?, Swift.Int?, Swift.Int?)
+  @objc public func liveShowDetectionArea() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class LightingFreqConfig : AJLibrary.ResultModel {
-  @objc public var freqValue: Swift.Int
+@objc @_inheritsConvenienceInitializers @objcMembers public class LightingFreqConfig : AJLibrary.ResultModel {
+  public var freqValue: Swift.Int?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class PelcoConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class WhiteLightConfig : AJLibrary.ResultModel {
+  public var lightMode: Swift.Int?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PelcoConfig : AJLibrary.ResultModel {
   @objc public var baudRate: Swift.String?
   @objc public var `protocol`: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class ActionDetectConfig : AJLibrary.ResultModel {
-  @objc public var clipEndMode: Swift.Int
-  @objc public var clipLength: Swift.Int
+@objc @_inheritsConvenienceInitializers @objcMembers public class ActionDetectConfig : AJLibrary.ResultModel {
+  public var clipEndMode: Swift.Int?
+  public var clipLength: Swift.Int?
   @objc public var enable: Swift.Bool
   @objc public var expireAt: Swift.String?
-  @objc public var retriggerTime: Swift.Int
-  @objc public var susceptiveness: Swift.Float
+  public var retriggerTime: Swift.Int?
+  public var susceptiveness: Swift.Float?
   @objc public var backupToLocalStor: Swift.Bool
-  @objc public var respondMode: Swift.Int
+  public var respondMode: Swift.Int?
   @objc public var policies: [AJLibrary.Policy]?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class HibernateConfig : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class HibernateConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.String?
   @objc public func isOn() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class LiveSecToken : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class LiveSecToken : AJLibrary.ResultModel {
+  @objc public var reqType: Swift.String?
+  @objc public var reqServer: Swift.String?
+  @objc public var stream: AJLibrary.Stream?
+  @objc public var token: Swift.String?
+  @objc public var encrytMode: Swift.String?
+  @objc public var sessionKey: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudStorageModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudStorageGroupModel : AJLibrary.ResultModel {
+  @objc public var groups: [AJLibrary.CloudStorageModel]?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class GroupCalendarModel : AJLibrary.ResultModel {
+  @objc public var cdates: [Swift.String]?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudStorageModel : AJLibrary.ResultModel {
   @objc public var intraPicture: Swift.String?
   @objc public var m3u8Url: Swift.String?
+  @objc public var intraPicture2: Swift.String?
+  @objc public var m3u8Url2: Swift.String?
   @objc public var fps: Swift.String?
   @objc public var encryptMode: Swift.String?
   @objc public var sessionKey: Swift.String?
@@ -1036,18 +1489,13 @@ public enum AutoLightMode : Swift.String {
   @objc public var expireViewAt: Swift.String?
   @objc public var groupId: Swift.String?
   @objc public var recordType: Swift.String?
-  @objc public var cognitives: [AJLibrary.CloudStorageCognitiveModel]?
+  @objc public var createLocalDate: Swift.String?
+  @objc public var createLocalTime: Swift.String?
+  @objc public var cognitives: [AJLibrary.cognitivesModel]?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudStorageCognitiveModel : AJLibrary.ResultModel {
-  @objc public var confidence: Swift.String?
-  @objc public var type: Swift.String?
-  @objc public var value: Swift.String?
-  @objc required dynamic public init()
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class CloudStorageDeleModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudStorageDeleModel : AJLibrary.ResultModel {
   @objc public var groupId: Swift.String?
   @objc public var tsStart: Foundation.NSNumber?
   @objc public var tsEnd: Foundation.NSNumber?
@@ -1055,14 +1503,108 @@ public enum AutoLightMode : Swift.String {
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudStorageDeleRealDayModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudStorageDeleRealDayModel : AJLibrary.ResultModel {
   @objc public var dayStartTs: Foundation.NSNumber?
   @objc public var dayEndTs: Foundation.NSNumber?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class BatteryCamDeleModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class BatteryCamDeleModel : AJLibrary.ResultModel {
   @objc public var tsStart: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class LullabyConfig : AJLibrary.ResultModel {
+  public var builtinCount: Swift.Int?
+  public var builtinIndexStart: Swift.Int?
+  @objc public var builtinNames: [Swift.String]?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SoundRekConfig : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var pnmBabyCrying: Swift.Bool
+  @objc public var rekBabyCrying: Swift.Bool
+  @objc public var pnmNoise: Swift.Bool
+  @objc public var rekNoise: Swift.Bool
+  @objc public var __persistent: Swift.Bool
+  @objc public var pnmO1: Swift.Bool
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class ProactiveCallConfig : AJLibrary.ResultModel {
+  @objc public var enable: Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PeripheralHWIItem : AJLibrary.ResultModel {
+  @objc public var hwid: Swift.String?
+  @objc public var name: Swift.String?
+  @objc public var type: Swift.String?
+  @objc public var stateValues: Swift.String?
+  @objc public var stateNames: Swift.String?
+  @objc public var curState: Swift.String?
+  @objc public var oriState: Swift.String?
+  override public func mapping(mapper: AJLibrary.HelpingMapper)
+  @objc public func isSingleType() -> Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PeripheralHWIConfig : AJLibrary.ResultModel {
+  @objc public var items: [AJLibrary.PeripheralHWIItem]?
+  @objc public func getItemById(_ id: Swift.String) -> AJLibrary.PeripheralHWIItem?
+  @objc public func getAllItemNames() -> [Swift.String]
+  @objc public func getIDByItemName(_ name: Swift.String) -> Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BirdSummaryModel : AJLibrary.ResultModel {
+  @objc public var summaries: [AJLibrary.BirdInfoModel]?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BirdInfoModel : AJLibrary.ResultModel {
+  @objc public var _id: Swift.String?
+  @objc public var albumUrl: Swift.String?
+  @objc public var avibaseUrl: Swift.String?
+  @objc public var collectionId: Swift.String?
+  @objc public var commonName: Swift.String?
+  @objc public var desc: Swift.String?
+  @objc public var firstRecordTime: Swift.String?
+  @objc public var lang: Swift.String?
+  @objc public var lastRecordFeeder: AJLibrary.FeederInfoModel?
+  @objc public var lastRecordTime: Swift.String?
+  @objc public var recordCount: Swift.String?
+  @objc public var scientificName: Swift.String?
+  @objc public var uid: Swift.String?
+  @objc public var wikipediaUrl: Swift.String?
+  override public func mapping(mapper: AJLibrary.HelpingMapper)
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class FeederInfoModel : AJLibrary.ResultModel {
+  @objc public var did: Swift.String?
+  @objc public var name: Swift.String?
+  @objc public var rel: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BirdDetailModel : AJLibrary.ResultModel {
+  @objc public var cts: Swift.String?
+  @objc public var records: [AJLibrary.BirdRecordModel]?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BirdRecordModel : AJLibrary.ResultModel {
+  @objc public var _id: Swift.String?
+  @objc public var ats: Swift.String?
+  @objc public var collectionId: Swift.String?
+  @objc public var ctime: Swift.String?
+  @objc public var cts: Foundation.NSNumber?
+  @objc public var feeder: AJLibrary.FeederInfoModel?
+  @objc public var imageUrl: Swift.String?
+  @objc public var scientificName: Swift.String?
+  @objc public var videoUrl: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1248,7 +1790,6 @@ public enum PushType : Swift.String {
   @objc public func dismissPrevious(completion: (() -> ())? = nil)
   public func registAPNS()
   public func reloadPushSetting()
-  @objc public func clearPushSetting()
   public func aliSendNotificationAck(_ data: [Swift.AnyHashable : Any]?)
   @objc override dynamic public init()
   @objc deinit
@@ -1332,11 +1873,11 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   @objc public func microphoneSetting(_ deviceId: Swift.String, micEnable: Swift.String, speakerVolume: Swift.String, micVolume: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func indicatorLightConfig(_ deviceId: Swift.String, enable: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func unmountTfCard(_ deviceId: Swift.String, label: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
-  @objc public func autoTrackConfig(_ deviceId: Swift.String, toggle: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func autoTrackConfig(_ deviceId: Swift.String, toggle: Swift.String, stopPosType: Swift.String, targets: [Swift.String], complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func autoHibernateConfig(_ deviceId: Swift.String, enable: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func soundMonitorConfig(_ deviceId: Swift.String, enable: Swift.String, susceptiveness: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func privateRegionConfig(_ deviceId: Swift.String, enable: Swift.String, areas: [Swift.String]?, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
-  @objc public func floodlightControl(_ deviceId: Swift.String, toggle: Swift.String, brightness: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func floodlightControl(_ deviceId: Swift.String, isOn: Swift.Bool, brightness: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func nightVisionConfig(_ deviceId: Swift.String, nightMode: Swift.String, colorWhenOff: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func nightVision2Config(_ deviceId: Swift.String, nightMode: Swift.String, ledMode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func localAccountConfig(deviceId: Swift.String, username: Swift.String, password: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
@@ -1344,9 +1885,9 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   @objc public func onvifConfig(deviceId: Swift.String, enable: Swift.String, port: Swift.String, verify: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func setTimezone(deviceId: Swift.String, tzName: Swift.String, tzValue: Swift.String, autoAdjust: Swift.String, tzDistrict: Swift.String?, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func fetchTimezone(_ complete: (([[Any]]?, AJLibrary.ErrorModel?) -> Swift.Void)?)
-  @objc public func detectionsConfig(_ deviceId: Swift.String, susceptiveness: Swift.Int, fullViewport: Swift.String, areas: [Swift.String]?, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
-  @objc public func moveMonitorConfig(_ deviceId: Swift.String, enable: Swift.String, genAlarmThumb: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
-  @objc public func alarmRekConfig(_ deviceId: Swift.String, humanoid: Swift.String, package: Swift.String, pet: Swift.String, vehicle: Swift.String, pnmO1: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func detectionsConfig(_ deviceId: Swift.String, deviceType: Swift.Int, susceptiveness: Swift.Int, fullViewport: Swift.String, areaShowStyle: Swift.String, areas: [Swift.String]?, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func moveMonitorConfig(_ deviceId: Swift.String, enable: Swift.String, genAlarmThumb: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], respondMediaType: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  @objc public func alarmRekConfig(_ deviceId: Swift.String, pnmHumanoid: Swift.String, pnmPackage: Swift.String, pnmPet: Swift.String, pnmVehicle: Swift.String, pnmFall: Swift.String, pnmBird: Swift.String, pnmPetact: Swift.String, rekHumanoid: Swift.String, rekPackage: Swift.String, rekPet: Swift.String, rekVehicle: Swift.String, rekFall: Swift.String, rekBird: Swift.String, rekPetact: Swift.String, pnmO1: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func floodlightConfig(_ deviceId: Swift.String, toggle: Swift.String, brightness: Swift.String, autoPolicy: AJLibrary.AutoPolicy? = nil, timePolices: [AJLibrary.TimePolicy]? = nil, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func localStorageSetting(_ deviceId: Swift.String, enable: Swift.String, nasPath: Swift.String, playUrlRoot: Swift.String, quality: Swift.String, storageType: Swift.String, triggerMode: Swift.String, writeMode: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], wholeFormat: Swift.String, enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], format1: Swift.String, enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], format2: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   @objc public func cloudStorageSetting(_ deviceId: Swift.String, enable: Swift.String, wholeDayEnable: Swift.String, wholeStartTime: Swift.String, wholeEndTime: Swift.String, wholeWeekDays: [Swift.String], enable1: Swift.String, startTime1: Swift.String, endTime1: Swift.String, weekDays1: [Swift.String], enable2: Swift.String, startTime2: Swift.String, endTime2: Swift.String, weekDays2: [Swift.String], expireAt: Swift.String, ecoRecordDurationLimit: Swift.Int, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
@@ -1395,10 +1936,8 @@ public enum InviteStatus : Swift.String {
 @objc public enum DeviceModeType : Swift.Int, AJLibrary.HandyJSONEnum {
   case Camera = 1
   case Lock = 2
-  case BatteryCamera = 3
   case BatterySingle = 4
   case DoorbellSingle = 5
-  case Doorbell = 6
   case Gateway = 8
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
@@ -1426,9 +1965,15 @@ public enum ShareDeviceStatus : Swift.String {
     get
   }
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(ConDeviceModel) public class ConDeviceModel : AJLibrary.ResultModel, Foundation.NSSecureCoding {
-  public var deviceId: Swift.String?
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @objc(ConDeviceModel) public class ConDeviceModel : AJLibrary.ResultModel, Foundation.NSSecureCoding {
+  @objc public var deviceId: Swift.String?
+  @objc public var mac: Swift.String?
+  public var deviceType: AJLibrary.DeviceModeType?
   @objc public var aliasName: Swift.String?
+  @objc public var conType: Swift.String?
+  @objc public var conStatus: Swift.String?
+  @objc public var conTs: Swift.String?
+  @objc public var shareCap: AJLibrary.ShareCapModel?
   @objc public static var supportsSecureCoding: Swift.Bool {
     @objc get
   }
@@ -1441,7 +1986,19 @@ public enum ShareDeviceStatus : Swift.String {
   @objc public func isShareDevice() -> Swift.Bool
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class GroupsModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ShareCapModel : AJLibrary.ResultModel {
+  @objc public var realTimeVideo: Swift.Bool
+  @objc public var alertPush: Swift.Bool
+  @objc public var cloudStorageRecord: Swift.Bool
+  @objc public var localStorageRecord: Swift.Bool
+  @objc public var consoleControl: Swift.Bool
+  @objc public var voiceDialogue: Swift.Bool
+  @objc public var lightControl: Swift.Bool
+  @objc public var alarmWhistle: Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class GroupsModel : AJLibrary.ResultModel {
   @objc public var groupid: Swift.String?
   @objc public var name: Swift.String?
   @objc public var dids: [AJLibrary.GroupDidModel]?
@@ -1466,6 +2023,7 @@ public enum ShareDeviceStatus : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class UserInviteModel : AJLibrary.ResultModel {
+  public func shareUids() -> [Swift.String]
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1495,6 +2053,9 @@ public enum ShareDeviceStatus : Swift.String {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(DevicesModel) public class DevicesModel : AJLibrary.ResultModel, Foundation.NSSecureCoding {
   @objc public static var supportsSecureCoding: Swift.Bool {
     @objc get
+  }
+  public var devVendors: Swift.Set<Swift.String> {
+    get
   }
   @objc public func encode(with coder: Foundation.NSCoder)
   @objc required public init?(coder aDecoder: Foundation.NSCoder)
@@ -1597,6 +2158,7 @@ public enum FileFolder : Swift.String {
   public var mRefreshToken: Swift.String?
   public var mSecretAccessKey: Swift.String?
   public func accessToken() -> Swift.String
+  public func setAccessToken(_ accessToken: Swift.String?)
   public func refreshToken() -> Swift.String
   public func secretAccessKey() -> Swift.String
   public func refreshAccessToken(complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1604,6 +2166,9 @@ public enum FileFolder : Swift.String {
   @objc public func emailCheck(_ email: Swift.String, complete: @escaping (AJLibrary.EmailCheckModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func emailBindRequest(_ curUsername: Swift.String, bindEmail: Swift.String, identType: Swift.String, allyCode: Swift.String, needVerify: Swift.String, needPwd: Swift.String, password: Swift.String?, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func emailBindVerify(_ email: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func phoneBindCheck(_ phone: Swift.String, complete: @escaping (AJLibrary.EmailCheckModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func phoneBindRequest(_ curUsername: Swift.String, bindPhone: Swift.String, identType: Swift.String, allyCode: Swift.String, needVerify: Swift.String, needPwd: Swift.String, password: Swift.String?, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func phoneBindVerify(_ phone: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.OauthModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func regist(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func login(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func accountActive(_ username: Swift.String, verifyCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1611,7 +2176,6 @@ public enum FileFolder : Swift.String {
   @objc public func resetPassword(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func logout(complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func fastLogout(_ username: Swift.String, allyName: Swift.String, allyToken: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
-  public func verifyCode(_ username: Swift.String, action: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func smsSignup(_ username: Swift.String, password: Swift.String, crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func smsResetPassword(_ username: Swift.String, password: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func signupCheck(_ username: Swift.String, complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
@@ -1644,14 +2208,19 @@ public enum FileFolder : Swift.String {
   public func receiveNewShare(_ params: [Swift.String : Any], complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func delReceiveNewShare(_ params: [Swift.String : Any], complete: @escaping (AJLibrary.ErrorModel?) -> Swift.Void)
   public func getShareSendInfo(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func getShareReceivers(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func getShareReceiveInfo(_ params: [Swift.String : Any], complete: @escaping ([AJLibrary.ShareSendReceiverModel]?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func baseNode(crCode: Swift.String, ctCode: Swift.String, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func accountNode(_ account: Swift.String, crCode: Swift.String, ctCode: Swift.String, action: Swift.String, accoutType: Swift.String, ext: [Swift.String : Swift.String]?, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fastSignInAccountNode(_ account: Swift.String, crCode: Swift.String, ctCode: Swift.String, accoutType: Swift.String, ext: [Swift.String : Swift.String]?, complete: @escaping (AJLibrary.AccessNodeModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class AJSubscribe : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.AJSubscribe
-  @objc public func subscribeVc() -> UIKit.UIViewController?
+  @objc public func cloudBasicVc(subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
+  @objc public func cloudAIVc(subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
+  @objc public func cloudSubscribeVc(_ deviceId: Swift.String? = nil, subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
+  @objc public func cloudRenewVc(order: AJLibrary.OrderModel, subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1766,8 +2335,10 @@ public typealias EditBlock = (_ isEditing: Swift.Bool) -> ()
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class UploadManager : ObjectiveC.NSObject {
-  @objc public static func uploadFile(_ deviceId: Swift.String, resourceType: AJLibrary.UploadResourceType, filePath: Swift.String, complete: @escaping (AJLibrary.UploadNotifyModel?, AJLibrary.ErrorModel?) -> ())
+@objc @_inheritsConvenienceInitializers public class UploadManager : ObjectiveC.NSObject, QCloudCore.QCloudSignatureProvider {
+  @objc public static let shared: AJLibrary.UploadManager
+  @objc public func uploadFile(_ deviceId: Swift.String, resourceType: AJLibrary.UploadResourceType, filePath: Swift.String, complete: @escaping (AJLibrary.UploadNotifyModel?, AJLibrary.ErrorModel?) -> ())
+  @objc public func signature(with fileds: QCloudCore.QCloudSignatureFields!, request: QCloudCore.QCloudBizHTTPRequest!, urlRequest urlRequst: Foundation.NSMutableURLRequest!, compelete continueBlock: QCloudCore.QCloudHTTPAuthentationContinueBlock!)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2040,6 +2611,7 @@ public func GetImage(named: Swift.String) -> UIKit.UIImage?
   public static func mergeAccountDotKey() -> Swift.String
   public static func couponDeadlineUserDefaultsKey() -> Swift.String
   public static func hideMergeAccountDot()
+  public static func appVersion() -> Swift.String
   public static func isShowMergeAccountDot() -> Swift.Bool
   public static func isHomeShowCompleteAccountAlert() -> Swift.Bool
   public static func hideHomeCompleteAccountAlert()
@@ -2062,11 +2634,20 @@ public func GetImage(named: Swift.String) -> UIKit.UIImage?
   @objc public class func systemAppSettingOpen()
   public class func playLocalVideo(_ videoPath: Foundation.URL)
   public static func jsonString(_ paramDic: [Swift.String : Any]) -> Swift.String
-  public static func pushToChatViewController()
+  public static func getWeekdayText(_ weekDays: Any?) -> Swift.String
+  public static func isAIPlan(level: Swift.String?) -> Swift.Bool
+  public static func isNormalAIPlan(level: Swift.String?) -> Swift.Bool
+  public static func isPetsAIPlan(level: Swift.String?) -> Swift.Bool
+  public static func isBirdsAIPlan(level: Swift.String?) -> Swift.Bool
+  public static func orderPlanName(_ level: Swift.Int?, limitDevices: Swift.Int?) -> Swift.String
   public static func pushToCloudSet()
   @objc public static func appName() -> Swift.String
   @objc public static func loadDiagnoseUrls() -> [AJLibrary.DiagnoseTaskModel]
+  @objc public static func toCloudPlanVc(_ deviceId: Swift.String? = nil, refreshUIBlock: (() -> ())? = nil)
   public static func localeDefaultCountryCode(_ loginRegin: Swift.String? = nil) -> AJLibrary.CountryModel?
+  @objc public static func isSupportSingleDeviceBindCloud() -> Swift.Bool
+  public static func removePushSetting()
+  @objc public static func clearPushSetting()
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2118,46 +2699,58 @@ public let orderHistoryTableViewCellIdentifier: Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
-@objc public enum AlarmType : ObjectiveC.NSInteger {
-  case AlarmMove = 1
-  case AlarmVisitor = 2
-  case TamperAlarm = 4
+public enum AlarmType : ObjectiveC.NSInteger {
+  case AlarmMove
+  case AlarmVisitor
+  case TamperAlarm
   public init?(rawValue: ObjectiveC.NSInteger)
   public typealias RawValue = ObjectiveC.NSInteger
   public var rawValue: ObjectiveC.NSInteger {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class AlarmSummaryModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class AlarmSummaryModel : AJLibrary.ResultModel {
   @objc public var tags: Swift.String?
   @objc public var url: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class cognitivesModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class cognitivesModel : AJLibrary.ResultModel {
   @objc public var value: Swift.String?
-  public var confidence: ObjectiveC.NSInteger?
   @objc public var type: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class AlarmModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class AlarmModel : AJLibrary.ResultModel {
   @objc public var did: Swift.String?
   @objc public var ats: Swift.String?
   @objc public var ctime: Swift.String?
   @objc public var avs: [AJLibrary.AlarmSummaryModel]?
+  @objc public var avs2: [AJLibrary.AlarmSummaryModel]?
   @objc public var cognitives: [AJLibrary.cognitivesModel]?
   @objc public var cdate: Swift.String?
   @objc public var cts: Swift.String?
   @objc public var duration: Swift.String?
   @objc public var images: [AJLibrary.AlarmSummaryModel]?
+  @objc public var images2: [AJLibrary.AlarmSummaryModel]?
   @objc public var tsStart: Swift.String?
   @objc public var tsEnd: Swift.String?
+  @objc public var type: Swift.String?
   @objc public var groupId: Swift.String?
-  public func alarmHaveRead() -> Swift.Bool
+  @objc public var m3u8Url: Swift.String?
+  @objc public var scene: Swift.String?
+  @objc public var m3u8Url2: Swift.String?
+  @objc public var previewUrl: Swift.String?
+  @objc public var m3u8Duration: Swift.String?
+  @objc public var groupIds: [Swift.String]?
+  @objc public func alarmHaveRead() -> Swift.Bool
   @objc public func coverImage() -> Swift.String?
-  @objc public func alarmType() -> AJLibrary.AlarmType
+  @objc public func coverImage2() -> Swift.String?
+  public func alarmType() -> AJLibrary.AlarmType
+  @objc public func alarmTypeValue() -> ObjectiveC.NSInteger
+  @objc public func alarmTypeString() -> Swift.String
   @objc public func videoUrl() -> Swift.String?
+  @objc public func videoUrl2() -> Swift.String?
   @objc public func alertTime(formatter: Swift.String) -> Swift.String?
   @objc required dynamic public init()
   @objc deinit
@@ -2190,6 +2783,21 @@ public let orderHistoryTableViewCellIdentifier: Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @objcMembers public class ActionButtonSettingModel : AJLibrary.ResultModel, Foundation.NSCopying {
+  public var no: Swift.Int?
+  @objc public var uid: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class ActionButtonsSettingModel : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var did: Swift.String?
+  @objc public var buttons: [AJLibrary.ActionButtonSettingModel]?
+  @objc public var masterUid: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers public class WebCloudUtils : ObjectiveC.NSObject {
   @objc public static let webStartUrl: Swift.String
   @objc public static let webGetUserInfo: Swift.String
@@ -2198,6 +2806,12 @@ public let orderHistoryTableViewCellIdentifier: Swift.String
   @objc public static let webStartEmail: Swift.String
   public static let webGetPlanInfo: Swift.String
   public static let webSetApp: Swift.String
+  public static let webAisSetUserInfo: Swift.String
+  public static let webToContactUs: Swift.String
+  public static let addDevice: Swift.String
+  public static let webGetDeviceInfo: Swift.String
+  public static let webToSmartSetting: Swift.String
+  public static func getDeviceInfo(_ deviceId: Swift.String) -> Swift.String
   @objc public static func getUserInfo() -> Swift.String
   public static func getPlanInfo(_ order: AJLibrary.OrderModel?) -> Swift.String
   @objc public static func deserializeWebBridgeBody(json: Swift.String) -> AJLibrary.WebBridgeParamsModel?
@@ -2382,27 +2996,39 @@ public func takePhoto(_ stillImageOutput: AVFoundation.AVCaptureStillImageOutput
   public var cloudBaseUrl: Swift.String?
   public var uacPortalUrl: Swift.String
   public var sdcPortalUrl: Swift.String
-  @objc public var ipcCloudTrailUrl: Swift.String {
-    @objc get
-  }
+  final public let sptContactUsUrl: Swift.String
+  final public let iccidTrafficSuccessApi: Swift.String
+  public func sptBindDeviceGuideVideoUrl(prductName: Swift.String) -> Swift.String
+  @objc public func ipcCloudTrailUrl(_ deviceId: Swift.String? = nil) -> Swift.String
   public var cloudPlanDetailExplainUrl: Swift.String {
     get
   }
-  @objc public var ipcCloudExpireUrl: Swift.String {
+  @objc public var cloudPlanRenewUrl: Swift.String {
     @objc get
   }
-  @objc public var ipcCloudPlanUrl: Swift.String {
-    @objc get
-  }
-  @objc public var ipcCloudTrailLittleUrl: Swift.String {
-    @objc get
-  }
-  @objc public var ipcCloudExpireLittleUrl: Swift.String {
-    @objc get
-  }
-  public var ipcCloudIntroductionUrl: Swift.String {
+  @objc public func ipcCloudExpireUrl(_ deviceId: Swift.String? = nil) -> Swift.String
+  @objc public func ipcCloudPlanUrl(_ deviceId: Swift.String? = nil) -> Swift.String
+  public var introBasic: Swift.String {
     get
   }
+  public var introGeneralAi: Swift.String {
+    get
+  }
+  public var SingleDeviceCloudBaiseURL: Swift.String {
+    get
+  }
+  public var SingleDeviceCloudAiURL: Swift.String {
+    get
+  }
+  public var portalBasic: Swift.String {
+    get
+  }
+  public var portalAI: Swift.String {
+    get
+  }
+  @objc public func ipcCloudTrailLittleUrl(_ deviceId: Swift.String? = nil) -> Swift.String
+  @objc public func ipcCloudExpireLittleUrl(_ deviceId: Swift.String? = nil) -> Swift.String
+  @objc public func ipcCloudIntroductionUrl(_ deviceId: Swift.String? = nil, isAIPlan: Swift.Bool = false) -> Swift.String
   public var ipcCloudActivityUrl: Swift.String {
     get
   }
@@ -2605,14 +3231,15 @@ public enum ProductNameType : Swift.String {
   public func fetchDeviceSummaryInfo(deviceIds: [Swift.String], deviceTypesDic: [Swift.String : AJLibrary.DeviceModeType], complete: @escaping (_ summaryModel: AJLibrary.CamerasSummaryModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func fetchCamerasSummaryInfo(_ deviceId: Swift.String, deviceType: AJLibrary.DeviceModeType, sdcUrl: Swift.String, complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
   public func fetchCamerasSummaryInfo(deviceIds: [Swift.String], deviceTypesDic: [Swift.String : AJLibrary.DeviceModeType], complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func fetchCamerasInfos(_ devicesIds: [Swift.String], deviceTypesDic: [Swift.String : AJLibrary.DeviceModeType], complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fetchCamerasInfos(_ devicesIds: [Swift.String], deviceTypesDic: [Swift.String : AJLibrary.DeviceModeType], scopes: [Swift.String] = [], complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func fetchDeviceInfo(_ deviceId: Swift.String, complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
-  public func fetchCameraInfo(_ deviceId: Swift.String, deviceTypesDic: [Swift.String : AJLibrary.DeviceModeType] = [:], complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fetchCameraInfo(_ deviceId: Swift.String, deviceTypesDic: [Swift.String : AJLibrary.DeviceModeType] = [:], scopes: [Swift.String] = [], complete: @escaping (_ deviceId: Swift.String, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func getPushSetting(_ deviceId: Swift.String)
+  public func fetchActionButtonSettings(_ deviceId: Swift.String)
   public func refreshCamerasState(_ camerasIds: [Swift.String])
   public func fetchDevicesArray(modeDevicesTypes: [AJLibrary.DeviceModeType]) -> [Swift.String]
   public func fetchHostDevicesArray(modeDevicesTypes: [AJLibrary.DeviceModeType]) -> [Swift.String]
   public func fetchSharedDevicesArray(modeDevicesTypes: [AJLibrary.DeviceModeType]) -> [Swift.String]
-  public func batteryGetParrentDId(_ deviceId: Swift.String) -> Swift.String?
   public func pinnerAddDevice(_ deviceId: Swift.String)
   public func pinnerDelDevice(_ deviceId: Swift.String)
   public func clearAccountCameras()
@@ -2653,11 +3280,16 @@ public enum EMCAction : Swift.String {
   case EMC_WARN_POWER_LOW
   case EMC_WARN_TAMPER
   case EMC_ALERT
+  case EMC_ALERT_SOUND
+  case EMC_ALERT_MOYION_AND_SOUND
   case EMC_CAM_ROM
   case EMC_SYSTEM_MSG
   case EMC_KICK_OUT
   case EMC_CALL_OUT
+  case EMC_VIDEO_CALL_OUT
   case EMC_LACK_FOOD
+  case EMC_LACK_WATER
+  case EMC_FOOD_STUCK
   case EMC_NONE
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
@@ -2805,6 +3437,8 @@ public let TextFieldTableViewCellId: Swift.String
 @objc @_inheritsConvenienceInitializers @objcMembers public class WCapability : AJLibrary.ResultModel {
   @objc public var audioSample: Swift.String?
   @objc public var autoTrack: Swift.Bool
+  @objc public var autoTrackStopPosCtrl: Swift.Bool
+  @objc public var autoTrackTargets: Swift.String
   @objc public var battery: Swift.String?
   @objc public var diagnose: Swift.String?
   @objc public var duplexVoice: Swift.String?
@@ -2814,18 +3448,23 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var localStorRmt: Swift.String?
   @objc public var localStorageTypes: Swift.String?
   @objc public var networkConfig: Swift.String?
-  @objc public var pirDetect: Swift.String?
+  @objc public var pirDetect: Swift.Bool
+  @objc public var aov: Swift.Bool
   @objc public var ptz: Swift.String?
+  @objc public var ptzCalibrate: Swift.String?
+  @objc public var viewAngles: Swift.String?
   @objc public var cognitiveTypes: Swift.String?
   @objc public var whiteLightCtl: Swift.String?
   @objc public var opticalZoom: Swift.String?
   @objc public var variFocus: Swift.String?
   @objc public var qualities: Swift.String?
+  @objc public var lvs1Qualities: Swift.String?
   @objc public var dualLensZoomVerge: Swift.String?
   @objc public var streams: Swift.String?
   @objc public var voiceDetect: Swift.String?
   @objc public var feedingTimingLimit: Swift.String?
   @objc public var feedTone: Swift.String?
+  @objc public var lvsMatch: Swift.Bool
   @objc public var privLiveStream: Swift.String?
   @objc public var onvif: Swift.Bool
   @objc public var mic: Swift.Bool
@@ -2842,6 +3481,7 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var manualNightVersion: Swift.Bool
   @objc public var floodlight: Swift.Bool
   @objc public var floodlightBrightCtrl: Swift.Bool
+  @objc public var nightlightBrightCtrl: Swift.Bool
   @objc public var floodlightTimeCtrl: Swift.Bool
   @objc public var siren: Swift.Bool
   @objc public var feeding: Swift.Bool
@@ -2850,6 +3490,7 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var cloudStorFullDay: Swift.Bool
   @objc public var privateBase: Swift.Bool
   @objc public var privateRegion: Swift.Bool
+  @objc public var privateTimedHibernate: Swift.Bool
   @objc public var nightVisionColorCtrl: Swift.Bool
   @objc public var lowPowerStorage: Swift.Bool
   @objc public var nightVision2: Swift.Bool
@@ -2861,24 +3502,84 @@ public let TextFieldTableViewCellId: Swift.String
   @objc public var sims: Swift.Int
   @objc public var simsCtrl: Swift.Int
   @objc public var alarmMediaTypes: Swift.String?
+  @objc public var actionButtons: Swift.Int
+  @objc public var adaptiveFps: Swift.Bool
   @objc public var showChargingCapacity: Swift.Bool
   @objc public var insideCognitiveTypes: Swift.String
+  @objc public var insideSoundCognitiveTypes: Swift.String
   @objc public var soundDetect: Swift.Bool
   @objc public var lpRetriggerIntervalType: Swift.Bool
-  @objc public var lvs1Qualities: Swift.String?
+  @objc public var detectionAreaShowHint: Swift.Bool
+  @objc public var micVolumeCtrl: Swift.Bool
+  @objc public var tfPlaybackType: Swift.String
+  @objc public var sirenSoundsCtrl: Swift.Bool
+  @objc public var tamper: Swift.Bool
+  @objc public var dispScreen: Swift.Int
+  @objc public var imagingAngle: Swift.Int
+  @objc public var appDefaultLiveStreamMute: Swift.Int
+  @objc public var appDefaultPlaybackMute: Swift.Int
+  @objc public var bbm: Swift.Bool
+  @objc public var bbmFeeding: Swift.Bool
+  @objc public var humidityRange: Swift.String?
+  @objc public var temperatureRange: Swift.String?
+  @objc public var nightlight: Swift.Bool
+  @objc public var lullaby: Swift.Bool
+  @objc public var soothingTone: Swift.Bool
+  @objc public var cryingDetect: Swift.Bool
+  @objc public var oneTouchCall: Swift.Bool
+  @objc public var osdDatetimeStyles: Swift.String?
+  @objc public var powerUsageMode: Swift.String?
+  @objc public var birdfeeder: Swift.Bool
+  @objc public var fwCertifiedInfo: Swift.String?
+  @objc public var kitType: Swift.Bool
+  @objc public func fwCertifiedInfoDisplay() -> Swift.String
+  @objc public func isKitDevice() -> Swift.Bool
+  @objc public func supportPowerUsageMode() -> Swift.Bool
+  @objc public func supportLowpowerWorkingMode() -> Swift.Bool
+  @objc public func supportAdaptionWorkingMode() -> Swift.Bool
+  @objc public func supportSetOsdDatetimeStyles() -> Swift.Bool
+  @objc public func osdDatetimeStylesArray() -> [Swift.String]?
+  @objc public func supportHumidity() -> Swift.Bool
+  @objc public func supportTemperature() -> Swift.Bool
+  public func humidityHighest() -> Swift.Int?
+  public func humidityLowest() -> Swift.Int?
+  public func temperatureHighest(_ unit: Swift.String) -> Swift.Int?
+  public func temperatureLowest(_ unit: Swift.String) -> Swift.Int?
+  @objc public func supportDispScreen() -> Swift.Bool
+  @objc public func supportAutoTrackTargets() -> Swift.Bool
+  @objc public func haveAutoTrackHumanoid() -> Swift.Bool
+  @objc public func haveAutoTrackVehicle() -> Swift.Bool
+  @objc public func haveAutoTrackPet() -> Swift.Bool
+  @objc public func haveAutoTrackPackage() -> Swift.Bool
+  @objc public func haveAutoTrackFall() -> Swift.Bool
+  @objc public func haveNoInsideSoundCognitiveTypesCapability() -> Swift.Bool
+  @objc public func haveInsideSoundCognitiveTypesBabyCrying() -> Swift.Bool
+  @objc public func haveInsideSoundCognitiveTypesNoise() -> Swift.Bool
   @objc public func haveInsideCognitiveHumanoid() -> Swift.Bool
-  @objc public func lvsQualitiesArr() -> [AJLibrary.QualityModel]
+  @objc public func settingHaveInsideCognitiveHumanoid() -> Swift.Bool
   @objc public func haveInsideCognitiveVehicle() -> Swift.Bool
   @objc public func haveInsideCognitivePet() -> Swift.Bool
   @objc public func haveInsideCognitivePackage() -> Swift.Bool
+  @objc public func haveInsideCognitiveFall() -> Swift.Bool
+  @objc public func HaveInsideSoundCognitivebabyCrying() -> Swift.Bool
+  @objc public func HaveInsideSoundCognitiveNoise() -> Swift.Bool
+  @objc public func isSupportSDP2PMode() -> Swift.Bool
   @objc public func supportOSD() -> Swift.Bool
   @objc public func supportSims() -> Swift.Bool
-  @objc public func alarmMediaTypesSupportVideoAndImageConfig() -> Swift.Bool
+  @objc public func alarmMediaTypesSupportVideoAndImageConfig(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func qualitiesArr() -> [AJLibrary.QualityModel]
+  @objc public func lvsQualitiesArr() -> [AJLibrary.QualityModel]
   @objc public func creatQualitiesArr(qualitiesStr: Swift.String) -> [AJLibrary.QualityModel]
   @objc public func isEthernetCamera() -> Swift.Bool
   @objc public func supportTf() -> Swift.Bool
   @objc public func isOldLightDevice() -> Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CapabilityModel : AJLibrary.ResultModel {
+  @objc public var capability: AJLibrary.WCapability?
+  @objc public var deviceMode: Swift.String?
+  @objc public var vendorCode: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -2926,7 +3627,54 @@ extension UIKit.UIColor {
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class RscUploadTokenModel : AJLibrary.ResultModel {
+public enum UploadStorageModeEnum : Swift.String {
+  case OSS
+  case B2
+  case QINIU
+  case OBS
+  case COS
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class FormatUploadToken : AJLibrary.ResultModel {
+  @objc public var region: Swift.String?
+  @objc public var endpoint: Swift.String?
+  @objc public var url: Swift.String?
+  @objc public var name: Swift.String?
+  @objc public var id: Swift.String?
+  @objc public var label: Swift.String?
+  @objc public var accessKeyId: Swift.String?
+  @objc public var accessKeySecret: Swift.String?
+  @objc public var stsToken: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class RscUploadTokenModel : AJLibrary.ResultModel {
+  @objc public var resourceType: Swift.String?
+  @objc public var resourceId: Swift.String?
+  @objc public var storageMode: Swift.String?
+  @objc public var context: Swift.String?
+  @objc public var uploadToken: Swift.String?
+  @objc public var uploadUrl: Swift.String?
+  @objc public var viewAngle: Swift.String?
+  public var uploadTokenExpire: Swift.Int?
+  @objc public var remoteFilename: Swift.String?
+  public func storageModeEnum() -> AJLibrary.UploadStorageModeEnum
+  @objc public func formatTokenModel() -> AJLibrary.FormatUploadToken?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class OssUploadToken : AJLibrary.ResultModel {
+  @objc public var region: Swift.String?
+  @objc public var name: Swift.String?
+  @objc public var id: Swift.String?
+  @objc public var accessKeyId: Swift.String?
+  @objc public var accessKeySecret: Swift.String?
+  @objc public var stsToken: Swift.String?
+  @objc public var endpoint: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -2959,6 +3707,9 @@ extension UIKit.UILabel {
   @objc public var uacNodeUrl: Swift.String?
   @objc public var nodeName: Swift.String?
   @objc public var continent: Swift.String?
+  @objc public var privacyVersion: Swift.String?
+  @objc public var agreementVersion: Swift.String?
+  @objc public var cloudStorAgreementVersion: Swift.String?
   @objc public func encode(with aCoder: Foundation.NSCoder)
   @objc required public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
@@ -2979,6 +3730,8 @@ extension UIKit.UILabel {
   public var accessExpiresTmp: Swift.Int?
   @objc public func accountRegion() -> Swift.String?
   @objc public func isChinaAccount() -> Swift.Bool
+  @objc public func allyHaveMergeEmail() -> Swift.Bool
+  @objc public func allyHaveMergePhone() -> Swift.Bool
   public func getAlly(_ loginType: AJLibrary.LoginType = Login.getAccountLoginType()) -> AJLibrary.AllyModel?
   @objc public func setExpiresTime()
   @objc public func encode(with aCoder: Foundation.NSCoder)
@@ -3153,6 +3906,43 @@ public let CameraAddCellHeight: CoreFoundation.CGFloat
   @objc public var param: AJLibrary.WebParams?
   public func subsSuccess() -> Swift.Bool
   public func toOutBrowser() -> Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PushSetting : AJLibrary.ResultModel {
+  @objc public var uid: Swift.String?
+  @objc public var locale: Swift.String?
+  @objc public var alias: Swift.String?
+  @objc public var devEmcUrl: Swift.String?
+  @objc public var accept: Swift.String?
+  @objc public var alarmrec: Swift.String?
+  @objc public var callee: Swift.String?
+  @objc public var token: Swift.String?
+  @objc public var sound: Swift.String?
+  @objc public var channel: Swift.String?
+  @objc public var tunnel: Swift.String?
+  @objc public var type: Swift.String?
+  @objc public var topics: Swift.String?
+  @objc public var agent: Swift.String?
+  @objc public var ts: Swift.String?
+  @objc public var relType: Swift.String?
+  @objc public var status: Swift.String?
+  @objc public func acceptCallee() -> Swift.Bool
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PushSettingInfo : AJLibrary.ResultModel {
+  @objc public var deviceId: Swift.String?
+  @objc public var relType: Swift.String?
+  @objc public var setting: AJLibrary.PushSetting?
+  @objc public func isAlertNotiEnable() -> Swift.Bool
+  @objc public func getAccept() -> Swift.String
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class PushSettingsInfo : AJLibrary.ResultModel {
+  @objc public var settings: [AJLibrary.PushSettingInfo]?
+  @objc public func pushSettingInfo(_ deviceId: Swift.String) -> AJLibrary.PushSettingInfo?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -3515,15 +4305,16 @@ extension Foundation.URL {
   @_Concurrency.MainActor @preconcurrency @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @objcMembers public class EmailStatusModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class AccountStatusModel : AJLibrary.ResultModel {
   @objc public var isAccount: Swift.Bool
   @objc public var hasDevice: Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class EmailCheckModel : AJLibrary.ResultModel {
-  @objc public var curAccount: AJLibrary.EmailStatusModel?
-  @objc public var emailAccount: AJLibrary.EmailStatusModel?
+  @objc public var curAccount: AJLibrary.AccountStatusModel?
+  @objc public var emailAccount: AJLibrary.AccountStatusModel?
+  @objc public func curNodeIsEqualToCheckNode() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
@@ -3534,6 +4325,11 @@ extension Foundation.URL {
   public func fetchAlarmsSummary(complete: @escaping (AJLibrary.AlarmsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func fetchAlarmsSurvey(params: [Swift.String : Any], complete: @escaping (AJLibrary.AlarmsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func systemMessageGotone(msgid: Swift.String, complete: @escaping (AJLibrary.SysMsgGoModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func portalGetPushSetting(params: [Swift.String : Any], complete: @escaping (AJLibrary.PushSettingsInfo?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func pushSetting(params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fetchBirdLibrary(complete: @escaping (AJLibrary.BirdSummaryModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fetchBirdDetail(_ birdName: Swift.String, cts: Swift.String, complete: @escaping (AJLibrary.BirdDetailModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func deleteBirdDetail(_ scientificName: Swift.String, recordIds: [Swift.String], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -3573,20 +4369,35 @@ public let CommonTableCellId: Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class ProductModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class ProductModel : AJLibrary.ResultModel, Foundation.NSCoding, Foundation.NSCopying {
   @objc public var serviceMonths: Swift.String?
+  @objc public var plan: AJLibrary.Plan?
   @objc public var buyMode: Swift.String?
   @objc public var unit: Swift.String?
+  @objc public var price: AJLibrary.Price?
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
   @objc required dynamic public init()
+  @objc open func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class CloudDeviceModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CloudDeviceModel : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var did: Swift.String?
+  @objc public var mts: Swift.String?
   @objc public var devGatewayUrl: Swift.String?
   @objc public var devCloudStorUrl: Swift.String?
   @objc public var devTzName: Swift.String?
   @objc public var devTzValue: Swift.String?
   @objc public var devVendorCode: Swift.String?
+  @objc public var appCloudStorUrl: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BuyerModel : AJLibrary.ResultModel {
+  @objc public var uid: Swift.String?
+  @objc public var email: Swift.String?
+  @objc public var username: Swift.String?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -3600,53 +4411,130 @@ public enum OrderStatusEnum : Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers @objcMembers public class OrderModel : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class PPState : AJLibrary.ResultModel, Foundation.NSCopying {
+  @objc public var agreementId: Swift.String?
+  @objc public var agreementState: Swift.String?
+  @objc public var paymentToken: Swift.String?
+  @objc public var nextBillingDate: Swift.String?
+  @objc public var nextBillingTs: Swift.String?
+  @objc public var planId: Swift.String?
+  @objc public var subscribeUrl: Swift.String?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class Ajcard : AJLibrary.ResultModel {
+  @objc public var no: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objcMembers @objc(OrderModel) public class OrderModel : AJLibrary.ResultModel, Foundation.NSCoding, Foundation.NSCopying {
   @objc public var product: AJLibrary.ProductModel?
+  public var limitDevices: Swift.Int?
+  @objc public var alarmVideo: Swift.Bool
+  @objc public var limitFullDayDevices: Swift.String?
   @objc public var status: Swift.String?
+  @objc public var _id: Swift.String?
+  @objc public var sku: Swift.String?
+  public var level: Swift.Int?
+  @objc public var cycleDays: Swift.String?
   @objc public var payMode: Swift.String?
   @objc public var devices: [AJLibrary.CloudDeviceModel]?
   @objc public var trialPeriod: Swift.String?
   @objc public var validTsStart: Swift.String?
   @objc public var validTsEnd: Swift.String?
+  @objc public var buyer: AJLibrary.BuyerModel?
+  @objc public var paypal: AJLibrary.PPState?
+  @objc public var ajcard: AJLibrary.Ajcard?
+  @objc public var supportDevTypes: [Swift.Int]?
+  @objc public var devShareCount: Swift.Int
+  public var cloudStorFullDay: Swift.Bool?
+  @objc public var billingSyncState: Swift.String?
+  @objc public var billingVendorCode: Swift.String?
+  @objc public var createDateGMT: Swift.String?
+  @objc public var endMode: Swift.String?
+  @objc public var genAlarmThumb: Swift.String?
+  @objc public var lastSyncedFlag: Swift.String?
+  @objc public var lastTransDateGMT: Swift.String?
+  @objc public var localStorFullDay: Swift.String?
   @objc public var name: Swift.String?
+  @objc public var nextBillingSyncTs: Swift.String?
+  @objc public var nextPaidDeadlineDateGMT: Swift.String?
+  @objc public var nextPaidDeadlineTs: Swift.String?
+  @objc public var saleRegion: Swift.String?
+  @objc public var stateSyncedTs: Swift.String?
+  @objc public var supportDevTypeName: Swift.String?
+  @objc public var vendorCode: Swift.String?
+  @objc public var version: Swift.String?
+  @objc public var trialDays: Swift.Int
+  @objc public var alarmRek: Swift.Bool
+  @objc public var slotIndex: Swift.String?
+  @objc public var fbbStatus: Swift.String?
+  @objc public var singleDeviceBindCloudDeviceId: Swift.String?
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc required dynamic public init()
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public func isChinaNewOrder() -> Swift.Bool
+  @objc public func isPaypalAndActive() -> Swift.Bool
   @objc public func isFullTimeOrder() -> Swift.Bool
+  @objc public func isCanUnsubscribe() -> Swift.Bool
   @objc public func isFromAjcard() -> Swift.Bool
   @objc public func isIpcType() -> Swift.Bool
   @objc public func isTrialPlan() -> Swift.Bool
+  @objc public func isActive() -> Swift.Bool
   @objc public func isPrepay() -> Swift.Bool
   @objc public func isSubscription() -> Swift.Bool
   @objc public func isValid() -> Swift.Bool
+  @objc public func isYearUnit() -> Swift.Bool
   @objc public func isReallyCancelled() -> Swift.Bool
   @objc public func isInUseCanceled() -> Swift.Bool
   @objc public func isExpired() -> Swift.Bool
   @objc public func isAiPlan() -> Swift.Bool
   public func orderStatus() -> AJLibrary.OrderStatusEnum
+  @objc public func isBirdLibrayOrder() -> Swift.Bool
   @objc public func orderPrice() -> Swift.String
+  @objc public func orderModeIsPrePay() -> Swift.Bool
+  @objc public func isExpireAndActive() -> Swift.Bool
+  @objc public func leftDayText() -> Swift.String
   @objc public func orderUnit() -> Swift.String
   @objc public func subscriptionUnit() -> Swift.String
   @objc public func startTime(formatter: Swift.String) -> Swift.String
   @objc public func validTsEndTime() -> Swift.String?
   @objc public func validityPeriod() -> Swift.String
   @objc public func leftMaturityDays() -> Swift.String
-  @objc public func imageString() -> Swift.String
   @objc public func backSmallBasicImageString() -> Swift.String
   @objc public func planName() -> Swift.String
-  @objc required dynamic public init()
+  @objc public func isBasicPlusPlan() -> Swift.Bool
+  @objc public func isBebound() -> Swift.Bool
+  @objc public func boundSn() -> Swift.String?
+  @objc public func boundDeviceName() -> Swift.String?
+  @objc public func isOutsideContract() -> Swift.Bool
+  @objc public func isIncontract() -> Swift.Bool
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class OrdersModel : AJLibrary.ResultModel {
+@_inheritsConvenienceInitializers @objcMembers @objc(OrdersModel) public class OrdersModel : AJLibrary.ResultModel, Foundation.NSCoding {
   @objc public var orders: [AJLibrary.OrderModel]?
   @objc public var relDids: [Swift.String]?
+  public var usedTrials: Swift.Int?
   @objc public var activityPolicy: AJLibrary.CloudStorActivity?
-  public func haveCoupons() -> Swift.Bool
+  @objc public var couponsDeadline: Swift.String?
+  @objc public func encode(with coder: Foundation.NSCoder)
+  @objc required public init?(coder: Foundation.NSCoder)
+  @objc required dynamic public init()
+  @objc public func validCount() -> Swift.Int
+  @objc public func ordersCount() -> Swift.Int
+  @objc public func haveCoupons() -> Swift.Bool
+  @objc public func haveBirdOrder() -> Swift.Bool
+  @objc public func haveValiedBirdOrder() -> Swift.Bool
+  @objc public func BirdOrderShorestExpiredDays() -> Swift.Int
   @objc public func haveCloud() -> Swift.Bool
-  public func devCloudStorUrl(deviceId: Swift.String) -> Swift.String?
-  public func devTzValue(deviceId: Swift.String) -> Swift.String?
+  @objc public func devCloudStorUrl(deviceId: Swift.String) -> Swift.String?
+  @objc public func devTzValue(deviceId: Swift.String) -> Swift.String?
   @objc public func orderForDevice(_ deviceId: Swift.String) -> AJLibrary.OrderModel?
   @objc public func haveTrial() -> Swift.Bool
-  public func combineWithTrial() -> Swift.Bool
+  @objc public func combineWithTrial() -> Swift.Bool
   @objc public func isShowExperienceTips() -> Swift.Bool
-  @objc required dynamic public init()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class OrderStatusModel : AJLibrary.ResultModel {
@@ -3795,6 +4683,11 @@ public let IphoneXBottom: CoreFoundation.CGFloat
   public static func containVendor(_ vendor: Swift.String) -> Swift.Bool
   public static func settingNeedWakeUp(_ deviceId: Swift.String) -> Swift.Bool
   public static func prodNames(from vendor: Swift.String) -> [Swift.String]
+  public static func pushSettingParams(_ deviceId: Swift.String, accept: Swift.String? = nil, callee: Swift.String? = "1", aliasName: Swift.String? = nil, pushToken: Swift.String = ApnsManager.shared.pushToken ?? "", orderType: AJLibrary.OrderType) -> [Swift.String : Any]
+  public static func portalPushSettingParams(accept: Swift.String? = "1", callee: Swift.String? = "1", pushToken: Swift.String = ApnsManager.shared.pushToken ?? "", orderType: AJLibrary.OrderType) -> [Swift.String : Any]
+  public static func supportFullStorage(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public static func deviceIsSupportAddToPlan(_ deviceId: Swift.String) -> Swift.Bool
+  public static func attachmentSwitchNeedCheckIsAddedToPlan(_ deviceId: Swift.String) -> Swift.Bool
   @objc public static var currentController: UIKit.UIViewController? {
     @objc get
   }
@@ -3924,8 +4817,13 @@ extension AVKit.AVPlayerViewController {
   public func fetchFeedLogs(_ deviceId: Swift.String, ctime: Swift.String, limit: ObjectiveC.NSInteger, complete: @escaping (AJLibrary.feedLogsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func fetchAlarmList(_ deviceId: Swift.String, accessKey: Swift.String, tzValue: Swift.String, today: ObjectiveC.NSInteger, todayFirst: ObjectiveC.NSInteger, ctime: ObjectiveC.NSInteger, cdate: Swift.String, limit: ObjectiveC.NSInteger, complete: @escaping (AJLibrary.AlarmListModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   public func removeShareRel(_ deviceId: Swift.String, slaveUid: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
-  @objc public func pushSetting(_ deviceId: Swift.String, aliasName: Swift.String, devEmcUrl: Swift.String, orderType: AJLibrary.OrderType, clearPushToken: Swift.Bool = false, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func getPushSetting(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.PushSettingsInfo?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func pushSetting(_ deviceId: Swift.String, accept: Swift.String?, aliasName: Swift.String, devEmcUrl: Swift.String, orderType: AJLibrary.OrderType, clearPushToken: Swift.Bool = false, shareUids: [Swift.String], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func pushSetting(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func deleteAlarmsMessage(_ deviceId: Swift.String, accessKey: Swift.String, cdate: Swift.String, ctss: [Swift.String], devTzName: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fetchAlarmsSurvey(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.AlarmsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func callActionButtonSettingUpsert(_ deviceId: Swift.String, params: [Swift.String : Any]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  public func fetchActionButtonSetting(_ deviceId: Swift.String, complete: @escaping (AJLibrary.ActionButtonsSettingModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc deinit
 }
 public let GatewayCellHeight: CoreFoundation.CGFloat
@@ -3962,59 +4860,109 @@ public enum OnlineSetResult : Swift.Int {
   @objc public func getCloudVideoList_ex(_ masterUid: Swift.String, deviceId: Swift.String, dayStartTs: Swift.Double, dayEndTs: Swift.Double, complete: @escaping ([AJLibrary.CloudStorageModel]?, Swift.String?) -> Swift.Void)
   @objc public func getGroupVideoCalendar(_ deviceId: Swift.String, complete: @escaping ([Swift.String]?, Swift.String?) -> Swift.Void)
   @objc public func getGroupVideoCalendar_ex(_ masterUid: Swift.String, deviceId: Swift.String, complete: @escaping ([Swift.String]?, Swift.String?) -> Swift.Void)
+  @objc public func getSoundPlayName(_ deviceId: Swift.String) -> [AJLibrary.soundPlayNameInfo]?
+  @objc public func updateSoundPlay(_ deviceId: Swift.String, names: [AJLibrary.soundPlayNameInfo], playmode: Swift.String, state: Swift.String, complete: @escaping (Swift.String?) -> Swift.Void)
+  @objc public func updateRepeatMode(_ deviceId: Swift.String, repeatMode: Swift.String)
+  @objc public func getRepeatMode(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func getPlayState(_ deviceId: Swift.String) -> Swift.String?
   @objc public func deleteCloudVideoList(_ deviceId: Swift.String, start: AJLibrary.CloudStorageDeleModel, end: AJLibrary.CloudStorageDeleModel, relDays: AJLibrary.CloudStorageDeleRealDayModel, complete: @escaping (Swift.String?) -> Swift.Void)
+  @objc public func deleteCloudVideoList_groupsIds(_ deviceId: Swift.String, groupIds: [Swift.String]?, relDays: AJLibrary.CloudStorageDeleRealDayModel, complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func getLocalVideoList(_ deviceId: Swift.String, dayStartTs: Swift.Double, dayEndTs: Swift.Double, localAddress: Swift.String, complete: @escaping ([AJLibrary.CloudStorageModel]?, Swift.String?) -> Swift.Void)
   @objc public func getLocalGroupVideoCalendar(_ deviceId: Swift.String, complete: @escaping ([Swift.String]?, Swift.String?) -> Swift.Void)
   @objc public func deleteLocalVideoList(_ deviceId: Swift.String, start: AJLibrary.CloudStorageDeleModel, end: AJLibrary.CloudStorageDeleModel, relDays: AJLibrary.CloudStorageDeleRealDayModel, complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func deleteBatteryCamLocalVideoList(_ deviceId: Swift.String, deleteList: [AJLibrary.BatteryCamDeleModel], complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func deleteAlarm(_ deviceId: Swift.String, cdate: Swift.String, ctss: [Swift.String], complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func getCameraReslutionArray(_ deviceId: Swift.String) -> [AJLibrary.QualityModel]?
-  @objc public func getDefaultCameraReslutionNum(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func getCameraInterpolationValue(_ deviceId: Swift.String, resolution: Swift.String) -> Swift.String?
+  @objc public func getCameraResolutionNameValue(_ deviceId: Swift.String, resolution: Swift.String) -> Swift.String?
   @objc public func getDualLensCameraReslutionArray(_ deviceId: Swift.String) -> [AJLibrary.QualityModel]?
-  @objc public func getQuadScreenDefaultCameraReslutionNum(_ deviceId: Swift.String) -> Swift.String?
   @objc public func updateCameraReslutionArray(_ deviceId: Swift.String, capabilitySTR: Swift.String) -> [AJLibrary.QualityModel]?
-  @objc public func getCameraAccessKey(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func CameraLvsQualitiesArr(_ deviceId: Swift.String) -> [AJLibrary.QualityModel]?
+  @objc public func getDefaultCameraReslutionNum(_ deviceId: Swift.String) -> Swift.String?
   @objc public func cameraOnlyHaveOneStream(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func getQuadScreenDefaultCameraReslutionNum(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func getCameraAccessKey(_ deviceId: Swift.String) -> Swift.String?
   @objc public func getCameraLightMode(_ deviceId: Swift.String) -> Swift.String?
-  @objc public func cameraIsSupportPtz(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func cameraIsSupportPtz(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportPtzCalibrate(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportViewAngle(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportfeedTone(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraPtzType(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func cameraIsSupportdualLens(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportdualsoundDetect(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportdualScreen(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportdualScreen_realLens(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraLiveLayoutStyleIsNomal(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportFeeding(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportFloodlight(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_Humanoid(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_Vehicle(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_Pet(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_Package(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_Fall(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_BabyCrying(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportHardWareAIcapability_Noise(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupporSDP2PMode(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportFloodlightBrightnessChange(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportNightlightBrightnessChange(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportCustomSirenSoundsCtrl(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraVenderCode(_ deviceId: Swift.String) -> Swift.String?
   @objc public func cameraIsSupportFloodlightTimeControl(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportOneTouchCall(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportAlarmWhistle(_ deviceId: Swift.String) -> Swift.Bool
-  @objc public func cameraIsSupportdualLens(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraCognitiveTypes(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func DuoLensCamZoomVerge(_ deviceId: Swift.String) -> Swift.String?
+  @objc public func FeedingTimingLimit(_ deviceId: Swift.String) -> Swift.String?
   @objc public func cameraIsSupportPrivLiveStream(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraAlarmWhistleIsOn(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraAlarmWhistlePIRIsOn(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraAlarmWhistlePIRUpdate(_ deviceId: Swift.String, isON: Swift.String)
   @objc public func cameraAlarmWhistleupdate(_ deviceId: Swift.String, isON: Swift.String)
+  @objc public func cameraNightLightCtrlUpdate(_ deviceId: Swift.String, isON: Swift.Bool)
   @objc public func cameraFloodlightIsOn(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func foodIsEmpty(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func foodisEmptyDescLabel(_ deviceId: Swift.String) -> UIKit.UIView
   @objc public func cameraFloodlightAutoIsOn(_ deviceId: Swift.String) -> Swift.Bool
-  @objc public func cameraIsSupportdualScreen_realLens(_ deviceId: Swift.String) -> Swift.Bool
-  @objc public func cameraVenderCode(_ deviceId: Swift.String) -> Swift.String?
   @objc public func cameraFloodlightTimeIsOn(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraFloodlightBrightness(_ deviceId: Swift.String) -> Swift.Int
+  @objc public func cameraNightlightBrightness(_ deviceId: Swift.String) -> Swift.Int
   @objc public func cameraIsSupportWhiteLightCtrl(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportOpticalZoom(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportRemoteTF(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportVariFocus(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportDuplexVoice(_ deviceId: Swift.String) -> Foundation.NSNumber
+  @objc public func cameraIsSupportSimCard(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportScreen(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsPortraitPlayView(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func appDefaultLiveStreamMute(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func appDefaultPlaybackMute(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraPrivateAeraIsEnable(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraPrivateAeraIsEnableUpdate(_ deviceId: Swift.String, isOn: Swift.Bool)
+  @objc public func cameraPrivateAeraSetOn(_ deviceId: Swift.String, isOn: Swift.Bool, complete: @escaping (Swift.String?) -> Swift.Void)
+  @objc public func isChinaAccount(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func SimCardCameraIsUnauthorized(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func SimCardCameraIsOnlyUnauthorized(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func SimCardCameraIsOnlyRegionalLockoutUnauthorized(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportSpeaker(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportPrivateBase(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsSupportMicrophone(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportNightLight(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsSupportLullaby(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraIsKitDevice(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraStatusIsOK(_ deviceId: Swift.String) -> Foundation.NSNumber
+  @objc public func btnIsValid(_ deviceId: Swift.String, btnIndex: ObjectiveC.NSInteger) -> Swift.Bool
+  @objc public func actionBtnIsValid(_ deviceId: Swift.String) -> Swift.Bool
   public func cameraStatusIsBad(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraIsInLocalNetwork(_ deviceId: Swift.String, complete: @escaping (Foundation.NSNumber?) -> Swift.Void)
   @objc public func getCameraLocalNetwork(_ deviceId: Swift.String) -> Swift.String?
   @objc public func getCameraLocalDirectProbeUrl(_ deviceId: Swift.String) -> Swift.String?
   @objc public func getCameraWanIP(_ deviceId: Swift.String) -> Swift.String?
   @objc public func getAppWanIP() -> Swift.String?
+  @objc public func cameraPtzControl(_ deviceId: Swift.String, direction: Swift.String, complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func cameraPtzControl(_ deviceId: Swift.String, direction: Swift.String)
   @objc public func cameraViewAngleConfig(_ deviceId: Swift.String, viewAngle: Swift.String, name: Swift.String, complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func cameraViewAngleDele(_ deviceId: Swift.String, viewAngles: [Swift.String], complete: @escaping (Swift.String?) -> Swift.Void)
-  @objc public func cameraIsSupportSimCard(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cameraViewAngleTurn(_ deviceId: Swift.String, viewAngle: Swift.String)
   @objc public func getAlarmsCalendar(_ deviceId: Swift.String, complete: @escaping ([Swift.String]?, Swift.String?) -> Swift.Void)
   @objc public func getFeedLogs(_ deviceId: Swift.String, ctime: Swift.String, limit: ObjectiveC.NSInteger, complete: @escaping (AJLibrary.feedLogsModel?, Swift.String?) -> Swift.Void)
@@ -4033,12 +4981,15 @@ public enum OnlineSetResult : Swift.Int {
   @objc public func cameraType(_ deviceId: Swift.String) -> Swift.String?
   @objc public func DeviceIsBatteryCam(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func DeviceWifiSignal(_ deviceId: Swift.String) -> Swift.Int
-  @objc public func currentCameraPlanIsVaild() -> Foundation.NSNumber?
+  @objc public func currentCameraPlanIsVaild() -> Swift.Bool
   @objc public func CameraPlanIsVaild(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func isInValidAiPlan(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func CameraIsLowPower(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func CameraIsLowPowerBelow5(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func CameraPTZIsLowPower(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func cloudPlanHaveAvailableDevice(_ orderInfo: AJLibrary.OrderModel) -> Foundation.NSNumber?
   @objc public func getCloudPlanKeepDays(_ deviceId: Swift.String) -> Swift.Int
+  @objc public func simsCounts(_ deviceId: Swift.String) -> Swift.Int
   @objc public func DevicePlanIsValid(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func GateWaySubDevices(_ deviceId: Swift.String) -> [Swift.String]
   @objc public func batterySingleWakeUp(_ deviceId: Swift.String, complete: @escaping (Swift.String?) -> Swift.Void)
@@ -4048,9 +4999,24 @@ public enum OnlineSetResult : Swift.Int {
   @objc public func FeedTimingConfig(_ deviceId: Swift.String, timings: [AJLibrary.timingsModel], complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func sirenCtrl(_ deviceId: Swift.String, isOn: Swift.Bool, complete: @escaping (Swift.String?) -> Swift.Void)
   @objc public func sirenAutoCtrl(_ deviceId: Swift.String, isOn: Swift.String, complete: @escaping (Swift.String?) -> Swift.Void)
+  @objc public func nightLightIson(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func fetchCloudPlanList(refresh: Swift.Bool = false, supportDevType: Swift.Int = IPCSupportDevType, saleRegion: Swift.Int = CloudSaleRegion, complete: @escaping (AJLibrary.CloudPlansModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc public func getWeekdaysText(_ weekDays: [Swift.String]) -> Swift.String
   @objc public func fetchOrderList_ex(refresh: Swift.Bool = false, masterUid: Swift.String? = nil, supportDevType: Swift.Int = IPCSupportDevType, status: [Swift.String], complete: @escaping (AJLibrary.OrdersModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fastHibernate(_ deviceId: Swift.String, isOn: Swift.String, complete: @escaping (Swift.String?) -> Swift.Void)
+  @objc public func contactUs()
+  @objc public func cameraHaveNoValidPlan(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func cameraShowContinueSubscribe(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func enabledRekCognitiveTypes(_ deviceId: Swift.String) -> [Swift.String]
+  @objc public func getPeripheralHWIItems(_ deviceId: Swift.String) -> [AJLibrary.PeripheralHWIItem]
+  @objc public func pnmO1IsEnabled(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func getPeripheralHWItem(_ deviceId: Swift.String, hwid: Swift.String) -> AJLibrary.PeripheralHWIItem?
+  @objc public func cameraAlarmMediaTypes(_ deviceId: Swift.String) -> Swift.String
+  @objc public func cameraAlarmMediaSettingTypesIsVideo(_ deviceId: Swift.String) -> Swift.Bool
+  @objc public func fetchBirdLibrary(_ deviceId: Swift.String, complete: @escaping (AJLibrary.BirdSummaryModel?, Swift.String?) -> Swift.Void)
+  @objc public func fetchBirdDetail(_ scientificName: Swift.String, cts: Swift.String, complete: @escaping (AJLibrary.BirdDetailModel?, Swift.String?) -> Swift.Void)
+  @objc public func deleteBirdDetail(_ scientificName: Swift.String, recordIds: [Swift.String], complete: @escaping (Swift.String?) -> Swift.Void)
+  @objc public func birdfeederhavevailedplan(_ deviceId: Swift.String) -> Swift.Bool
   @objc public func fetchOrderStatus(deviceId: Swift.String, complete: @escaping (AJLibrary.OrderStatusModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
@@ -4071,7 +5037,8 @@ public enum OnlineSetResult : Swift.Int {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class CloudWebViewController : AJLibrary.CustomWebViewController, WebKit.WKScriptMessageHandler, MessageUI.MFMailComposeViewControllerDelegate {
-  @_Concurrency.MainActor @preconcurrency public var order: AJLibrary.OrderModel?
+  @objc @_Concurrency.MainActor @preconcurrency public var refreshUI: (() -> ())?
+  @objc @_Concurrency.MainActor @preconcurrency public var order: AJLibrary.OrderModel?
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
@@ -4100,9 +5067,24 @@ extension AJLibrary.LoginType : Swift.RawRepresentable {}
 extension AJLibrary.ReceiveStatus : Swift.Equatable {}
 extension AJLibrary.ReceiveStatus : Swift.Hashable {}
 extension AJLibrary.ReceiveStatus : Swift.RawRepresentable {}
+extension AJLibrary.ContinuousType : Swift.Equatable {}
+extension AJLibrary.ContinuousType : Swift.Hashable {}
+extension AJLibrary.ContinuousType : Swift.RawRepresentable {}
 extension AJLibrary.CameraStatus : Swift.Equatable {}
 extension AJLibrary.CameraStatus : Swift.Hashable {}
 extension AJLibrary.CameraStatus : Swift.RawRepresentable {}
+extension AJLibrary.TFStatus : Swift.Equatable {}
+extension AJLibrary.TFStatus : Swift.Hashable {}
+extension AJLibrary.TFStatus : Swift.RawRepresentable {}
+extension AJLibrary.AIPlanType : Swift.Equatable {}
+extension AJLibrary.AIPlanType : Swift.Hashable {}
+extension AJLibrary.AIPlanType : Swift.RawRepresentable {}
+extension AJLibrary.LevelEnum : Swift.Equatable {}
+extension AJLibrary.LevelEnum : Swift.Hashable {}
+extension AJLibrary.LevelEnum : Swift.RawRepresentable {}
+extension AJLibrary.MotionDetectLevel : Swift.Equatable {}
+extension AJLibrary.MotionDetectLevel : Swift.Hashable {}
+extension AJLibrary.MotionDetectLevel : Swift.RawRepresentable {}
 extension AJLibrary.AutoLightMode : Swift.Equatable {}
 extension AJLibrary.AutoLightMode : Swift.Hashable {}
 extension AJLibrary.AutoLightMode : Swift.RawRepresentable {}
@@ -4163,6 +5145,9 @@ extension AJLibrary.EMCAction : Swift.Equatable {}
 extension AJLibrary.EMCAction : Swift.Hashable {}
 extension AJLibrary.EMCAction : Swift.RawRepresentable {}
 extension Swift.Double : AJLibrary._Transformable {}
+extension AJLibrary.UploadStorageModeEnum : Swift.Equatable {}
+extension AJLibrary.UploadStorageModeEnum : Swift.Hashable {}
+extension AJLibrary.UploadStorageModeEnum : Swift.RawRepresentable {}
 extension AJLibrary.BindStatus : Swift.Equatable {}
 extension AJLibrary.BindStatus : Swift.Hashable {}
 extension AJLibrary.BindStatus : Swift.RawRepresentable {}

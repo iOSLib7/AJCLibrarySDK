@@ -10,7 +10,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AJCloudStoragCognitiveModel : NSObject
-@property (nonatomic, strong) NSString *confidence;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *value;
 @end

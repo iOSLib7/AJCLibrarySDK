@@ -65,6 +65,7 @@
 #import <AJLibrary/BluetoothManager.h>
 #import <AJLibrary/AJFeedTonesConfigModel.h>
 #import <AJLibrary/AJUploadNotifyModel.h>
+#import <AJLibrary/AJCocoaSecurity.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

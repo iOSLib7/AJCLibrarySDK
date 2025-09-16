@@ -11,6 +11,8 @@
 #import "AJTimezoneModel.h"
 #import "AJFeedTonesConfigModel.h"
 #import "AJFeedTimingConfigModel.h"
+#import "AJAutoPolicy.h"
+#import "AJTimePolicy.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -141,10 +143,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 自动跟踪
 /// @param deviceId 设备 ID
 /// @param toggle  自动跟踪开关 off - 关闭，on - 开启
+/// @param stopPosType 停止位置选择，1-StopAtOriPos停在原位 2- StopAtCurPos停在当前位置 仅在能力集: autoTrackStpPosCtrl=1时有意义，缺省值:1
+/// @param targets 追踪对象数组，可选值域，如果为空，则跟踪所有，否则 ["humanoid", "package", "pet", "vehicle", "fall"]中可选
 /// @param success success
 /// @param failure failure
 - (void)autoTrackConfig:(NSString *)deviceId
                  toggle:(NSString *)toggle
+            stopPosType:(NSString *)stopPosType
+                targets:(NSArray<NSString *>*)targets
                 success:(nullable void (^)(void))success
                 failure:(nullable void (^)(AJError *))failure;
 
@@ -178,15 +184,19 @@ NS_ASSUME_NONNULL_BEGIN
                     failure:(nullable void (^)(AJError *))failure;
 
 
-/// 庭院灯灯光控制
+/// 庭院灯控制
 /// @param deviceId 设备ID
 /// @param toggle 开关：开 - "on"，关 - "off"
 /// @param brightness 亮度 1-100
+/// @param autoPolicy 夜视与灯光模式
+/// @param timePolices 自定义时间表1和表2 [timePolicy1, timePolicy2]
 /// @param success success
 /// @param failure failure
 - (void)floodlightControl:(NSString *)deviceId
                    toggle:(NSString *)toggle
                brightness:(NSString *)brightness
+               autoPolicy:(AJAutoPolicy *)autoPolicy
+              timePolices:(NSArray <AJTimePolicy *>*)timePolices
                   success:(nullable void (^)(void))success
                   failure:(nullable void (^)(AJError *))failure;
 
@@ -225,7 +235,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 隐私区域设置
 /// @param deviceId 设备 ID
 /// @param enable 启用隐私区域开关 0 - 关，1 - 开
-/// @param areas 隐私区域位置 ["x0,y0,x1,y1"]，区间：整体最大 --> ["0,0,10000,10000"]
+/// @param areas 隐私区域位置 ['x0','y0','x1','y1']，区间：整体最大 --> [0,0,10000,10000] 0-10000是过度标准，长宽都是0-100000.当设备端获取到对应坐标后，和实际的分辨率作转换，采用同比例转换原则。比如1920 x 1080分辨率转换算法如下:X轴的值为5000,那么对应的坐标为 1920 x 5000/10000 = 960，Y轴的值为5000,那么对应的坐标为 1080 x 5000/10000 = 540.设备坐标转换成中间坐标采用逆向算法即可.
 /// @param success success
 /// @param failure failure
 - (void)privateRegionConfig:(NSString *)deviceId
@@ -310,41 +320,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-/// 移动检测灵敏度等级和检测区域配置
+/// 移动检测灵敏度等级及侦测区域配置
 /// @param deviceId 设备 ID
+/// @param deviceType 设备类型
 /// @param susceptiveness 灵敏度等级  0 ~ 5
-/// @param fullViewport 是否全屏 0 - 是，1 - 否
-/// @param areas 检测区域  ["'x0,y0,x1,y1"]，区间：整体最大 --> ["0,0,10000,10000"]
+/// @param fullViewport 1 - 全部区域，2 - 部分区域
+/// @param areaShowStyle 始终在视频中显示区域划线 1 - 是  0 - 否
+/// @param areas 隐私区域 [0, 0, 10000, 10000] 0-10000是过度标准，长宽都是0-100000.当设备端获取到对应坐标后，和实际的分辨率作转换，采用同比例转换原则。比如1920 x 1080分辨率转换算法如下: X轴的值为5000,那么对应的坐标为 1920 x 5000/10000 = 960 Y轴的值为5000,那么对应的坐标为 1080 x 5000/10000 = 540. 设备坐标转换成中间坐标采用逆向算法即可.
 /// @param success success
 /// @param failure failure
 - (void)detectionsConfig:(NSString *)deviceId
-          susceptiveness:(NSString *)susceptiveness
+              deviceType:(NSInteger)deviceType
+          susceptiveness:(NSInteger)susceptiveness
             fullViewport:(NSString *)fullViewport
+           areaShowStyle:(NSString *)areaShowStyle
                    areas:(NSArray<NSString *> *)areas
                  success:(nullable void (^)(void))success
                  failure:(nullable void (^)(AJError *))failure;
 
 
-/// 人形侦测
+/// AI 侦测
 /// @param deviceId 设备ID
-/// @param humanoid 人形 0 - 关闭，1 - 开启
-/// @param package  包裹 0 - 关闭，1 - 开启
-/// @param pet 宠物  0 - 关闭，1 - 开启
-/// @param vehicle  车辆 0 - 关闭，1 - 开启
+/// @param pnmHumanoid 人形通知  0 - 关闭，1 - 开启
+/// @param pnmPackage  包裹通知 0 - 关闭，1 - 开启
+/// @param pnmPet 宠物通知  0 - 关闭，1 - 开启
+/// @param pnmVehicle 车辆通知 0 - 关闭，1 - 开启
+/// @param pnmFall 跌倒通知 0 - 关闭，1 - 开启
+/// @param pnmBird 鸟通知 0 - 关闭，1 - 开启
+/// @param pnmPetact 宠物行为通知 0 - 关闭，1 - 开启
+/// @param rekHumanoid 人形通知  0 - 关闭，1 - 开启
+/// @param rekPackage 包裹通知 0 - 关闭，1 - 开启
+/// @param rekPet 宠物通知  0 - 关闭，1 - 开启
+/// @param rekVehicle 车辆通知 0 - 关闭，1 - 开启
+/// @param rekFall 跌倒通知 0 - 关闭，1 - 开启
+/// @param rekBird 鸟通知 0 - 关闭，1 - 开启
+/// @param rekPetact 宠物行为通知 0 - 关闭，1 - 开启
 /// @param pnmO1 其他  0 - 关闭，1 - 开启
 /// @param success success
 /// @param failure failure
 - (void)alarmRekConfig:(NSString *)deviceId
-              humanoid:(NSString *)humanoid
-               package:(NSString *)package
-                   pet:(NSString *)pet
-               vehicle:(NSString *)vehicle
+           pnmHumanoid:(NSString *)pnmHumanoid
+            pnmPackage:(NSString *)pnmPackage
+                pnmPet:(NSString *)pnmPet
+            pnmVehicle:(NSString *)pnmVehicle
+               pnmFall:(NSString *)pnmFall
+               pnmBird:(NSString *)pnmBird
+             pnmPetact:(NSString *)pnmPetact
+           rekHumanoid:(NSString *)rekHumanoid
+            rekPackage:(NSString *)rekPackage
+                rekPet:(NSString *)rekPet
+            rekVehicle:(NSString *)rekVehicle
+               rekFall:(NSString *)rekFall
+               rekBird:(NSString *)rekBird
+             rekPetact:(NSString *)rekPetact
                  pnmO1:(NSString *)pnmO1
                success:(nullable void (^)(void))success
                failure:(nullable void (^)(AJError *))failure;
 
 
-/// 移动告警 设置
+/// 移动告警设置
 /// @param deviceId 设备 ID
 /// @param enable 0 - 关，1 - 开
 /// @param genAlarmThumb 富文本通知，0 - 关，1 - 开
@@ -361,6 +395,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param startTime2 自定义2开始时间 (例：传093000，指 09: 30: 00)
 /// @param endTime2 自定义2结束时间 (例：传173000，指 17: 30: 00)
 /// @param weekDays2 自定义2重复天 ( 例：@[@"1", @"3", @"5", @"6"]，周一、三、五、六 )
+/// @param respondMediaType 告警附件 1 - 图片 2 - 视频
 /// @param success success
 /// @param failure failure
 - (void)moveMonitorConfig:(NSString *)deviceId
@@ -379,6 +414,7 @@ NS_ASSUME_NONNULL_BEGIN
                startTime2:(NSString *)startTime2
                  endTime2:(NSString *)endTime2
                 weekDays2:(NSArray<NSString *> *)weekDays2
+         respondMediaType:(NSString *)respondMediaType
                   success:(nullable void (^)(void))success
                   failure:(nullable void (^)(AJError *))failure;
 

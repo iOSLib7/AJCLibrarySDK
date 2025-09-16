@@ -25,6 +25,13 @@
 
 
 
+typedef enum : NSUInteger {
+    AlarmMediaType_VideoOnly = 0,
+    AlarmMediaType_ImageOnly = 1,
+    AlarmMediaType_VideoAndImage = 2,
+} AlarmMediaType;
+
+
 
 
 typedef enum : NSUInteger {
@@ -36,6 +43,11 @@ typedef enum : NSUInteger {
     WVCDeviceTypeDoorbell=6,
     WVCDeviceTypeGateway=8,
 } WVCDeviceType;
+
+
+
+
+
 
 
 typedef enum : NSUInteger {
@@ -60,12 +72,53 @@ static KCognitiveType const KCognitiveType_FACE = @"face";
 static KCognitiveType const KCognitiveType_PACKAGE = @"package";
 static KCognitiveType const KCognitiveType_PET = @"pet";
 static KCognitiveType const KCognitiveType_VEHICLE = @"vehicle";
+static KCognitiveType const KCognitiveType_FALL = @"fall";
+static KCognitiveType const KCognitiveType_PET_ACTION = @"action";
+static KCognitiveType const KCognitiveType_BIRD = @"bird";
+static KCognitiveType const KCognitiveType_Petact = @"petact";
+static KCognitiveType const KCognitiveType_UNKNOWNBIRDS = @"UnknownBirds";
+
+
+
+typedef NSString *KPetActionType NS_STRING_ENUM;
+
+
+static KPetActionType const KPetActionType_EAT = @"Eating";         // 🍗 Eating（eat）
+static KPetActionType const KPetActionType_REST = @"Resting";       // 🛏️ Resting（lie/sleep）
+static KPetActionType const KPetActionType_PLAY = @"Playing";       // 🎾 Playing（jump/sniff）
+static KPetActionType const KPetActionType_TOILET = @"Toileting";   // 🚽 Toileting（urinate/defecate）
+
+
+
 
 typedef NSString *KMotionType NS_STRING_ENUM;
 
 static KMotionType const KMotionType_ALERT = @"alert";
 static KMotionType const KMotionType_VISITOR  = @"visitor";
 static KMotionType const KMotionType_TAMPER = @"tamper";
+
+
+typedef NSString *SoundAlertType NS_STRING_ENUM;
+static SoundAlertType const SoundAlertType_BabyCry = @"babyCrying";
+static SoundAlertType const SoundAlertType_Noise = @"noise";
+
+
+
+
+
+typedef NSString *QualityType NS_STRING_ENUM;
+
+static QualityType const QualityType_Unknown = @"0";
+static QualityType const QualityType_SD = @"1";
+static QualityType const QualityType_HD = @"2";
+static QualityType const QualityType_FHD = @"5";
+static QualityType const QualityType_3M = @"6";
+static QualityType const QualityType_4M = @"7";
+static QualityType const QualityType_5M = @"8";
+static QualityType const QualityType_6M = @"9";
+static QualityType const QualityType_7M = @"10";
+static QualityType const QualityType_8M = @"11";
+
 
 
 
@@ -98,7 +151,9 @@ extern const MJEncryptStringData * const wxAjcloudTenBridge;
 + (NSDateFormatter *)GMTDateFormatter;
 + (NSString *)currentDateStringWithsep;
 + (NSString *)weekStrWith:(NSDate *)date;
++ (NSString *)calendarSelectedStr:(NSString *)dateStr;
 + (NSString *)getImagePath:(UIImage *)Image;
++ (NSString *)CurrentFeedTime;
 //+ (NSString *)getTimeDesc:(NSString *)timeStr;
 + (NSString *)dateStringWithDate:(NSDate *)date;
 //+ (NSString *)getTimeDescNoDay:(NSString *)timeStr;
@@ -110,7 +165,6 @@ extern const MJEncryptStringData * const wxAjcloudTenBridge;
 + (NSTimeInterval )timeIntervalWithDateString:(NSString *)dateStr;
 + (NSString *)dateStringWithTimeInterval:(NSTimeInterval)TimeInterval;
 + (NSString *)localizedStringKey:(NSString *)key;
-+ (NSString *)CommonlocalizedStringKey:(NSString *)key;
 + (NSString *)timeStampWithTimeStr:(NSString *)inputTimeStr;
 +(NSString *)timeStringWithSeconds:(NSTimeInterval)timeInterval tzValue:(NSInteger)mins;
 + (NSDateFormatter *)DateFormatterWithOffset:(NSInteger)mins formarter:(NSString *)formarter;
@@ -143,6 +197,25 @@ extern const MJEncryptStringData * const wxAjcloudTenBridge;
 + (NSString *)toDate:(NSString *)time format:(NSString *)format;
 + (NSString *)toyyyymmddStr:(NSString *)time;
 + (NSTimeInterval )timeIntervalWithDateString:(NSString *)dateStr cameraId:(NSString *)cameraId;
-
++ (void)postNotificationSaveToAlbumFilePath:(NSString *)filePath completionBlock:(void (^)(NSError *_Nullable error))completionBlock;
++(void)addshadwToView:(UIView *)view;
 +(void)saveDebugImage:(UIImage *)image;
+
++(BOOL)cameraIsOpenDualScreen:(NSString *_Nullable)cameraID;
++(void)updatecameraIsOpenDualScreen:(NSString *_Nullable)cameraID ison:(BOOL)isON;
++ (void)sdCleanVideoCache;
++ (BOOL)isSDTypeUrl:(NSString *)string;
++ (NSString *)sdResourceUrlWithCameraID:(NSString *)CameraID date:(int )date groupId:(int)groupId;
++ (NSArray<NSString *> *)requestParamWithResourceUrl:(NSString *)inputString;
++ (UIImage *_Nonnull)imageInterpolationWithOriginalImage:(UIImage *_Nullable)originalImage Size:(CGSize)newSize;
++ (CGSize)interpolationSizeWithValue:(NSString *_Nullable)interpolationValue;
++(NSInteger )weekDayOfDate:(NSDate *)date;
++ (NSArray *)timestampsForDays:(NSArray *)days atHourAndMinute:(NSString *)time;
++ (NSTimeInterval)timestampFor24HoursAgo;
++ (NSDate *)dateFor24HoursAgo;
++ (UIWindow *)getKeyWindow;
++ (UIViewController *)getFrontViewControllerFromController:(UIViewController *)controller;
++ (UIColor *)colorWithAdjustedAlpha:(UIColor *)color alpha:(CGFloat)alpha;
++ (UIImage *)alertTypeIconWithCognitiveType:(NSString *)CognitiveType value:(NSString *)value;
++(AlarmMediaType)cameraMediaType:(NSString *)cameraID;
 @end
