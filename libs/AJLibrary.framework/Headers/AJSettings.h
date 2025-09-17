@@ -341,20 +341,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// AI 侦测
 /// @param deviceId 设备ID
-/// @param pnmHumanoid 人形通知  0 - 关闭，1 - 开启
-/// @param pnmPackage  包裹通知 0 - 关闭，1 - 开启
-/// @param pnmPet 宠物通知  0 - 关闭，1 - 开启
-/// @param pnmVehicle 车辆通知 0 - 关闭，1 - 开启
-/// @param pnmFall 跌倒通知 0 - 关闭，1 - 开启
-/// @param pnmBird 鸟通知 0 - 关闭，1 - 开启
-/// @param pnmPetact 宠物行为通知 0 - 关闭，1 - 开启
-/// @param rekHumanoid 人形通知  0 - 关闭，1 - 开启
-/// @param rekPackage 包裹通知 0 - 关闭，1 - 开启
-/// @param rekPet 宠物通知  0 - 关闭，1 - 开启
-/// @param rekVehicle 车辆通知 0 - 关闭，1 - 开启
-/// @param rekFall 跌倒通知 0 - 关闭，1 - 开启
-/// @param rekBird 鸟通知 0 - 关闭，1 - 开启
-/// @param rekPetact 宠物行为通知 0 - 关闭，1 - 开启
+/// @param pnmHumanoid 人形识别通知  0 - 关闭，1 - 开启
+/// @param pnmPackage  包裹识别通知 0 - 关闭，1 - 开启
+/// @param pnmPet 宠物识别通知  0 - 关闭，1 - 开启
+/// @param pnmVehicle 车辆识别通知 0 - 关闭，1 - 开启
+/// @param pnmFall 跌倒识别通知 0 - 关闭，1 - 开启
+/// @param pnmBird 鸟识别通知 0 - 关闭，1 - 开启
+/// @param pnmPetact 宠物行为识别通知 0 - 关闭，1 - 开启
+/// @param rekHumanoid 人形识别  0 - 关闭，1 - 开启
+/// @param rekPackage 包裹识别 0 - 关闭，1 - 开启
+/// @param rekPet 宠物识别  0 - 关闭，1 - 开启
+/// @param rekVehicle 车辆识别 0 - 关闭，1 - 开启
+/// @param rekFall 跌倒识别 0 - 关闭，1 - 开启
+/// @param rekBird 鸟识别 0 - 关闭，1 - 开启
+/// @param rekPetact 宠物行为识别 0 - 关闭，1 - 开启
 /// @param pnmO1 其他  0 - 关闭，1 - 开启
 /// @param success success
 /// @param failure failure
@@ -386,7 +386,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param wholeStartTime 全天候开始时间 ( 000000 )
 /// @param wholeEndTime 全天候结束时间 ( 235959 )
 /// @param wholeWeekDays 全天候星期配置 ( [1, 2, 3, 4, 5, 6, 7] - > 每天 )
-/// @param wholeFormat localStorConfig.policies[0].format
 /// @param enable1 自定义时间表1开关 0 - 关，1 - 开
 /// @param startTime1 自定义1开始时间 (例：传093000，指 09: 30: 00)
 /// @param endTime1 自定义1结束时间 (例：传173000，指 17: 30: 00)
@@ -405,7 +404,6 @@ NS_ASSUME_NONNULL_BEGIN
            wholeStartTime:(NSString *)wholeStartTime
              wholeEndTime:(NSString *)wholeEndTime
             wholeWeekDays:(NSArray<NSString *> *)wholeWeekDays
-              wholeFormat:(NSString *)wholeFormat
                   enable1:(NSString *)enable1
                startTime1:(NSString *)startTime1
                  endTime1:(NSString *)endTime1

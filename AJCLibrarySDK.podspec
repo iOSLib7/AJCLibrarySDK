@@ -62,6 +62,9 @@ s.platform     = :ios, '13.0'
   ss.dependency 'MobileVLCKit', "~> 3.6.0"
   ss.dependency 'BabyBluetooth'
   ss.dependency 'ffmpeg-kit-ios-full-gpl-ajc'
+  ss.dependency 'QCloudCOSXML', '~> 6.4.4'
+  ss.dependency 'Qiniu'
+
   
  end
 
