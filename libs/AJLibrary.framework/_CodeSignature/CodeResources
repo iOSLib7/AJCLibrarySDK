@@ -106,7 +106,7 @@
 		</data>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<data>
-		TyMaP+qp0WAAUM94sAvbwSjJtTQ=
+		uITSAE0Fzlh63TTIZ2KIVnEVaYQ=
 		</data>
 		<key>Headers/AJLibrary.h</key>
 		<data>
@@ -342,7 +342,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bn0ti9MFscQ/JMLAPhtW9rAybKo=
+		6jlptgNS8kB8JoGCuu9XpgkDmeY=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -350,27 +350,27 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		pFmgxP7eQJfP6aJKohsUZ0sLUXY=
+		rEUhUClKt/kDWW4xSX7OmioPnvA=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		ry9Na0Z8TDt30PHZpJSuypY0fqU=
+		2YMlb32ddG7bKfGW82/JVMCQDkA=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		q81/8ajsN33zVsG85dsLSu1fy/g=
+		BRBrMU3tdyFb8gK55mYQuqYYwkM=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		rkqKYjhqzrm9k1ZYQVU0fBy8ORw=
+		bgPxl8FYoIQSTK4XVxj1e1pQneo=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		q81/8ajsN33zVsG85dsLSu1fy/g=
+		BRBrMU3tdyFb8gK55mYQuqYYwkM=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		8mrsJRN8BUru2NZx57krBJBB83c=
+		MMIalTzT/o6+KEk3eIJAPwWcSV4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -378,7 +378,7 @@
 		</data>
 		<key>QCloudCOSXML.bundle/Info.plist</key>
 		<data>
-		kOGVSnhV/kM0rPzZmbm2KnmA/S4=
+		TeP8GfyicuP+xDLQOFSXROZUtKI=
 		</data>
 		<key>QCloudCOSXML.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -393,10 +393,6 @@
 	<dict>
 		<key>AliyunEmasServices-Info.plist</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			dYw039OrMKKtZc5HQ29NNIqFY9w=
-			</data>
 			<key>hash2</key>
 			<data>
 			6P41AJzfdMRw5QwrowgXnsFecPe9ciIVyc1ZvfxM3GM=
@@ -404,10 +400,6 @@
 		</dict>
 		<key>Headers/AJAccount.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			YYe6gyTVZbXRXGfw9VGebRkjYUY=
-			</data>
 			<key>hash2</key>
 			<data>
 			x//7TUPZ2vhFonOJ/xbiXWpUxVyO+eiPj7VMrHJ9TlM=
@@ -415,10 +407,6 @@
 		</dict>
 		<key>Headers/AJAccountModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wk3yxSWExLXkENsZnQwSo2M4N2s=
-			</data>
 			<key>hash2</key>
 			<data>
 			umyEXpIlML8DNINDv648dhlzCfc8jQFKMb43CHIbGrk=
@@ -426,10 +414,6 @@
 		</dict>
 		<key>Headers/AJAlarmListModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3+IrObV3RRw19sSKd6TQfIKpajk=
-			</data>
 			<key>hash2</key>
 			<data>
 			4PMZyLakxDIu1dz8bgC2uk0hbUobHeBeA3JefeNa3fU=
@@ -437,10 +421,6 @@
 		</dict>
 		<key>Headers/AJAlertSurveyModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bHPm3KfQSqndg3HEegQ8MmsjIoo=
-			</data>
 			<key>hash2</key>
 			<data>
 			OwqdgKmEQnsgjvmyr19Gk3EMH13zlBcsEnIRaizcTVQ=
@@ -448,10 +428,6 @@
 		</dict>
 		<key>Headers/AJAlertsCalendarModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			6IwANo46A6tAgHrMBLnqNX3LbEw=
-			</data>
 			<key>hash2</key>
 			<data>
 			BF/OoMew8NjoERRAbMbxdvx5UFavWOF61gHnPqK0Ipg=
@@ -459,10 +435,6 @@
 		</dict>
 		<key>Headers/AJAlertsListModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			4TF1I2NkcANTBfPyYtvgEis18HM=
-			</data>
 			<key>hash2</key>
 			<data>
 			aeZeGREiyzBNpcHsarkOeO8lcPmKyvXX9uyOgXZgrow=
@@ -470,10 +442,6 @@
 		</dict>
 		<key>Headers/AJAutoPolicy.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			OQCrakcYz0K20E8EJa1z6oxtHd8=
-			</data>
 			<key>hash2</key>
 			<data>
 			T5B2vNTMV1GUD14NRKjc+chaENZJa0gpkBfC7F+cbK4=
@@ -481,10 +449,6 @@
 		</dict>
 		<key>Headers/AJBinder.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			jAeejBUElHVvZDRQ4wsEkuc1Fk8=
-			</data>
 			<key>hash2</key>
 			<data>
 			FP5bdDwZQneuzQvAjM+jYHj0dUculDQGD2H+3D69GXY=
@@ -492,10 +456,6 @@
 		</dict>
 		<key>Headers/AJCloud.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			W0vroA6RwSH4rd/GdoIbvn7CvNw=
-			</data>
 			<key>hash2</key>
 			<data>
 			qdEG2T0jsxnSWjtsn6WFvjqtT+qivCGdecoDwKbYuSs=
@@ -503,10 +463,6 @@
 		</dict>
 		<key>Headers/AJCloudOrderModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3x+ytwwnW5fdmBJZe4ouurq2trU=
-			</data>
 			<key>hash2</key>
 			<data>
 			FsQXHQ1qmiknKKZSozG6JVod2CoNAE0pmnig9FigTmU=
@@ -514,10 +470,6 @@
 		</dict>
 		<key>Headers/AJCloudStorageDeleteModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			jAW73huQLQ6iaUnEiGUIAQrLS4Y=
-			</data>
 			<key>hash2</key>
 			<data>
 			c1W6wE7gIV47o8t0B//j8Jk6+M9Kp3iagnO3KgoVw6w=
@@ -525,10 +477,6 @@
 		</dict>
 		<key>Headers/AJCloudStorageModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			EWPtNO2K1yB69oaxq2Pabu4VrLc=
-			</data>
 			<key>hash2</key>
 			<data>
 			N6Vms4F7z+2xPaLANVK3iwDKR+I8+zxWT/bMhWkSd+Q=
@@ -536,10 +484,6 @@
 		</dict>
 		<key>Headers/AJCocoaSecurity.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QQNhFUJMGd/aK2sQDQtBO9NLr+U=
-			</data>
 			<key>hash2</key>
 			<data>
 			CqQLF6UQqMVCDUEmFrrD4dZ6x4GOT1+VMlKRJZOwqIM=
@@ -547,10 +491,6 @@
 		</dict>
 		<key>Headers/AJDevice.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fGahDj6bgJoCvicQ00PCbK92nWE=
-			</data>
 			<key>hash2</key>
 			<data>
 			xYTb4LV2Cl4q3AbE0xckxTmDgMVnkkMt2bIkdh43Jc8=
@@ -558,10 +498,6 @@
 		</dict>
 		<key>Headers/AJDeviceInfoModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			VWUmNzhWfIG7RfVFFvHoMHwWUZQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			HgfVahr+3vx4lnVjn37QgkdA3QAIMfug6MtvLgVwBeQ=
@@ -569,10 +505,6 @@
 		</dict>
 		<key>Headers/AJDiagnoseModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vZ9yySR78zubgjzrJ0wf+YEW5E8=
-			</data>
 			<key>hash2</key>
 			<data>
 			XY8QVNxd7BlZ+RnpNpExblCIk9i2pgYPi1BNwEzyso8=
@@ -580,10 +512,6 @@
 		</dict>
 		<key>Headers/AJDiscoverDeviceModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+6QDRw68IIEXfhcsi8d7AwC214s=
-			</data>
 			<key>hash2</key>
 			<data>
 			qQuVj0HCiyMlEQv1c/K3G3PBbRIFBOPuRqBwagFmWTY=
@@ -591,10 +519,6 @@
 		</dict>
 		<key>Headers/AJDownload.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			AFNv2xttGXkUTYVCZwmVFn0wlwo=
-			</data>
 			<key>hash2</key>
 			<data>
 			aydXemsFxykZEVbzlPTm9oXMDfT6Fj0rEsg44h+HPGo=
@@ -602,10 +526,6 @@
 		</dict>
 		<key>Headers/AJEmailCheckModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			kSe5iT5E48oJkX6aWMjRXw7pKQU=
-			</data>
 			<key>hash2</key>
 			<data>
 			cmOiC40eqzj4LkSgKlTeREuskfzMVQ5jkMW+9+jk458=
@@ -613,10 +533,6 @@
 		</dict>
 		<key>Headers/AJError.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			iCkSJubaE9w6XQwXJL1Ikbeqm3c=
-			</data>
 			<key>hash2</key>
 			<data>
 			UbKkQFM76yVwy35v/85rb9D/iLRmh2pHUk2saZ01Du4=
@@ -624,10 +540,6 @@
 		</dict>
 		<key>Headers/AJFeedLogsModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Mc3oha9wpEkVnmi1DWfRLCIgr54=
-			</data>
 			<key>hash2</key>
 			<data>
 			iJbNk+k81KaQANHeEW80GaalEXlUZg0h3cuaLjaLyVM=
@@ -635,10 +547,6 @@
 		</dict>
 		<key>Headers/AJFeedTimingConfigModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hfP9FC+JCcf1kQp2QvS/dO/RRtQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			bBs4yO0jsRoWExKkgktXZcvdD+BN33Pcc6IPi6vIhFg=
@@ -646,10 +554,6 @@
 		</dict>
 		<key>Headers/AJFeedTonesConfigModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			1qAeB51HTsQoyanuWaKy3SPpc4s=
-			</data>
 			<key>hash2</key>
 			<data>
 			yF3soiw8OLGkMA6PyxkjJkiveNym7fXGdGBWSBzl9w4=
@@ -657,10 +561,6 @@
 		</dict>
 		<key>Headers/AJLib.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mdkIuUos6CFQ+l2BKq7ECQ3vEug=
-			</data>
 			<key>hash2</key>
 			<data>
 			EnRKpuaSyCquz/nPK1Llvmu9NSmjFUtfwkXRJMVl+YE=
@@ -668,21 +568,13 @@
 		</dict>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			TyMaP+qp0WAAUM94sAvbwSjJtTQ=
-			</data>
 			<key>hash2</key>
 			<data>
-			kS/2NzqKGqrNrrMM8xTaiu0gR1rlWhQRhe/p3PGQm4I=
+			tV+WVMEQw6H+MtrWSGTK/be28S+Wy1D4eLopJW1NX3s=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			06S7m0ggiPo0NosX+z5Cp/WayWA=
-			</data>
 			<key>hash2</key>
 			<data>
 			TrJGD2/PHM+kMVm8b8SiKPjO0rA2q9Rt8WUkWImwW/4=
@@ -690,10 +582,6 @@
 		</dict>
 		<key>Headers/AJMediaPlayer.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			YXPny3LbcJWA0vg+tPPAWSAX+R4=
-			</data>
 			<key>hash2</key>
 			<data>
 			6BTuHNMvDvCn4qwKuzhEbuL3bTrP5TfmAx/9AmB6pGA=
@@ -701,10 +589,6 @@
 		</dict>
 		<key>Headers/AJMessage.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qeCqiXg9+CrMN0fRcRXsB9IkCms=
-			</data>
 			<key>hash2</key>
 			<data>
 			PKaujUhM/sNp0gvwm2onVcNXo7DTHcJgeNxKHAuP8Hk=
@@ -712,10 +596,6 @@
 		</dict>
 		<key>Headers/AJQualityModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0MUNXtjJD6tWGRT7xuOWAd6HBB8=
-			</data>
 			<key>hash2</key>
 			<data>
 			nEIfBZzZHFqQsLRD0qs4RGCg3pbWQo6Lk8AEqhilTos=
@@ -723,10 +603,6 @@
 		</dict>
 		<key>Headers/AJSettings.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0oUeU4bN61bvMPWLIpc3/6cIqMI=
-			</data>
 			<key>hash2</key>
 			<data>
 			wdg+Ny2/gmmxZCAaBKWLW3lT0NvNAfT/KRmnUjPkImQ=
@@ -734,10 +610,6 @@
 		</dict>
 		<key>Headers/AJShare.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			jZ9kiZg6uCwE/Kf4keubhrLHu0U=
-			</data>
 			<key>hash2</key>
 			<data>
 			dYM2MwJXCxox47KbCeAM81Q3XPduR0fTD2C4NC1HQFs=
@@ -745,10 +617,6 @@
 		</dict>
 		<key>Headers/AJShareSendReceiverModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xt4eOuu7Q+TUe93Q2nIZVDTqLCE=
-			</data>
 			<key>hash2</key>
 			<data>
 			IGjum78UGHlDXMc0GOEefuJWxIeaUHr+mAVbcr4Apro=
@@ -756,10 +624,6 @@
 		</dict>
 		<key>Headers/AJTimePolicy.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			jSN/lieQt4PupOwdOSfaeg3TEqA=
-			</data>
 			<key>hash2</key>
 			<data>
 			vyqCEvfUmOr/KD9/KPs0l7eHQp+WuEKRC1I1Nvs3pWY=
@@ -767,10 +631,6 @@
 		</dict>
 		<key>Headers/AJTimezoneModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Rth2D4l7tl0xtyw05voQwpjmAXo=
-			</data>
 			<key>hash2</key>
 			<data>
 			5RioquhNtauSh9HTNzxq3yK29rngF0Qa/mrZQbrIrvU=
@@ -778,10 +638,6 @@
 		</dict>
 		<key>Headers/AJUploadNotifyModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bx7jxmV+lurMbCh68aNVJ4GxQIw=
-			</data>
 			<key>hash2</key>
 			<data>
 			6oq7XtLqX+DasCCTI/79xNCyRaedkZrwsGwJDXe+Vas=
@@ -789,10 +645,6 @@
 		</dict>
 		<key>Headers/AJWifiListModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9S4+J5VOK062EXjvUEuLMklZq/Y=
-			</data>
 			<key>hash2</key>
 			<data>
 			yPKYOwlFa9dFPGJw7GPDps+zMYhvRQMNEpMka5IA3Ts=
@@ -800,10 +652,6 @@
 		</dict>
 		<key>Headers/AlbumManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zYb4+DsQIB09MnoiWM+Ao5KrKXE=
-			</data>
 			<key>hash2</key>
 			<data>
 			IAPUsqY3Q7Pt8TLUhNkS8Gex/GWJNQYy5i8hTfrAudE=
@@ -811,10 +659,6 @@
 		</dict>
 		<key>Headers/BleCmdInfoModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			aXftwCUGiqd9vULCEaCYXnCh6hg=
-			</data>
 			<key>hash2</key>
 			<data>
 			57KbtA6os+tkbSe/xRv8VCDEWwjA+OpHknAhabTcmi4=
@@ -822,10 +666,6 @@
 		</dict>
 		<key>Headers/BleResponseModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			BKaQnc+nvcBMykBs2EO6eYQbwDQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			yAPRfWOYYlBO3JOpRA/ilrAgn6TRy/dynhQgDgAESj4=
@@ -833,10 +673,6 @@
 		</dict>
 		<key>Headers/BleSendInfoModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			HETh8H1M4+lA9N4fSVgOWTTHLVI=
-			</data>
 			<key>hash2</key>
 			<data>
 			/sfygdY1orjJeAK0YuBMs1fW4hwwXWMYERP9cs+i8qE=
@@ -844,10 +680,6 @@
 		</dict>
 		<key>Headers/BleTaskSender.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			rj2v88hdhUAJJu5qPbC1b++m9f4=
-			</data>
 			<key>hash2</key>
 			<data>
 			bu9gyrs1EDWHS4k5YWh9wW3F2/IKd4Dkybn4LCJNx/Y=
@@ -855,10 +687,6 @@
 		</dict>
 		<key>Headers/BluetoothManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			7dLv5zBxACEWswK3AnTJ22D3a6s=
-			</data>
 			<key>hash2</key>
 			<data>
 			SwpHh9/iA86Tylc+R17jb5iaclgVPMIjS5A1l82Y1O8=
@@ -866,10 +694,6 @@
 		</dict>
 		<key>Headers/CalenderUtil.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			YJ62RqR61rK03mlzB+2QVoFySwg=
-			</data>
 			<key>hash2</key>
 			<data>
 			9iwRBc+dSZuhQ7jQiLXba0yctSQXMf3c9Vtr2e84Ulk=
@@ -877,10 +701,6 @@
 		</dict>
 		<key>Headers/CameraConnectionModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			20h/zjrkQXpADRU0RNqHCZtakx4=
-			</data>
 			<key>hash2</key>
 			<data>
 			/Q+RBSA2ACgot8BPyMDHQ08FeS+Hthn5RCIz2EMUNZw=
@@ -888,10 +708,6 @@
 		</dict>
 		<key>Headers/CameraStatusManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			emI5q1iaZrlNMeobysbvDF8o4mE=
-			</data>
 			<key>hash2</key>
 			<data>
 			j+2v2lukkHoSItRnMnxblymF0vYgV2ZQL2TR/P96Ors=
@@ -899,10 +715,6 @@
 		</dict>
 		<key>Headers/ChatViewController.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FuPi3JEGneLCvf/28vEOlyBdKW0=
-			</data>
 			<key>hash2</key>
 			<data>
 			25+hSh7WvPLbMs1pKy/05BSsdbXfT5dq+pgFA+c0yh4=
@@ -910,10 +722,6 @@
 		</dict>
 		<key>Headers/CustomAVPlayerViewController.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3jjbkAkhemA7TMv0tyjfy7hnyvY=
-			</data>
 			<key>hash2</key>
 			<data>
 			ZI2Tzki/bL+M3sfjlPjyFujmk9XeVePGD3GVr8QaLUQ=
@@ -921,10 +729,6 @@
 		</dict>
 		<key>Headers/DACircularProgressView.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FNJyoFVAtDUXa8d2w3GbXXs8af4=
-			</data>
 			<key>hash2</key>
 			<data>
 			LpCrPTORBanIhnTxO5xeoDCSGReopBjx0SO81EvcFmY=
@@ -932,10 +736,6 @@
 		</dict>
 		<key>Headers/DiagnoseTCPManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			s41AwMYMBwR4FhDAYbMjlGfK81c=
-			</data>
 			<key>hash2</key>
 			<data>
 			PxqUpPtuVd0r+vMiHeqqoVdtahJ9u/bJ87yDAS9fLPQ=
@@ -943,10 +743,6 @@
 		</dict>
 		<key>Headers/FFmpegManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			CKx1sQcOy+z7NzKpeX9Jhds+ROA=
-			</data>
 			<key>hash2</key>
 			<data>
 			juniYhmMi7i/32WyqJIuPe6CPdk/XPE15Ov7EKreTw0=
@@ -954,10 +750,6 @@
 		</dict>
 		<key>Headers/FeedRecordVC.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			UkXh4HEIfcUXykQxJEzM2SGUG9I=
-			</data>
 			<key>hash2</key>
 			<data>
 			3ZabLL1eSxolWUZ/Ud+L+4RbUhnHfWjmbQiWcn5LVp4=
@@ -965,10 +757,6 @@
 		</dict>
 		<key>Headers/HXCacheFileDefine.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			V+sBGFCSZDz9UyOc+v5x5G/7Oyw=
-			</data>
 			<key>hash2</key>
 			<data>
 			8Ju+CsMNZugjk6LJzL+zf3NUB3fdEGvTGadxx5igPbw=
@@ -976,10 +764,6 @@
 		</dict>
 		<key>Headers/HXCacheFileManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			g66yY94hBi2vkBseUMSN2BuWvYo=
-			</data>
 			<key>hash2</key>
 			<data>
 			RHas+MCe+xeHYoPaWN65n1yVJj61EQqLnIdhMaRtv0Q=
@@ -987,10 +771,6 @@
 		</dict>
 		<key>Headers/HXCacheFileViewController.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5UubbcaAB8HLmIJk13DMAVDOmow=
-			</data>
 			<key>hash2</key>
 			<data>
 			YcmByh9T7hDrEDv/Yx5JDO+DZxAqaKzDePlZ6pyj56g=
@@ -998,10 +778,6 @@
 		</dict>
 		<key>Headers/HostEntry.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0u5P9ZnRJ+PoExURWm0KsaEvRbI=
-			</data>
 			<key>hash2</key>
 			<data>
 			9qjW0AVJDe6dwNeqsSFSYMdtfgshpVZbrK9I+om/8gg=
@@ -1009,10 +785,6 @@
 		</dict>
 		<key>Headers/LMJVerticalScrollText.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			VZoDvrqpueWsOTv2nZJDw/xh5yA=
-			</data>
 			<key>hash2</key>
 			<data>
 			L6T5B4VSl1Qr70Snk7zZM7v5/hsQWyzg2/MZrVeH0h4=
@@ -1020,10 +792,6 @@
 		</dict>
 		<key>Headers/MJEncryptString.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lLDMY770/T/j/uRNwqGU8ysDewA=
-			</data>
 			<key>hash2</key>
 			<data>
 			fAj/pCVr0tNPJpmMTtjtgJmWF6nWVSacCK9U1aTUkzU=
@@ -1031,10 +799,6 @@
 		</dict>
 		<key>Headers/MWCaptionView.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WBjVbxSojTAwO9y6ROGLvOZaRGs=
-			</data>
 			<key>hash2</key>
 			<data>
 			8Lrdo9u+B9ckC4igwzEOS33ugeLf9u4FP9gfeeon6tI=
@@ -1042,10 +806,6 @@
 		</dict>
 		<key>Headers/MWPhoto.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			G1Lb3rSaD+DKLJ7pU3RSKzHxzj0=
-			</data>
 			<key>hash2</key>
 			<data>
 			BIDLVmpN6mC9/WT6l/oMrh5vVveTdQ18s0HzrSGYRh4=
@@ -1053,10 +813,6 @@
 		</dict>
 		<key>Headers/MWPhotoBrowser.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			8fNx8Bd4xgcQjazXYSioLcNtvYE=
-			</data>
 			<key>hash2</key>
 			<data>
 			3bJfRhycdcXGqUBdKR18WW260fwpDCOXLug8cF2bm1g=
@@ -1064,10 +820,6 @@
 		</dict>
 		<key>Headers/MWPhotoProtocol.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			pfIWE3KQZUoAvYBcj3b6BRxWXSA=
-			</data>
 			<key>hash2</key>
 			<data>
 			28jA/Y/AepCsuM6A1LaAj1YAlfTFB7jv42Fp3Hx9MSw=
@@ -1075,10 +827,6 @@
 		</dict>
 		<key>Headers/NetworkUtility.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			BjAV+9lhh8RwopYgd5XONOEbUc0=
-			</data>
 			<key>hash2</key>
 			<data>
 			7ay0Gq1wgXsuA8ictlSVb0r+XiUXC/tS3HeS3asjpAg=
@@ -1086,10 +834,6 @@
 		</dict>
 		<key>Headers/ObjcUtils.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			HQJcfSp0aopP1cBezsD+Cv0ozRk=
-			</data>
 			<key>hash2</key>
 			<data>
 			uPFgFdqgaGLqqbTtV1w+eKObr+As1tEM4kb1O1SmpzU=
@@ -1097,10 +841,6 @@
 		</dict>
 		<key>Headers/PeripheralInfoModel.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			8rGjOb1HnBTqdpaITySfI24cUFs=
-			</data>
 			<key>hash2</key>
 			<data>
 			i2GBPrIU8FcMwlVc/k67271iqpadm0k8d/t4HTO+X6A=
@@ -1108,10 +848,6 @@
 		</dict>
 		<key>Headers/PlayViewController.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			kU7mZbBzX07ALqtKGfu3lv9mBDA=
-			</data>
 			<key>hash2</key>
 			<data>
 			k4DogGLFtzuPAoIn8zHV4afEVhVnDqGuFQ6uYpj+AzQ=
@@ -1119,10 +855,6 @@
 		</dict>
 		<key>Headers/SimplePingHelper.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			P2CoYocb9AL87wKnvjLpYZxx94w=
-			</data>
 			<key>hash2</key>
 			<data>
 			yPLP9QEfd26G1odIXdO697AsCX4fLD3wWlbKyhoEiII=
@@ -1130,10 +862,6 @@
 		</dict>
 		<key>Headers/StepSlider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xERbrQo0BDXGx3dHrc0ANANnGjw=
-			</data>
 			<key>hash2</key>
 			<data>
 			612lKqWgCpcNfuftwyzOGUZcJti8grL27JfuI5x2snM=
@@ -1141,10 +869,6 @@
 		</dict>
 		<key>Headers/TCPManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			o4ywAWx4S7UZ5YbN3GJkmoJla+c=
-			</data>
 			<key>hash2</key>
 			<data>
 			3t7gzR5RLvWxXmH9tJypY7YU/S8utadISLvU9PhKJg8=
@@ -1152,10 +876,6 @@
 		</dict>
 		<key>Headers/TelnetClient.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FOjwkrWnDHg7InNFUxSoANej9W0=
-			</data>
 			<key>hash2</key>
 			<data>
 			sVLmRwslXbPWCOfuBrxifeGhPdeka1jhNluS8iI9fVo=
@@ -1163,10 +883,6 @@
 		</dict>
 		<key>Headers/VLCUtils.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			XCHo3bGpUkOYMdnYbKysWcG4/Ek=
-			</data>
 			<key>hash2</key>
 			<data>
 			mfN8PdEz7eh9PLoleffJYMhx3iyFRSYt1WKb4+aBDo4=
@@ -1174,10 +890,6 @@
 		</dict>
 		<key>Headers/WKWebViewJavascriptBridge.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5SNsRgTZnKcESBlc+/G5sXGfhI8=
-			</data>
 			<key>hash2</key>
 			<data>
 			HYVMtn1E5ei59XCOnMrGJJKsYFXriPt/8zjfZmm9brU=
@@ -1185,10 +897,6 @@
 		</dict>
 		<key>Headers/WVAlertDetailViewController.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lnDnw/66nZKvmMX7/DcXwZ7rgsQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			LuJG4jBwf8nLKUTNXC1mH1OqhD4eNryByIDqSGMnQWc=
@@ -1196,10 +904,6 @@
 		</dict>
 		<key>Headers/WVBatteryCameraAlertDetailVC.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mCV3ahwHmxNKtPrU5XTV+hg+DV8=
-			</data>
 			<key>hash2</key>
 			<data>
 			j8hlrlnnRGzJFxF2v2g0qZpdVzo8Ve1WMhTlvtiYm6Y=
@@ -1207,10 +911,6 @@
 		</dict>
 		<key>Headers/WVCameraControlView.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			8MCRFQ/Z6t05JJOCK953ERU59fM=
-			</data>
 			<key>hash2</key>
 			<data>
 			f78a6WZQiIWCFn38AhPfqil5Wci1IcQ15PkjXb9JSgA=
@@ -1218,10 +918,6 @@
 		</dict>
 		<key>Headers/WVConnectionManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			TQ9wrPZDUYhTGoDC42sfBohl5+E=
-			</data>
 			<key>hash2</key>
 			<data>
 			3WGOpS94V58Y2meOSchfWcKE2xRzYFAB/KA/xcCVka4=
@@ -1229,10 +925,6 @@
 		</dict>
 		<key>Headers/WVGetPlayUrlManager.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mextlRDPdtY2Ir/wSfQYLF3NG6c=
-			</data>
 			<key>hash2</key>
 			<data>
 			z4xa9V059pHCStQ8trZFvfmn2I7H1x6Ke0vMZVGNHbY=
@@ -1240,10 +932,6 @@
 		</dict>
 		<key>Headers/WVNoDataHelpView.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			teIzhmXxktbzInDnbuBwUPrWwy0=
-			</data>
 			<key>hash2</key>
 			<data>
 			PGFMN5cyGbE5q6zoImklrbn9M90w3ZgQmic9lZ41VbU=
@@ -1251,10 +939,6 @@
 		</dict>
 		<key>Headers/WVPlayerStatusView.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			VPXVzEk3uq3donSsN/L8AQdoAoE=
-			</data>
 			<key>hash2</key>
 			<data>
 			Llum20hqkb2Vd1i9YffCjM50qHTbpgD4jVBkjaotc3I=
@@ -1262,10 +946,6 @@
 		</dict>
 		<key>Headers/WebViewJavascriptBridgeBase.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			X17D6JlybmfibqMLH+W6YJXHoY0=
-			</data>
 			<key>hash2</key>
 			<data>
 			NEoogghgAQ2JharmwydWhzMz1WAhRF29q68S6nxtxX0=
@@ -1273,10 +953,6 @@
 		</dict>
 		<key>Headers/hardWareType.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			psdgE5YjwajUBQ5fAlK0EAC8qcg=
-			</data>
 			<key>hash2</key>
 			<data>
 			Sdz/Ozqnku8zQuc3OK3WRka85ttK9RB1LyuzDV23uJk=
@@ -1284,10 +960,6 @@
 		</dict>
 		<key>Headers/hyBaseType.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			r+UiBsgHAlcgTfUQ3sougBHjy9s=
-			</data>
 			<key>hash2</key>
 			<data>
 			wkIMtCnTLK0PHT9zvl4vZW0f61FhZ30hpPoUk2WtK1A=
@@ -1295,10 +967,6 @@
 		</dict>
 		<key>Headers/quadPlayer.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vhhEViKjFlK8gRqRO9nFNZ1Pr04=
-			</data>
 			<key>hash2</key>
 			<data>
 			lfIl4mSg26EGbZqKVTfA2G1NeLpkA/elZcX3XNrZGBE=
@@ -1306,10 +974,6 @@
 		</dict>
 		<key>Headers/quadScreentVC.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			uEe7icTNLoKce2emjngWG62pveU=
-			</data>
 			<key>hash2</key>
 			<data>
 			Tgu2j8YNefDKnGemAyu9ke4ji5c2WNNn9nQySCfoB2w=
@@ -1317,10 +981,6 @@
 		</dict>
 		<key>LICENSE</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			c2ZvwszzoLH81EHrB6Lv/pUSHL0=
-			</data>
 			<key>hash2</key>
 			<data>
 			2i3NZhhzGMA5ytc/D91kl9d0MdxEH616ilkJEbwwue4=
@@ -1328,76 +988,48 @@
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			pFmgxP7eQJfP6aJKohsUZ0sLUXY=
-			</data>
 			<key>hash2</key>
 			<data>
-			d2ywJENRZJbOB6BF3RPzzmzRy+YE5En7Ak6qi8WURUc=
+			JG8iR7r+Hd7UXaMnga+7oPOEtQFd8b0a4EFh6wubTno=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ry9Na0Z8TDt30PHZpJSuypY0fqU=
-			</data>
 			<key>hash2</key>
 			<data>
-			fu4GCrJGJqyFUYb/igV438dedNLCuIjQ2YoV8m4cGyY=
+			5FHZLivWKzCdOakjy4A4DdWMDq+spqbXcbCVNoYJN4I=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			q81/8ajsN33zVsG85dsLSu1fy/g=
-			</data>
 			<key>hash2</key>
 			<data>
-			jwv4foBS/mO7j1nS7i9Sp2NXSC1T3PN4nfkb0vVZzjM=
+			vU7jahNMvF+ux/wzG2NNBBMDAWk63NH/bfCOysy+g20=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			rkqKYjhqzrm9k1ZYQVU0fBy8ORw=
-			</data>
 			<key>hash2</key>
 			<data>
-			bEEQKOhCCZnSWZOVao23V531HucGC75m1PeCP8gaNjc=
+			p+ARpISYSh8jY11QFW3hxI2aarRNet56QxwKZBjb2xk=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			q81/8ajsN33zVsG85dsLSu1fy/g=
-			</data>
 			<key>hash2</key>
 			<data>
-			jwv4foBS/mO7j1nS7i9Sp2NXSC1T3PN4nfkb0vVZzjM=
+			vU7jahNMvF+ux/wzG2NNBBMDAWk63NH/bfCOysy+g20=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			8mrsJRN8BUru2NZx57krBJBB83c=
-			</data>
 			<key>hash2</key>
 			<data>
-			aRMh/d9daegH5MI8yLo7B9NioZfkYCSv0s9apwS/pXE=
+			gdFar8mpVSebXriz2Z+DiFzkMSGgvw39SmpZ0LuuL5o=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QyUnrrfoQ8ciQpg+phuLPnIVRfU=
-			</data>
 			<key>hash2</key>
 			<data>
 			/Sl1SBfYlJ0x12rGUyLKJ0P0sBMMJcgl1LR1fTMeMok=
@@ -1405,21 +1037,13 @@
 		</dict>
 		<key>QCloudCOSXML.bundle/Info.plist</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			kOGVSnhV/kM0rPzZmbm2KnmA/S4=
-			</data>
 			<key>hash2</key>
 			<data>
-			bGXRUojWnX7+0Zv59UnQt3OqjH3/dIptXM8GWQ+MmuE=
+			p1p7Pcmvwpzxo/jOX3hqZaw67lnK+Qeqqv5WlGdRFYg=
 			</data>
 		</dict>
 		<key>QCloudCOSXML.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			RhKpvrtH447QOhZOPgFfsNTTyL0=
-			</data>
 			<key>hash2</key>
 			<data>
 			6NZYuwtg1TFZJWug5wgOx7TwUx4bK0LJWdkkELs+2K8=
@@ -1427,10 +1051,6 @@
 		</dict>
 		<key>README.md</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			rODw3tVGD4tFK27YaGwqodn63hs=
-			</data>
 			<key>hash2</key>
 			<data>
 			I3MQLl55MnLKOf27FxH8WRySzcfgpHt1cRfYBdOzgPw=
