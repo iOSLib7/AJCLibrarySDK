@@ -732,7 +732,7 @@ public enum ContinuousType : Swift.String {
 @objc @_inheritsConvenienceInitializers @objcMembers public class BucketModel : AJLibrary.ResultModel {
   @objc public var plan: AJLibrary.Plan?
   @objc public var buyModes: [Swift.String]?
-  public var serviceMonths: Swift.Float?
+  @objc public var serviceMonths: Swift.Float
   @objc public var price: AJLibrary.Price?
   @objc public var unit: Swift.String?
   @objc public var imageString: Swift.String?
@@ -751,9 +751,6 @@ public enum ContinuousType : Swift.String {
   @objc public func unitPricePerMonth() -> Swift.String
   @objc public func oriPricePerMonth() -> Swift.String
   @objc public func newBucketUnit() -> Swift.String
-  @objc public func serviceLength() -> Swift.String
-  @objc public func monthsLength() -> Swift.String
-  @objc public func validityPeriod() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
@@ -761,7 +758,7 @@ public enum ContinuousType : Swift.String {
   @objc public var _id: Swift.String?
   @objc public var alarmVideo: Swift.String?
   @objc public var cycleDays: Swift.String?
-  public var level: Swift.Int?
+  @objc public var level: Swift.Int
   @objc public var name: Swift.String?
   @objc public var limitDevices: Swift.String?
   @objc public var limitFullDayDevices: Swift.String?
@@ -776,11 +773,6 @@ public enum ContinuousType : Swift.String {
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func lowestBucket() -> AJLibrary.BucketModel?
   #endif
-  @objc public func imageString() -> Swift.String
-  @objc public func ipcBackBigBasicImageString() -> Swift.String
-  @objc public func batteryBackBigBasicImageString() -> Swift.String
-  @objc public func planName() -> Swift.String
-  @objc public func planSegmentName() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
@@ -802,12 +794,11 @@ public enum ContinuousType : Swift.String {
 @objc @_inheritsConvenienceInitializers @objcMembers public class CloudPlansModel : AJLibrary.ResultModel {
   @objc public var trial: AJLibrary.TrialModel?
   @objc public var plans: [AJLibrary.CloudPlanModel]?
-  public var totalTrials: Swift.Int?
-  public var usedTrials: Swift.Int?
+  @objc public var totalTrials: Swift.Int
+  @objc public var usedTrials: Swift.Int
   @objc public func havePolicy() -> Swift.Bool
   @objc public func combineWithTrial() -> Swift.Bool
   @objc public func haveTrial() -> Swift.Bool
-  @objc public func isShowExperienceTips() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
@@ -859,11 +850,11 @@ public enum ContinuousType : Swift.String {
   @objc public var snapshotTs: Swift.String?
   @objc public var snapshotUrl: Swift.String?
   @objc public var accessKey: Swift.String?
-  public var batteryCapacity: Swift.Int?
-  public var wifiSignal: Swift.Int?
+  @objc public var batteryCapacity: Swift.Int
+  @objc public var wifiSignal: Swift.Int
   @objc public var batteryCapacityTs: Swift.String?
   @objc public var channelId: Swift.String?
-  public var chargeStatus: Swift.Int?
+  @objc public var chargeStatus: Swift.Int
   @objc public var chargeStatusTs: Swift.String?
   @objc public var wifiSignalTs: Swift.String?
   @objc public var lastPingTime: Swift.String?
@@ -872,7 +863,7 @@ public enum ContinuousType : Swift.String {
   @objc public var continent: Swift.String?
   @objc public var connReadyTime: Swift.String?
   @objc public var country: Swift.String?
-  public var deviceType: Swift.Int?
+  @objc public var deviceType: Swift.Int
   @objc public var bizRestricted: Swift.String?
   @objc public var aclid: Swift.String?
   @objc public var prodName: Swift.String?
@@ -925,8 +916,8 @@ public enum ContinuousType : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class NetworkConfig : AJLibrary.ResultModel {
-  public var cellularRssi: Swift.Int?
-  public var cellularSignal: Swift.Int?
+  @objc public var cellularRssi: Swift.Int
+  @objc public var cellularSignal: Swift.Int
   @objc public var ethMac: Swift.String?
   @objc public var localDirectProbeUrl: Swift.String?
   @objc public var localIp: Swift.String?
@@ -935,8 +926,8 @@ public enum ContinuousType : Swift.String {
   @objc public var wlanMac: Swift.String?
   @objc public var ssid: Swift.String?
   @objc public var netLinkType: Swift.String?
-  public var wifiSignal: Swift.Int?
-  public var wifiRssi: Swift.Int?
+  @objc public var wifiSignal: Swift.Int
+  @objc public var wifiRssi: Swift.Int
   @objc public var ipConfigMode: Swift.String?
   @objc public var gatewayIp: Swift.String?
   @objc public var dnsServers: Swift.String?
@@ -987,7 +978,7 @@ public enum ContinuousType : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class LocalStorConfig : AJLibrary.ResultModel {
-  public var enable: Swift.Bool?
+  @objc public var enable: Swift.Bool
   @objc public var storageType: Swift.String?
   @objc public var writeMode: Swift.String?
   @objc public var triggerMode: Swift.String?
@@ -995,7 +986,7 @@ public enum ContinuousType : Swift.String {
   @objc public var playUrlRoot: Swift.String?
   @objc public var policies: [AJLibrary.Policy]?
   @objc public var quality: Swift.String?
-  public var ecoRecordDurationLimit: Swift.Int?
+  @objc public var ecoRecordDurationLimit: Swift.Int
   @objc public var remoteTFUrl: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func cardWriteMode(writeMode: Swift.String?) -> Swift.String
@@ -1043,7 +1034,7 @@ public enum ContinuousType : Swift.String {
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class MonitorConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.Bool
-  public var susceptiveness: Swift.Int?
+  @objc public var susceptiveness: Swift.Int
   @objc public var genAlarmThumb: Swift.Bool
   @objc public var respondMediaType: Swift.String?
   @objc public var policies: [AJLibrary.Policy]?
@@ -1054,11 +1045,11 @@ public enum ContinuousType : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class CloudStorConfig : AJLibrary.ResultModel {
-  public var enable: Swift.Bool?
+  @objc public var enable: Swift.Bool
   @objc public var quality: Swift.String?
-  public var ecoRecordDurationLimit: Swift.Int?
+  @objc public var ecoRecordDurationLimit: Swift.Int
   @objc public var policies: [AJLibrary.Policy]?
-  public var expireAt: Swift.Int?
+  @objc public var expireAt: Swift.Int
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1396,7 +1387,7 @@ public enum AIPlanType : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class AutoHibernateConfig : AJLibrary.ResultModel {
-  public var enable: Swift.Bool?
+  @objc public var enable: Swift.Bool
   @objc public var timePolicies: [AJLibrary.Policy]?
   @objc required dynamic public init()
   @objc deinit
@@ -1581,8 +1572,8 @@ public enum AutoLightMode : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class PirConfig : AJLibrary.ResultModel, Foundation.NSCopying {
-  public var lingerDuration: Swift.Int?
-  public var detectionRange: Swift.Int?
+  @objc public var lingerDuration: Swift.Int
+  @objc public var detectionRange: Swift.Int
   @objc public var level: Swift.String?
   public var levelEnum: AJLibrary.LevelEnum {
     get
@@ -1597,15 +1588,15 @@ public enum AutoLightMode : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class BatteryConfig : AJLibrary.ResultModel {
-  public var capacity: Swift.Int?
-  public var charge: Swift.Int?
-  public var quantity: Swift.Int?
+  @objc public var capacity: Swift.Int
+  @objc public var charge: Swift.Int
+  @objc public var quantity: Swift.Int
   @objc required dynamic public init()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class RtspConfig : AJLibrary.ResultModel {
   @objc public var enable: Swift.String?
-  public var port: Swift.Int?
+  @objc public var port: Swift.Int
   @objc public var verify: Swift.String?
   @objc required dynamic public init()
   @objc deinit
@@ -1663,8 +1654,8 @@ public enum AutoLightMode : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class TimingConfig : AJLibrary.ResultModel, Foundation.NSCopying {
-  public var no: Swift.Int?
-  public var enable: Swift.Int?
+  @objc public var no: Swift.Int
+  @objc public var enable: Swift.Int
   @objc public var type: Swift.String?
   @objc public var startTime: Swift.String?
   @objc public var repeatWeeks: Swift.String?
@@ -1724,8 +1715,8 @@ public enum AutoLightMode : Swift.String {
 @objc @_inheritsConvenienceInitializers @objcMembers public class HumidityConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var alarmSwitch: Swift.Bool
   @objc public var current: Swift.String?
-  public var highThreshold: Swift.Int?
-  public var lowThreshold: Swift.Int?
+  @objc public var highThreshold: Swift.Int
+  @objc public var lowThreshold: Swift.Int
   @objc public var unit: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
@@ -1736,8 +1727,8 @@ public enum AutoLightMode : Swift.String {
 @objc @_inheritsConvenienceInitializers @objcMembers public class TemperatureConfig : AJLibrary.ResultModel, Foundation.NSCopying {
   @objc public var alarmSwitch: Swift.Bool
   @objc public var current: Swift.String?
-  public var highThreshold: Swift.Int?
-  public var lowThreshold: Swift.Int?
+  @objc public var highThreshold: Swift.Int
+  @objc public var lowThreshold: Swift.Int
   @objc public var unit: Swift.String?
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func unitText() -> Swift.String?
@@ -1751,7 +1742,7 @@ public enum AutoLightMode : Swift.String {
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class DetectionShare : AJLibrary.ResultModel {
   @objc public var name: Swift.String?
-  public var susceptiveness: Swift.Int?
+  @objc public var susceptiveness: Swift.Int
   @objc public var fullViewport: Swift.Bool
   @objc public var areas: [Swift.String]?
   @objc public var areaShowStyle: Swift.String?
@@ -1763,12 +1754,12 @@ public enum AutoLightMode : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class LightingFreqConfig : AJLibrary.ResultModel {
-  public var freqValue: Swift.Int?
+  @objc public var freqValue: Swift.Int
   @objc required dynamic public init()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class WhiteLightConfig : AJLibrary.ResultModel {
-  public var lightMode: Swift.Int?
+  @objc public var lightMode: Swift.Int
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1779,14 +1770,14 @@ public enum AutoLightMode : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class ActionDetectConfig : AJLibrary.ResultModel {
-  public var clipEndMode: Swift.Int?
-  public var clipLength: Swift.Int?
+  @objc public var clipEndMode: Swift.Int
+  @objc public var clipLength: Swift.Int
   @objc public var enable: Swift.Bool
   @objc public var expireAt: Swift.String?
-  public var retriggerTime: Swift.Int?
-  public var susceptiveness: Swift.Float?
+  @objc public var retriggerTime: Swift.Int
+  @objc public var susceptiveness: Swift.Float
   @objc public var backupToLocalStor: Swift.Bool
-  public var respondMode: Swift.Int?
+  @objc public var respondMode: Swift.Int
   @objc public var policies: [AJLibrary.Policy]?
   @objc required dynamic public init()
   @objc deinit
@@ -1856,8 +1847,8 @@ public enum AutoLightMode : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class LullabyConfig : AJLibrary.ResultModel {
-  public var builtinCount: Swift.Int?
-  public var builtinIndexStart: Swift.Int?
+  @objc public var builtinCount: Swift.Int
+  @objc public var builtinIndexStart: Swift.Int
   @objc public var builtinNames: [Swift.String]?
   @objc required dynamic public init()
   @objc deinit
@@ -2493,7 +2484,7 @@ public enum ShareDeviceStatus : Swift.String {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @objc(ConDeviceModel) public class ConDeviceModel : AJLibrary.ResultModel, Foundation.NSSecureCoding {
   @objc public var deviceId: Swift.String?
   @objc public var mac: Swift.String?
-  public var deviceType: AJLibrary.DeviceModeType?
+  @objc public var deviceType: AJLibrary.DeviceModeType
   @objc public var aliasName: Swift.String?
   @objc public var conType: Swift.String?
   @objc public var conStatus: Swift.String?
@@ -4631,7 +4622,7 @@ public enum UploadStorageModeEnum : Swift.String {
   @objc public var uploadToken: Swift.String?
   @objc public var uploadUrl: Swift.String?
   @objc public var viewAngle: Swift.String?
-  public var uploadTokenExpire: Swift.Int?
+  @objc public var uploadTokenExpire: Swift.Int
   @objc public var remoteFilename: Swift.String?
   public func storageModeEnum() -> AJLibrary.UploadStorageModeEnum
   #if compiler(>=5.3) && $NonescapableTypes
@@ -5587,7 +5578,7 @@ public enum OrderStatusEnum : Swift.String {
 }
 @_inheritsConvenienceInitializers @objcMembers @objc(OrderModel) public class OrderModel : AJLibrary.ResultModel, Foundation.NSCoding, Foundation.NSCopying {
   @objc public var product: AJLibrary.ProductModel?
-  public var limitDevices: Swift.Int?
+  @objc public var limitDevices: Swift.Int
   @objc public var alarmVideo: Swift.Bool
   @objc public var limitFullDayDevices: Swift.String?
   @objc public var status: Swift.String?
@@ -5603,9 +5594,9 @@ public enum OrderStatusEnum : Swift.String {
   @objc public var buyer: AJLibrary.BuyerModel?
   @objc public var paypal: AJLibrary.PPState?
   @objc public var ajcard: AJLibrary.Ajcard?
-  @objc public var supportDevTypes: [Swift.Int]?
+  @objc public var supportDevTypes: [Swift.Int]
   @objc public var devShareCount: Swift.Int
-  public var cloudStorFullDay: Swift.Bool?
+  @objc public var cloudStorFullDay: Swift.Bool
   @objc public var billingSyncState: Swift.String?
   @objc public var billingVendorCode: Swift.String?
   @objc public var createDateGMT: Swift.String?
@@ -5654,12 +5645,9 @@ public enum OrderStatusEnum : Swift.String {
   @objc public func isAiPlan() -> Swift.Bool
   public func orderStatus() -> AJLibrary.OrderStatusEnum
   @objc public func isBirdLibrayOrder() -> Swift.Bool
-  @objc public func orderPrice() -> Swift.String
   @objc public func orderModeIsPrePay() -> Swift.Bool
   @objc public func isExpireAndActive() -> Swift.Bool
   @objc public func leftDayText() -> Swift.String
-  @objc public func orderUnit() -> Swift.String
-  @objc public func subscriptionUnit() -> Swift.String
   @objc public func startTime(formatter: Swift.String) -> Swift.String
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func validTsEndTime() -> Swift.String?
@@ -5683,7 +5671,7 @@ public enum OrderStatusEnum : Swift.String {
 @_inheritsConvenienceInitializers @objcMembers @objc(OrdersModel) public class OrdersModel : AJLibrary.ResultModel, Foundation.NSCoding {
   @objc public var orders: [AJLibrary.OrderModel]?
   @objc public var relDids: [Swift.String]?
-  public var usedTrials: Swift.Int?
+  @objc public var usedTrials: Swift.Int
   @objc public var activityPolicy: AJLibrary.CloudStorActivity?
   @objc public var couponsDeadline: Swift.String?
   @objc public func encode(with coder: Foundation.NSCoder)
@@ -5709,7 +5697,6 @@ public enum OrderStatusEnum : Swift.String {
   #endif
   @objc public func haveTrial() -> Swift.Bool
   @objc public func combineWithTrial() -> Swift.Bool
-  @objc public func isShowExperienceTips() -> Swift.Bool
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class OrderStatusModel : AJLibrary.ResultModel {
