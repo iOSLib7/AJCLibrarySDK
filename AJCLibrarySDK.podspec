@@ -49,7 +49,7 @@ s.platform     = :ios, '13.0'
   ss.dependency 'SDWebImage', "~> 5.11.0"
   ss.dependency 'AFNetworking', "~> 4.0.1"
   ss.dependency 'FCUUID'
-  ss.dependency 'Sodium', '0.8.0'
+  ss.dependency 'Sodium', '0.9.1'
   ss.dependency 'AliyunOSSiOS'
   ss.dependency 'Masonry'
   ss.dependency 'SDVersion'
