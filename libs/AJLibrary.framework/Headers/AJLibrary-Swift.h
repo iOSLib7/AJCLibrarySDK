@@ -1721,7 +1721,7 @@ SWIFT_CLASS_NAMED("ConDeviceModel")
 @interface ConDeviceModel : ResultModel <NSSecureCoding>
 @property (nonatomic, copy) NSString * _Nullable deviceId;
 @property (nonatomic, copy) NSString * _Nullable mac;
-@property (nonatomic) enum DeviceModeType deviceType;
+@property (nonatomic) NSInteger deviceType;
 @property (nonatomic, copy) NSString * _Nullable aliasName;
 @property (nonatomic, copy) NSString * _Nullable conType;
 @property (nonatomic, copy) NSString * _Nullable conStatus;

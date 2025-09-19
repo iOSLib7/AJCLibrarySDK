@@ -2484,7 +2484,7 @@ public enum ShareDeviceStatus : Swift.String {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @objc(ConDeviceModel) public class ConDeviceModel : AJLibrary.ResultModel, Foundation.NSSecureCoding {
   @objc public var deviceId: Swift.String?
   @objc public var mac: Swift.String?
-  @objc public var deviceType: AJLibrary.DeviceModeType
+  @objc public var deviceType: Swift.Int
   @objc public var aliasName: Swift.String?
   @objc public var conType: Swift.String?
   @objc public var conStatus: Swift.String?
