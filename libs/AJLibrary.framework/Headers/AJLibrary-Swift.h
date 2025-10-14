@@ -2347,7 +2347,7 @@ SWIFT_CLASS("_TtC9AJLibrary15LocationManager")
 @interface LocationManager : NSObject <CLLocationManagerDelegate>
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) LocationManager * _Nonnull shared;)
 + (LocationManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (NSString * _Nullable)getUserSSID SWIFT_WARN_UNUSED_RESULT;
+- (void)getUserSSIDWithCompleteSsid:(void (^ _Nonnull)(NSString * _Nonnull))completeSsid;
 - (BOOL)locationServiceEnabled SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");

@@ -106,7 +106,7 @@
 		</data>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<data>
-		z4AJJvySxA/bVYGrOpKlzT23FGg=
+		xffXVr6hhA+/u1ya0lshBoBFUmg=
 		</data>
 		<key>Headers/AJLibrary.h</key>
 		<data>
@@ -342,7 +342,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		6jlptgNS8kB8JoGCuu9XpgkDmeY=
+		vwPhjLf8LvPALS2m2EwuDlKuv58=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -350,15 +350,15 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		4SRo0Sd6nJpe/+Vg/xY/sOCdcf0=
+		KeoEovA1yxatI6EX8rip7PisAI0=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		YI3ZHGAJxVGd7CsXDGHRCyeMIX0=
+		jvZdLWrPXjH4SjiSXIYflkk543A=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		9cTJMAar/vXIl/YlIkXaqcGJSeY=
+		C9n5Y4iyEcUIcCiCJV0OvPvhyOI=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -366,11 +366,11 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		9cTJMAar/vXIl/YlIkXaqcGJSeY=
+		C9n5Y4iyEcUIcCiCJV0OvPvhyOI=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		o8vGyWJeiwKzAQCv2TDJEjR/MIY=
+		+uBVezS4iHQs9wi88EhBAVMD3cY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -378,7 +378,7 @@
 		</data>
 		<key>QCloudCOSXML.bundle/Info.plist</key>
 		<data>
-		TeP8GfyicuP+xDLQOFSXROZUtKI=
+		gDY2WcWWULqUlzYljZmkOcQYQfc=
 		</data>
 		<key>QCloudCOSXML.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -570,7 +570,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m6nrymRSy9jRHFXGhTP6KXsLI6hNHb5qTZMUSMoZo70=
+			jNzLKUjCxspls5zUSDu3TPsvNr9XmPU6L+RjCQBiGoE=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary.h</key>
@@ -990,21 +990,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AroWw6pHcIqXMpCcKSWxtX9GBSqkMCi9nKXSVVeaDfQ=
+			enqUj0ptoMYSQWiun77ZEtxbCt8tNwE9qJRrs3jV+c8=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QvBuhBKCf3Gnn62DU/jfZlI+Nt6ZJQYKj81PnSCTWbM=
+			QREiROiwHZCn4TH3D8pHVTCQzpXTOH+nNSWLnbsdlIg=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VdGWibhww0yXd+rA+YH2QLgXWgcsgx9npllY8O3iq1o=
+			UWyhFYmArQBwNkIci2QdTsrcJhEPIlrqDPo5rMzVGDI=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -1018,14 +1018,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VdGWibhww0yXd+rA+YH2QLgXWgcsgx9npllY8O3iq1o=
+			UWyhFYmArQBwNkIci2QdTsrcJhEPIlrqDPo5rMzVGDI=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			q9s/aiQCyfvnv0zj7EadcbStIa1ZEEtlj/WqmaZc10A=
+			FwC229+6wa91nCOD/VsmTBkPtnFEM5/JicpZEeKKUOs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1039,7 +1039,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			p1p7Pcmvwpzxo/jOX3hqZaw67lnK+Qeqqv5WlGdRFYg=
+			fj9B7RCb/V5EHdofXtkGCh36NtJuEozXR22ULiZ3bzU=
 			</data>
 		</dict>
 		<key>QCloudCOSXML.bundle/PrivacyInfo.xcprivacy</key>

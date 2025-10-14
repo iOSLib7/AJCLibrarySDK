@@ -2198,9 +2198,7 @@ public enum PushType : Swift.String {
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class LocationManager : ObjectiveC.NSObject, CoreLocation.CLLocationManagerDelegate {
   @objc public static let shared: AJLibrary.LocationManager
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc public func getUserSSID() -> Swift.String?
-  #endif
+  @objc public func getUserSSID(completeSsid: @escaping (Swift.String) -> ())
   @objc public func locationServiceEnabled() -> Swift.Bool
   @objc deinit
 }
@@ -5752,7 +5750,7 @@ public let DevConfigApi: Swift.String
 public func GetWidth(_ width: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
 public func GetHeight(_ height: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
 @objc @_inheritsConvenienceInitializers open class Utils : ObjectiveC.NSObject {
-  public static func getUserSSID() -> Swift.String
+  public static func getUserSSID(completeSsid: @escaping (Swift.String) -> ())
   @objc override dynamic public init()
   @objc deinit
 }
