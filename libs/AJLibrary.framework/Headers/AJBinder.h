@@ -106,7 +106,7 @@ typedef void(^ DisconnectPeripheral)(void);
 /// @param ssid SSID 名称
 /// @param password SSID 密码
 /// @param timeout 绑定超时时间
-/// @param success success
+/// @param success 成功，返回绑定设备ID
 /// @param failure failure
 - (void)softAPNetConfig:(NSString *)ssid
                password:(NSString *)password

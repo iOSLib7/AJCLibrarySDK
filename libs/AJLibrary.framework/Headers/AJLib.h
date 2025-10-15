@@ -89,11 +89,13 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *    @param     securityID          SDK库鉴权ID
  *    @param     securityKey       SDK库鉴权码
+ *    @param     vendorCode          供应商授权码
  *    @param     success                成功 回调
  *    @param     failure                失败回调
  */
 + (void)asyncInit:(NSString *)securityID
       securityKey:(NSString *)securityKey
+       vendorCode:(NSString *)vendorCode
           success:(nullable void (^)(void))success
           failure:(nullable void (^)(AJError *))failure;
 

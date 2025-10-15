@@ -1110,11 +1110,13 @@ SWIFT_CLASS("_TtC9AJLibrary15CameraInfoModel")
 
 @class CameraSummaryModel;
 @class ConDeviceModel;
+@class UserInviteModel;
 SWIFT_CLASS("_TtC9AJLibrary16CameraInfomation")
 @interface CameraInfomation : NSObject
 @property (nonatomic, strong) CameraSummaryModel * _Nullable summary;
 @property (nonatomic, strong) CameraModel * _Nullable camera;
 @property (nonatomic, strong) ConDeviceModel * _Nullable conDevice;
+@property (nonatomic, strong) UserInviteModel * _Nullable userInvite;
 @property (nonatomic, strong) OrdersModel * _Nullable orderModel;
 - (NSString * _Nullable)devAliasName SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)deviceTypeName SWIFT_WARN_UNUSED_RESULT;
@@ -1855,7 +1857,6 @@ SWIFT_CLASS("_TtC9AJLibrary16DeviceTokenModel")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UserInviteModel;
 SWIFT_CLASS("_TtC9AJLibrary14DevicesManager")
 @interface DevicesManager : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) DevicesManager * _Nonnull sharedInstance;)
@@ -4040,6 +4041,7 @@ typedef SWIFT_ENUM(NSInteger, UploadResourceType, open) {
 
 SWIFT_CLASS("_TtC9AJLibrary15UserInviteModel")
 @interface UserInviteModel : ResultModel
+- (NSArray<NSString *> * _Nonnull)shareUids SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

@@ -2544,8 +2544,8 @@ public enum ShareDeviceStatus : Swift.String {
   #endif
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class UserInviteModel : AJLibrary.ResultModel {
-  public func shareUids() -> [Swift.String]
+@objc @_inheritsConvenienceInitializers @objcMembers public class UserInviteModel : AJLibrary.ResultModel {
+  @objc public func shareUids() -> [Swift.String]
   @objc required dynamic public init()
   @objc deinit
 }
@@ -4039,6 +4039,7 @@ public enum ProductNameType : Swift.String {
   @objc public var summary: AJLibrary.CameraSummaryModel?
   @objc public var camera: AJLibrary.CameraModel?
   @objc public var conDevice: AJLibrary.ConDeviceModel?
+  @objc public var userInvite: AJLibrary.UserInviteModel?
   @objc public var orderModel: AJLibrary.OrdersModel?
   #if compiler(>=5.3) && $NonescapableTypes
   public func deviceType() -> AJLibrary.DeviceModeType?

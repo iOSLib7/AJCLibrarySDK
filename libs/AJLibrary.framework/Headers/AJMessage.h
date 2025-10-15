@@ -109,19 +109,20 @@ typedef enum : NSUInteger {
 - (void)startAlertView:(NSString *)deviceId
                   date:(NSString *)date;
 
-
 /// 推送配置
 /// @param deviceId 设备ID
 /// @param aliasName 推送通知设备名称
 /// @param devEmcUrl 设备接入 devEmcUrl 地址
-/// @param settingType 推送配置方式 PushSettingTypeUpsert - 更新，PushSettingTypeRemove - 移除
+/// @param settingType 配置类型，移除推送，还是更新配置
+/// @param accept 是否接收推送 1 接收，否则0
 /// @param clearPushToken 分享设备的退出登录操作和关闭推送开关操作，传 OrderTypeUpsert 并且 clearPushToken  为 YES
 /// @param success success
 /// @param failure failure
 - (void)pushSetting:(NSString *)deviceId
           aliasName:(NSString *)aliasName
           devEmcUrl:(NSString *)devEmcUrl
-          orderType:(PushSettingType)settingType
+        settingType:(PushSettingType)settingType
+             accept:(NSString *)accept
      clearPushToken:(BOOL)clearPushToken
             success:(nullable void (^)(void))success
             failure:(nullable void (^)(AJError *))failure;
