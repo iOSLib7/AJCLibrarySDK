@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJCLibrarySDK"
-  s.version      = "1.2.14"
+  s.version      = "1.2.15"
   s.summary      = "A short description of AJLibrary."
 
   s.description      = <<-DESC
@@ -36,7 +36,7 @@ s.platform     = :ios, '13.0'
   
   ss.libraries = "c++.1", "iconv", "z", "bz2.1.0"
 
-  ss.dependency 'Alamofire', '4.9.1'
+  ss.dependency 'Alamofire', '~> 5.10.2'
   #ss.dependency 'Firebase/Crashlytics'
   #ss.dependency 'Firebase/Core'
   #ss.dependency 'Firebase/Analytics'

@@ -2010,6 +2010,7 @@ SWIFT_CLASS("_TtC9AJLibrary10ErrorModel")
 @interface ErrorModel : NSObject
 @property (nonatomic) NSInteger eCode;
 @property (nonatomic, copy) NSString * _Nullable eMessage;
+@property (nonatomic) NSInteger retriesLeft;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

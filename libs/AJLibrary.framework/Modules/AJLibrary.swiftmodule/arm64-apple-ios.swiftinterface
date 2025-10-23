@@ -258,6 +258,7 @@ public typealias ShareUsernameEditBlock = (_ username: Swift.String?, _ isValid:
 @objc public class ErrorModel : ObjectiveC.NSObject {
   @objc public var eCode: Swift.Int
   @objc public var eMessage: Swift.String?
+  @objc public var retriesLeft: Swift.Int
   #if compiler(>=5.3) && $NonescapableTypes
   public init(_ eCode: Swift.Int?, eMessage: Swift.String?)
   #endif
@@ -3614,7 +3615,7 @@ public enum RequestResult {
   case failure(AJLibrary.ErrorModel)
 }
 @objc @_inheritsConvenienceInitializers open class AFNetClient : ObjectiveC.NSObject {
-  public var afManager: Alamofire.SessionManager?
+  public var afManager: Alamofire.Session?
   open func send<T>(_ request: T, _ completionHandler: @escaping AJLibrary.CompletionHandler<T>) where T : AJLibrary.NetRequest
   @objc public var isReachableOnWWAN: Swift.Bool {
     @objc get
