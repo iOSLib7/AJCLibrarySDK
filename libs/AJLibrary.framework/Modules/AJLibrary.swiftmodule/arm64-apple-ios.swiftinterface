@@ -2069,24 +2069,6 @@ extension AJLibrary.IPCPurchaseCloudStorViewController : AJLibrary.TwicketSegmen
 extension AJLibrary.IPCPurchaseCloudStorViewController : UIKit.UIScrollViewDelegate {
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class DiagnoseViewController : AJLibrary.BaseViewController {
-  @_Concurrency.MainActor @preconcurrency public var deviceId: Swift.String
-  @_Concurrency.MainActor @preconcurrency public var isNeedDiagnoseWSS: Swift.Bool
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
-    @objc get
-  }
-  @objc deinit
-  #if compiler(>=5.3) && $NonescapableTypes
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
-  #endif
-}
 public enum ShakeDirection : Swift.Int {
   case horizontal
   case vertical
@@ -3417,6 +3399,20 @@ public let orderHistoryTableViewCellIdentifier: Swift.String
   #endif
   @objc deinit
 }
+@objc public enum DiagnoseStatus : Swift.Int {
+  case waiting = 1
+  case diagnosing = 2
+  case attention = 3
+  case successed = 4
+  case failed = 5
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @objc @_inheritsConvenienceInitializers public class DiagnoseServiceModel : AJLibrary.ResultModel {
   @objc public var serviceUrl: Swift.String
   @objc required dynamic public init()
@@ -3533,6 +3529,28 @@ public enum AlarmType : ObjectiveC.NSInteger {
   #endif
   @objc override dynamic public init()
   @objc deinit
+}
+@objc @objcMembers public class DiagnoseManager : ObjectiveC.NSObject {
+  @objc public var deviceId: Swift.String
+  @objc public var diagnoseTasks: [AJLibrary.DiagnoseTask]
+  @objc public var isNeedDiagnoseWSS: Swift.Bool
+  @objc public var progressHandler: AJLibrary.DiagnoseManagerHandler?
+  @objc public var completeHandler: AJLibrary.DiagnoseManagerHandler?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(_ deviceId: Swift.String?)
+  #endif
+  @objc public func loadTasks()
+  @objc public func complete()
+  @objc public func start(_ task: AJLibrary.DiagnoseTask)
+  @objc public func runTask()
+  @objc public func stopAllTask()
+  @objc deinit
+}
+extension AJLibrary.DiagnoseManager {
+  @objc @discardableResult
+  dynamic public func progress(_ handler: @escaping AJLibrary.DiagnoseManagerHandler) -> Self
+  @objc @discardableResult
+  dynamic public func complete(_ handler: @escaping AJLibrary.DiagnoseManagerHandler) -> Self
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class ActionButtonSettingModel : AJLibrary.ResultModel, Foundation.NSCopying {
   public var no: Swift.Int?
@@ -5479,6 +5497,47 @@ extension Foundation.URL {
   @objc required dynamic public init()
   @objc deinit
 }
+public typealias DiagnoseTaskHandler = (AJLibrary.DiagnoseTask) -> ()
+public typealias DiagnoseManagerHandler = (AJLibrary.DiagnoseManager) -> ()
+public typealias DiagnoseURLTaskHandler = (AJLibrary.DiagnoseURLTask) -> ()
+@objc @_inheritsConvenienceInitializers @objcMembers public class DiagnoseTask : ObjectiveC.NSObject {
+  @objc weak public var manager: AJLibrary.DiagnoseManager?
+  @objc public var progressHandler: AJLibrary.DiagnoseTaskHandler?
+  @objc public var completeHandler: AJLibrary.DiagnoseTaskHandler?
+  @objc public var statusHandler: AJLibrary.DiagnoseTaskHandler?
+  @objc final public let aacAjcNet: Swift.String
+  @objc final public let ajcNet: Swift.String
+  @objc public var status: AJLibrary.DiagnoseStatus {
+    @objc get
+    @objc set
+  }
+  @objc public var diagnoseModel: AJLibrary.DiagnoseTaskModel
+  @objc public var taskServiceName: Swift.String {
+    @objc get
+  }
+  @objc public var progress: Swift.Float
+  @objc public var diagnoseUrlTask: AJLibrary.DiagnoseURLTask?
+  @objc public var totalUrlTasksLoadCount: Swift.Int
+  @objc public var successUrlTasksLoadCount: Swift.Int
+  @objc public var failUrlTaskCount: Swift.Int
+  @objc public var pingFailTaskCount: Swift.Int
+  @objc public var ipAddress: Swift.String {
+    @objc get
+  }
+  @objc public var packetLossPercentage: Swift.String {
+    @objc get
+  }
+  @objc public func completed()
+  @objc public func startDiagnose()
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension AJLibrary.DiagnoseTask {
+  @objc @discardableResult
+  dynamic public func progress(_ handler: @escaping AJLibrary.DiagnoseTaskHandler) -> Self
+  @objc @discardableResult
+  dynamic public func complete(_ handler: @escaping AJLibrary.DiagnoseTaskHandler) -> Self
+}
 public let CommonTableCellId: Swift.String
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CommonTableCell : AJLibrary.WVThinTableCell {
   @_Concurrency.MainActor @preconcurrency public var materailSwitch: Material.Switch
@@ -6110,6 +6169,26 @@ public enum OnlineSetResult : Swift.Int {
   @objc required dynamic public init()
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers @objcMembers public class DiagnoseURLTask : ObjectiveC.NSObject {
+  @objc public var service: AJLibrary.DiagnoseServiceModel?
+  @objc public var progressHandler: AJLibrary.DiagnoseURLTaskHandler?
+  @objc public var totalLoadNumber: Swift.Int
+  @objc public var successNumber: Swift.Int
+  @objc public var pingFailNumber: Swift.Int
+  @objc public var AllLoadTotalNumbers: Swift.Int
+  @objc public var progress: Swift.Float {
+    @objc get
+    @objc set
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func start(successHandler: AJLibrary.DiagnoseURLTaskHandler? = nil, failureHandler: AJLibrary.DiagnoseURLTaskHandler? = nil)
+  #endif
+  @objc deinit
+}
+extension AJLibrary.DiagnoseURLTask {
+  @objc @discardableResult
+  dynamic public func progress(_ handler: @escaping AJLibrary.DiagnoseURLTaskHandler) -> Self
+}
 @objc @_inheritsConvenienceInitializers public class PlayViewDataManager : ObjectiveC.NSObject {
   @objc public static var sharedInstance: AJLibrary.PlayViewDataManager
   @objc public var isUsingTfLcalURL: Swift.Bool
@@ -6560,6 +6639,9 @@ extension AJLibrary.NetConfigurationType : Swift.RawRepresentable {}
 extension AJLibrary.SupportLanguageOption : Swift.Equatable {}
 extension AJLibrary.SupportLanguageOption : Swift.Hashable {}
 extension AJLibrary.SupportLanguageOption : Swift.RawRepresentable {}
+extension AJLibrary.DiagnoseStatus : Swift.Equatable {}
+extension AJLibrary.DiagnoseStatus : Swift.Hashable {}
+extension AJLibrary.DiagnoseStatus : Swift.RawRepresentable {}
 extension AJLibrary.AlarmType : Swift.Equatable {}
 extension AJLibrary.AlarmType : Swift.Hashable {}
 extension AJLibrary.AlarmType : Swift.RawRepresentable {}

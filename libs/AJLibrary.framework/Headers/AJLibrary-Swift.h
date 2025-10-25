@@ -1887,10 +1887,87 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL supportsSecureC
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class DiagnoseTask;
+SWIFT_CLASS("_TtC9AJLibrary15DiagnoseManager")
+@interface DiagnoseManager : NSObject
+/// 设备ID
+@property (nonatomic, copy) NSString * _Nonnull deviceId;
+/// 诊断任务列表
+@property (nonatomic, copy) NSArray<DiagnoseTask *> * _Nonnull diagnoseTasks;
+/// 是否需要websoket 诊断，需手机和相机同一局域网
+@property (nonatomic) BOOL isNeedDiagnoseWSS;
+@property (nonatomic, copy) void (^ _Nullable progressHandler)(DiagnoseManager * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable completeHandler)(DiagnoseManager * _Nonnull);
+/// 初始化方法，入口处若有设备ID则传，没有可传 nil
+- (nonnull instancetype)init:(NSString * _Nullable)deviceId OBJC_DESIGNATED_INITIALIZER;
+/// 加载诊断任务表
+- (void)loadTasks;
+- (void)complete;
+- (void)start:(DiagnoseTask * _Nonnull)task;
+- (void)runTask;
+- (void)stopAllTask;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@interface DiagnoseManager (SWIFT_EXTENSION(AJLibrary))
+- (nonnull instancetype)progress:(void (^ _Nonnull)(DiagnoseManager * _Nonnull))handler;
+- (nonnull instancetype)complete:(void (^ _Nonnull)(DiagnoseManager * _Nonnull))handler;
+@end
+
 SWIFT_CLASS("_TtC9AJLibrary20DiagnoseServiceModel")
 @interface DiagnoseServiceModel : ResultModel
 @property (nonatomic, copy) NSString * _Nonnull serviceUrl;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+typedef SWIFT_ENUM(NSInteger, DiagnoseStatus, open) {
+  DiagnoseStatusWaiting = 1,
+/// 诊断任务队列等待
+  DiagnoseStatusDiagnosing = 2,
+/// 诊断中
+  DiagnoseStatusAttention = 3,
+/// 部分成功部分失败
+  DiagnoseStatusSuccessed = 4,
+/// 全部成功
+  DiagnoseStatusFailed = 5,
+};
+
+@class DiagnoseURLTask;
+SWIFT_CLASS("_TtC9AJLibrary12DiagnoseTask")
+@interface DiagnoseTask : NSObject
+@property (nonatomic, weak) DiagnoseManager * _Nullable manager;
+/// 诊断进度
+@property (nonatomic, copy) void (^ _Nullable progressHandler)(DiagnoseTask * _Nonnull);
+/// 当前任务诊断完成回调
+@property (nonatomic, copy) void (^ _Nullable completeHandler)(DiagnoseTask * _Nonnull);
+/// 诊断任务状态变化回调
+@property (nonatomic, copy) void (^ _Nullable statusHandler)(DiagnoseTask * _Nonnull);
+@property (nonatomic, readonly, copy) NSString * _Nonnull aacAjcNet;
+@property (nonatomic, readonly, copy) NSString * _Nonnull ajcNet;
+@property (nonatomic) enum DiagnoseStatus status;
+@property (nonatomic, strong) DiagnoseTaskModel * _Nonnull diagnoseModel;
+/// 诊断服务名称
+@property (nonatomic, readonly, copy) NSString * _Nonnull taskServiceName;
+/// 诊断进度
+@property (nonatomic) float progress;
+@property (nonatomic, strong) DiagnoseURLTask * _Nullable diagnoseUrlTask;
+@property (nonatomic) NSInteger totalUrlTasksLoadCount;
+@property (nonatomic) NSInteger successUrlTasksLoadCount;
+@property (nonatomic) NSInteger failUrlTaskCount;
+@property (nonatomic) NSInteger pingFailTaskCount;
+/// 诊断任务 IP 地址
+@property (nonatomic, readonly, copy) NSString * _Nonnull ipAddress;
+/// 诊断完成结果，丢包率
+@property (nonatomic, readonly, copy) NSString * _Nonnull packetLossPercentage;
+- (void)completed;
+- (void)startDiagnose;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@interface DiagnoseTask (SWIFT_EXTENSION(AJLibrary))
+- (nonnull instancetype)progress:(void (^ _Nonnull)(DiagnoseTask * _Nonnull))handler;
+- (nonnull instancetype)complete:(void (^ _Nonnull)(DiagnoseTask * _Nonnull))handler;
 @end
 
 SWIFT_CLASS("_TtC9AJLibrary17DiagnoseTaskModel")
@@ -1905,15 +1982,22 @@ SWIFT_CLASS("_TtC9AJLibrary18DiagnoseTasksModel")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-SWIFT_CLASS("_TtC9AJLibrary22DiagnoseViewController")
-@interface DiagnoseViewController : BaseViewController
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewWillDisappear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS("_TtC9AJLibrary15DiagnoseURLTask")
+@interface DiagnoseURLTask : NSObject
+@property (nonatomic, strong) DiagnoseServiceModel * _Nullable service;
+@property (nonatomic, copy) void (^ _Nullable progressHandler)(DiagnoseURLTask * _Nonnull);
+@property (nonatomic) NSInteger totalLoadNumber;
+@property (nonatomic) NSInteger successNumber;
+@property (nonatomic) NSInteger pingFailNumber;
+@property (nonatomic) NSInteger AllLoadTotalNumbers;
+@property (nonatomic) float progress;
+- (void)startWithSuccessHandler:(void (^ _Nullable)(DiagnoseURLTask * _Nonnull))successHandler failureHandler:(void (^ _Nullable)(DiagnoseURLTask * _Nonnull))failureHandler;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@interface DiagnoseURLTask (SWIFT_EXTENSION(AJLibrary))
+- (nonnull instancetype)progress:(void (^ _Nonnull)(DiagnoseURLTask * _Nonnull))handler;
 @end
 
 SWIFT_CLASS("_TtC9AJLibrary18DiscoverDeviceItem")
