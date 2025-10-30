@@ -136,6 +136,7 @@ typedef enum : NSUInteger {
 
 /// 获取移动告警通知配置类型
 /// @param deviceId 设备ID
+///  注：如果当前为分享设备，且返回状态为 DisableAlert，即设备告警是关闭状态，则请求 motionAlertNotificationWithDeviceId 移动告警通知配置会返回报错，不可设置
 - (MotionAlertNotificationType)getMotionAlertNotificationTypeWithDeviceId:(NSString *)deviceId;
 
 
@@ -144,6 +145,7 @@ typedef enum : NSUInteger {
 /// @param notiType 通知类型
 /// @param success success
 /// @param failure failure
+///  注：如果当前为分享设备，不可设置成 DisableAlert 状态，即分享设备不能关闭主设备告警开关，请求该接口会返回错误
 - (void)motionAlertNotificationWithDeviceId:(NSString *)deviceId
                                    notiType:(MotionAlertNotificationType)notiType
                                     success:(nullable void (^)(void))success
