@@ -15,9 +15,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    PushSettingTypeUpsert = 1,
-    PushSettingTypeRemove = 2
-} PushSettingType;
+    PushSettingTypeUpsert = 1,  /// 更新通知配置
+    PushSettingTypeRemove = 2   /// 移除通知
+} PushSettingType;  /// 推送设置方式
+
+typedef enum : NSUInteger {
+    RecordAndNotify = 1,    /// 记录告警并通知
+    RecordAndNotNotify = 2, /// 记录告警但不通知
+    DisableAlert = 3,       /// 关闭告警
+} MotionAlertNotificationType;    // 移动告警通知配置类型
 
 @interface AJMessage : NSObject
 
@@ -127,6 +133,21 @@ typedef enum : NSUInteger {
             success:(nullable void (^)(void))success
             failure:(nullable void (^)(AJError *))failure;
 
+
+/// 获取移动告警通知配置类型
+/// @param deviceId 设备ID
+- (MotionAlertNotificationType)getMotionAlertNotificationTypeWithDeviceId:(NSString *)deviceId;
+
+
+/// 移动告警通知配置
+/// @param deviceId 设备ID
+/// @param notiType 通知类型
+/// @param success success
+/// @param failure failure
+- (void)motionAlertNotificationWithDeviceId:(NSString *)deviceId
+                                   notiType:(MotionAlertNotificationType)notiType
+                                    success:(nullable void (^)(void))success
+                                    failure:(nullable void (^)(AJError *))failure;
 
 @end
 

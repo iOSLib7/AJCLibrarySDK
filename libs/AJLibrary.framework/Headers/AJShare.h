@@ -36,6 +36,34 @@ NS_ASSUME_NONNULL_BEGIN
                failure:(nullable void (^)(AJError *))failure;
 
 
+
+/// 修改分享权限
+/// @param deviceId 设备ID
+/// @param receiverUid 接收者UID
+/// @param realTimeVideo 实时视频
+/// @param alertPush 移动告警
+/// @param cloudStorageRecord 云存储回看
+/// @param localStorageRecord 本地存储回看
+/// @param consoleControl 云台控制
+/// @param voiceDialogue 语音对讲
+/// @param lightControl 灯光控制
+/// @param alarmWhistle 警铃控制
+/// @param success success
+/// @param failure failure
+- (void)modifyNewShare:(NSString *)deviceId
+           receiverUid:(NSString *)receiverUid
+         realTimeVideo:(NSString *)realTimeVideo
+             alertPush:(NSString *)alertPush
+    cloudStorageRecord:(NSString *)cloudStorageRecord
+    localStorageRecord:(NSString *)localStorageRecord
+        consoleControl:(NSString *)consoleControl
+         voiceDialogue:(NSString *)voiceDialogue
+          lightControl:(NSString *)lightControl
+          alarmWhistle:(NSString *)alarmWhistle
+               success:(nullable void (^)(void))success
+               failure:(nullable void (^)(AJError *))failure;
+
+
 /// 获取发起的设备分享信息
 /// @param deviceId 设备ID
 /// @param success success

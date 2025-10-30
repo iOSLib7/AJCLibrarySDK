@@ -1192,19 +1192,36 @@ public enum AIPlanType : Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class ProtectionPlan : AJLibrary.ResultModel {
-  public func isValidBirdOrder() -> Swift.Bool
-  public func isValidPetsOrder() -> Swift.Bool
-  public func haveBirdOrder() -> Swift.Bool
+@objc @_inheritsConvenienceInitializers @objcMembers public class ProtectionPlan : AJLibrary.ResultModel {
+  @objc public var alarmVideo: Swift.Bool
+  @objc public var buyerId: Swift.String?
+  @objc public var cloudStorFullDay: Swift.String?
+  @objc public var expireViewAt: Swift.String?
+  @objc public var fullDay: Swift.Bool
+  @objc public var genAlarmThumb: Swift.Bool
+  @objc public var keepDays: Swift.String?
+  @objc public var lastStoreTs: Swift.String?
+  @objc public var level: Swift.String?
+  @objc public var limitDevices: Swift.String?
+  @objc public var localStorFullDay: Swift.Bool
+  @objc public var orderId: Swift.String?
+  @objc public var sku: Swift.String?
+  @objc public var validTsEnd: Swift.String?
+  @objc public var validTsStart: Swift.String?
+  @objc public var alarmRek: Swift.Bool
+  @objc public var cognitiveTypes: Swift.String?
+  @objc public func isValidBirdOrder() -> Swift.Bool
+  @objc public func isValidPetsOrder() -> Swift.Bool
+  @objc public func haveBirdOrder() -> Swift.Bool
   @objc public func birdOrderShorestExpiredDays() -> Swift.Int
   @objc public func serviceIsVaild() -> Swift.Bool
   public func aiPlanType() -> AJLibrary.AIPlanType
-  public func isAiPlan() -> Swift.Bool
-  public func isBirdsAiPlan() -> Swift.Bool
-  public func isNormalAiPlan() -> Swift.Bool
-  public func isPetsAiPlan() -> Swift.Bool
-  public func validityPeriod() -> Swift.String
-  public func planName() -> Swift.String
+  @objc public func isAiPlan() -> Swift.Bool
+  @objc public func isBirdsAiPlan() -> Swift.Bool
+  @objc public func isNormalAiPlan() -> Swift.Bool
+  @objc public func isPetsAiPlan() -> Swift.Bool
+  @objc public func validityPeriod() -> Swift.String
+  @objc public func planName() -> Swift.String
   @objc required dynamic public init()
   @objc deinit
 }
@@ -2366,6 +2383,9 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func disableShareEntry(_ deviceId: Swift.String, receiverUid: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func modifyNewShare(deviceId: Swift.String, receiverUid: Swift.String, realTimeVideo: Swift.String, alertPush: Swift.String, cloudStorageRecord: Swift.String, localStorageRecord: Swift.String, consoleControl: Swift.String, voiceDialogue: Swift.String, lightControl: Swift.String, alarmWhistle: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func delNewShare(_ deviceId: Swift.String, receiverUid: Swift.String, complete: ((AJLibrary.ErrorModel?) -> Swift.Void)?)
@@ -4054,16 +4074,17 @@ public enum ProductNameType : Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class CameraInfomation : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers @objcMembers public class CameraInfomation : ObjectiveC.NSObject {
   @objc public var summary: AJLibrary.CameraSummaryModel?
   @objc public var camera: AJLibrary.CameraModel?
   @objc public var conDevice: AJLibrary.ConDeviceModel?
   @objc public var userInvite: AJLibrary.UserInviteModel?
+  @objc public var pushSettingInfo: AJLibrary.PushSettingInfo?
   @objc public var orderModel: AJLibrary.OrdersModel?
   #if compiler(>=5.3) && $NonescapableTypes
   public func deviceType() -> AJLibrary.DeviceModeType?
   #endif
-  public func isInListTop() -> Swift.Bool
+  @objc public func isInListTop() -> Swift.Bool
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func devAliasName() -> Swift.String?
   #endif
@@ -5939,7 +5960,7 @@ public let IphoneXBottom: CoreFoundation.CGFloat
   public static func settingNeedWakeUp(_ deviceId: Swift.String) -> Swift.Bool
   public static func prodNames(from vendor: Swift.String) -> [Swift.String]
   #if compiler(>=5.3) && $NonescapableTypes
-  public static func pushSettingParams(_ deviceId: Swift.String, accept: Swift.String? = nil, callee: Swift.String? = "1", aliasName: Swift.String? = nil, pushToken: Swift.String = ApnsManager.shared.pushToken ?? "", orderType: AJLibrary.OrderType) -> [Swift.String : Any]
+  @objc public static func pushSettingParams(_ deviceId: Swift.String, accept: Swift.String? = nil, callee: Swift.String? = "1", aliasName: Swift.String? = nil, pushToken: Swift.String = ApnsManager.shared.pushToken ?? "", orderType: AJLibrary.OrderType) -> [Swift.String : Any]
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public static func portalPushSettingParams(accept: Swift.String? = "1", callee: Swift.String? = "1", pushToken: Swift.String = ApnsManager.shared.pushToken ?? "", orderType: AJLibrary.OrderType) -> [Swift.String : Any]
@@ -6109,41 +6130,41 @@ extension AVKit.AVPlayerViewController {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EMCNetManager : AJLibrary.BaseNetManager {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class EMCNetManager : AJLibrary.BaseNetManager {
   @objc public var pushsetStartBlock: (([Swift.String : Any]) -> ())?
   @objc public static let shared: AJLibrary.EMCNetManager
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func fetchAlarmsCalendar(_ deviceId: Swift.String, tzValue: Swift.String, accessKey: Swift.String, complete: @escaping (AJLibrary.AlarmsCalendarModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func fetchFeedLogs(_ deviceId: Swift.String, ctime: Swift.String, limit: ObjectiveC.NSInteger, complete: @escaping (AJLibrary.feedLogsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fetchFeedLogs(_ deviceId: Swift.String, ctime: Swift.String, limit: ObjectiveC.NSInteger, complete: @escaping (AJLibrary.feedLogsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func fetchAlarmList(_ deviceId: Swift.String, accessKey: Swift.String, tzValue: Swift.String, today: ObjectiveC.NSInteger, todayFirst: ObjectiveC.NSInteger, ctime: ObjectiveC.NSInteger, cdate: Swift.String, limit: ObjectiveC.NSInteger, complete: @escaping (AJLibrary.AlarmListModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func removeShareRel(_ deviceId: Swift.String, slaveUid: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func removeShareRel(_ deviceId: Swift.String, slaveUid: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func getPushSetting(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.PushSettingsInfo?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func getPushSetting(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.PushSettingsInfo?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func pushSetting(_ deviceId: Swift.String, accept: Swift.String?, aliasName: Swift.String, devEmcUrl: Swift.String, orderType: AJLibrary.OrderType, clearPushToken: Swift.Bool = false, shareUids: [Swift.String], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func pushSetting(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func pushSetting(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func deleteAlarmsMessage(_ deviceId: Swift.String, accessKey: Swift.String, cdate: Swift.String, ctss: [Swift.String], devTzName: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func fetchAlarmsSurvey(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.AlarmsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fetchAlarmsSurvey(_ deviceId: Swift.String, params: [Swift.String : Any], complete: @escaping (AJLibrary.AlarmsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func callActionButtonSettingUpsert(_ deviceId: Swift.String, params: [Swift.String : Any]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func callActionButtonSettingUpsert(_ deviceId: Swift.String, params: [Swift.String : Any]?, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func fetchActionButtonSetting(_ deviceId: Swift.String, complete: @escaping (AJLibrary.ActionButtonsSettingModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fetchActionButtonSetting(_ deviceId: Swift.String, complete: @escaping (AJLibrary.ActionButtonsSettingModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   @objc deinit
 }

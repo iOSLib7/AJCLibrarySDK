@@ -475,6 +475,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSettingsMa
 - (void)retoreFactory:(NSString * _Nonnull)deviceId complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)enableShareEntry:(NSString * _Nonnull)deviceId receiverUid:(NSString * _Nonnull)receiverUid complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)disableShareEntry:(NSString * _Nonnull)deviceId receiverUid:(NSString * _Nonnull)receiverUid complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
+- (void)modifyNewShareWithDeviceId:(NSString * _Nonnull)deviceId receiverUid:(NSString * _Nonnull)receiverUid realTimeVideo:(NSString * _Nonnull)realTimeVideo alertPush:(NSString * _Nonnull)alertPush cloudStorageRecord:(NSString * _Nonnull)cloudStorageRecord localStorageRecord:(NSString * _Nonnull)localStorageRecord consoleControl:(NSString * _Nonnull)consoleControl voiceDialogue:(NSString * _Nonnull)voiceDialogue lightControl:(NSString * _Nonnull)lightControl alarmWhistle:(NSString * _Nonnull)alarmWhistle complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)delNewShare:(NSString * _Nonnull)deviceId receiverUid:(NSString * _Nonnull)receiverUid complete:(void (^ _Nullable)(ErrorModel * _Nullable))complete;
 - (void)getShareSendInfo:(NSString * _Nonnull)deviceId complete:(void (^ _Nullable)(NSArray<ShareSendReceiverModel *> * _Nullable, ErrorModel * _Nullable))complete;
 - (void)createNewShare:(NSString * _Nonnull)deviceId receiverName:(NSString * _Nonnull)receiverName receiverType:(NSString * _Nonnull)receiverType prodName:(NSString * _Nonnull)prodName complete:(void (^ _Nullable)(ShareSendReceiverModel * _Nullable, ErrorModel * _Nullable))complete;
@@ -1111,13 +1112,16 @@ SWIFT_CLASS("_TtC9AJLibrary15CameraInfoModel")
 @class CameraSummaryModel;
 @class ConDeviceModel;
 @class UserInviteModel;
+@class PushSettingInfo;
 SWIFT_CLASS("_TtC9AJLibrary16CameraInfomation")
 @interface CameraInfomation : NSObject
 @property (nonatomic, strong) CameraSummaryModel * _Nullable summary;
 @property (nonatomic, strong) CameraModel * _Nullable camera;
 @property (nonatomic, strong) ConDeviceModel * _Nullable conDevice;
 @property (nonatomic, strong) UserInviteModel * _Nullable userInvite;
+@property (nonatomic, strong) PushSettingInfo * _Nullable pushSettingInfo;
 @property (nonatomic, strong) OrdersModel * _Nullable orderModel;
+- (BOOL)isInListTop SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)devAliasName SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)deviceTypeName SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -1351,6 +1355,7 @@ SWIFT_CLASS("_TtC9AJLibrary18CameraSummaryModel")
 
 @class UIAlertAction;
 enum DeviceModeType : NSInteger;
+enum OrderType : NSInteger;
 SWIFT_CLASS("_TtC9AJLibrary11CameraUtils")
 @interface CameraUtils : NSObject
 /// 网络是否可用
@@ -1375,6 +1380,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL isReachableOnEt
 + (BOOL)isBatteryType:(NSString * _Nonnull)deviceId SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)objcIsBatteryType:(enum DeviceModeType)dType SWIFT_WARN_UNUSED_RESULT;
 + (enum DeviceModeType)getDeviceModeType:(NSString * _Nonnull)deviceId SWIFT_WARN_UNUSED_RESULT;
++ (NSDictionary<NSString *, id> * _Nonnull)pushSettingParams:(NSString * _Nonnull)deviceId accept:(NSString * _Nullable)accept callee:(NSString * _Nullable)callee aliasName:(NSString * _Nullable)aliasName pushToken:(NSString * _Nonnull)pushToken orderType:(enum OrderType)orderType SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)deviceIsSupportAddToPlan:(NSString * _Nonnull)deviceId SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIViewController * _Nullable currentController;)
 + (UIViewController * _Nullable)currentController SWIFT_WARN_UNUSED_RESULT;
@@ -2014,7 +2020,8 @@ SWIFT_CLASS("_TtC9AJLibrary18DiscoverDeviceItem")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-enum OrderType : NSInteger;
+@class feedLogsModel;
+@class PushSettingsInfo;
 SWIFT_CLASS("_TtC9AJLibrary13EMCNetManager")
 @interface EMCNetManager : BaseNetManager
 @property (nonatomic, copy) void (^ _Nullable pushsetStartBlock)(NSDictionary<NSString *, id> * _Nonnull);
@@ -2028,6 +2035,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EMCNetManage
 /// \param complete complete
 ///
 - (void)fetchAlarmsCalendar:(NSString * _Nonnull)deviceId tzValue:(NSString * _Nonnull)tzValue accessKey:(NSString * _Nonnull)accessKey complete:(void (^ _Nonnull)(AlarmsCalendarModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 喂食器log
+/// \param ctime ctime
+///
+- (void)fetchFeedLogs:(NSString * _Nonnull)deviceId ctime:(NSString * _Nonnull)ctime limit:(NSInteger)limit complete:(void (^ _Nonnull)(feedLogsModel * _Nullable, ErrorModel * _Nullable))complete;
 /// 获取消息列表
 /// \param deviceId deviceId
 ///
@@ -2042,12 +2053,29 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EMCNetManage
 /// \param complete complete
 ///
 - (void)fetchAlarmList:(NSString * _Nonnull)deviceId accessKey:(NSString * _Nonnull)accessKey tzValue:(NSString * _Nonnull)tzValue today:(NSInteger)today todayFirst:(NSInteger)todayFirst ctime:(NSInteger)ctime cdate:(NSString * _Nonnull)cdate limit:(NSInteger)limit complete:(void (^ _Nonnull)(AlarmListModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 主动删除分享摄像头
+/// \param deviceId deviceId
+///
+/// \param slaveUid slaveUid => receiverUid
+///
+/// \param complete complete
+///
+- (void)removeShareRel:(NSString * _Nonnull)deviceId slaveUid:(NSString * _Nonnull)slaveUid complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 获取绑定设备的 push-setting token等信息
+/// \param deviceId deviceId
+///
+/// \param params params
+///
+/// \param complete complete
+///
+- (void)getPushSetting:(NSString * _Nonnull)deviceId params:(NSDictionary<NSString *, id> * _Nonnull)params complete:(void (^ _Nonnull)(PushSettingsInfo * _Nullable, ErrorModel * _Nullable))complete;
 /// 设置推送设置
 /// \param cameraSimples cameraSimples
 ///
 /// \param complete complete
 ///
 - (void)pushSetting:(NSString * _Nonnull)deviceId accept:(NSString * _Nullable)accept aliasName:(NSString * _Nonnull)aliasName devEmcUrl:(NSString * _Nonnull)devEmcUrl orderType:(enum OrderType)orderType clearPushToken:(BOOL)clearPushToken shareUids:(NSArray<NSString *> * _Nonnull)shareUids complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
+- (void)pushSetting:(NSString * _Nonnull)deviceId params:(NSDictionary<NSString *, id> * _Nonnull)params complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
 /// 消息删除
 /// \param deviceId deviceId
 ///
@@ -2060,6 +2088,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EMCNetManage
 /// \param devTzName 设备时区名
 ///
 - (void)deleteAlarmsMessage:(NSString * _Nonnull)deviceId accessKey:(NSString * _Nonnull)accessKey cdate:(NSString * _Nonnull)cdate ctss:(NSArray<NSString *> * _Nonnull)ctss devTzName:(NSString * _Nonnull)devTzName complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 获取消息概览
+/// \param deviceId deviceId
+///
+/// \param complete complete
+///
+- (void)fetchAlarmsSurvey:(NSString * _Nonnull)deviceId params:(NSDictionary<NSString *, id> * _Nonnull)params complete:(void (^ _Nonnull)(AlarmsModel * _Nullable, ErrorModel * _Nullable))complete;
+- (void)callActionButtonSettingUpsert:(NSString * _Nonnull)deviceId params:(NSDictionary<NSString *, id> * _Nullable)params complete:(void (^ _Nonnull)(SuccessResultModel * _Nullable, ErrorModel * _Nullable))complete;
+- (void)fetchActionButtonSetting:(NSString * _Nonnull)deviceId complete:(void (^ _Nonnull)(ActionButtonsSettingModel * _Nullable, ErrorModel * _Nullable))complete;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2892,7 +2928,6 @@ SWIFT_CLASS("_TtC9AJLibrary4Plan")
 
 @class soundPlayNameInfo;
 @class QualityModel;
-@class feedLogsModel;
 @class ViewAngle;
 SWIFT_CLASS("_TtC9AJLibrary19PlayViewDataManager")
 @interface PlayViewDataManager : NSObject
@@ -3146,9 +3181,35 @@ SWIFT_CLASS("_TtC9AJLibrary12ProductModel")
 
 SWIFT_CLASS("_TtC9AJLibrary14ProtectionPlan")
 @interface ProtectionPlan : ResultModel
+@property (nonatomic) BOOL alarmVideo;
+@property (nonatomic, copy) NSString * _Nullable buyerId;
+@property (nonatomic, copy) NSString * _Nullable cloudStorFullDay;
+@property (nonatomic, copy) NSString * _Nullable expireViewAt;
+@property (nonatomic) BOOL fullDay;
+@property (nonatomic) BOOL genAlarmThumb;
+@property (nonatomic, copy) NSString * _Nullable keepDays;
+@property (nonatomic, copy) NSString * _Nullable lastStoreTs;
+@property (nonatomic, copy) NSString * _Nullable level;
+@property (nonatomic, copy) NSString * _Nullable limitDevices;
+@property (nonatomic) BOOL localStorFullDay;
+@property (nonatomic, copy) NSString * _Nullable orderId;
+@property (nonatomic, copy) NSString * _Nullable sku;
+@property (nonatomic, copy) NSString * _Nullable validTsEnd;
+@property (nonatomic, copy) NSString * _Nullable validTsStart;
+@property (nonatomic) BOOL alarmRek;
+@property (nonatomic, copy) NSString * _Nullable cognitiveTypes;
+- (BOOL)isValidBirdOrder SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isValidPetsOrder SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)haveBirdOrder SWIFT_WARN_UNUSED_RESULT;
 /// 计算鸟套餐已过期天数
 - (NSInteger)birdOrderShorestExpiredDays SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)serviceIsVaild SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isAiPlan SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isBirdsAiPlan SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isNormalAiPlan SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isPetsAiPlan SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)validityPeriod SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)planName SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
