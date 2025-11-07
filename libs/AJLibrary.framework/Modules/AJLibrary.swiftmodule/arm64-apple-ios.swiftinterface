@@ -2875,12 +2875,6 @@ public enum FileFolder : Swift.String {
 @objc @_inheritsConvenienceInitializers public class AJSubscribe : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.AJSubscribe
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc public func cloudBasicVc(subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  @objc public func cloudAIVc(subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func cloudSubscribeVc(_ deviceId: Swift.String? = nil, subscribeComplete: (() -> ())?) -> UIKit.UIViewController?
   #endif
   #if compiler(>=5.3) && $NonescapableTypes

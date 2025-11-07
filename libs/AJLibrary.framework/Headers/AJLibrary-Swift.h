@@ -507,20 +507,6 @@ SWIFT_CLASS("_TtC9AJLibrary11AJSubscribe")
 @interface AJSubscribe : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJSubscribe * _Nonnull shared;)
 + (AJSubscribe * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-/// 云存储基础套餐介绍页
-/// \param subscribeComplete 订购完成回调
-///
-///
-/// returns:
-/// 介绍页
-- (UIViewController * _Nullable)cloudBasicVcWithSubscribeComplete:(void (^ _Nullable)(void))subscribeComplete SWIFT_WARN_UNUSED_RESULT;
-/// 云存储AI套餐介绍页
-/// \param subscribeComplete 订购完成回调
-///
-///
-/// returns:
-/// 介绍页
-- (UIViewController * _Nullable)cloudAIVcWithSubscribeComplete:(void (^ _Nullable)(void))subscribeComplete SWIFT_WARN_UNUSED_RESULT;
 /// 云存储订阅页
 /// \param deviceId 设备ID，没有则传空
 ///
