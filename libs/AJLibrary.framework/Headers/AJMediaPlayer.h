@@ -78,6 +78,18 @@ typedef void (^snapShotDoneAction)(UIImage *image);
  *  @param     filePath                录像文件路径
  */
 - (int) startLocalRecordWithPath:(NSString *)filePath;
+
+/**
+ *  回放录制
+ *  @param     path                录像文件路径
+ */
+- (void)startRecordVideoAtPath:(NSString *)path;
+
+/**
+ *  回放录制停止
+ */
+- (int)stopVideoRecord;
+
 /**
  *  停止直播录像
  */
