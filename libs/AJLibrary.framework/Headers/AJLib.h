@@ -66,6 +66,7 @@
 #import <AJLibrary/AJFeedTonesConfigModel.h>
 #import <AJLibrary/AJUploadNotifyModel.h>
 #import <AJLibrary/AJCocoaSecurity.h>
+#import <AJLibrary/FCUUID.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

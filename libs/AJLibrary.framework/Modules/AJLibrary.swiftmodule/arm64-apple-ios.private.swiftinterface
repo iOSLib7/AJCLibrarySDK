@@ -16,7 +16,6 @@ import CoreImage
 import CoreLocation
 import CoreMedia
 import CoreTelephony
-import FCUUID
 import Foundation
 import LocalAuthentication
 import Lottie

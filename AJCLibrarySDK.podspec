@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJCLibrarySDK"
-  s.version      = "1.2.26"
+  s.version      = "1.2.27"
   s.summary      = "A short description of AJLibrary."
 
   s.description      = <<-DESC
@@ -49,7 +49,6 @@ s.platform     = :ios, '13.0'
   ss.dependency 'lottie-ios','2.5.0'
   ss.dependency 'SDWebImage', "~> 5.11.0"
   ss.dependency 'AFNetworking', "~> 4.0.1"
-  ss.dependency 'FCUUID', "~> 1.3.1"
   ss.dependency 'Sodium', '0.9.1'
   ss.dependency 'AliyunOSSiOS'
   ss.dependency 'Masonry'
