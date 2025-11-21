@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
   s.name         = "AJCLibrarySDK"
   s.version      = "1.2.29"
   s.summary      = "A short description of AJLibrary."
-  s.static_framework = true
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
@@ -27,10 +26,11 @@ TODO: Add long description of the pod here.
 s.platform     = :ios, '13.0'
 
  s.subspec 'Core' do |ss|
-
+  
+  ss.static_framework = true
   ss.vendored_frameworks = "libs/*.{framework}"
-    ss.resources           = 'AJBundle.bundle'
-    ss.preserve_paths      = 'AJLibrary.framework/*', 'AJBundle.bundle'
+  ss.resources           = 'AJBundle.bundle'
+  ss.preserve_paths      = 'AJLibrary.framework/*', 'AJBundle.bundle'
 
   ss.frameworks   = 'OpenGLES','Foundation','SystemConfiguration','OpenAL','Security','MediaPlayer','AVFoundation','CoreVideo','CoreAudio','CoreMedia','VideoToolbox','AudioToolbox','AdSupport','NetworkExtension','GLKit'
   
