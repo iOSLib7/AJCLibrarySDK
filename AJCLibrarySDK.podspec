@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJCLibrarySDK"
-  s.version      = "1.2.29"
+  s.version      = "1.2.30"
   s.summary      = "A short description of AJLibrary."
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -41,11 +41,11 @@ s.platform     = :ios, '13.0'
   #ss.dependency 'Firebase/Core'
   #ss.dependency 'Firebase/Analytics'
   ss.dependency 'MBProgressHUD'
-  ss.dependency 'SnapKit'
+  ss.dependency 'SnapKit', '~> 5.7.1'
   ss.dependency 'CocoaAsyncSocket', '7.6.5'
   ss.dependency 'UICKeyChainStore', '>= 2.1.0', '< 3.0.0'
   ss.dependency 'MJRefresh'
-  ss.dependency 'Material'
+  ss.dependency 'Material', '~> 3.1.8'
   ss.dependency 'lottie-ios','2.5.0'
   ss.dependency 'SDWebImage', "~> 5.11.0"
   ss.dependency 'AFNetworking', "~> 4.0.1"
@@ -54,7 +54,7 @@ s.platform     = :ios, '13.0'
   ss.dependency 'Masonry'
   ss.dependency 'SDVersion'
   ss.dependency 'SocketRocket'
-  ss.dependency 'XCGLogger'
+  ss.dependency 'XCGLogger', '~> 7.0.1'
   ss.dependency 'ZipArchive'
   ss.dependency 'LSTCategory'
   ss.dependency 'CHIPageControl'
