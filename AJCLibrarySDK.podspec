@@ -15,7 +15,8 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
                        
-    s.homepage     = "https://github.com/iOSLib7/AJCLibrarySDK"
+  s.static_framework = true
+  s.homepage     = "https://github.com/iOSLib7/AJCLibrarySDK"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Talaric' => 'alaric.tmz@gmail.com' }
   s.source           = { :git => 'https://github.com/iOSLib7/AJCLibrarySDK.git', :tag => s.version.to_s }
@@ -27,7 +28,6 @@ s.platform     = :ios, '13.0'
 
  s.subspec 'Core' do |ss|
   
-  ss.static_framework = true
   ss.vendored_frameworks = "libs/*.{framework}"
   ss.resources           = 'AJBundle.bundle'
   ss.preserve_paths      = 'AJLibrary.framework/*', 'AJBundle.bundle'
