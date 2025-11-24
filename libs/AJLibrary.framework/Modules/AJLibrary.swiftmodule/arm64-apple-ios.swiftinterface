@@ -6,25 +6,30 @@ import AFNetworking
 @_exported import AJLibrary
 import AVFoundation
 import AVKit
-import Alamofire
+import Accelerate
 import AliyunOSSiOS
 import AudioToolbox
 import AuthenticationServices
 import SystemConfiguration.CaptiveNetwork
+import Clibsodium
 import CocoaAsyncSocket
+import Combine
 import CoreImage
 import CoreLocation
 import CoreMedia
 import CoreTelephony
+import DeveloperToolsSupport
+import Dispatch
 import Foundation
 import LocalAuthentication
 import Lottie
 import MBProgressHUD
 import MJRefresh
 import MapKit
-import Material
 import MediaPlayer
 import MessageUI
+import MetalKit
+import MobileCoreServices
 import NetworkExtension
 import ObjectiveC
 import OpenAL
@@ -33,12 +38,13 @@ import QCloudCOSXML
 import Qiniu
 import SDVersion
 import SDWebImage
-import SnapKit
+import Security
 import SocketRocket
-import Sodium
 import Swift
+import SwiftUI
 import SystemConfiguration
 import UIKit
+import UniformTypeIdentifiers
 import UserNotifications
 import WebKit
 import XCGLogger
@@ -46,6 +52,7 @@ import ZipArchive
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+import zlib
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class CustomWebViewController : AJLibrary.WebViewController, WebKit.WKNavigationDelegate {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
   @objc @_Concurrency.MainActor @preconcurrency public func PopPrevious()
@@ -69,13 +76,13 @@ import _SwiftConcurrencyShims
   #endif
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIAlphaButton : Material.FlatButton {
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIAlphaButton : UIKit.UIButton {
   #if compiler(>=5.3) && $NonescapableTypes
   @objc @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, target: Any?, action: ObjectiveC.Selector?)
   #endif
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIFlatButton : Material.FlatButton {
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIFlatButton : UIKit.UIButton {
   #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public init(_ title: Swift.String?, target: Any?, action: ObjectiveC.Selector?)
   #endif
@@ -889,7 +896,7 @@ public enum ContinuousType : Swift.String {
   @objc public func chNum() -> Swift.String
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @objcMembers public class Stream : AJLibrary.ResultModel {
+@objc @_inheritsConvenienceInitializers @objcMembers public class StreamModel : AJLibrary.ResultModel {
   @objc public var bitRate: Swift.String?
   @objc public var frameRate: Swift.String?
   @objc public var localUrl: Swift.String?
@@ -903,7 +910,7 @@ public enum ContinuousType : Swift.String {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class StreamConfig : AJLibrary.ResultModel {
-  @objc public var streams: [AJLibrary.Stream]?
+  @objc public var streams: [AJLibrary.StreamModel]?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -1808,7 +1815,7 @@ public enum AutoLightMode : Swift.String {
 @objc @_inheritsConvenienceInitializers @objcMembers public class LiveSecToken : AJLibrary.ResultModel {
   @objc public var reqType: Swift.String?
   @objc public var reqServer: Swift.String?
-  @objc public var stream: AJLibrary.Stream?
+  @objc public var stream: AJLibrary.StreamModel?
   @objc public var token: Swift.String?
   @objc public var encrytMode: Swift.String?
   @objc public var sessionKey: Swift.String?
@@ -3641,19 +3648,6 @@ extension UIKit.UIFont {
   @objc(mixed_registerFont:filename:type:error:) public static func mixed_registerFont(in bundle: Foundation.Bundle?, name fileName: Swift.String, type: Swift.String?) throws
   #endif
 }
-public enum RequestResult {
-  case success(Any?)
-  case failure(AJLibrary.ErrorModel)
-}
-@objc @_inheritsConvenienceInitializers open class AFNetClient : ObjectiveC.NSObject {
-  public var afManager: Alamofire.Session?
-  open func send<T>(_ request: T, _ completionHandler: @escaping AJLibrary.CompletionHandler<T>) where T : AJLibrary.NetRequest
-  @objc public var isReachableOnWWAN: Swift.Bool {
-    @objc get
-  }
-  @objc override dynamic public init()
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers public class AccountManager : ObjectiveC.NSObject {
   @objc public static let shared: AJLibrary.AccountManager
   #if compiler(>=5.3) && $NonescapableTypes
@@ -4762,6 +4756,67 @@ extension UIKit.UILabel {
 extension AJLibrary.TSDownloader {
   public func parseSpeed()
 }
+extension QuartzCore.CALayer {
+  public func animate(_ animations: QuartzCore.CAAnimation...)
+  public func animate(_ animations: [QuartzCore.CAAnimation])
+}
+public struct MotionConditionalContext {
+  weak public var view: UIKit.UIView!
+  public var isAppearing: Swift.Bool {
+    get
+  }
+  public var isPresenting: Swift.Bool {
+    get
+  }
+  public var isTabBarController: Swift.Bool {
+    get
+  }
+  public var isNavigationController: Swift.Bool {
+    get
+  }
+  public var isMatched: Swift.Bool {
+    get
+  }
+  public var isAncestorViewMatched: Swift.Bool {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var matchedView: UIKit.UIView? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var matchedAncestorView: (UIKit.UIView, UIKit.UIView)? {
+    get
+  }
+  #endif
+  public var fromViewController: UIKit.UIViewController {
+    get
+  }
+  public var toViewController: UIKit.UIViewController {
+    get
+  }
+  public var currentViewController: UIKit.UIViewController {
+    get
+  }
+  public var otherViewController: UIKit.UIViewController {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class MotionViewTransition {
+  open var totalDuration: Swift.Double {
+    get
+  }
+  open var progress: CoreFoundation.CGFloat {
+    get
+  }
+  open var shouldUpdateModels: Swift.Bool
+  open func start()
+  open func update(_ progress: CoreFoundation.CGFloat)
+  open func cancel(isAnimated: Swift.Bool = true)
+  open func finish(isAnimated: Swift.Bool = true)
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers public class ActionDetectModel : AJLibrary.ResultModel {
   @objc required dynamic public init()
   @objc deinit
@@ -5554,7 +5609,6 @@ extension AJLibrary.DiagnoseTask {
 }
 public let CommonTableCellId: Swift.String
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CommonTableCell : AJLibrary.WVThinTableCell {
-  @_Concurrency.MainActor @preconcurrency public var materailSwitch: Material.Switch
   @_Concurrency.MainActor @preconcurrency final public let dotView: UIKit.UIView
   @_Concurrency.MainActor @preconcurrency override public var leftIconGap: CoreFoundation.CGFloat {
     get
@@ -5824,7 +5878,7 @@ public let DevConfigApi: Swift.String
 }
 public func GetWidth(_ width: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
 public func GetHeight(_ height: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
-@objc @_inheritsConvenienceInitializers open class Utils : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers open class AJCUtils : ObjectiveC.NSObject {
   public static func getUserSSID(completeSsid: @escaping (Swift.String) -> ())
   @objc override dynamic public init()
   @objc deinit
@@ -5870,7 +5924,6 @@ public let CellSubUIDistance: Swift.Int
   @_Concurrency.MainActor @preconcurrency public var buyBtn: UIKit.UIButton
   @_Concurrency.MainActor @preconcurrency final public let detailTips: AJLibrary.UICommonLabel
   @_Concurrency.MainActor @preconcurrency final public let cnTrail: AJLibrary.UIContainedButton
-  @_Concurrency.MainActor @preconcurrency final public let learnMoreBtn: AJLibrary.UIFlatButton
   @objc @_Concurrency.MainActor @preconcurrency final public let backImgV: UIKit.UIImageView
   @objc @_Concurrency.MainActor @preconcurrency public var webview: AJLibrary.AJCWebView
   @objc @_Concurrency.MainActor @preconcurrency public var noDataView: AJLibrary.UIRefreshView?
@@ -6530,23 +6583,6 @@ extension AJLibrary.DiagnoseURLTask {
   @objc override dynamic public init()
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class UIMaterialTextField : Material.TextField {
-  @_Concurrency.MainActor @preconcurrency public var allToRed: Swift.Bool {
-    get
-    set
-  }
-  @_Concurrency.MainActor @preconcurrency public var detailToRed: Swift.Bool {
-    get
-    set
-  }
-  #if compiler(>=5.3) && $NonescapableTypes
-  @_Concurrency.MainActor @preconcurrency public init(_ placeholder: Swift.String?)
-  #endif
-  @_Concurrency.MainActor @preconcurrency public func showError(_ detail: Swift.String)
-  @_Concurrency.MainActor @preconcurrency public func hideError()
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class CloudWebViewController : AJLibrary.CustomWebViewController, WebKit.WKScriptMessageHandler, MessageUI.MFMailComposeViewControllerDelegate {
   @objc @_Concurrency.MainActor @preconcurrency public var refreshUI: (() -> ())?
   @objc @_Concurrency.MainActor @preconcurrency public var order: AJLibrary.OrderModel?
@@ -6672,12 +6708,14 @@ extension Swift.Double : AJLibrary._Transformable {}
 extension AJLibrary.UploadStorageModeEnum : Swift.Equatable {}
 extension AJLibrary.UploadStorageModeEnum : Swift.Hashable {}
 extension AJLibrary.UploadStorageModeEnum : Swift.RawRepresentable {}
+extension Foundation.NSNumber : AJLibrary._Transformable {}
+extension Swift.Float : AJLibrary._Transformable {}
+extension Swift.Int32 : AJLibrary._Transformable {}
 extension AJLibrary.BindStatus : Swift.Equatable {}
 extension AJLibrary.BindStatus : Swift.Hashable {}
 extension AJLibrary.BindStatus : Swift.RawRepresentable {}
 extension Swift.Dictionary : AJLibrary._Transformable {}
 extension Foundation.NSString : AJLibrary._Transformable {}
-extension Foundation.NSNumber : AJLibrary._Transformable {}
 extension Foundation.NSArray : AJLibrary._Transformable {}
 extension Foundation.NSDictionary : AJLibrary._Transformable {}
 extension AJLibrary.DebugMode : Swift.Equatable {}
@@ -6685,13 +6723,11 @@ extension AJLibrary.DebugMode : Swift.Hashable {}
 extension AJLibrary.DebugMode : Swift.RawRepresentable {}
 extension Swift.Int8 : AJLibrary._Transformable {}
 extension Swift.Int16 : AJLibrary._Transformable {}
-extension Swift.Int32 : AJLibrary._Transformable {}
 extension Swift.UInt8 : AJLibrary._Transformable {}
 extension Swift.UInt16 : AJLibrary._Transformable {}
 extension Swift.UInt32 : AJLibrary._Transformable {}
 extension Swift.UInt64 : AJLibrary._Transformable {}
 extension Swift.Bool : AJLibrary._Transformable {}
-extension Swift.Float : AJLibrary._Transformable {}
 extension Swift.Set : AJLibrary._Transformable {}
 extension AJLibrary.OrderStatusEnum : Swift.Equatable {}
 extension AJLibrary.OrderStatusEnum : Swift.Hashable {}

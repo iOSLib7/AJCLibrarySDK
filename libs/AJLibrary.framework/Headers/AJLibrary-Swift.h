@@ -287,7 +287,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import CoreLocation;
 @import Foundation;
 @import MJRefresh;
-@import Material;
 @import MessageUI;
 @import ObjectiveC;
 @import QCloudCore;
@@ -316,13 +315,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-
-SWIFT_CLASS("_TtC9AJLibrary11AFNetClient")
-@interface AFNetClient : NSObject
-/// 是否WWAN
-@property (nonatomic, readonly) BOOL isReachableOnWWAN;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 @class UIViewController;
 @class UIGestureRecognizer;
@@ -376,6 +368,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AJBleBinderM
 - (void)getScanResultPeripheral:(PeripheralInfoModel * _Nonnull)peripheral;
 - (void)disconnectPeripheral:(CBPeripheral * _Nonnull)peripheral;
 - (void)readData:(NSData * _Nonnull)valueData;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC9AJLibrary8AJCUtils")
+@interface AJCUtils : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2401,12 +2398,12 @@ SWIFT_CLASS("_TtC9AJLibrary10LivePolicy")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class Stream;
+@class StreamModel;
 SWIFT_CLASS("_TtC9AJLibrary12LiveSecToken")
 @interface LiveSecToken : ResultModel
 @property (nonatomic, copy) NSString * _Nullable reqType;
 @property (nonatomic, copy) NSString * _Nullable reqServer;
-@property (nonatomic, strong) Stream * _Nullable stream;
+@property (nonatomic, strong) StreamModel * _Nullable stream;
 @property (nonatomic, copy) NSString * _Nullable token;
 @property (nonatomic, copy) NSString * _Nullable encrytMode;
 @property (nonatomic, copy) NSString * _Nullable sessionKey;
@@ -3492,8 +3489,14 @@ SWIFT_CLASS_NAMED("StartUpModel")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-SWIFT_CLASS("_TtC9AJLibrary6Stream")
-@interface Stream : ResultModel
+SWIFT_CLASS("_TtC9AJLibrary12StreamConfig")
+@interface StreamConfig : ResultModel
+@property (nonatomic, copy) NSArray<StreamModel *> * _Nullable streams;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC9AJLibrary11StreamModel")
+@interface StreamModel : ResultModel
 @property (nonatomic, copy) NSString * _Nullable bitRate;
 @property (nonatomic, copy) NSString * _Nullable frameRate;
 @property (nonatomic, copy) NSString * _Nullable localUrl;
@@ -3503,12 +3506,6 @@ SWIFT_CLASS("_TtC9AJLibrary6Stream")
 @property (nonatomic, copy) NSString * _Nullable resWidth;
 @property (nonatomic, copy) NSString * _Nullable wanUrl;
 - (NSString * _Nonnull)channelString SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC9AJLibrary12StreamConfig")
-@interface StreamConfig : ResultModel
-@property (nonatomic, copy) NSArray<Stream *> * _Nullable streams;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -3932,8 +3929,8 @@ SWIFT_CLASS("_TtC9AJLibrary17UIActionSheetView")
 - (void)show;
 @end
 
-SWIFT_RESILIENT_CLASS("_TtC9AJLibrary13UIAlphaButton")
-@interface UIAlphaButton : FlatButton
+SWIFT_CLASS("_TtC9AJLibrary13UIAlphaButton")
+@interface UIAlphaButton : UIButton
 - (nonnull instancetype)init:(NSString * _Nullable)title target:(id _Nullable)target action:(SEL _Nullable)action OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
@@ -4043,8 +4040,8 @@ SWIFT_CLASS("_TtC9AJLibrary14UIExplainLabel")
 @end
 
 /// 纯文本按钮
-SWIFT_RESILIENT_CLASS("_TtC9AJLibrary12UIFlatButton")
-@interface UIFlatButton : FlatButton
+SWIFT_CLASS("_TtC9AJLibrary12UIFlatButton")
+@interface UIFlatButton : UIButton
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
@@ -4080,13 +4077,6 @@ SWIFT_CLASS("_TtC9AJLibrary13UIImageButton")
 - (CGRect)titleRectForContentRect:(CGRect)contentRect SWIFT_WARN_UNUSED_RESULT;
 - (CGRect)imageRectForContentRect:(CGRect)contentRect SWIFT_WARN_UNUSED_RESULT;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
-@end
-
-SWIFT_RESILIENT_CLASS("_TtC9AJLibrary19UIMaterialTextField")
-@interface UIMaterialTextField : TextField
-- (void)layoutSubviews;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
 
 SWIFT_CLASS("_TtC9AJLibrary13UIProblemView")
@@ -4181,11 +4171,6 @@ SWIFT_CLASS("_TtC9AJLibrary11UserSetting")
 @interface UserSetting : ResultModel
 @property (nonatomic, strong) MotionDetectConfig * _Nonnull customMotionDetectConfig;
 @property (nonatomic, strong) AppSettingModel * _Nonnull customAppSetting;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC9AJLibrary5Utils")
-@interface Utils : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
