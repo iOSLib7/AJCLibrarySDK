@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJCLibrarySDK"
-  s.version      = "1.2.32"
+  s.version      = "1.2.33"
   s.summary      = "A short description of AJLibrary."
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -36,20 +36,20 @@ s.platform     = :ios, '13.0'
   
   ss.libraries = "c++.1", "iconv", "z", "bz2.1.0"
 
-  #ss.dependency 'Alamofire', '5.9.1'
+  ss.dependency 'Alamofire', '5.9.1'
   #ss.dependency 'Firebase/Crashlytics'
   #ss.dependency 'Firebase/Core'
   #ss.dependency 'Firebase/Analytics'
   ss.dependency 'MBProgressHUD'
-    #ss.dependency 'SnapKit', '~> 5.7.1'
+  ss.dependency 'SnapKit', '~> 5.7.1'
   ss.dependency 'CocoaAsyncSocket', '7.6.5'
   ss.dependency 'UICKeyChainStore', '>= 2.1.0', '< 3.0.0'
   ss.dependency 'MJRefresh'
-    #ss.dependency 'Material', '~> 3.1.8'
+  ss.dependency 'Material', '~> 3.1.8'
   ss.dependency 'lottie-ios','2.5.0'
   ss.dependency 'SDWebImage', "~> 5.11.0"
   ss.dependency 'AFNetworking', "~> 4.0.1"
-    #ss.dependency 'Sodium', '0.9.1'
+  ss.dependency 'Sodium', '0.9.1'
   ss.dependency 'AliyunOSSiOS'
   ss.dependency 'Masonry'
   ss.dependency 'SDVersion'
