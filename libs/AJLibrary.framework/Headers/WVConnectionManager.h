@@ -17,6 +17,13 @@
 #import <AudioToolbox/ExtendedAudioFile.h>
 NS_ASSUME_NONNULL_BEGIN
 
+// 日志宏定义 - 通过 AJDevice.logEnable 属性控制
+#define AJCLOG(fmt, ...) do { \
+    if ([AJDevice shared].logEnable) { \
+        NSLog(@"[AJCLOG] %s[%d] %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:fmt, ##__VA_ARGS__]); \
+    } \
+} while (0)
+
 typedef void(^didReceiveMsgData)(HCHAR *pSN,HUINT32 nMsgType,HCHAR *pMsg,HUINT32 nMsgSize, HCHAR *pSubDevID,HUINT32 nSubDevIDIndex);
 typedef void(^didReceiveAVData)(HCHAR *pSN,HCHAR *pData,HUINT32 nDataSize);
 

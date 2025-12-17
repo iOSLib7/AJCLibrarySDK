@@ -8,10 +8,6 @@
 		<data>
 		dYw039OrMKKtZc5HQ29NNIqFY9w=
 		</data>
-		<key>Assets.car</key>
-		<data>
-		w6R+uBz+BGG5XSafk9FaEM1QQaw=
-		</data>
 		<key>Headers/AJAccount.h</key>
 		<data>
 		YYe6gyTVZbXRXGfw9VGebRkjYUY=
@@ -66,7 +62,7 @@
 		</data>
 		<key>Headers/AJDevice.h</key>
 		<data>
-		fGahDj6bgJoCvicQ00PCbK92nWE=
+		ZR2pEsF6bo76wwNZR5Umug5bo48=
 		</data>
 		<key>Headers/AJDeviceInfoModel.h</key>
 		<data>
@@ -110,7 +106,7 @@
 		</data>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<data>
-		/G7YgQyM+FLBdl/+0kOJW/34NGk=
+		CYr2V+QbcYrxFlALU69i7uHyW+Q=
 		</data>
 		<key>Headers/AJLibrary.h</key>
 		<data>
@@ -186,7 +182,7 @@
 		</data>
 		<key>Headers/CameraConnectionModel.h</key>
 		<data>
-		20h/zjrkQXpADRU0RNqHCZtakx4=
+		u7Yhxk1ttGgHIhGbmw7zQw2D7fI=
 		</data>
 		<key>Headers/CameraStatusManager.h</key>
 		<data>
@@ -314,7 +310,7 @@
 		</data>
 		<key>Headers/WVConnectionManager.h</key>
 		<data>
-		TQ9wrPZDUYhTGoDC42sfBohl5+E=
+		ZTezAu9UR2uhlhg29D9aheyrLvw=
 		</data>
 		<key>Headers/WVGetPlayUrlManager.h</key>
 		<data>
@@ -358,35 +354,31 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		tBd25xZUu4PbQQfzSIKbT3IS6yA=
+		KGJ3zOKbwtamwggqfi0Kpz05Y7E=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		XH5u2cRyvuyPeHgxLeAbijze4X8=
+		VWOn4tpWo0//w4HxZcai+TW6dtU=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		cQHH7jZSBK6DrhPCTWoDn+XlFm0=
+		JaNjo7fo3t8c6PIOCFbTbhe8NU0=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		92OrwO2UY1fsCtMxg38YutXWHHI=
+		dx0WNT8yDzhIFFmULxVzpmLnruA=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		cQHH7jZSBK6DrhPCTWoDn+XlFm0=
+		JaNjo7fo3t8c6PIOCFbTbhe8NU0=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		FeS0SNjwVLW1CQiStD1z8PR7Xug=
+		iIeo+LU3IQHuNU9emynX7VDBK9U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		QyUnrrfoQ8ciQpg+phuLPnIVRfU=
-		</data>
-		<key>PrivacyInfo.xcprivacy</key>
-		<data>
-		ovFJMFOLMjzh8DLJKmXncj8JIgU=
 		</data>
 		<key>QCloudCOSXML.bundle/Info.plist</key>
 		<data>
@@ -400,26 +392,6 @@
 		<data>
 		rODw3tVGD4tFK27YaGwqodn63hs=
 		</data>
-		<key>Roboto-Bold.ttf</key>
-		<data>
-		QHlyOcmQ7cSwc9XTUt4DJJANWG8=
-		</data>
-		<key>Roboto-Light.ttf</key>
-		<data>
-		0uD8SngIbrYguZ/3PpwKxjUN5BI=
-		</data>
-		<key>Roboto-Medium.ttf</key>
-		<data>
-		04AryO2EgiFUeL59dchPXsZvr50=
-		</data>
-		<key>Roboto-Regular.ttf</key>
-		<data>
-		nGiDcL5BehV4TwFlrvOspjswYUY=
-		</data>
-		<key>Roboto-Thin.ttf</key>
-		<data>
-		2R9E50GLZorC558keFPV/Z5OZ44=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -428,13 +400,6 @@
 			<key>hash2</key>
 			<data>
 			6P41AJzfdMRw5QwrowgXnsFecPe9ciIVyc1ZvfxM3GM=
-			</data>
-		</dict>
-		<key>Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			UbMfAZDKytQ6LsL6jGOUmmVd0yZNFHszupxpgMFofiU=
 			</data>
 		</dict>
 		<key>Headers/AJAccount.h</key>
@@ -532,7 +497,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xYTb4LV2Cl4q3AbE0xckxTmDgMVnkkMt2bIkdh43Jc8=
+			/9SSiJsRfHO5zWtsKPpwAoNVtfKBQV3hAJPvOvSn0s4=
 			</data>
 		</dict>
 		<key>Headers/AJDeviceInfoModel.h</key>
@@ -609,7 +574,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			I6kd+sXMTj0MfDbja7PGKO+CLVVf7PeTiSidxfyRUpU=
+			5V/HG4chJ8A3m6kzD0IbmZeEtg//R9J+vA41+Iue0+Y=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary.h</key>
@@ -742,7 +707,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/Q+RBSA2ACgot8BPyMDHQ08FeS+Hthn5RCIz2EMUNZw=
+			fwSc8VzAWCeMQ5tOEVhO9daYIkJfacIh/yQi1HbEv5c=
 			</data>
 		</dict>
 		<key>Headers/CameraStatusManager.h</key>
@@ -966,7 +931,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3WGOpS94V58Y2meOSchfWcKE2xRzYFAB/KA/xcCVka4=
+			u9Y+rfeyP/8fHFF67Au/haaY236SYmDfI3oSHosQ7tw=
 			</data>
 		</dict>
 		<key>Headers/WVGetPlayUrlManager.h</key>
@@ -1036,42 +1001,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7N2tfLi4lwyPI/OEYzTYl4mA4fNzw0XwWJ9BAwrBPR4=
+			/HTPzHVKtW1VXP3khAcLDWvf6Iw6UAHtsZlsGJKiaDY=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nxuFv4sH7nGVUUPrNxy7yfzISKDwaA294sAwLvvqveY=
+			XiqLjrzS2z+LwLyVFa8h2spiI3VDQ2fLJtErl1Bcvck=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			okrkKpqAzqhxYV/ahJAVrwO1NeZwfckBpmnmArFpzmQ=
+			IK9/T3aYYhnr2Qtm8k1KSGc7YS97jfsnZkGFd8djoW0=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			c6Irk8zHQ4zX5tIdGySkz5TXGz8oF413RXUzpGXcUd0=
+			4h/dYf2ZQh+qF7e7l5geo2FuxVmrRz0K7mlDK0XSKFs=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			okrkKpqAzqhxYV/ahJAVrwO1NeZwfckBpmnmArFpzmQ=
+			IK9/T3aYYhnr2Qtm8k1KSGc7YS97jfsnZkGFd8djoW0=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cS4HvXzDJAI6XEtjgKCo+6F0lADz4lXB2Ik7eoIYyWU=
+			xOgUqD+8pVmjISxiqE1SAZBwl2KnBQX0V8/pMiSiiaY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1079,13 +1044,6 @@
 			<key>hash2</key>
 			<data>
 			/Sl1SBfYlJ0x12rGUyLKJ0P0sBMMJcgl1LR1fTMeMok=
-			</data>
-		</dict>
-		<key>PrivacyInfo.xcprivacy</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CNkOaUbb/qDQtbF/tlnXfu0j5EO3Rdjntbn6N4y3RHc=
 			</data>
 		</dict>
 		<key>QCloudCOSXML.bundle/Info.plist</key>
@@ -1107,41 +1065,6 @@
 			<key>hash2</key>
 			<data>
 			I3MQLl55MnLKOf27FxH8WRySzcfgpHt1cRfYBdOzgPw=
-			</data>
-		</dict>
-		<key>Roboto-Bold.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			3iZh/2VgmQrnrGuo+4eSuB8WbFMf6FztGhXAWYh5oMY=
-			</data>
-		</dict>
-		<key>Roboto-Light.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			XPvp9H51gm/F1LFmQ9Dli1B544u5Mgj4hYj+tmrV7SE=
-			</data>
-		</dict>
-		<key>Roboto-Medium.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6vEQoX+Al6Nb4G7JFA/Rz7ZO3lYftpmDIMwKS8kN+ao=
-			</data>
-		</dict>
-		<key>Roboto-Regular.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			biWwR2VwmujlWpjpXhLQzZ8ehTrfCmCYdN4wWK3ZXvs=
-			</data>
-		</dict>
-		<key>Roboto-Thin.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6G+MPYkXLS8ACaPBd8UpIN12P3Q4jjyx0d86Rx9/9VQ=
 			</data>
 		</dict>
 	</dict>

@@ -18,6 +18,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 日志宏定义 - 通过 AJDevice.logEnable 属性控制
+#define AJCLOG(fmt, ...) do { \
+    if ([AJDevice shared].logEnable) { \
+        NSLog(@"[AJCLOG] %s[%d] %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:fmt, ##__VA_ARGS__]); \
+    } \
+} while (0)
+
 typedef void(^tfSuccess)(NSString* portNum);
 
 typedef void(^tfFailure)(AJError *error);
@@ -60,6 +67,19 @@ typedef enum : NSUInteger {
 *    单例
 */
 + (instancetype)shared;
+
+/**
+ *    日志开关属性 - 控制AJCLOG日志输出
+ *    YES: 启用日志输出
+ *    NO: 关闭日志输出
+ */
+@property (nonatomic, assign) BOOL logEnable;
+
+/**
+ *    设置日志是否启用
+ *    @param enable   YES启用，NO关闭
+ */
+- (void)setLogEnable:(BOOL)enable;
 
 
 /**
