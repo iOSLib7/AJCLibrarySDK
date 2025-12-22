@@ -412,6 +412,11 @@ typedef enum : NSUInteger {
            success:(void (^)(AJUploadNotifyModel * _Nonnull))success
            failure:(void (^)(AJError * _Nonnull))failure;
 
+// 唤醒电池设备
+/// @param deviceId 设备ID
+/// @param success success
+/// @param failure failure
+- (void)batterySingleWakeUp:(NSString *)deviceId success:(void (^)(void))success failure:(void (^)(AJError * _Nonnull))failure;
 
 @end
 
