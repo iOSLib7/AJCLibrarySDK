@@ -106,7 +106,7 @@
 		</data>
 		<key>Headers/AJLibrary-Swift.h</key>
 		<data>
-		CYr2V+QbcYrxFlALU69i7uHyW+Q=
+		LBLH/HpezZAe3c3hR+7CtwGNiuE=
 		</data>
 		<key>Headers/AJLibrary.h</key>
 		<data>
@@ -354,15 +354,15 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		E6ikIL0hSFMHEKvsXoHONAj9264=
+		kO1IMboFEGDFXNjfSiHQUc8k0BY=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		L8UylM3MdaBDXxXN/bfqso60IRs=
+		OCTj+tZ8sktem8G7lg9kHZ0cAEw=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		JaNjo7fo3t8c6PIOCFbTbhe8NU0=
+		T+w6WZsKKW3yFOpH1rvhu3bLTX0=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -370,11 +370,11 @@
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		JaNjo7fo3t8c6PIOCFbTbhe8NU0=
+		T+w6WZsKKW3yFOpH1rvhu3bLTX0=
 		</data>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		iIeo+LU3IQHuNU9emynX7VDBK9U=
+		Y6GYiZkwxaQkrte/tLjOgPftYx8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -574,7 +574,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5V/HG4chJ8A3m6kzD0IbmZeEtg//R9J+vA41+Iue0+Y=
+			YRxCZ7WFd7V4McV3/i3u6YtxmQSlqINaPbkC2lJvjc0=
 			</data>
 		</dict>
 		<key>Headers/AJLibrary.h</key>
@@ -1001,21 +1001,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JVSYO9K/Q1MYGQQ6T8knMUp/S7CaChqQBG8Ue38yoNI=
+			BLESLiHGstCSVyw1VZEmE3lUw5xQi+Y+O1ZqgNzr8XQ=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HZOUjgHnPkHS1e7nQ8G7rg5lRoBfhGJMDqNmj128Ng4=
+			QCGh5p3VjE7N1s1odwHUII5RNmroT8EPapR7KfiYZW8=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IK9/T3aYYhnr2Qtm8k1KSGc7YS97jfsnZkGFd8djoW0=
+			bd6a3xGtvRrVKU/JrFTSIKKyLj/bcvWuFWK+dxp8Vko=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -1029,14 +1029,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IK9/T3aYYhnr2Qtm8k1KSGc7YS97jfsnZkGFd8djoW0=
+			bd6a3xGtvRrVKU/JrFTSIKKyLj/bcvWuFWK+dxp8Vko=
 			</data>
 		</dict>
 		<key>Modules/AJLibrary.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xOgUqD+8pVmjISxiqE1SAZBwl2KnBQX0V8/pMiSiiaY=
+			Rivc8zZ1eUaHItVWRtojMG7X5nNt0A1c7q1WipahCHE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

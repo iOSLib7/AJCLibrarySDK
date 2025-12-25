@@ -625,7 +625,7 @@ public let FetchInfosApi: Swift.String
   public func autoTrackConfig(_ deviceId: Swift.String, toggle: Swift.String, stopPosType: Swift.String, targets: [Swift.String], complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc public func BatterySingleWakeUp(_ deviceId: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func BatterySingleWakeUp(_ deviceId: Swift.String, deviceMode: Swift.String, vendorCode: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc public func alarmRekConfig(_ deviceId: Swift.String, pnmHumanoid: Swift.String, pnmPackage: Swift.String, pnmPet: Swift.String, pnmVehicle: Swift.String, pnmFall: Swift.String, pnmBird: Swift.String, pnmPetact: Swift.String, rekHumanoid: Swift.String, rekPackage: Swift.String, rekPet: Swift.String, rekVehicle: Swift.String, rekFall: Swift.String, rekBird: Swift.String, rekPetact: Swift.String, pnmO1: Swift.String, complete: @escaping (AJLibrary.SuccessResultModel?, AJLibrary.ErrorModel?) -> Swift.Void)
