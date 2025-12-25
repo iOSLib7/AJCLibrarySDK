@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AJCLibrarySDK"
-  s.version      = "1.2.37"
+  s.version      = "1.2.38"
   s.summary      = "A short description of AJLibrary."
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
