@@ -43,9 +43,10 @@ typedef enum : NSUInteger {
 
 /**
  *    配置Firebase推送
+ *    @param     senderID         GoogleService-info文件中的SenderID
  *    @param     fcmToken         didReceiveRegistrationToken 获取到的 fcmToken
  */
-- (void)setFirebasePush:(NSString *)fcmToken;
+- (void)setFirebasePush:(NSString *)senderID fmcToken:(NSString *)fcmToken;
 
 
 /**
