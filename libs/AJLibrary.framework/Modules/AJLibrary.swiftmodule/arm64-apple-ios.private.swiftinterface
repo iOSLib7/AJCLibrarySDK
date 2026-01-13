@@ -2274,8 +2274,10 @@ public let DiagnoseTableRowHeight: CoreFoundation.CGFloat
   @objc required dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class SystemMsgStatusModel : AJLibrary.ResultModel {
-  public func haveNewMessage() -> Swift.Bool
+@objc @_inheritsConvenienceInitializers @objcMembers public class SystemMsgStatusModel : AJLibrary.ResultModel {
+  @objc public var status: Swift.String?
+  @objc public var latest: Swift.String?
+  @objc public func haveNewMessage() -> Swift.Bool
   @objc required dynamic public init()
   @objc deinit
 }
@@ -5463,10 +5465,10 @@ extension Foundation.URL {
 @objc @_inheritsConvenienceInitializers public class EmcPortalNetManager : AJLibrary.BaseNetManager {
   @objc public static let shared: AJLibrary.EmcPortalNetManager
   #if compiler(>=5.3) && $NonescapableTypes
-  public func fetchSystemMessageStatus(complete: @escaping (AJLibrary.SystemMsgStatusModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fetchSystemMessageStatus(complete: @escaping (AJLibrary.SystemMsgStatusModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  public func fetchSystemMessageList(complete: @escaping (AJLibrary.SystemMsgListModel?, AJLibrary.ErrorModel?) -> Swift.Void)
+  @objc public func fetchSystemMessageList(complete: @escaping (AJLibrary.SystemMsgListModel?, AJLibrary.ErrorModel?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public func fetchAlarmsSummary(complete: @escaping (AJLibrary.AlarmsModel?, AJLibrary.ErrorModel?) -> Swift.Void)
@@ -6007,7 +6009,69 @@ extension AVKit.AVPlayerViewController {
   @_Concurrency.MainActor @preconcurrency public func showByDictionary(dictionaryContent: Foundation.NSMutableDictionary)
   @_Concurrency.MainActor @preconcurrency public func addPeriodicNotification(parsedPayload: Foundation.NSDictionary)
 }
-@objc @_inheritsConvenienceInitializers public class SystemMsgListModel : AJLibrary.ResultModel {
+public enum PopActionEnum : Swift.String {
+  case Web
+  case InApp
+  case None
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MessagePushAction : Swift.String {
+  case PurchaseCloudStorage
+  case AboutCloudStorage
+  case SystemMessage
+  case MallHome
+  case CloudStorageHome
+  case Coupon
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SystemImageModel : AJLibrary.ResultModel {
+  @objc public var _id: Swift.String?
+  @objc public var url: Swift.String?
+  @objc public var tags: Swift.String?
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SystemMsgModel : AJLibrary.ResultModel {
+  @objc public var locale: Swift.String?
+  @objc public var langCode: Swift.String?
+  @objc public var countryCode: Swift.String?
+  @objc public var appVendorCode: Swift.String?
+  @objc public var category: Swift.String?
+  @objc public var type: Swift.String?
+  @objc public var title: Swift.String?
+  @objc public var content: Swift.String?
+  @objc public var images: [AJLibrary.SystemImageModel]?
+  @objc public var avs: [AJLibrary.SystemImageModel]?
+  @objc public var acts: [AJLibrary.SystemImageModel]?
+  @objc public var params: Swift.String?
+  @objc public var cts: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func detailImageUrl() -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func actionUrl() -> AJLibrary.MessagePushAction?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func createDate() -> Swift.String?
+  #endif
+  public func popAction() -> AJLibrary.PopActionEnum
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SystemMsgListModel : AJLibrary.ResultModel {
+  @objc public var messages: [AJLibrary.SystemMsgModel]?
   @objc required dynamic public init()
   @objc deinit
 }
@@ -6696,6 +6760,12 @@ extension Swift.Set : AJLibrary._Transformable {}
 extension AJLibrary.OrderStatusEnum : Swift.Equatable {}
 extension AJLibrary.OrderStatusEnum : Swift.Hashable {}
 extension AJLibrary.OrderStatusEnum : Swift.RawRepresentable {}
+extension AJLibrary.PopActionEnum : Swift.Equatable {}
+extension AJLibrary.PopActionEnum : Swift.Hashable {}
+extension AJLibrary.PopActionEnum : Swift.RawRepresentable {}
+extension AJLibrary.MessagePushAction : Swift.Equatable {}
+extension AJLibrary.MessagePushAction : Swift.Hashable {}
+extension AJLibrary.MessagePushAction : Swift.RawRepresentable {}
 extension AJLibrary.OrderType : Swift.Equatable {}
 extension AJLibrary.OrderType : Swift.Hashable {}
 extension AJLibrary.OrderType : Swift.RawRepresentable {}

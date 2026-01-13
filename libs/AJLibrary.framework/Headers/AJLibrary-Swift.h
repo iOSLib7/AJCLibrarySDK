@@ -2097,10 +2097,20 @@ SWIFT_CLASS("_TtC9AJLibrary15EmailCheckModel")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class SystemMsgStatusModel;
+@class SystemMsgListModel;
 SWIFT_CLASS("_TtC9AJLibrary19EmcPortalNetManager")
 @interface EmcPortalNetManager : BaseNetManager
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EmcPortalNetManager * _Nonnull shared;)
 + (EmcPortalNetManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// 系统消息状态(红点功能)
+/// \param complete complete
+///
+- (void)fetchSystemMessageStatusWithComplete:(void (^ _Nonnull)(SystemMsgStatusModel * _Nullable, ErrorModel * _Nullable))complete;
+/// 系统消息列表
+/// \param complete complete
+///
+- (void)fetchSystemMessageListWithComplete:(void (^ _Nonnull)(SystemMsgListModel * _Nullable, ErrorModel * _Nullable))complete;
 /// 获取消息概览
 /// \param params params
 ///
@@ -3540,13 +3550,53 @@ SWIFT_CLASS("_TtC9AJLibrary13SysMsgGoModel")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+SWIFT_CLASS("_TtC9AJLibrary16SystemImageModel")
+@interface SystemImageModel : ResultModel
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable url;
+/// 跳转链接
+@property (nonatomic, copy) NSString * _Nullable tags;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class SystemMsgModel;
 SWIFT_CLASS("_TtC9AJLibrary18SystemMsgListModel")
 @interface SystemMsgListModel : ResultModel
+@property (nonatomic, copy) NSArray<SystemMsgModel *> * _Nullable messages;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC9AJLibrary14SystemMsgModel")
+@interface SystemMsgModel : ResultModel
+@property (nonatomic, copy) NSString * _Nullable locale;
+@property (nonatomic, copy) NSString * _Nullable langCode;
+@property (nonatomic, copy) NSString * _Nullable countryCode;
+@property (nonatomic, copy) NSString * _Nullable appVendorCode;
+@property (nonatomic, copy) NSString * _Nullable category;
+@property (nonatomic, copy) NSString * _Nullable type;
+@property (nonatomic, copy) NSString * _Nullable title;
+/// 消息头
+@property (nonatomic, copy) NSString * _Nullable content;
+/// 消息内容
+@property (nonatomic, copy) NSArray<SystemImageModel *> * _Nullable images;
+/// 消息图片结构
+@property (nonatomic, copy) NSArray<SystemImageModel *> * _Nullable avs;
+@property (nonatomic, copy) NSArray<SystemImageModel *> * _Nullable acts;
+/// 跳转链接结构
+@property (nonatomic, copy) NSString * _Nullable params;
+@property (nonatomic, copy) NSString * _Nullable cts;
+/// 图片URL
+- (NSString * _Nullable)detailImageUrl SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)createDate SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 SWIFT_CLASS("_TtC9AJLibrary20SystemMsgStatusModel")
 @interface SystemMsgStatusModel : ResultModel
+@property (nonatomic, copy) NSString * _Nullable status;
+/// 新消息: 1, 已读: 2
+@property (nonatomic, copy) NSString * _Nullable latest;
+- (BOOL)haveNewMessage SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
